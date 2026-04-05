@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>11 — Deploying Agents · Agentic AI Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="../style.css">
+<noscript><style>
+/* No-JS: make sidebar visible and stack layout vertically on mobile */
+@media (max-width: 768px) {
+  .sidebar { transform: none; position: relative; width: 100%; height: auto; }
+  .layout  { flex-direction: column; }
+}
+</style></noscript>
+<link rel="manifest" href="../manifest.json">
+</head>
+<body data-section="11">
+<noscript>
+  <div style="background:#1a1200;border-bottom:2px solid #c87d00;color:#f0c060;padding:0.75rem 1.5rem;font-family:monospace;font-size:0.82rem;text-align:center;position:relative;z-index:999;">
+    &#9888; JavaScript is disabled. Progress tracking, quizzes, and interactive features require JavaScript.
+  </div>
+</noscript>
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <a href="../index.html" class="sidebar-logo" style="text-decoration:none;display:block;">
+      <div class="logo-eyebrow">// AGENTIC AI COURSE</div>
+      <div class="logo-name">Learn <span>Agentic AI</span><br>2026 Edition</div>
+    </a>
+    <div class="sidebar-progress">
+      <div class="progress-row">
+        <span class="progress-label">OVERALL PROGRESS</span>
+        <span class="progress-count" id="progressCount">0 / 16</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+    <div class="sidebar-nav">
+      <div class="nav-group-label">Foundation</div>
+      <a href="01-intro.html" class="nav-item" data-section="1"><span class="nav-num">01</span> Intro to Agentic AI <span class="nav-check">✓</span></a>
+      <a href="02-ml-fundamentals.html" class="nav-item" data-section="2"><span class="nav-num">02</span> AI &amp; ML Fundamentals <span class="nav-check">✓</span></a>
+      <a href="03-frameworks.html" class="nav-item" data-section="3"><span class="nav-num">03</span> Programming &amp; Frameworks <span class="nav-check">✓</span></a>
+      <a href="04-llms.html" class="nav-item" data-section="4"><span class="nav-num">04</span> Large Language Models <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">Core Agents</div>
+      <a href="05-understanding-agents.html" class="nav-item" data-section="5"><span class="nav-num">05</span> Understanding Agents <span class="nav-check">✓</span></a>
+      <a href="06-memory.html" class="nav-item" data-section="6"><span class="nav-num">06</span> Memory &amp; Knowledge <span class="nav-check">✓</span></a>
+      <a href="07-planning.html" class="nav-item" data-section="7"><span class="nav-num">07</span> Decision-Making &amp; Planning <span class="nav-check">✓</span></a>
+      <a href="08-prompting.html" class="nav-item" data-section="8"><span class="nav-num">08</span> Prompt Engineering <span class="nav-check">✓</span></a>
+      <a href="09-rl.html" class="nav-item" data-section="9"><span class="nav-num">09</span> RL &amp; Self-Improvement <span class="nav-check">✓</span></a>
+      <a href="10-rag.html" class="nav-item" data-section="10"><span class="nav-num">10</span> RAG <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">Production</div>
+      <a href="11-deployment.html" class="nav-item active" data-section="11"><span class="nav-num">11</span> Deploying Agents <span class="nav-check">✓</span></a>
+      <a href="12-real-world.html" class="nav-item" data-section="12"><span class="nav-num">12</span> Real-World Applications <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">2026 New</div>
+      <a href="13-mcp.html" class="nav-item" data-section="13"><span class="nav-num">13</span> MCP &amp; Protocols <span class="nav-check">✓</span></a>
+      <a href="14-multi-agent.html" class="nav-item" data-section="14"><span class="nav-num">14</span> Multi-Agent Orchestration <span class="nav-check">✓</span></a>
+      <a href="15-security.html" class="nav-item" data-section="15"><span class="nav-num">15</span> Agent Security <span class="nav-check">✓</span></a>
+      <a href="16-long-horizon.html" class="nav-item" data-section="16"><span class="nav-num">16</span> Long-Horizon Agents <span class="nav-check">✓</span></a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="topbar-breadcrumb">
+        <a href="../index.html" style="color:var(--text-muted);text-decoration:none;">Course</a>
+        &nbsp;/&nbsp; <span>11 · Deploying Agents</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn btn-outline" id="completeBtn" data-section="11">Mark Complete</button>
+      </div>
+    </div>
+
+    <div class="page">
+
+      <!-- HERO -->
+      <div class="section-hero">
+        <div class="hero-meta">
+          <span class="hero-num">SECTION 11</span>
+          <span class="hero-tag tag-lab">LAB</span>
+          <span class="hero-tag tag-core">PRODUCTION</span>
+        </div>
+        <h1 class="section-title">Deploying<br><span>Agents</span></h1>
+        <p class="section-intro">
+          An agent that works in a notebook is not a production agent. Production means handling rate limits and API errors gracefully, enforcing token and cost budgets, logging every decision in a structured way so you can debug failures after the fact, and rolling out changes safely. This section covers the engineering discipline of taking an agent from prototype to deployed service.
+        </p>
+        <div class="hero-actions">
+          <a href="#theory" class="btn btn-accent">📖 Start Theory</a>
+          <a href="#lab" class="btn btn-outline">🔬 Jump to Lab</a>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- THEORY                                      -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div id="theory">
+
+        <!-- ── BLOCK 01: Deployment Patterns ── -->
+        <div class="block">
+          <div class="block-label">01 · DEPLOYMENT PATTERNS</div>
+          <h2>Where and How Agents Run in Production</h2>
+          <p>
+            The right deployment pattern depends on the agent's latency requirements, task duration, and invocation frequency. LLM agents have unusual execution profiles compared to traditional services: they are compute-light on the host (calls are API-bound, not CPU-bound), but they run for seconds to minutes rather than milliseconds, and they may make many sequential API calls within a single invocation.
+          </p>
+
+          <table class="compare-table" style="margin:1.5rem 0;">
+            <thead>
+              <tr><th>Pattern</th><th>Execution model</th><th>Best for</th><th>Limit to watch</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Serverless function</strong><br><small style="color:var(--text-dim);">(AWS Lambda, GCP Cloud Run, etc.)</small></td>
+                <td>Event-triggered, short-lived container</td>
+                <td>Low-frequency tasks, chatbot webhooks, simple tool agents</td>
+                <td>Execution timeout (15 min on Lambda). Multi-step agents may exceed it.</td>
+              </tr>
+              <tr>
+                <td><strong>Async job queue</strong><br><small style="color:var(--text-dim);">(Celery, Cloud Tasks, SQS worker)</small></td>
+                <td>Task enqueued, worker picks up and runs to completion</td>
+                <td>Long-running agents, batch processing, background research tasks</td>
+                <td>Queue depth, dead-letter handling, result retrieval pattern</td>
+              </tr>
+              <tr>
+                <td><strong>Containerized service</strong><br><small style="color:var(--text-dim);">(Docker + Kubernetes / Cloud Run)</small></td>
+                <td>Persistent process, HTTP or gRPC API surface</td>
+                <td>High-frequency agents with shared state (vector store, session cache)</td>
+                <td>Horizontal scaling requires stateless design or distributed state</td>
+              </tr>
+              <tr>
+                <td><strong>Streaming / SSE</strong><br><small style="color:var(--text-dim);">(Server-Sent Events, WebSocket)</small></td>
+                <td>Long-lived connection, incremental output tokens streamed to client</td>
+                <td>User-facing chat agents where latency to first token matters</td>
+                <td>Connection timeout, client reconnect logic, partial state on disconnect</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="callout callout-info">
+            <strong>Secrets management:</strong> Never hardcode API keys. Inject them as environment variables at runtime via your platform's secrets manager (AWS Secrets Manager, GCP Secret Manager, HashiCorp Vault). The Anthropic SDK reads <code>ANTHROPIC_API_KEY</code> from the environment by default — no code change needed, just configure the secret at deploy time.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Agentic &amp; Tool Use Docs</a> &nbsp;·&nbsp; <a href="https://docs.anthropic.com/en/api/getting-started" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — API Getting Started</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 02: Observability ── -->
+        <div class="block">
+          <div class="block-label">02 · OBSERVABILITY</div>
+          <h2>Logs, Traces, and Metrics for Agent Loops</h2>
+          <p>
+            Traditional services emit request-level logs: one log line per HTTP call. Agents are different — a single user request may trigger 5–20 LLM calls, dozens of tool calls, and thousands of tokens. Without structured, per-iteration logging, debugging a failure means reconstructing a black box.
+          </p>
+          <p>
+            The three pillars of observability apply to agents, but with agent-specific dimensions:
+          </p>
+
+          <div class="concept-grid">
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">PILLAR 01 — LOGS</div>
+              <div class="concept-name">Structured JSON logs per iteration</div>
+              <div class="concept-desc">Log every LLM call as a structured JSON event: timestamp, model, iteration number, stop_reason, input_tokens, output_tokens, tool calls made, tool results received, latency_ms. Store in a log aggregator (CloudWatch, Datadog, Loki) for querying.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">PRODUCTION REQUIREMENT</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">PILLAR 02 — TRACES</div>
+              <div class="concept-name">Distributed traces across LLM calls</div>
+              <div class="concept-desc">A trace groups all LLM calls and tool calls in a single agent run under one trace_id. OpenTelemetry is the vendor-neutral standard. Anthropic-specific SDKs (LangSmith, Langfuse, Weave) add LLM-aware span types with token counts and prompt content.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">WIDELY USED (2023–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">PILLAR 03 — METRICS</div>
+              <div class="concept-name">Agent-level metrics</div>
+              <div class="concept-desc">Track per-run aggregates: total_tokens, total_cost_usd, num_iterations, num_tool_calls, success_rate, p50/p95/p99 latency. Alert when cost-per-run exceeds budget or when error rate spikes. Prometheus + Grafana or a managed APM tool.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">PRODUCTION REQUIREMENT</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">AGENT-SPECIFIC — EVALS</div>
+              <div class="concept-name">Offline evaluation datasets</div>
+              <div class="concept-desc">A curated set of (input, expected_behavior) pairs run on every code change. Not just unit tests — LLM-as-judge or rule-based scorers on agent outputs. Without evals, you cannot safely change prompts, tools, or models without risking regression.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">EMERGING STANDARD (2024–2026)</div>
+            </div>
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://opentelemetry.io/docs/" target="_blank" style="color:var(--accent);text-decoration:none;">OpenTelemetry Documentation</a> &nbsp;·&nbsp; <a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Agentic Guidance</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 03: Retries & Error Handling ── -->
+        <div class="block">
+          <div class="block-label">03 · RETRIES &amp; ERROR HANDLING</div>
+          <h2>Making Agents Resilient to Transient Failures</h2>
+          <p>
+            In production, the Anthropic API — like any external service — returns transient errors: rate limit responses (HTTP 429), overload responses (HTTP 529), and occasional network timeouts. An agent that crashes on the first 429 is not a production agent.
+          </p>
+
+          <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.5rem;margin:1.5rem 0;">
+            <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.75rem;">EXPONENTIAL BACKOFF WITH JITTER — THE STANDARD RETRY PATTERN</div>
+            <p style="margin:0 0 0.75rem;font-size:0.9rem;">
+              Wait <code>base_delay × 2^attempt + random_jitter</code> between retries. The exponential growth prevents hammering a service that is already overloaded. The jitter (random offset) prevents the "thundering herd" — all clients retrying at the same instant after a shared outage.
+            </p>
+            <div class="code-block">
+              <div class="code-label">Retry pattern — conceptual</div>
+              <pre><code>delay = base_delay * (2 ** attempt) + random.uniform(0, jitter_max)
+time.sleep(min(delay, max_delay))</code></pre>
+            </div>
+          </div>
+
+          <table class="compare-table">
+            <thead><tr><th>Error type</th><th>HTTP status</th><th>Correct response</th></tr></thead>
+            <tbody>
+              <tr><td>Rate limit</td><td>429</td><td>Retry with exponential backoff. Check <code>retry-after</code> header if present.</td></tr>
+              <tr><td>API overload</td><td>529</td><td>Same as rate limit — retry with backoff.</td></tr>
+              <tr><td>Server error</td><td>500, 502, 503</td><td>Retry up to max_retries. If still failing, surface error to caller — do not silently swallow.</td></tr>
+              <tr><td>Invalid request</td><td>400</td><td>Do NOT retry. Fix the request. 400s are client errors — retrying wastes quota.</td></tr>
+              <tr><td>Auth error</td><td>401</td><td>Do NOT retry. Check API key. Alert immediately — this is a configuration or secret-rotation issue.</td></tr>
+              <tr><td>Tool exception</td><td>n/a</td><td>Catch all exceptions in the tool executor. Return as a string error result — never propagate to the agent loop as an exception.</td></tr>
+            </tbody>
+          </table>
+
+          <div class="callout callout-info" style="margin-top:1rem;">
+            <strong>The Anthropic Python SDK handles retries automatically:</strong> By default it retries up to 2 times on 429 and 529 with exponential backoff. You can configure <code>max_retries</code> when creating the client: <code>anthropic.Anthropic(max_retries=4)</code>. For most production uses, the SDK's built-in retry is sufficient — you only need custom retry logic if you need fine-grained control over backoff strategy or circuit breaking.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://docs.anthropic.com/en/api/errors" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — API Error Reference</a> &nbsp;·&nbsp; <a href="https://docs.anthropic.com/en/api/rate-limits" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Rate Limits</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 04: Cost & Budget Control ── -->
+        <div class="block">
+          <div class="block-label">04 · COST &amp; BUDGET CONTROL</div>
+          <h2>Agents Can Be Expensive — By Design or By Bug</h2>
+          <p>
+            A ReAct agent that loops 50 times because it cannot find a tool result will burn significant API budget before timing out. In production, you need both soft limits (warn when approaching budget) and hard limits (terminate the run when exceeded) enforced in code — not just as billing alerts.
+          </p>
+
+          <div class="concept-grid">
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">CONTROL 01</div>
+              <div class="concept-name">Token budget per run</div>
+              <div class="concept-desc">Accumulate <code>usage.input_tokens + usage.output_tokens</code> across every API call in a single agent run. When the total crosses a threshold, stop the loop and return partial results with a clear explanation. The Anthropic API returns usage on every response.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">PRODUCTION REQUIREMENT</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">CONTROL 02</div>
+              <div class="concept-name">Iteration cap</div>
+              <div class="concept-desc">Hard limit on the number of LLM calls per run (e.g., MAX_ITERATIONS = 20). Prevents infinite loops caused by tool failures or model confusion. Always terminate with a message — never silently stop. Return whatever was accomplished before the limit.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">PRODUCTION REQUIREMENT</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">CONTROL 03</div>
+              <div class="concept-name">Wall-clock timeout</div>
+              <div class="concept-desc">Set a timeout on the entire agent run (e.g., 120 seconds). Tool calls can hang, and a stuck tool blocks the loop indefinitely. Use Python's <code>signal</code> module, <code>asyncio.wait_for</code>, or a thread with <code>concurrent.futures.ThreadPoolExecutor</code> for timeout enforcement.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">PRODUCTION REQUIREMENT</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">CONTROL 04</div>
+              <div class="concept-name">Model tier selection</div>
+              <div class="concept-desc">Match model capability to task complexity. Use a smaller/faster model for classification, routing, and simple Q&amp;A; reserve the most capable models for synthesis, complex reasoning, and high-stakes decisions. Routing logic pays for itself within hours at scale.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">COST OPTIMIZATION</div>
+            </div>
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Agentic Guidance (token budgets, iteration limits)</a> &nbsp;·&nbsp; <a href="https://docs.anthropic.com/en/docs/about-claude/models" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Models Overview</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 05: Testing & Rollout ── -->
+        <div class="block">
+          <div class="block-label">05 · TESTING &amp; ROLLOUT</div>
+          <h2>How to Change Agents Without Breaking Production</h2>
+          <p>
+            Changing a system prompt, swapping a model, or modifying a tool schema can alter agent behavior in ways that are invisible until you see them in production logs. The solution is a testing and rollout discipline borrowed from software engineering — adapted for the stochastic, hard-to-unit-test nature of LLM outputs.
+          </p>
+
+          <div style="display:grid;gap:1rem;margin:1.5rem 0;">
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">LAYER 1 — UNIT TESTS FOR TOOLS</div>
+              <p style="margin:0;font-size:0.85rem;">Tool executor functions are pure Python — test them like any function. Call <code>execute_tool("web_search", {"query": "test"})</code> and assert on the output format. These tests are fast, deterministic, and catch regressions in tool logic before they affect the agent loop.</p>
+            </div>
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">LAYER 2 — EVALUATION DATASETS</div>
+              <p style="margin:0;font-size:0.85rem;">A curated set of (user_input, expected_behavior) pairs. "Expected behavior" for agents is rarely an exact string — it is a rubric: "agent called the correct tool," "agent did not hallucinate a source," "agent completed the task in under 5 iterations." Score with rule-based checks or LLM-as-judge. Run on every PR before merge.</p>
+            </div>
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">LAYER 3 — SHADOW MODE</div>
+              <p style="margin:0;font-size:0.85rem;">Run the new agent version on real traffic in parallel with the production version, but suppress its output. Compare logged outputs for divergence. When divergence is low and eval scores are equal or better, promote the new version. This is the safest way to validate model or prompt changes.</p>
+            </div>
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">LAYER 4 — CANARY / A/B ROLLOUT</div>
+              <p style="margin:0;font-size:0.85rem;">Route a small fraction (1–5%) of real traffic to the new version. Monitor error rate, cost-per-run, latency, and downstream success metrics. Gradually increase traffic to 100% if metrics hold. Roll back immediately if any metric degrades beyond a threshold.</p>
+            </div>
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Agentic Guidance</a> &nbsp;·&nbsp; <a href="https://opentelemetry.io/docs/" target="_blank" style="color:var(--accent);text-decoration:none;">OpenTelemetry — Observability Standards</a>
+          </div>
+        </div>
+
+        <!-- ── SOURCES TABLE ── -->
+        <div class="block">
+          <div class="block-label">SOURCES USED IN THIS SECTION</div>
+          <h2>Verified References</h2>
+          <p>Every claim in this section is grounded in one of these sources.</p>
+          <table class="compare-table">
+            <thead><tr><th>Source</th><th>Type</th><th>Covers</th><th>Recency</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);">Anthropic — Agentic &amp; Tool Use Docs</a></td>
+                <td>Official docs</td>
+                <td>Agentic patterns, minimal footprint, iteration limits, token budgets</td>
+                <td>Maintained 2024–2026</td>
+              </tr>
+              <tr>
+                <td><a href="https://docs.anthropic.com/en/api/errors" target="_blank" style="color:var(--accent);">Anthropic — API Error Reference</a></td>
+                <td>Official docs</td>
+                <td>Error codes, retry guidance, rate limit headers</td>
+                <td>Maintained 2024–2026</td>
+              </tr>
+              <tr>
+                <td><a href="https://docs.anthropic.com/en/api/rate-limits" target="_blank" style="color:var(--accent);">Anthropic — Rate Limits</a></td>
+                <td>Official docs</td>
+                <td>Tokens-per-minute, requests-per-minute limits by tier</td>
+                <td>Maintained 2024–2026</td>
+              </tr>
+              <tr>
+                <td><a href="https://docs.anthropic.com/en/docs/about-claude/models" target="_blank" style="color:var(--accent);">Anthropic — Models Overview</a></td>
+                <td>Official docs</td>
+                <td>Model tiers, capability vs cost trade-offs, recommended use cases</td>
+                <td>Maintained 2024–2026</td>
+              </tr>
+              <tr>
+                <td><a href="https://opentelemetry.io/docs/" target="_blank" style="color:var(--accent);">OpenTelemetry Documentation</a></td>
+                <td>Official docs (CNCF)</td>
+                <td>Traces, spans, metrics, logs — vendor-neutral observability standard</td>
+                <td>Maintained 2021–2026</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div><!-- end theory -->
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- LAB                                         -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div id="lab" class="block">
+        <div class="block-label">HANDS-ON LAB</div>
+        <h2>Build a Production-Ready Agent Wrapper</h2>
+        <p style="margin-bottom:1.5rem;">
+          You will wrap a basic ReAct-style agent with production engineering: structured JSON logging, exponential backoff retries, a token budget guard, an iteration cap, and a simple evaluation harness. The complete script is <code>prod_agent.py</code>.
+        </p>
+
+        <div class="lab-container">
+          <div class="lab-header">
+            <div class="lab-icon">🔬</div>
+            <div class="lab-title-wrap">
+              <div class="lab-title">Section 11 Lab — Production Agent Wrapper</div>
+              <div class="lab-subtitle">6 STEPS · PYTHON · ~45 MIN</div>
+            </div>
+          </div>
+
+          <div class="lab-steps">
+
+            <!-- Step 1 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">1</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Create the file and set up imports
+                </div>
+                <div class="step-body">
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">BASH</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>pip install anthropic   # already installed if you did prior labs
+touch prod_agent.py</pre>
+                  </div>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — prod_agent.py</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre><span class="kw">import</span> os, json, time, random, logging
+<span class="kw">from</span> datetime <span class="kw">import</span> datetime, timezone
+<span class="kw">import</span> anthropic
+
+<span class="cm"># ── Structured logger ────────────────────────────────────────────</span>
+<span class="cm"># Use JSON lines format so every log entry is machine-parseable.</span>
+logging.<span class="fn">basicConfig</span>(level=logging.INFO, format=<span class="st">"%(message)s"</span>)
+log = logging.<span class="fn">getLogger</span>(<span class="st">"prod_agent"</span>)
+
+<span class="kw">def</span> <span class="fn">jlog</span>(event: str, **kwargs) -&gt; <span class="kw">None</span>:
+    <span class="st">"""Emit a structured JSON log line."""</span>
+    record = {<span class="st">"ts"</span>: datetime.<span class="fn">now</span>(timezone.utc).<span class="fn">isoformat</span>(), <span class="st">"event"</span>: event, **kwargs}
+    log.<span class="fn">info</span>(json.<span class="fn">dumps</span>(record))
+
+<span class="cm"># ── Client ────────────────────────────────────────────────────────</span>
+<span class="cm"># max_retries=4: SDK retries 429/529 with built-in exponential backoff.</span>
+client = anthropic.<span class="fn">Anthropic</span>(
+    api_key=os.environ[<span class="st">"ANTHROPIC_API_KEY"</span>],
+    max_retries=<span class="nu">4</span>,
+)
+
+<span class="cm"># ── Budget constants ──────────────────────────────────────────────</span>
+MAX_ITERATIONS = <span class="nu">10</span>      <span class="cm"># hard iteration cap per run</span>
+TOKEN_BUDGET    = <span class="nu">20_000</span>  <span class="cm"># total tokens across all calls in one run</span>
+MODEL           = <span class="st">"claude-haiku-4-5-20251001"</span></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">2</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Implement the tool registry and a logged LLM call
+                </div>
+                <div class="step-body">
+                  <p>The <code>llm_call</code> wrapper logs every API call as a structured event and accumulates token usage into a run-level counter. All tool calls are also logged.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — prod_agent.py (continued)</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>TOOLS = [
+    {
+        <span class="st">"name"</span>: <span class="st">"web_search"</span>,
+        <span class="st">"description"</span>: <span class="st">"Search the web for factual information."</span>,
+        <span class="st">"input_schema"</span>: {
+            <span class="st">"type"</span>: <span class="st">"object"</span>,
+            <span class="st">"properties"</span>: {<span class="st">"query"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>}},
+            <span class="st">"required"</span>: [<span class="st">"query"</span>],
+        },
+    },
+    {
+        <span class="st">"name"</span>: <span class="st">"calculator"</span>,
+        <span class="st">"description"</span>: <span class="st">"Evaluate a Python arithmetic expression."</span>,
+        <span class="st">"input_schema"</span>: {
+            <span class="st">"type"</span>: <span class="st">"object"</span>,
+            <span class="st">"properties"</span>: {<span class="st">"expression"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>}},
+            <span class="st">"required"</span>: [<span class="st">"expression"</span>],
+        },
+    },
+]
+
+SEARCH_DB = {
+    <span class="st">"population of earth"</span>: <span class="st">"Earth's population is approximately 8.1 billion as of 2024."</span>,
+    <span class="st">"speed of light"</span>: <span class="st">"The speed of light in a vacuum is 299,792,458 metres per second."</span>,
+}
+
+<span class="kw">def</span> <span class="fn">execute_tool</span>(name: str, tool_input: dict) -&gt; str:
+    <span class="fn">jlog</span>(<span class="st">"tool_call"</span>, tool=name, input=tool_input)
+    t0 = time.<span class="fn">monotonic</span>()
+    <span class="kw">try</span>:
+        <span class="kw">if</span> name == <span class="st">"web_search"</span>:
+            q = tool_input[<span class="st">"query"</span>].<span class="fn">lower</span>()
+            <span class="kw">for</span> key, val <span class="kw">in</span> SEARCH_DB.<span class="fn">items</span>():
+                <span class="kw">if</span> key <span class="kw">in</span> q:
+                    result = val
+                    <span class="kw">break</span>
+            <span class="kw">else</span>:
+                result = <span class="st">f'No results for "{tool_input["query"]}".'</span>
+        <span class="kw">elif</span> name == <span class="st">"calculator"</span>:
+            result = <span class="fn">str</span>(<span class="fn">eval</span>(tool_input[<span class="st">"expression"</span>], {<span class="st">"__builtins__"</span>: {}}))
+        <span class="kw">else</span>:
+            result = <span class="st">f"Unknown tool: {name}"</span>
+    <span class="kw">except</span> <span class="cl">Exception</span> <span class="kw">as</span> e:
+        result = <span class="st">f"Tool error: {type(e).__name__}: {e}"</span>
+
+    latency_ms = <span class="fn">int</span>((time.<span class="fn">monotonic</span>() - t0) * <span class="nu">1000</span>)
+    <span class="fn">jlog</span>(<span class="st">"tool_result"</span>, tool=name, result=result[:<span class="nu">120</span>], latency_ms=latency_ms)
+    <span class="kw">return</span> result
+
+
+<span class="kw">def</span> <span class="fn">llm_call</span>(messages: list, run_state: dict, iteration: int) -&gt; anthropic.types.Message:
+    <span class="st">"""Thin wrapper: calls the API and logs usage."""</span>
+    t0 = time.<span class="fn">monotonic</span>()
+    response = client.messages.<span class="fn">create</span>(
+        model=MODEL,
+        max_tokens=<span class="nu">1024</span>,
+        tools=TOOLS,
+        messages=messages,
+    )
+    latency_ms = <span class="fn">int</span>((time.<span class="fn">monotonic</span>() - t0) * <span class="nu">1000</span>)
+
+    <span class="cm"># Accumulate tokens</span>
+    run_state[<span class="st">"input_tokens"</span>]  += response.usage.input_tokens
+    run_state[<span class="st">"output_tokens"</span>] += response.usage.output_tokens
+    total = run_state[<span class="st">"input_tokens"</span>] + run_state[<span class="st">"output_tokens"</span>]
+
+    <span class="fn">jlog</span>(
+        <span class="st">"llm_call"</span>,
+        iteration=iteration,
+        stop_reason=response.stop_reason,
+        input_tokens=response.usage.input_tokens,
+        output_tokens=response.usage.output_tokens,
+        total_tokens_so_far=total,
+        latency_ms=latency_ms,
+    )
+    <span class="kw">return</span> response</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">3</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Implement the agent loop with budget guards
+                </div>
+                <div class="step-body">
+                  <p>The agent loop enforces both the iteration cap and the token budget. When either limit is hit, the loop terminates and returns partial results with a clear explanation of what happened.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — prod_agent.py (continued)</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>SYSTEM = <span class="st">"""You are a research assistant. Use tools to answer the user's question.
+When you have a complete answer, respond with a final text message."""</span>
+
+
+<span class="kw">def</span> <span class="fn">run_agent</span>(task: str, trace_id: str | <span class="kw">None</span> = <span class="kw">None</span>) -&gt; dict:
+    <span class="st">"""Run the agent loop with full production instrumentation."""</span>
+    trace_id = trace_id <span class="kw">or</span> <span class="fn">str</span>(random.<span class="fn">randint</span>(<span class="nu">100_000</span>, <span class="nu">999_999</span>))
+    run_state = {<span class="st">"input_tokens"</span>: <span class="nu">0</span>, <span class="st">"output_tokens"</span>: <span class="nu">0</span>}
+
+    <span class="fn">jlog</span>(<span class="st">"run_start"</span>, trace_id=trace_id, task=task)
+    t_run = time.<span class="fn">monotonic</span>()
+
+    messages = [{<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: task}]
+    final_answer = <span class="kw">None</span>
+    stop_reason_outer = <span class="st">"unknown"</span>
+
+    <span class="kw">for</span> iteration <span class="kw">in</span> <span class="fn">range</span>(<span class="nu">1</span>, MAX_ITERATIONS + <span class="nu">1</span>):
+
+        <span class="cm"># ── Token budget check ───────────────────────────────────</span>
+        total_so_far = run_state[<span class="st">"input_tokens"</span>] + run_state[<span class="st">"output_tokens"</span>]
+        <span class="kw">if</span> total_so_far &gt;= TOKEN_BUDGET:
+            stop_reason_outer = <span class="st">"token_budget_exceeded"</span>
+            <span class="fn">jlog</span>(<span class="st">"budget_exceeded"</span>, trace_id=trace_id, total_tokens=total_so_far)
+            final_answer = (
+                <span class="st">f"[Agent stopped: token budget of {TOKEN_BUDGET:,} exceeded at "</span>
+                <span class="st">f"{total_so_far:,} tokens. Partial work completed in {iteration-1} iterations.]"</span>
+            )
+            <span class="kw">break</span>
+
+        response = <span class="fn">llm_call</span>(messages, run_state, iteration)
+        messages.<span class="fn">append</span>({<span class="st">"role"</span>: <span class="st">"assistant"</span>, <span class="st">"content"</span>: response.content})
+
+        <span class="kw">if</span> response.stop_reason == <span class="st">"end_turn"</span>:
+            stop_reason_outer = <span class="st">"end_turn"</span>
+            final_answer = <span class="st">""</span>.<span class="fn">join</span>(
+                b.text <span class="kw">for</span> b <span class="kw">in</span> response.content <span class="kw">if</span> <span class="fn">hasattr</span>(b, <span class="st">"text"</span>)
+            )
+            <span class="kw">break</span>
+
+        <span class="kw">if</span> response.stop_reason == <span class="st">"tool_use"</span>:
+            tool_results = []
+            <span class="kw">for</span> block <span class="kw">in</span> response.content:
+                <span class="kw">if</span> block.type == <span class="st">"tool_use"</span>:
+                    result = <span class="fn">execute_tool</span>(block.name, block.input)
+                    tool_results.<span class="fn">append</span>({
+                        <span class="st">"type"</span>: <span class="st">"tool_result"</span>,
+                        <span class="st">"tool_use_id"</span>: block.id,
+                        <span class="st">"content"</span>: result,
+                    })
+            messages.<span class="fn">append</span>({<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: tool_results})
+
+    <span class="kw">else</span>:
+        <span class="cm"># for-loop exhausted — iteration cap hit</span>
+        stop_reason_outer = <span class="st">"iteration_cap"</span>
+        final_answer = (
+            <span class="st">f"[Agent stopped: reached {MAX_ITERATIONS} iteration limit without completing the task.]"</span>
+        )
+
+    duration_ms = <span class="fn">int</span>((time.<span class="fn">monotonic</span>() - t_run) * <span class="nu">1000</span>)
+    total_tokens = run_state[<span class="st">"input_tokens"</span>] + run_state[<span class="st">"output_tokens"</span>]
+
+    <span class="fn">jlog</span>(
+        <span class="st">"run_end"</span>,
+        trace_id=trace_id,
+        stop_reason=stop_reason_outer,
+        total_input_tokens=run_state[<span class="st">"input_tokens"</span>],
+        total_output_tokens=run_state[<span class="st">"output_tokens"</span>],
+        total_tokens=total_tokens,
+        duration_ms=duration_ms,
+    )
+
+    <span class="kw">return</span> {
+        <span class="st">"trace_id"</span>: trace_id,
+        <span class="st">"answer"</span>: final_answer,
+        <span class="st">"total_tokens"</span>: total_tokens,
+        <span class="st">"stop_reason"</span>: stop_reason_outer,
+    }</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">4</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Add a simple evaluation harness
+                </div>
+                <div class="step-body">
+                  <p>The eval harness runs a set of test cases and scores each answer with a keyword check. In a real system you would use an LLM-as-judge or a domain-specific rubric — this simple version demonstrates the pattern.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — prod_agent.py (continued)</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>EVAL_CASES = [
+    {
+        <span class="st">"task"</span>: <span class="st">"What is the approximate population of Earth?"</span>,
+        <span class="st">"must_contain"</span>: [<span class="st">"8"</span>, <span class="st">"billion"</span>],
+        <span class="st">"must_not_contain"</span>: [<span class="st">"trillion"</span>, <span class="st">"million people"</span>],
+    },
+    {
+        <span class="st">"task"</span>: <span class="st">"What is 1234 multiplied by 5678?"</span>,
+        <span class="st">"must_contain"</span>: [<span class="st">"7,006,652"</span>, <span class="st">"7006652"</span>],
+        <span class="st">"must_not_contain"</span>: [],
+    },
+    {
+        <span class="st">"task"</span>: <span class="st">"What is the speed of light and how many kilometres does it travel in one second?"</span>,
+        <span class="st">"must_contain"</span>: [<span class="st">"299"</span>, <span class="st">"792"</span>],
+        <span class="st">"must_not_contain"</span>: [],
+    },
+]
+
+
+<span class="kw">def</span> <span class="fn">run_eval</span>() -&gt; <span class="kw">None</span>:
+    <span class="fn">print</span>(<span class="st">"\n"</span> + <span class="st">"="*60</span>)
+    <span class="fn">print</span>(<span class="st">"EVALUATION RUN"</span>)
+    <span class="fn">print</span>(<span class="st">"="*60</span>)
+
+    passed = <span class="nu">0</span>
+    <span class="kw">for</span> i, case <span class="kw">in</span> <span class="fn">enumerate</span>(EVAL_CASES, <span class="nu">1</span>):
+        <span class="fn">print</span>(<span class="st">f"\n[Case {i}] {case['task']}"</span>)
+        result = <span class="fn">run_agent</span>(case[<span class="st">"task"</span>])
+        answer = (result[<span class="st">"answer"</span>] <span class="kw">or</span> <span class="st">""</span>).<span class="fn">lower</span>()
+
+        ok = (
+            <span class="fn">all</span>(kw.<span class="fn">lower</span>() <span class="kw">in</span> answer <span class="kw">for</span> kw <span class="kw">in</span> case[<span class="st">"must_contain"</span>]) <span class="kw">and</span>
+            <span class="fn">all</span>(kw.<span class="fn">lower</span>() <span class="kw">not</span> <span class="kw">in</span> answer <span class="kw">for</span> kw <span class="kw">in</span> case[<span class="st">"must_not_contain"</span>])
+        )
+
+        status = <span class="st">"PASS ✓"</span> <span class="kw">if</span> ok <span class="kw">else</span> <span class="st">"FAIL ✗"</span>
+        <span class="fn">print</span>(<span class="st">f"  Status:  {status}"</span>)
+        <span class="fn">print</span>(<span class="st">f"  Tokens:  {result['total_tokens']:,}"</span>)
+        <span class="fn">print</span>(<span class="st">f"  Answer:  {result['answer'][:120]}"</span>)
+        <span class="kw">if</span> ok:
+            passed += <span class="nu">1</span>
+
+    <span class="fn">print</span>(<span class="st">f"\nResult: {passed}/{len(EVAL_CASES)} cases passed."</span>)
+    <span class="fn">print</span>(<span class="st">"="*60</span>)</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">5</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Run the agent and the eval harness
+                </div>
+                <div class="step-body">
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — add to the bottom of prod_agent.py</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre><span class="kw">if</span> __name__ == <span class="st">"__main__"</span>:
+    <span class="cm"># Single run with a trace ID</span>
+    result = <span class="fn">run_agent</span>(
+        <span class="st">"What is the population of Earth, and how many people is that per square kilometre of land area? Land area = 148,940,000 km²."</span>,
+        trace_id=<span class="st">"demo-001"</span>,
+    )
+    <span class="fn">print</span>(<span class="st">f"\nFINAL ANSWER:\n{result['answer']}"</span>)
+    <span class="fn">print</span>(<span class="st">f"Trace: {result['trace_id']} | Tokens: {result['total_tokens']:,} | Stop: {result['stop_reason']}"</span>)
+
+    <span class="cm"># Eval harness</span>
+    <span class="fn">run_eval</span>()</pre>
+                  </div>
+                  <div class="code-block" style="margin-top:1rem;">
+                    <div class="code-header"><span class="code-lang">BASH</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>python prod_agent.py 2>&amp;1 | tee run.jsonl</pre>
+                  </div>
+                  <div class="code-block" style="margin-top:1rem;">
+                    <div class="code-header"><span class="code-lang">EXPECTED LOG OUTPUT (abridged)</span></div>
+                    <pre>{"ts": "2026-04-04T10:00:00Z", "event": "run_start", "trace_id": "demo-001", "task": "What is the population..."}
+{"ts": "...", "event": "llm_call", "iteration": 1, "stop_reason": "tool_use", "input_tokens": 412, "output_tokens": 48, "total_tokens_so_far": 460, "latency_ms": 621}
+{"ts": "...", "event": "tool_call", "tool": "web_search", "input": {"query": "population of earth"}}
+{"ts": "...", "event": "tool_result", "tool": "web_search", "result": "Earth's population is approximately 8.1 billion...", "latency_ms": 0}
+{"ts": "...", "event": "llm_call", "iteration": 2, "stop_reason": "tool_use", "input_tokens": 521, "output_tokens": 54, "total_tokens_so_far": 1035, "latency_ms": 588}
+{"ts": "...", "event": "tool_call", "tool": "calculator", "input": {"expression": "8100000000 / 148940000"}}
+{"ts": "...", "event": "tool_result", "tool": "calculator", "result": "54.38...", "latency_ms": 0}
+{"ts": "...", "event": "llm_call", "iteration": 3, "stop_reason": "end_turn", "input_tokens": 630, "output_tokens": 72, "total_tokens_so_far": 1737, "latency_ms": 701}
+{"ts": "...", "event": "run_end", "trace_id": "demo-001", "stop_reason": "end_turn", "total_tokens": 1737, "duration_ms": 1950}</pre>
+                  </div>
+                  <div class="callout callout-info" style="margin-top:1rem;">
+                    <strong>What to observe:</strong> Every LLM call is a parseable JSON event with tokens, latency, and stop_reason. Tool calls and results are separately logged. The <code>run_end</code> event gives you the complete cost summary. Pipe this to a file and you can query it with <code>jq</code> or load it into any log aggregator.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">6</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Extension: add a custom exponential backoff retry for tool calls
+                </div>
+                <div class="step-body">
+                  <p>The Anthropic SDK handles LLM API retries. But your tool calls to external services need their own retry logic. Add a decorator that wraps any tool function with exponential backoff and jitter.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — add to prod_agent.py</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre><span class="kw">import</span> functools
+
+<span class="kw">def</span> <span class="fn">retry_with_backoff</span>(max_retries: int = <span class="nu">3</span>, base_delay: float = <span class="nu">1.0</span>, max_delay: float = <span class="nu">30.0</span>):
+    <span class="st">"""Decorator: retry a function on exception with exponential backoff + jitter."""</span>
+    <span class="kw">def</span> <span class="fn">decorator</span>(fn):
+        @functools.<span class="fn">wraps</span>(fn)
+        <span class="kw">def</span> <span class="fn">wrapper</span>(*args, **kwargs):
+            <span class="kw">for</span> attempt <span class="kw">in</span> <span class="fn">range</span>(max_retries + <span class="nu">1</span>):
+                <span class="kw">try</span>:
+                    <span class="kw">return</span> <span class="fn">fn</span>(*args, **kwargs)
+                <span class="kw">except</span> <span class="cl">Exception</span> <span class="kw">as</span> e:
+                    <span class="kw">if</span> attempt == max_retries:
+                        <span class="kw">raise</span>
+                    delay = <span class="fn">min</span>(base_delay * (<span class="nu">2</span> ** attempt) + random.<span class="fn">uniform</span>(<span class="nu">0</span>, <span class="nu">1</span>), max_delay)
+                    <span class="fn">jlog</span>(<span class="st">"tool_retry"</span>, attempt=attempt + <span class="nu">1</span>, error=<span class="fn">str</span>(e), delay_s=<span class="fn">round</span>(delay, <span class="nu">2</span>))
+                    time.<span class="fn">sleep</span>(delay)
+        <span class="kw">return</span> wrapper
+    <span class="kw">return</span> decorator
+
+
+<span class="cm"># Usage: decorate any external tool call that may fail transiently</span>
+@retry_with_backoff(max_retries=<span class="nu">3</span>)
+<span class="kw">def</span> <span class="fn">call_external_api</span>(endpoint: str) -&gt; str:
+    <span class="cm"># Replace with a real requests.get() or httpx call</span>
+    <span class="kw">if</span> random.<span class="fn">random</span>() &lt; <span class="nu">0.5</span>:
+        <span class="kw">raise</span> <span class="cl">ConnectionError</span>(<span class="st">"Simulated transient failure"</span>)
+    <span class="kw">return</span> <span class="st">f"Response from {endpoint}"</span></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- end lab-steps -->
+        </div><!-- end lab-container -->
+
+      </div><!-- end lab -->
+
+      <!-- MARK COMPLETE + NAVIGATION -->
+      <div class="mark-complete-bar">
+        <p>Finished the theory and completed the lab? Mark this section complete to track your progress.</p>
+        <button class="btn btn-outline" id="completeBtn2" data-section="11" onclick="document.getElementById('completeBtn').click()">Mark Section 11 Complete</button>
+      </div>
+
+      <div style="text-align:center;margin:2rem 0 0;font-family:var(--font-mono);font-size:0.62rem;color:var(--text-dim);">
+        Last updated: <time datetime="2026-04-05">April 5, 2026</time>
+      </div>
+      <div class="section-nav-footer">
+        <a href="10-rag.html" class="nav-prev">← Section 10: RAG</a>
+        <a href="12-real-world.html" class="nav-next">Section 12: Real-World Applications →</a>
+      </div>
+
+    </div><!-- end page -->
+  </main>
+</div>
+
+<script src="../course.js"></script>
+<script>
+function stepDone(checkbox) {
+  const stepContent = checkbox.closest('.step-content');
+  if (checkbox.checked) {
+    stepContent.style.opacity = '0.6';
+  } else {
+    stepContent.style.opacity = '1';
+  }
+}
+
+function copyCode(btn) {
+  const pre = btn.closest('.code-block').querySelector('pre');
+  navigator.clipboard.writeText(pre.innerText).then(() => {
+    btn.textContent = 'copied!';
+    setTimeout(() => { btn.textContent = 'copy'; }, 2000);
+  });
+}
+</script>
+</body>
+</html>

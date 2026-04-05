@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>02 — AI & ML Fundamentals · Agentic AI Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="../style.css">
+<noscript><style>
+/* No-JS: make sidebar visible and stack layout vertically on mobile */
+@media (max-width: 768px) {
+  .sidebar { transform: none; position: relative; width: 100%; height: auto; }
+  .layout  { flex-direction: column; }
+}
+</style></noscript>
+<link rel="manifest" href="../manifest.json">
+</head>
+<body data-section="2">
+<noscript>
+  <div style="background:#1a1200;border-bottom:2px solid #c87d00;color:#f0c060;padding:0.75rem 1.5rem;font-family:monospace;font-size:0.82rem;text-align:center;position:relative;z-index:999;">
+    &#9888; JavaScript is disabled. Progress tracking, quizzes, and interactive features require JavaScript.
+  </div>
+</noscript>
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <a href="../index.html" class="sidebar-logo" style="text-decoration:none;display:block;">
+      <div class="logo-eyebrow">// AGENTIC AI COURSE</div>
+      <div class="logo-name">Learn <span>Agentic AI</span><br>2026 Edition</div>
+    </a>
+    <div class="sidebar-progress">
+      <div class="progress-row">
+        <span class="progress-label">OVERALL PROGRESS</span>
+        <span class="progress-count" id="progressCount">0 / 16</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+    <div class="sidebar-nav">
+      <div class="nav-group-label">Foundation</div>
+      <a href="01-intro.html" class="nav-item" data-section="1"><span class="nav-num">01</span> Intro to Agentic AI <span class="nav-check">✓</span></a>
+      <a href="02-ml-fundamentals.html" class="nav-item active" data-section="2"><span class="nav-num">02</span> AI & ML Fundamentals <span class="nav-check">✓</span></a>
+      <a href="03-frameworks.html" class="nav-item" data-section="3"><span class="nav-num">03</span> Programming & Frameworks <span class="nav-check">✓</span></a>
+      <a href="04-llms.html" class="nav-item" data-section="4"><span class="nav-num">04</span> Large Language Models <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">Core Agents</div>
+      <a href="05-understanding-agents.html" class="nav-item" data-section="5"><span class="nav-num">05</span> Understanding Agents <span class="nav-check">✓</span></a>
+      <a href="06-memory.html" class="nav-item" data-section="6"><span class="nav-num">06</span> Memory & Knowledge <span class="nav-check">✓</span></a>
+      <a href="07-planning.html" class="nav-item" data-section="7"><span class="nav-num">07</span> Decision-Making & Planning <span class="nav-check">✓</span></a>
+      <a href="08-prompting.html" class="nav-item" data-section="8"><span class="nav-num">08</span> Prompt Engineering <span class="nav-check">✓</span></a>
+      <a href="09-rl.html" class="nav-item" data-section="9"><span class="nav-num">09</span> RL & Self-Improvement <span class="nav-check">✓</span></a>
+      <a href="10-rag.html" class="nav-item" data-section="10"><span class="nav-num">10</span> RAG <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">Production</div>
+      <a href="11-deployment.html" class="nav-item" data-section="11"><span class="nav-num">11</span> Deploying Agents <span class="nav-check">✓</span></a>
+      <a href="12-real-world.html" class="nav-item" data-section="12"><span class="nav-num">12</span> Real-World Applications <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">2026 New</div>
+      <a href="13-mcp.html" class="nav-item" data-section="13"><span class="nav-num">13</span> MCP & Protocols <span class="nav-check">✓</span></a>
+      <a href="14-multi-agent.html" class="nav-item" data-section="14"><span class="nav-num">14</span> Multi-Agent Orchestration <span class="nav-check">✓</span></a>
+      <a href="15-security.html" class="nav-item" data-section="15"><span class="nav-num">15</span> Agent Security <span class="nav-check">✓</span></a>
+      <a href="16-long-horizon.html" class="nav-item" data-section="16"><span class="nav-num">16</span> Long-Horizon Agents <span class="nav-check">✓</span></a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="topbar-breadcrumb">
+        <a href="../index.html" style="color:var(--text-muted);text-decoration:none;">Course</a>
+        &nbsp;/&nbsp; <span>02 · AI & ML Fundamentals</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn btn-outline" id="completeBtn" data-section="2">Mark Complete</button>
+      </div>
+    </div>
+
+    <div class="page">
+
+      <!-- HERO -->
+      <div class="section-hero">
+        <div class="hero-meta">
+          <span class="hero-num">SECTION 02</span>
+          <span class="hero-tag tag-core">CORE</span>
+          <span class="hero-tag tag-core">FOUNDATION</span>
+        </div>
+        <h1 class="section-title">AI & ML<br><span>Fundamentals</span></h1>
+        <p class="section-intro">
+          To build agents that actually work, you need to understand the machinery underneath. This section gives you a solid mental model of how machine learning works, what neural networks and transformers are doing, and the specific concepts — embeddings, tokenization, RLHF — that appear constantly when working with LLM-based agents.
+        </p>
+        <div class="hero-actions">
+          <a href="#theory" class="btn btn-accent">📖 Start Theory</a>
+          <a href="#quiz" class="btn btn-outline">📝 Take the Quiz</a>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- THEORY                                      -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div id="theory">
+
+        <!-- ── BLOCK 01: What is ML ── -->
+        <div class="block">
+          <div class="block-label">01 · WHAT IS MACHINE LEARNING</div>
+          <h2>From Rules to Learning</h2>
+          <p>Traditional programming is explicit: you write rules, and the computer follows them. If X, do Y. If Z, do W. Machine learning inverts this. Instead of writing rules, you give the system <strong>examples</strong> of inputs and outputs, and it figures out the rules itself.</p>
+          <p>This matters enormously for agents. An agent powered by an LLM can handle instructions it was never explicitly programmed for — because the model learned statistical patterns from vast amounts of text, not from hand-coded rules. Understanding this distinction is what lets you reason about what an LLM can and cannot do reliably.</p>
+
+          <div class="callout callout-info">
+            <strong>One sentence definition:</strong> Machine learning is the practice of training a mathematical function on data so that it can make useful predictions or decisions on new data it has never seen before.
+          </div>
+
+          <div class="diagram">
+            <div class="diagram-title">// TRADITIONAL PROGRAMMING vs MACHINE LEARNING</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+              <div style="background:var(--surface3);border:1px solid var(--border2);padding:1.2rem;">
+                <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-muted);letter-spacing:0.1em;margin-bottom:0.8rem;">TRADITIONAL PROGRAMMING</div>
+                <div style="display:flex;flex-direction:column;gap:0.5rem;font-size:0.82rem;">
+                  <div style="background:var(--surface);border:1px solid var(--border);padding:0.6rem;border-left:2px solid var(--accent);">📥 Data: input</div>
+                  <div style="background:var(--surface);border:1px solid var(--border);padding:0.6rem;border-left:2px solid var(--accent);">📜 Rules: written by programmer</div>
+                  <div style="text-align:center;color:var(--text-dim);font-size:0.7rem;">↓ deterministic execution</div>
+                  <div style="background:var(--surface);border:1px solid var(--border);padding:0.6rem;border-left:2px solid var(--text-dim);">📤 Output: answers</div>
+                </div>
+                <div style="margin-top:0.8rem;font-size:0.75rem;color:var(--text-muted);">✓ Predictable &nbsp; ❌ Brittle &nbsp; ❌ Can't generalize</div>
+              </div>
+              <div style="background:var(--surface3);border:1px solid var(--border2);padding:1.2rem;">
+                <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--green);letter-spacing:0.1em;margin-bottom:0.8rem;">MACHINE LEARNING</div>
+                <div style="display:flex;flex-direction:column;gap:0.4rem;font-size:0.78rem;">
+                  <div style="background:var(--surface);border:1px solid var(--border);padding:0.5rem;border-left:2px solid var(--green);">📥 Data: input</div>
+                  <div style="background:var(--surface);border:1px solid var(--border);padding:0.5rem;border-left:2px solid var(--green);">📤 Answers: labeled examples</div>
+                  <div style="text-align:center;color:var(--text-dim);font-size:0.7rem;">↓ training process</div>
+                  <div style="background:var(--surface);border:1px solid var(--border);padding:0.5rem;border-left:2px solid var(--accent);">📜 Rules: learned by the model</div>
+                </div>
+                <div style="margin-top:0.8rem;font-size:0.75rem;color:var(--green);">✓ Flexible &nbsp; ✓ Generalizes &nbsp; ✓ Handles novel input</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://karpathy.ai/zero-to-hero.html" target="_blank" style="color:var(--accent);text-decoration:none;">Andrej Karpathy — Neural Networks: Zero to Hero</a> &nbsp;·&nbsp; <a href="https://course.fast.ai/" target="_blank" style="color:var(--accent);text-decoration:none;">fast.ai — Practical Deep Learning for Coders</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 02: Types of ML ── -->
+        <div class="block">
+          <div class="block-label">02 · THE THREE TYPES OF ML</div>
+          <h2>Supervised, Unsupervised & Reinforcement Learning</h2>
+          <p>All of machine learning falls into three broad paradigms, each suited to a different type of problem. As an agent builder, you'll encounter all three — LLMs are pre-trained using supervised techniques, aligned using reinforcement learning, and agent memory systems are built on unsupervised embedding techniques.</p>
+
+          <div class="concept-grid">
+            <div class="concept-card">
+              <div class="concept-icon">🏷️</div>
+              <div class="concept-name">Supervised Learning</div>
+              <div class="concept-desc">Train on labeled examples (input → correct output). The model learns the mapping. Used for classification, regression, and next-token prediction in LLM pre-training.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">WIDELY USED (2024–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">🔍</div>
+              <div class="concept-name">Unsupervised Learning</div>
+              <div class="concept-desc">Train on unlabeled data — find hidden structure. Used for clustering, dimensionality reduction, and generating text embeddings for semantic search.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">WIDELY USED (2024–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">🎮</div>
+              <div class="concept-name">Reinforcement Learning</div>
+              <div class="concept-desc">An agent takes actions, receives rewards or penalties, and learns to maximize cumulative reward. Foundation of RLHF — the process that aligns LLM behavior with human preferences.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">WIDELY USED (2024–2026)</div>
+            </div>
+          </div>
+
+          <div class="diagram" style="margin-top:1.5rem;">
+            <div class="diagram-title">// WHERE EACH TYPE APPEARS IN THE LLM PIPELINE</div>
+            <div style="display:flex;flex-direction:column;gap:0.6rem;font-size:0.83rem;">
+              <div style="display:grid;grid-template-columns:140px 1fr;gap:1rem;align-items:center;background:var(--surface3);border:1px solid var(--border2);padding:0.8rem;">
+                <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);letter-spacing:0.08em;">SUPERVISED</span>
+                <span>Pre-training: predict the next token given billions of text sequences. Each prediction is a labeled example (correct next token = the label).</span>
+              </div>
+              <div style="display:grid;grid-template-columns:140px 1fr;gap:1rem;align-items:center;background:var(--surface3);border:1px solid var(--border2);padding:0.8rem;">
+                <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--yellow);letter-spacing:0.08em;">REINFORCEMENT</span>
+                <span>RLHF alignment: human raters score model outputs; the model is trained via PPO to produce higher-rated responses. How instruction-following is learned.</span>
+              </div>
+              <div style="display:grid;grid-template-columns:140px 1fr;gap:1rem;align-items:center;background:var(--surface3);border:1px solid var(--border2);padding:0.8rem;">
+                <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--green);letter-spacing:0.08em;">UNSUPERVISED</span>
+                <span>Embedding models: learn dense vector representations of text meaning. Powers semantic search, RAG pipelines, and agent long-term memory.</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Source: <a href="https://karpathy.ai/zero-to-hero.html" target="_blank" style="color:var(--accent);text-decoration:none;">Andrej Karpathy — Neural Networks: Zero to Hero</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 03: Neural Networks ── -->
+        <div class="block">
+          <div class="block-label">03 · NEURAL NETWORKS</div>
+          <h2>The Engine Inside Every Modern AI</h2>
+          <p>A neural network is a mathematical function composed of layers of simple computations. Each layer takes numbers in, applies learned weights and a non-linear activation, and passes numbers to the next layer. During training, these weights are adjusted — via gradient descent and backpropagation — so the network produces the right output for a given input.</p>
+          <p>Andrej Karpathy's <em>Neural Networks: Zero to Hero</em> series builds these from scratch in Python, starting from a single neuron and ending with a GPT-like transformer. You don't need to implement one to build agents, but understanding the structure helps you reason about behavior, limitations, and costs.</p>
+
+          <div class="diagram">
+            <div class="diagram-title">// NEURAL NETWORK — SIMPLIFIED LAYER VIEW</div>
+            <div style="display:flex;align-items:center;justify-content:center;gap:1rem;padding:1rem;flex-wrap:wrap;">
+              <div style="text-align:center;">
+                <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-muted);margin-bottom:0.5rem;">INPUT LAYER</div>
+                <div style="display:flex;flex-direction:column;gap:0.4rem;">
+                  <div style="width:42px;height:42px;border-radius:50%;background:var(--surface3);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:var(--accent);">x₁</div>
+                  <div style="width:42px;height:42px;border-radius:50%;background:var(--surface3);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:var(--accent);">x₂</div>
+                  <div style="width:42px;height:42px;border-radius:50%;background:var(--surface3);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:var(--accent);">x₃</div>
+                </div>
+              </div>
+              <div style="color:var(--text-dim);font-size:1.2rem;">→</div>
+              <div style="text-align:center;">
+                <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-muted);margin-bottom:0.5rem;">HIDDEN LAYERS</div>
+                <div style="display:flex;gap:0.6rem;">
+                  <div style="display:flex;flex-direction:column;gap:0.3rem;">
+                    <div style="width:38px;height:38px;border-radius:50%;background:var(--surface3);border:2px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:0.6rem;color:var(--green);">h</div>
+                    <div style="width:38px;height:38px;border-radius:50%;background:var(--surface3);border:2px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:0.6rem;color:var(--green);">h</div>
+                    <div style="width:38px;height:38px;border-radius:50%;background:var(--surface3);border:2px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:0.6rem;color:var(--green);">h</div>
+                    <div style="width:38px;height:38px;border-radius:50%;background:var(--surface3);border:2px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:0.6rem;color:var(--green);">h</div>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:0.3rem;margin-top:0.4rem;">
+                    <div style="width:38px;height:38px;border-radius:50%;background:var(--surface3);border:2px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:0.6rem;color:var(--green);">h</div>
+                    <div style="width:38px;height:38px;border-radius:50%;background:var(--surface3);border:2px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:0.6rem;color:var(--green);">h</div>
+                    <div style="width:38px;height:38px;border-radius:50%;background:var(--surface3);border:2px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:0.6rem;color:var(--green);">h</div>
+                  </div>
+                </div>
+              </div>
+              <div style="color:var(--text-dim);font-size:1.2rem;">→</div>
+              <div style="text-align:center;">
+                <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-muted);margin-bottom:0.5rem;">OUTPUT LAYER</div>
+                <div style="display:flex;flex-direction:column;gap:0.4rem;">
+                  <div style="width:42px;height:42px;border-radius:50%;background:var(--surface3);border:2px solid var(--yellow);display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:var(--yellow);">y₁</div>
+                  <div style="width:42px;height:42px;border-radius:50%;background:var(--surface3);border:2px solid var(--yellow);display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:var(--yellow);">y₂</div>
+                </div>
+              </div>
+            </div>
+            <p style="text-align:center;font-size:0.75rem;color:var(--text-muted);margin-top:0.5rem;">Each connection has a learned weight. Training adjusts all weights to minimize prediction error.</p>
+          </div>
+
+          <h3>Key terms you'll hear constantly</h3>
+          <div class="concept-grid">
+            <div class="concept-card">
+              <div class="concept-icon">⚖️</div>
+              <div class="concept-name">Weights & Parameters</div>
+              <div class="concept-desc">The numbers that define what a network "knows". Frontier models have hundreds of billions to trillions of parameters — exact counts are rarely published by labs.</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">📉</div>
+              <div class="concept-name">Loss Function</div>
+              <div class="concept-desc">A score measuring how wrong the model's predictions are. Training minimizes this score. Lower loss = better predictions on training data.</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">🔄</div>
+              <div class="concept-name">Gradient Descent</div>
+              <div class="concept-desc">The optimization algorithm that nudges weights in the direction that reduces loss. How the model learns from each batch of examples.</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">🔁</div>
+              <div class="concept-name">Backpropagation</div>
+              <div class="concept-desc">The algorithm that computes how much each weight contributed to the prediction error, so gradient descent knows what to update. Karpathy's series builds this from scratch.</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">📦</div>
+              <div class="concept-name">Batch Size</div>
+              <div class="concept-desc">How many training examples are processed before updating weights. Larger batches = more stable gradients, higher memory cost.</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">🔂</div>
+              <div class="concept-name">Epoch</div>
+              <div class="concept-desc">One full pass through the entire training dataset. Models typically train for multiple epochs until loss converges.</div>
+            </div>
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Source: <a href="https://karpathy.ai/zero-to-hero.html" target="_blank" style="color:var(--accent);text-decoration:none;">Andrej Karpathy — Neural Networks: Zero to Hero (builds backprop and transformers from scratch)</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 04: The Transformer ── -->
+        <div class="block">
+          <div class="block-label">04 · THE TRANSFORMER — THE ARCHITECTURE BEHIND EVERY LLM</div>
+          <h2>Attention Is All You Need</h2>
+          <p>
+            In 2017, Vaswani et al. published <em>Attention Is All You Need</em>, introducing the Transformer architecture. Every LLM you will use — GPT-family models, Claude, Gemini, Llama — is built on this architecture. Understanding its core mechanism, <strong>self-attention</strong>, is the single most important architectural concept for an agent builder.
+          </p>
+          <p>
+            Before the Transformer, the dominant architecture for sequence tasks was recurrent neural networks (RNNs). RNNs processed sequences token by token, passing a hidden state forward — but this made them slow to train and poor at long-range dependencies. The Transformer eliminated recurrence entirely and replaced it with attention.
+          </p>
+
+          <div class="callout callout-info">
+            <strong>What self-attention does (in plain terms):</strong> For each token in a sequence, the model computes how much every other token should "attend to" it — how relevant is each other word when determining the meaning of this word? This lets the model capture long-range relationships in a single step, in parallel, regardless of sequence length.
+          </div>
+
+          <!-- Attention illustration -->
+          <div class="diagram">
+            <div class="diagram-title">// SELF-ATTENTION — HOW TOKENS ATTEND TO EACH OTHER</div>
+            <div style="font-size:0.82rem;">
+              <p style="color:var(--text-muted);font-size:0.8rem;margin-bottom:1rem;">Sentence: <em>"The agent called the API because it was available."</em></p>
+              <p style="color:var(--text-muted);font-size:0.78rem;margin-bottom:0.8rem;">When the model processes <strong style="color:var(--accent);">"it"</strong>, self-attention lets it look back at all tokens and determine that <strong style="color:var(--green);">"API"</strong> is the referent — not "agent":</p>
+              <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:1.2rem;">
+                <span style="padding:0.35rem 0.6rem;background:var(--surface);border:1px solid var(--border2);font-size:0.78rem;color:var(--text-muted);">The</span>
+                <span style="padding:0.35rem 0.6rem;background:var(--surface);border:1px solid var(--border2);font-size:0.78rem;color:var(--text-muted);">agent</span>
+                <span style="padding:0.35rem 0.6rem;background:var(--surface);border:1px solid var(--border2);font-size:0.78rem;color:var(--text-muted);">called</span>
+                <span style="padding:0.35rem 0.6rem;background:var(--surface3);border:1px solid var(--green);font-size:0.78rem;color:var(--green);">the API</span>
+                <span style="padding:0.35rem 0.6rem;background:var(--surface);border:1px solid var(--border2);font-size:0.78rem;color:var(--text-muted);">because</span>
+                <span style="padding:0.35rem 0.6rem;background:var(--surface3);border:1px solid var(--accent);font-size:0.78rem;color:var(--accent);font-weight:700;">it ← high attention to "API"</span>
+                <span style="padding:0.35rem 0.6rem;background:var(--surface);border:1px solid var(--border2);font-size:0.78rem;color:var(--text-muted);">was available</span>
+              </div>
+              <div style="background:var(--surface3);border:1px solid var(--border2);padding:1rem;font-family:var(--font-mono);font-size:0.72rem;">
+                <div style="color:var(--text-muted);margin-bottom:0.5rem;">Attention score for "it" → each other token (simplified):</div>
+                <div style="display:flex;flex-direction:column;gap:0.3rem;">
+                  <div style="display:flex;align-items:center;gap:0.8rem;">
+                    <span style="min-width:80px;color:var(--text-dim);">The</span>
+                    <div style="height:6px;width:4%;background:var(--border2);"></div>
+                    <span style="color:var(--text-dim);">0.03</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:0.8rem;">
+                    <span style="min-width:80px;color:var(--text-muted);">agent</span>
+                    <div style="height:6px;width:18%;background:var(--text-dim);"></div>
+                    <span style="color:var(--text-muted);">0.18</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:0.8rem;">
+                    <span style="min-width:80px;color:var(--green);">API</span>
+                    <div style="height:6px;width:68%;background:var(--green);"></div>
+                    <span style="color:var(--green);">0.68 ← highest</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:0.8rem;">
+                    <span style="min-width:80px;color:var(--text-muted);">because</span>
+                    <div style="height:6px;width:7%;background:var(--text-dim);"></div>
+                    <span style="color:var(--text-dim);">0.07</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h3>The key components of a Transformer</h3>
+          <div class="concept-grid" style="grid-template-columns:repeat(2,1fr);">
+            <div class="concept-card">
+              <div class="concept-icon">👁️</div>
+              <div class="concept-name">Multi-Head Attention</div>
+              <div class="concept-desc">Multiple attention mechanisms run in parallel, each learning to focus on different types of relationships. One head might track syntax; another, coreference.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">CORE MECHANISM (2017–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">📍</div>
+              <div class="concept-name">Positional Encoding</div>
+              <div class="concept-desc">Since attention has no inherent sense of order, positional encodings inject information about each token's position in the sequence.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">CORE MECHANISM (2017–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">🔀</div>
+              <div class="concept-name">Feed-Forward Layers</div>
+              <div class="concept-desc">After attention, each token's representation passes through a feed-forward network applied independently. Adds capacity for complex transformations.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">CORE MECHANISM (2017–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">🔢</div>
+              <div class="concept-name">Decoder-Only Architecture</div>
+              <div class="concept-desc">GPT-family models and Claude use decoder-only transformers — the encoder/decoder split from the original paper is dropped. Generates text autoregressively, one token at a time.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">DOMINANT LLM PATTERN (2020–2026)</div>
+            </div>
+          </div>
+
+          <div class="callout callout-success">
+            <strong>Why this matters for agents:</strong> The context window — the total number of tokens the model can attend to at once — is a direct product of the Transformer architecture. Everything the agent has seen (the goal, tool results, memory, conversation history) must fit in this window. Managing that window efficiently is a core agent design skill.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://arxiv.org/abs/1706.03762" target="_blank" style="color:var(--accent);text-decoration:none;">Vaswani et al. — Attention Is All You Need (arXiv:1706.03762, 2017)</a> &nbsp;·&nbsp; <a href="https://jalammar.github.io/illustrated-transformer/" target="_blank" style="color:var(--accent);text-decoration:none;">Jay Alammar — The Illustrated Transformer</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 05: Embeddings ── -->
+        <div class="block">
+          <div class="block-label">05 · EMBEDDINGS — THE MOST IMPORTANT CONCEPT FOR AGENTS</div>
+          <h2>How AI Understands Meaning</h2>
+          <p>Computers can't work with words directly — everything must be numbers. An <strong>embedding</strong> is a dense vector (a list of numbers) that represents the semantic meaning of a piece of text. Words or sentences with similar meaning end up with similar vectors — this is the geometric encoding of semantics. It is the foundation of semantic search, RAG pipelines, and agent long-term memory.</p>
+
+          <div class="callout callout-info">
+            <strong>Why this matters for agents:</strong> When an agent needs to retrieve relevant memory or documents, it converts the query to an embedding, then finds stored embeddings that are mathematically close to it. This allows the agent to find semantically relevant content, not just exact keyword matches — "budget overrun" and "spending exceeded forecast" will have similar embeddings.
+          </div>
+
+          <div class="diagram">
+            <div class="diagram-title">// EMBEDDING SPACE — MEANING AS GEOMETRY</div>
+            <div style="background:var(--surface3);border:1px solid var(--border2);padding:1.5rem;position:relative;height:200px;overflow:hidden;">
+              <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-family:var(--font-mono);font-size:0.55rem;color:var(--text-dim);">dimension 1 →</div>
+              <div style="position:absolute;left:8px;top:50%;transform:translateY(-50%) rotate(-90deg);font-family:var(--font-mono);font-size:0.55rem;color:var(--text-dim);">dimension 2 ↑</div>
+              <div style="position:absolute;top:30px;left:80px;">
+                <div style="font-family:var(--font-mono);font-size:0.55rem;color:var(--text-muted);margin-bottom:4px;">ANIMALS cluster</div>
+                <div style="display:flex;gap:8px;">
+                  <span style="background:var(--surface);border:1px solid var(--green);padding:3px 7px;font-size:0.72rem;color:var(--green);">cat</span>
+                  <span style="background:var(--surface);border:1px solid var(--green);padding:3px 7px;font-size:0.72rem;color:var(--green);">dog</span>
+                  <span style="background:var(--surface);border:1px solid var(--green);padding:3px 7px;font-size:0.72rem;color:var(--green);">wolf</span>
+                </div>
+              </div>
+              <div style="position:absolute;top:80px;left:260px;">
+                <div style="font-family:var(--font-mono);font-size:0.55rem;color:var(--text-muted);margin-bottom:4px;">ROYALTY cluster</div>
+                <div style="display:flex;gap:8px;">
+                  <span style="background:var(--surface);border:1px solid var(--accent);padding:3px 7px;font-size:0.72rem;color:var(--accent);">king</span>
+                  <span style="background:var(--surface);border:1px solid var(--accent);padding:3px 7px;font-size:0.72rem;color:var(--accent);">queen</span>
+                  <span style="background:var(--surface);border:1px solid var(--accent);padding:3px 7px;font-size:0.72rem;color:var(--accent);">prince</span>
+                </div>
+              </div>
+              <div style="position:absolute;top:130px;left:140px;">
+                <div style="font-family:var(--font-mono);font-size:0.55rem;color:var(--text-muted);margin-bottom:4px;">PROGRAMMING cluster</div>
+                <div style="display:flex;gap:8px;">
+                  <span style="background:var(--surface);border:1px solid var(--yellow);padding:3px 7px;font-size:0.72rem;color:var(--yellow);">python</span>
+                  <span style="background:var(--surface);border:1px solid var(--yellow);padding:3px 7px;font-size:0.72rem;color:var(--yellow);">function</span>
+                  <span style="background:var(--surface);border:1px solid var(--yellow);padding:3px 7px;font-size:0.72rem;color:var(--yellow);">loop</span>
+                </div>
+              </div>
+            </div>
+            <p style="text-align:center;font-size:0.75rem;color:var(--text-muted);margin-top:0.8rem;">Real embeddings have hundreds to thousands of dimensions — not 2. We visualize in 2D to show the core idea: similar meanings cluster together.</p>
+          </div>
+
+          <h3>Vector similarity — how agents search memory</h3>
+          <p>To find the most relevant documents, an agent computes the <strong>cosine similarity</strong> between the query embedding and every stored embedding. Cosine similarity measures the angle between two vectors — the smaller the angle (closer to 1.0), the more semantically related the content.</p>
+
+          <div class="diagram">
+            <div class="diagram-title">// SEMANTIC SEARCH IN AN AGENT — END TO END</div>
+            <div style="display:flex;flex-direction:column;gap:0.5rem;font-size:0.82rem;">
+              <div style="background:var(--surface);border:1px solid var(--border);padding:0.6rem;border-left:2px solid var(--accent);">1. Query: <em>"What did we discuss about the Q3 budget?"</em></div>
+              <div style="text-align:center;color:var(--text-dim);font-size:0.7rem;">↓ embedding model converts text to vector</div>
+              <div style="background:var(--surface);border:1px solid var(--border);padding:0.6rem;border-left:2px solid var(--green);">2. Query vector: <code style="font-size:0.72rem;">[0.23, -0.81, 0.44, 0.12, ...]</code> (768+ numbers)</div>
+              <div style="text-align:center;color:var(--text-dim);font-size:0.7rem;">↓ cosine similarity against all stored document vectors</div>
+              <div style="background:var(--surface);border:1px solid var(--border);padding:0.6rem;border-left:2px solid var(--yellow);">3. Top match: <em>"Q3 budget review showed a 12% overrun..."</em> — similarity: 0.94</div>
+              <div style="text-align:center;color:var(--text-dim);font-size:0.7rem;">↓ inject matched content into agent context</div>
+              <div style="background:var(--surface);border:1px solid var(--border);padding:0.6rem;border-left:2px solid var(--accent);">4. Agent responds with grounded, relevant information from memory</div>
+            </div>
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://jalammar.github.io/illustrated-transformer/" target="_blank" style="color:var(--accent);text-decoration:none;">Jay Alammar — The Illustrated Transformer</a> &nbsp;·&nbsp; <a href="https://karpathy.ai/zero-to-hero.html" target="_blank" style="color:var(--accent);text-decoration:none;">Karpathy — Zero to Hero (embeddings chapter)</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 06: Tokenization ── -->
+        <div class="block">
+          <div class="block-label">06 · TOKENIZATION</div>
+          <h2>How LLMs See Text</h2>
+          <p>LLMs don't read characters or words — they read <strong>tokens</strong>. A token is a subword chunk, roughly 3–4 characters on average in English. The model converts all text to a sequence of integer token IDs before processing. This has direct practical implications for agent builders: every prompt, every tool result, every memory injection is measured and billed in tokens.</p>
+
+          <div class="diagram">
+            <div class="diagram-title">// TEXT → TOKENS → TOKEN IDs</div>
+            <div style="padding:1rem;background:var(--surface3);border:1px solid var(--border2);">
+              <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.8rem;">Input text:</div>
+              <div style="font-size:0.95rem;margin-bottom:1.2rem;padding:0.6rem;background:var(--surface);border:1px solid var(--border);">"Build me an AI agent"</div>
+              <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.6rem;">Tokenized (BPE subwords):</div>
+              <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:1rem;">
+                <span style="background:rgba(108,99,255,0.2);border:1px solid var(--accent);padding:0.3rem 0.5rem;font-family:var(--font-mono);font-size:0.75rem;color:var(--accent);">"Build"</span>
+                <span style="background:rgba(0,229,160,0.15);border:1px solid var(--green);padding:0.3rem 0.5rem;font-family:var(--font-mono);font-size:0.75rem;color:var(--green);">" me"</span>
+                <span style="background:rgba(108,99,255,0.2);border:1px solid var(--accent);padding:0.3rem 0.5rem;font-family:var(--font-mono);font-size:0.75rem;color:var(--accent);">" an"</span>
+                <span style="background:rgba(0,229,160,0.15);border:1px solid var(--green);padding:0.3rem 0.5rem;font-family:var(--font-mono);font-size:0.75rem;color:var(--green);">" AI"</span>
+                <span style="background:rgba(108,99,255,0.2);border:1px solid var(--accent);padding:0.3rem 0.5rem;font-family:var(--font-mono);font-size:0.75rem;color:var(--accent);">" agent"</span>
+              </div>
+              <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.5rem;">Token IDs (integers the model actually processes):</div>
+              <code style="font-size:0.75rem;color:var(--text-dim);">[8585, 502, 459, 15592, 8479]</code>
+            </div>
+          </div>
+
+          <div class="callout callout-warning">
+            <strong>Why token count matters for agent builders:</strong> LLMs have a context window limit measured in tokens. Every message, system prompt, tool result, and injected memory chunk consumes tokens. Even on models with very large context windows, a long agent loop with many tool calls can fill the window — and every token also costs money. Designing token-efficient agents is a fundamental production skill.
+          </div>
+
+          <div class="callout callout-info" style="margin-top:1.2rem;">
+            <strong>Context window sizes vary widely and change frequently.</strong> The table below shows approximate tiers — always check the current provider documentation before building, as limits change with new model releases.
+          </div>
+
+          <table class="compare-table" style="margin-top:1rem;">
+            <thead>
+              <tr><th>Model tier</th><th>Typical context window</th><th>Rough text equivalent</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Small / fast models</td><td>8K – 32K tokens</td><td>~6K–24K words / short document</td></tr>
+              <tr><td>Mid-range models</td><td>128K – 200K tokens</td><td>~96K–150K words / full novel</td></tr>
+              <tr><td>Long-context models</td><td>500K – 1M+ tokens</td><td>~375K–750K words / large codebase</td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:0.8rem;font-size:0.82rem;color:var(--text-muted);">Check current limits: <a href="https://docs.anthropic.com" target="_blank" style="color:var(--accent);">Anthropic</a> · <a href="https://platform.openai.com/docs" target="_blank" style="color:var(--accent);">OpenAI</a> · <a href="https://ai.google.dev/docs" target="_blank" style="color:var(--accent);">Google</a></p>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Source: <a href="https://karpathy.ai/zero-to-hero.html" target="_blank" style="color:var(--accent);text-decoration:none;">Karpathy — Zero to Hero (tokenization, BPE from scratch)</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 07: Training Pipeline ── -->
+        <div class="block">
+          <div class="block-label">07 · THE LLM TRAINING PIPELINE</div>
+          <h2>Pre-training → Fine-tuning → RLHF</h2>
+          <p>Modern LLMs are not trained in one step. They go through a staged pipeline, and each stage shapes a different aspect of the model's behavior. Understanding this pipeline helps you reason about why models behave the way they do — and when fine-tuning or prompt engineering is the right lever to pull.</p>
+
+          <div class="concept-grid" style="grid-template-columns:repeat(2,1fr);">
+            <div class="concept-card">
+              <div class="concept-icon">🏋️</div>
+              <div class="concept-name">Pre-training</div>
+              <div class="concept-desc">Training from scratch on vast text corpora via next-token prediction. Builds broad language understanding and world knowledge. Done by AI labs. Costs millions of dollars.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">FOUNDATION STAGE</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">🎯</div>
+              <div class="concept-name">Supervised Fine-tuning (SFT)</div>
+              <div class="concept-desc">Continuing training on high-quality instruction-following examples. Teaches the model to respond helpfully to human requests rather than just continuing text.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">ALIGNMENT STAGE 1</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">🎖️</div>
+              <div class="concept-name">RLHF</div>
+              <div class="concept-desc">Human raters compare model outputs and rank them. A reward model is trained on these preferences, then the LLM is optimized (via PPO) to maximize reward scores. Shapes helpfulness, safety, and instruction-following.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">ALIGNMENT STAGE 2</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">⚡</div>
+              <div class="concept-name">Inference</div>
+              <div class="concept-desc">Running the frozen, trained model on new input to get output. What happens every time you call a model API. Charged per token. All agent loops operate at inference time.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">PRODUCTION STAGE</div>
+            </div>
+          </div>
+
+          <h3>The AI model landscape</h3>
+          <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.8rem;">Specific model versions change constantly. These categories and their providers are stable — check each provider's current documentation for specific models and pricing.</p>
+          <table class="compare-table">
+            <thead>
+              <tr><th>Category</th><th>Providers (see docs for current models)</th><th>Relevance to agents</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Foundation models</strong></td>
+                <td><a href="https://docs.anthropic.com" target="_blank" style="color:var(--accent);">Anthropic</a>, <a href="https://platform.openai.com/docs" target="_blank" style="color:var(--accent);">OpenAI</a>, <a href="https://ai.google.dev" target="_blank" style="color:var(--accent);">Google</a>, Meta (Llama)</td>
+                <td class="cell-good">The reasoning core of most agents</td>
+              </tr>
+              <tr>
+                <td><strong>Embedding models</strong></td>
+                <td>OpenAI, Voyage AI, Cohere, open-source (sentence-transformers)</td>
+                <td class="cell-good">Powers semantic search and memory retrieval</td>
+              </tr>
+              <tr>
+                <td><strong>Vision / multimodal</strong></td>
+                <td>Anthropic, OpenAI, Google — all major frontier models are multimodal</td>
+                <td>Agents that process images, PDFs, screenshots</td>
+              </tr>
+              <tr>
+                <td><strong>Coding agents</strong></td>
+                <td>Claude Code (Anthropic), GitHub Copilot (Microsoft), Cursor</td>
+                <td>Specialized autonomous coding agents</td>
+              </tr>
+              <tr>
+                <td><strong>Open-source models</strong></td>
+                <td>Meta (Llama series), Mistral, Microsoft (Phi series), Alibaba (Qwen)</td>
+                <td>Self-hosted agents for privacy or cost control</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://docs.anthropic.com" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic Docs</a> &nbsp;·&nbsp; <a href="https://platform.openai.com/docs" target="_blank" style="color:var(--accent);text-decoration:none;">OpenAI Docs</a> &nbsp;·&nbsp; <a href="https://course.fast.ai/" target="_blank" style="color:var(--accent);text-decoration:none;">fast.ai — Practical Deep Learning</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 08: Debugging Concepts ── -->
+        <div class="block">
+          <div class="block-label">08 · CORE CONCEPTS FOR DEBUGGING AGENTS</div>
+          <h2>What Goes Wrong and Why</h2>
+          <p>A handful of ML concepts come up constantly when an agent misbehaves. Understanding these lets you diagnose root causes instead of guessing.</p>
+
+          <div class="concept-grid">
+            <div class="concept-card">
+              <div class="concept-icon">🌫️</div>
+              <div class="concept-name">Hallucination</div>
+              <div class="concept-desc">The model generates plausible-sounding but false information. It is optimized for fluent, coherent text — not for verifiable truth. Your #1 enemy as an agent builder.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--orange);">HIGH IMPACT RISK</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">🎲</div>
+              <div class="concept-name">Temperature</div>
+              <div class="concept-desc">Controls sampling randomness. High temperature (0.8–1.0) = creative, varied output. Low temperature (0.0–0.2) = deterministic, consistent. Agents usually use low temperature for tool calls.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">KEY INFERENCE PARAMETER</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">📅</div>
+              <div class="concept-name">Training Cutoff</div>
+              <div class="concept-desc">Models only know about events up to their training data cutoff. Agents that need current information must use tools (web search, live APIs) to retrieve it.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--orange);">AGENT DESIGN CONSTRAINT</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">📚</div>
+              <div class="concept-name">Overfitting</div>
+              <div class="concept-desc">The model memorizes training examples instead of learning generalizable patterns. Performs well on training data, poorly on new inputs. Fine-tuning on small datasets is especially susceptible.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">TRAINING CONCERN</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">🔮</div>
+              <div class="concept-name">Emergent Abilities</div>
+              <div class="concept-desc">Capabilities that appear unexpectedly as models scale up — including in-context learning, chain-of-thought reasoning, and multi-step planning. Not designed in; they emerge from scale.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">WIDELY OBSERVED (2020–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">📐</div>
+              <div class="concept-name">Scaling Laws</div>
+              <div class="concept-desc">Model performance improves predictably with increases in parameters, training data, and compute. Empirically studied by labs — the foundation for investments in frontier model development.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">WIDELY USED (2020–2026)</div>
+            </div>
+          </div>
+
+          <div class="callout callout-warning">
+            <strong>Hallucination is your #1 enemy as an agent builder.</strong> Design agents with grounding mechanisms — retrieval-augmented generation (RAG), tool use, citation requirements — to minimize the chance your agent confidently provides false information and then acts on it.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://karpathy.ai/zero-to-hero.html" target="_blank" style="color:var(--accent);text-decoration:none;">Karpathy — Zero to Hero</a> &nbsp;·&nbsp; <a href="https://course.fast.ai/" target="_blank" style="color:var(--accent);text-decoration:none;">fast.ai — Practical Deep Learning</a>
+          </div>
+        </div>
+
+        <!-- ── SOURCES TABLE ── -->
+        <div class="block">
+          <div class="block-label">SOURCES USED IN THIS SECTION</div>
+          <h2>Verified References</h2>
+          <p>Every claim in this section is grounded in one of these sources. No content is generated from model training data alone.</p>
+
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Source</th>
+                <th>Type</th>
+                <th>Covers</th>
+                <th>Recency</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://karpathy.ai/zero-to-hero.html" target="_blank" style="color:var(--accent);">Andrej Karpathy — Neural Networks: Zero to Hero</a></td>
+                <td>Video series</td>
+                <td>Backprop, gradient descent, embeddings, tokenization (BPE), transformers — all built from scratch</td>
+                <td>2022–2023</td>
+              </tr>
+              <tr>
+                <td><a href="https://jalammar.github.io/illustrated-transformer/" target="_blank" style="color:var(--accent);">Jay Alammar — The Illustrated Transformer</a></td>
+                <td>Blog / visual</td>
+                <td>Self-attention, multi-head attention, encoder-decoder, positional encoding</td>
+                <td>2018 (architecture is timeless)</td>
+              </tr>
+              <tr>
+                <td><a href="https://arxiv.org/abs/1706.03762" target="_blank" style="color:var(--accent);">Vaswani et al. — Attention Is All You Need (arXiv:1706.03762)</a></td>
+                <td>Academic paper</td>
+                <td>Original Transformer architecture, multi-head attention, positional encoding</td>
+                <td>2017 (foundation of all LLMs)</td>
+              </tr>
+              <tr>
+                <td><a href="https://course.fast.ai/" target="_blank" style="color:var(--accent);">fast.ai — Practical Deep Learning for Coders</a></td>
+                <td>Course</td>
+                <td>Top-down ML fundamentals: training, overfitting, fine-tuning, practical application</td>
+                <td>Maintained 2022–2026</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div><!-- end theory -->
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- QUIZ                                        -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div id="quiz" class="block">
+        <div class="block-label">KNOWLEDGE CHECK</div>
+        <h2>Section 02 Quiz</h2>
+        <p style="margin-bottom:1.5rem;">8 questions covering all theory blocks. The ML vocabulary here will come up in every section that follows — get it solid now.</p>
+
+        <div class="lab-container">
+          <div class="lab-header">
+            <div class="lab-icon">📝</div>
+            <div class="lab-title-wrap">
+              <div class="lab-title">Section 02 — AI & ML Fundamentals</div>
+              <div class="lab-subtitle">8 QUESTIONS · MULTIPLE CHOICE · UNLIMITED RETRIES</div>
+            </div>
+          </div>
+          <div style="padding:1.5rem 2rem;">
+
+            <!-- Q1 -->
+            <div class="quiz-q" id="q1">
+              <div class="quiz-num">Question 1 of 8</div>
+              <div class="quiz-text">What is the key difference between traditional programming and machine learning?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q1" value="a"> <span>ML is always faster at execution time than traditional programs</span></label>
+                <label class="quiz-option"><input type="radio" name="q1" value="b"> <span>In ML, the model learns rules from data examples instead of following hand-coded rules</span></label>
+                <label class="quiz-option"><input type="radio" name="q1" value="c"> <span>Traditional programming requires more data than ML</span></label>
+                <label class="quiz-option"><input type="radio" name="q1" value="d"> <span>ML is only useful for image recognition tasks</span></label>
+              </div>
+              <div class="quiz-feedback" id="f1"></div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="quiz-q" id="q2">
+              <div class="quiz-num">Question 2 of 8</div>
+              <div class="quiz-text">LLMs are pre-trained by predicting the next token given billions of text sequences. Which type of ML is this?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q2" value="a"> <span>Unsupervised learning — no labels are used</span></label>
+                <label class="quiz-option"><input type="radio" name="q2" value="b"> <span>Reinforcement learning — the model learns from rewards</span></label>
+                <label class="quiz-option"><input type="radio" name="q2" value="c"> <span>Supervised learning — the correct next token serves as the label</span></label>
+                <label class="quiz-option"><input type="radio" name="q2" value="d"> <span>Transfer learning — knowledge is moved from one task to another</span></label>
+              </div>
+              <div class="quiz-feedback" id="f2"></div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="quiz-q" id="q3">
+              <div class="quiz-num">Question 3 of 8</div>
+              <div class="quiz-text">The paper "Attention Is All You Need" (Vaswani et al., 2017) introduced which architecture that now underlies every major LLM?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q3" value="a"> <span>Recurrent Neural Network (RNN)</span></label>
+                <label class="quiz-option"><input type="radio" name="q3" value="b"> <span>Convolutional Neural Network (CNN)</span></label>
+                <label class="quiz-option"><input type="radio" name="q3" value="c"> <span>The Transformer</span></label>
+                <label class="quiz-option"><input type="radio" name="q3" value="d"> <span>Long Short-Term Memory (LSTM)</span></label>
+              </div>
+              <div class="quiz-feedback" id="f3"></div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="quiz-q" id="q4">
+              <div class="quiz-num">Question 4 of 8</div>
+              <div class="quiz-text">What does a text embedding represent?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q4" value="a"> <span>A compressed image rendering of the input text</span></label>
+                <label class="quiz-option"><input type="radio" name="q4" value="b"> <span>The number of tokens in a sentence</span></label>
+                <label class="quiz-option"><input type="radio" name="q4" value="c"> <span>A dense vector of numbers that encodes the semantic meaning of text</span></label>
+                <label class="quiz-option"><input type="radio" name="q4" value="d"> <span>A cryptographic hash of the text for fast lookup</span></label>
+              </div>
+              <div class="quiz-feedback" id="f4"></div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="quiz-q" id="q5">
+              <div class="quiz-num">Question 5 of 8</div>
+              <div class="quiz-text">Why does token count matter critically when building agents?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q5" value="a"> <span>More tokens always produce higher quality output from the model</span></label>
+                <label class="quiz-option"><input type="radio" name="q5" value="b"> <span>All agent state — prompts, tool results, memory — must fit in the context window, which is measured in tokens, and each token costs money</span></label>
+                <label class="quiz-option"><input type="radio" name="q5" value="c"> <span>Token count determines which programming language the agent can use</span></label>
+                <label class="quiz-option"><input type="radio" name="q5" value="d"> <span>Token count only affects response latency, not quality or cost</span></label>
+              </div>
+              <div class="quiz-feedback" id="f5"></div>
+            </div>
+
+            <!-- Q6 -->
+            <div class="quiz-q" id="q6">
+              <div class="quiz-num">Question 6 of 8</div>
+              <div class="quiz-text">What is the difference between training and inference?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q6" value="a"> <span>Training is cheap and fast; inference is slow and expensive</span></label>
+                <label class="quiz-option"><input type="radio" name="q6" value="b"> <span>Training adjusts model weights on data; inference runs the frozen trained model on new inputs</span></label>
+                <label class="quiz-option"><input type="radio" name="q6" value="c"> <span>Training uses GPUs; inference only uses CPUs</span></label>
+                <label class="quiz-option"><input type="radio" name="q6" value="d"> <span>They are the same process done at different scales</span></label>
+              </div>
+              <div class="quiz-feedback" id="f6"></div>
+            </div>
+
+            <!-- Q7 -->
+            <div class="quiz-q" id="q7">
+              <div class="quiz-num">Question 7 of 8</div>
+              <div class="quiz-text">What does RLHF do, and why is it important for the agents you will build?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q7" value="a"> <span>It speeds up inference by caching common responses</span></label>
+                <label class="quiz-option"><input type="radio" name="q7" value="b"> <span>It trains models on human preference rankings so they produce outputs humans rate as better — the source of helpful, instruction-following behavior that agents depend on</span></label>
+                <label class="quiz-option"><input type="radio" name="q7" value="c"> <span>It removes incorrect facts from the model's weights</span></label>
+                <label class="quiz-option"><input type="radio" name="q7" value="d"> <span>It adds randomness to prevent the model from overfitting</span></label>
+              </div>
+              <div class="quiz-feedback" id="f7"></div>
+            </div>
+
+            <!-- Q8 -->
+            <div class="quiz-q" id="q8">
+              <div class="quiz-num">Question 8 of 8</div>
+              <div class="quiz-text">You are building an agent that retrieves the most relevant past conversation chunks for a user's current question. What is the core mechanism?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q8" value="a"> <span>Gradient descent to re-rank documents at query time</span></label>
+                <label class="quiz-option"><input type="radio" name="q8" value="b"> <span>Fine-tuning the model on the conversation history before each query</span></label>
+                <label class="quiz-option"><input type="radio" name="q8" value="c"> <span>Cosine similarity between the query embedding and stored document embeddings</span></label>
+                <label class="quiz-option"><input type="radio" name="q8" value="d"> <span>Supervised classification of the query into a topic category</span></label>
+              </div>
+              <div class="quiz-feedback" id="f8"></div>
+            </div>
+
+            <div style="margin-top:2rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
+              <button class="btn btn-accent" onclick="submitQuiz()">Submit Answers</button>
+              <button class="btn btn-outline" onclick="resetQuiz()" style="display:none;" id="retryBtn">Try Again</button>
+              <div id="quiz-score" style="font-family:var(--font-mono);font-size:0.85rem;color:var(--text-muted);"></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end quiz -->
+
+      <!-- MARK COMPLETE + NAVIGATION -->
+      <div class="mark-complete-bar">
+        <p>Finished the theory and passed the quiz? Mark this section complete to track your progress.</p>
+        <button class="btn btn-outline" id="completeBtn2" data-section="2" onclick="document.getElementById('completeBtn').click()">Mark Section 2 Complete</button>
+      </div>
+
+      <div style="text-align:center;margin:2rem 0 0;font-family:var(--font-mono);font-size:0.62rem;color:var(--text-dim);">
+        Last updated: <time datetime="2026-04-05">April 5, 2026</time>
+      </div>
+      <div class="section-nav-footer">
+        <a href="01-intro.html" class="nav-prev">← Section 01: Intro to Agentic AI</a>
+        <a href="03-frameworks.html" class="nav-next">Section 03: Programming & Frameworks →</a>
+      </div>
+
+    </div><!-- end page -->
+  </main>
+</div>
+
+<script src="../course.js"></script>
+<script>
+const QUIZ_ANSWERS = { q1:'b', q2:'c', q3:'c', q4:'c', q5:'b', q6:'b', q7:'b', q8:'c' };
+
+const QUIZ_EXPLANATIONS = {
+  q1: 'Correct. Traditional programming requires the developer to write explicit rules. Machine learning inverts this — you provide examples, and the model learns the rules itself.',
+  q2: 'Correct. Next-token prediction is supervised learning: for each position in the sequence, the correct next token is a label the model is trained to predict.',
+  q3: 'Correct. The 2017 paper "Attention Is All You Need" (arXiv:1706.03762) introduced the Transformer architecture, which replaced recurrence with self-attention. Every major LLM today is built on this.',
+  q4: 'Correct. A text embedding is a dense vector (list of numbers) that encodes semantic meaning. Similar meanings produce similar vectors — the geometric basis for semantic search.',
+  q5: 'Correct. Every element in an agent\'s context window — system prompt, tool results, conversation history, memory injections — costs tokens. Exceeding the window breaks the agent; excess tokens increase cost.',
+  q6: 'Correct. Training is the expensive, weight-adjusting process done by AI labs. Inference is running the frozen trained model on new inputs — what happens every time you call a model API.',
+  q7: 'Correct. RLHF (Reinforcement Learning from Human Feedback) uses human preference rankings to train a reward model, then optimizes the LLM to produce higher-reward outputs. This is how instruction-following and helpfulness are shaped.',
+  q8: 'Correct. The standard approach is to embed the query, compute cosine similarity against stored document embeddings, and retrieve the highest-similarity chunks. This is the core of RAG and vector-based memory systems.'
+};
+
+const QUIZ_WRONG_HINTS = {
+  q1: 'Think about what changes between the two paradigms: who writes the rules? In traditional programming it\'s the developer. In ML it\'s the data.',
+  q2: 'In next-token prediction, the model is given a sequence and must predict the correct next word. The correct word is the label. Which ML type uses labeled input-output pairs?',
+  q3: 'The paper is titled "Attention Is All You Need." What architecture did it name and introduce? It\'s the architecture you hear about when someone says "transformer model."',
+  q4: 'An embedding is not an image or a hash — it\'s a mathematical representation of meaning. What format allows you to compute "similarity" between two pieces of text using math?',
+  q5: 'Think about what happens as an agent runs a long loop: the system prompt, all tool results, and all reasoning steps accumulate. Where do they accumulate? What happens when that fills up?',
+  q6: 'One of these processes produces a finished model by adjusting weights on data. The other uses that finished model to produce outputs. Which is which?',
+  q7: 'RLHF stands for Reinforcement Learning from Human Feedback. Think about what the "Human Feedback" part does — humans rate outputs, and the model learns to produce outputs that get rated higher.',
+  q8: 'The agent needs to find chunks that are *semantically relevant* — not just keyword matches. What mechanism computes semantic similarity between a query and stored documents?'
+};
+
+function submitQuiz() {
+  let score = 0;
+  let allAnswered = true;
+
+  for (let i = 1; i <= 8; i++) {
+    const key = 'q' + i;
+    const selected = document.querySelector(`input[name="${key}"]:checked`);
+    const feedback = document.getElementById('f' + i);
+    const qEl = document.getElementById(key);
+
+    if (!selected) { allAnswered = false; continue; }
+
+    const options = qEl.querySelectorAll('.quiz-option');
+    options.forEach(opt => {
+      opt.style.pointerEvents = 'none';
+      const inp = opt.querySelector('input');
+      if (inp.value === QUIZ_ANSWERS[key]) {
+        opt.style.color = 'var(--green)';
+        opt.style.borderColor = 'var(--green)';
+      }
+    });
+
+    if (selected.value === QUIZ_ANSWERS[key]) {
+      score++;
+      feedback.innerHTML = '<span style="color:var(--green);">✓ ' + QUIZ_EXPLANATIONS[key] + '</span>';
+    } else {
+      feedback.innerHTML = '<span style="color:var(--red);">✗ Not quite. ' + QUIZ_WRONG_HINTS[key] + '</span>';
+      selected.closest('.quiz-option').style.color = 'var(--red)';
+    }
+    feedback.style.display = 'block';
+  }
+
+  if (!allAnswered) {
+    document.getElementById('quiz-score').textContent = 'Please answer all questions before submitting.';
+    return;
+  }
+
+  const pct = Math.round((score / 8) * 100);
+  let msg = '';
+  if (score === 8) msg = '— Perfect score! You are ready for Section 3.';
+  else if (score >= 6) msg = '— Good. Review the ones you missed before moving on.';
+  else msg = '— Re-read the theory sections you struggled with, then retry.';
+
+  document.getElementById('quiz-score').innerHTML =
+    '<strong style="color:var(--accent);">' + score + '/8 (' + pct + '%)</strong> ' + msg;
+  document.getElementById('retryBtn').style.display = 'inline-flex';
+  document.querySelector('[onclick="submitQuiz()"]').style.display = 'none';
+}
+
+function resetQuiz() {
+  for (let i = 1; i <= 8; i++) {
+    const key = 'q' + i;
+    document.querySelectorAll(`input[name="${key}"]`).forEach(inp => { inp.checked = false; });
+    const feedback = document.getElementById('f' + i);
+    feedback.innerHTML = '';
+    feedback.style.display = 'none';
+    const qEl = document.getElementById(key);
+    qEl.querySelectorAll('.quiz-option').forEach(opt => {
+      opt.style.color = '';
+      opt.style.borderColor = '';
+      opt.style.pointerEvents = '';
+    });
+  }
+  document.getElementById('quiz-score').innerHTML = '';
+  document.getElementById('retryBtn').style.display = 'none';
+  document.querySelector('[onclick="submitQuiz()"]').style.display = 'inline-flex';
+}
+</script>
+</body>
+</html>

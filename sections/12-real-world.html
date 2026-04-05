@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>12 — Real-World Applications · Agentic AI Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="../style.css">
+<noscript><style>
+/* No-JS: make sidebar visible and stack layout vertically on mobile */
+@media (max-width: 768px) {
+  .sidebar { transform: none; position: relative; width: 100%; height: auto; }
+  .layout  { flex-direction: column; }
+}
+</style></noscript>
+<link rel="manifest" href="../manifest.json">
+</head>
+<body data-section="12">
+<noscript>
+  <div style="background:#1a1200;border-bottom:2px solid #c87d00;color:#f0c060;padding:0.75rem 1.5rem;font-family:monospace;font-size:0.82rem;text-align:center;position:relative;z-index:999;">
+    &#9888; JavaScript is disabled. Progress tracking, quizzes, and interactive features require JavaScript.
+  </div>
+</noscript>
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <a href="../index.html" class="sidebar-logo" style="text-decoration:none;display:block;">
+      <div class="logo-eyebrow">// AGENTIC AI COURSE</div>
+      <div class="logo-name">Learn <span>Agentic AI</span><br>2026 Edition</div>
+    </a>
+    <div class="sidebar-progress">
+      <div class="progress-row">
+        <span class="progress-label">OVERALL PROGRESS</span>
+        <span class="progress-count" id="progressCount">0 / 16</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+    <div class="sidebar-nav">
+      <div class="nav-group-label">Foundation</div>
+      <a href="01-intro.html" class="nav-item" data-section="1"><span class="nav-num">01</span> Intro to Agentic AI <span class="nav-check">✓</span></a>
+      <a href="02-ml-fundamentals.html" class="nav-item" data-section="2"><span class="nav-num">02</span> AI &amp; ML Fundamentals <span class="nav-check">✓</span></a>
+      <a href="03-frameworks.html" class="nav-item" data-section="3"><span class="nav-num">03</span> Programming &amp; Frameworks <span class="nav-check">✓</span></a>
+      <a href="04-llms.html" class="nav-item" data-section="4"><span class="nav-num">04</span> Large Language Models <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">Core Agents</div>
+      <a href="05-understanding-agents.html" class="nav-item" data-section="5"><span class="nav-num">05</span> Understanding Agents <span class="nav-check">✓</span></a>
+      <a href="06-memory.html" class="nav-item" data-section="6"><span class="nav-num">06</span> Memory &amp; Knowledge <span class="nav-check">✓</span></a>
+      <a href="07-planning.html" class="nav-item" data-section="7"><span class="nav-num">07</span> Decision-Making &amp; Planning <span class="nav-check">✓</span></a>
+      <a href="08-prompting.html" class="nav-item" data-section="8"><span class="nav-num">08</span> Prompt Engineering <span class="nav-check">✓</span></a>
+      <a href="09-rl.html" class="nav-item" data-section="9"><span class="nav-num">09</span> RL &amp; Self-Improvement <span class="nav-check">✓</span></a>
+      <a href="10-rag.html" class="nav-item" data-section="10"><span class="nav-num">10</span> RAG <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">Production</div>
+      <a href="11-deployment.html" class="nav-item" data-section="11"><span class="nav-num">11</span> Deploying Agents <span class="nav-check">✓</span></a>
+      <a href="12-real-world.html" class="nav-item active" data-section="12"><span class="nav-num">12</span> Real-World Applications <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">2026 New</div>
+      <a href="13-mcp.html" class="nav-item" data-section="13"><span class="nav-num">13</span> MCP &amp; Protocols <span class="nav-check">✓</span></a>
+      <a href="14-multi-agent.html" class="nav-item" data-section="14"><span class="nav-num">14</span> Multi-Agent Orchestration <span class="nav-check">✓</span></a>
+      <a href="15-security.html" class="nav-item" data-section="15"><span class="nav-num">15</span> Agent Security <span class="nav-check">✓</span></a>
+      <a href="16-long-horizon.html" class="nav-item" data-section="16"><span class="nav-num">16</span> Long-Horizon Agents <span class="nav-check">✓</span></a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="topbar-breadcrumb">
+        <a href="../index.html" style="color:var(--text-muted);text-decoration:none;">Course</a>
+        &nbsp;/&nbsp; <span>12 · Real-World Applications</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn btn-outline" id="completeBtn" data-section="12">Mark Complete</button>
+      </div>
+    </div>
+
+    <div class="page">
+
+      <!-- HERO -->
+      <div class="section-hero">
+        <div class="hero-meta">
+          <span class="hero-num">SECTION 12</span>
+          <span class="hero-tag tag-core">PRODUCTION</span>
+          <span class="hero-tag tag-core">THEORY</span>
+        </div>
+        <h1 class="section-title">Real-World<br><span>Applications</span></h1>
+        <p class="section-intro">
+          Theory and toy agents only take you so far. This section surveys where agents are actually working in production — and where they are failing. You will learn the dominant use cases by domain, the architectural patterns that scale, the failure modes that show up after launch, and the discipline of knowing when an agent is the wrong tool entirely.
+        </p>
+        <div class="hero-actions">
+          <a href="#theory" class="btn btn-accent">📖 Start Theory</a>
+          <a href="#quiz" class="btn btn-outline">📝 Take the Quiz</a>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- THEORY                                      -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div id="theory">
+
+        <!-- ── BLOCK 01: Use Cases by Domain ── -->
+        <div class="block">
+          <div class="block-label">01 · USE CASES BY DOMAIN</div>
+          <h2>Where Agents Are Creating Real Value</h2>
+          <p>
+            As of 2024–2026, a handful of domains have proven particularly well-suited to agents: the tasks are well-defined, have verifiable outcomes, and involve enough repetitive decision-making that the overhead of building an agent pays off. Anthropic's documentation on agentic use cases identifies software engineering, customer support, research, and document processing as the leading deployment categories.
+          </p>
+
+          <div class="concept-grid">
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">DOMAIN 01</div>
+              <div class="concept-name">Software Engineering</div>
+              <div class="concept-desc">Coding agents that write, test, debug, and refactor code. The feedback loop (run the tests, observe the error, fix the code) maps perfectly to the ReAct loop. Outcomes are verifiable: tests pass or they don't. Leading examples include coding assistants that fix entire GitHub issues autonomously.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">HIGH TRACTION (2024–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">DOMAIN 02</div>
+              <div class="concept-name">Customer Support &amp; Triage</div>
+              <div class="concept-desc">Agents that handle tier-1 support: look up account details, check order status, resolve common issues, and escalate to humans when needed. The key constraint is strict scope — the agent must know the boundary of what it is authorized to do and never act beyond it.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">HIGH TRACTION (2023–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">DOMAIN 03</div>
+              <div class="concept-name">Research &amp; Analysis</div>
+              <div class="concept-desc">Agents that gather, synthesize, and report on information from multiple sources. Web search + document retrieval + synthesis. The output is a report or summary, not a binary action — making errors less immediately costly and human review more practical.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">HIGH TRACTION (2024–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">DOMAIN 04</div>
+              <div class="concept-name">Document Processing</div>
+              <div class="concept-desc">Extracting structured data from unstructured documents (invoices, contracts, medical records, forms). RAG + structured output + validation. High volume, repetitive, and well-suited to automated quality checks. Replaces large manual data-entry workflows.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">HIGH TRACTION (2023–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">DOMAIN 05</div>
+              <div class="concept-name">Data Analysis &amp; BI</div>
+              <div class="concept-desc">Natural language interfaces to databases: "show me revenue by region last quarter" → SQL query → chart. The agent must understand schemas, generate correct queries, handle null results gracefully, and present findings clearly. Code execution tool is essential.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">EMERGING (2024–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">DOMAIN 06</div>
+              <div class="concept-name">Workflow Automation</div>
+              <div class="concept-desc">Agents that orchestrate multi-step business processes: intake a request → look up context in CRM → draft a response → route for approval → send. Replaces brittle RPA scripts with LLM-powered orchestration that handles variability and exceptions gracefully.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">EMERGING (2024–2026)</div>
+            </div>
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Agentic &amp; Tool Use Docs</a> &nbsp;·&nbsp; <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Building Effective Agents</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 02: Production Architecture Patterns ── -->
+        <div class="block">
+          <div class="block-label">02 · PRODUCTION ARCHITECTURE PATTERNS</div>
+          <h2>How Real Systems Are Structured</h2>
+          <p>
+            Production agent systems rarely look like the simple single-agent loops in tutorial code. They combine multiple patterns depending on the task's complexity, latency requirements, and safety constraints. Anthropic's "Building Effective Agents" guide identifies a progression from simple pipelines to fully autonomous multi-agent systems.
+          </p>
+
+          <div style="display:grid;gap:1rem;margin:1.5rem 0;">
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">PATTERN A — PROMPT CHAINING PIPELINE</div>
+              <p style="margin:0 0 0.5rem;font-size:0.85rem;">A sequence of LLM calls where the output of one becomes the input of the next. Each call has a narrow, well-defined task. No loops — the pipeline is deterministic and predictable. Best for tasks that naturally decompose into ordered stages: extract → classify → draft → review.</p>
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--green);">BEST FOR: predictable multi-step tasks, content pipelines, data transformation</div>
+            </div>
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">PATTERN B — ROUTING &amp; SPECIALIZATION</div>
+              <p style="margin:0 0 0.5rem;font-size:0.85rem;">A lightweight classifier LLM routes each request to the right specialist agent or prompt. "Is this a billing question, a technical issue, or a refund request?" Routes to separate system prompts optimized for each category. Keeps each agent's context narrow and its instructions clear.</p>
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--green);">BEST FOR: high-volume support, query classification, domain-specific expertise</div>
+            </div>
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">PATTERN C — ORCHESTRATOR + SUBAGENTS</div>
+              <p style="margin:0 0 0.5rem;font-size:0.85rem;">A primary "orchestrator" LLM decomposes the goal, delegates subtasks to specialized subagents (each with their own tools and system prompts), and synthesizes their results. The subagents work in parallel or sequence depending on dependencies. Used for complex research, code generation pipelines, and enterprise workflows.</p>
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--green);">BEST FOR: complex multi-domain tasks, parallel workloads, specialized tool sets</div>
+            </div>
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">PATTERN D — HUMAN-IN-THE-LOOP CHECKPOINTS</div>
+              <p style="margin:0 0 0.5rem;font-size:0.85rem;">The agent runs autonomously within a defined scope but pauses at designated checkpoints for human review before executing irreversible or high-stakes actions. The pause is explicit in the workflow: the agent surfaces its intended action, a human approves or redirects, then execution continues. Not a fallback — a designed safety gate.</p>
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--orange);">BEST FOR: financial actions, email/comms sending, production deployments, legal docs</div>
+            </div>
+          </div>
+
+          <div class="callout callout-info">
+            <strong>Anthropic's recommendation:</strong> Start with the simplest pattern that solves the task. Prompt chaining is easier to test, debug, and maintain than a full multi-agent system. Add autonomy and complexity only when simpler approaches demonstrably fall short — not because the more complex system sounds impressive.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Building Effective Agents</a> &nbsp;·&nbsp; <a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Agentic Guidance</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 03: Real-World Failure Patterns ── -->
+        <div class="block">
+          <div class="block-label">03 · REAL-WORLD FAILURE PATTERNS</div>
+          <h2>What Actually Breaks After Launch</h2>
+          <p>
+            Most agent failures in production are not dramatic hallucinations. They are subtle, hard to detect without logging, and often stem from the interaction between real-world variability and agent assumptions made during development. Understanding these patterns before you deploy is cheaper than debugging them under production pressure.
+          </p>
+
+          <div class="concept-grid">
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.6rem;">FAILURE 01</div>
+              <div class="concept-name">Prompt Brittleness</div>
+              <div class="concept-desc">A prompt that works on your eval set fails on real user inputs because real language is messier, more varied, and often shorter or more ambiguous than curated test cases. The agent was never exposed to production-distribution inputs during development.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--red);">ACTIVE RISK</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.6rem;">FAILURE 02</div>
+              <div class="concept-name">Tool Schema Drift</div>
+              <div class="concept-desc">An external API changes its response format or adds a required field. The agent's tool executor breaks silently — it may return empty results or malformed data that the LLM interprets as "no information found" rather than an error. Always validate tool outputs against a schema.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--red);">ACTIVE RISK</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.6rem;">FAILURE 03</div>
+              <div class="concept-name">Context Accumulation Bugs</div>
+              <div class="concept-desc">In long agent sessions, the message history grows until the context window is exceeded or performance degrades (Lost in the Middle). Developers who tested with short sessions discover that production sessions with 50+ turns behave differently — often worse.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--red);">ACTIVE RISK</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.6rem;">FAILURE 04</div>
+              <div class="concept-name">Scope Creep Under Ambiguity</div>
+              <div class="concept-desc">An ambiguous user request leads the agent to infer a broader scope than intended and take actions beyond what the user expected. "Update my profile" becomes "delete outdated entries, restructure the data, and send a confirmation email." Explicit scope constraints in the system prompt are the primary mitigation.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--red);">ACTIVE RISK</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.6rem;">FAILURE 05</div>
+              <div class="concept-name">Silent Partial Completion</div>
+              <div class="concept-desc">The agent hits its iteration or token budget mid-task and returns a partial result without clearly communicating what was and was not completed. The user or downstream system treats the partial output as complete. Always include explicit status in the agent's final message.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--red);">ACTIVE RISK</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.6rem;">FAILURE 06</div>
+              <div class="concept-name">Model Version Regressions</div>
+              <div class="concept-desc">A provider upgrades the underlying model. Behavior changes subtly — a previously reliable JSON output format starts varying, or instruction-following degrades on edge cases. Without a locked model version and regression eval suite, changes are invisible until users report issues.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--orange);">OPERATIONAL RISK</div>
+            </div>
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Building Effective Agents</a> &nbsp;·&nbsp; <a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Agentic Guidance</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 04: Evaluating Real-World Agents ── -->
+        <div class="block">
+          <div class="block-label">04 · EVALUATING REAL-WORLD AGENTS</div>
+          <h2>Measuring What Actually Matters</h2>
+          <p>
+            Evaluating an agent in production is harder than evaluating a classifier. Agent outputs are often open-ended, multi-step, and depend on external state. The right evaluation strategy combines automated checks (fast, cheap, scalable) with human review (accurate, expensive, not scalable alone) and domain-specific metrics that reflect the actual business goal.
+          </p>
+
+          <table class="compare-table" style="margin:1.5rem 0;">
+            <thead>
+              <tr><th>Metric</th><th>What it measures</th><th>How to compute</th><th>Limitation</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Task completion rate</strong></td>
+                <td>Did the agent accomplish the stated goal?</td>
+                <td>Binary pass/fail on verifiable outcomes (tests pass, form submitted, correct answer)</td>
+                <td>Hard to define for open-ended tasks</td>
+              </tr>
+              <tr>
+                <td><strong>Human preference rate</strong></td>
+                <td>Do humans prefer the agent's output over a baseline?</td>
+                <td>Side-by-side comparison by human raters</td>
+                <td>Expensive; hard to scale; rater disagreement</td>
+              </tr>
+              <tr>
+                <td><strong>Cost per completed task</strong></td>
+                <td>How much do tokens + API calls cost to produce one successful output?</td>
+                <td>Total run cost / number of successful completions</td>
+                <td>Ignores output quality — a cheap wrong answer is still wrong</td>
+              </tr>
+              <tr>
+                <td><strong>Escalation rate</strong></td>
+                <td>What fraction of tasks required human intervention?</td>
+                <td>Count of human-in-the-loop triggers / total runs</td>
+                <td>Low escalation rate may mean agent is overconfident, not actually capable</td>
+              </tr>
+              <tr>
+                <td><strong>LLM-as-judge score</strong></td>
+                <td>How well does the agent's output satisfy a rubric?</td>
+                <td>A separate LLM scores outputs against criteria (accuracy, completeness, tone)</td>
+                <td>Judge quality limits eval quality; positional and verbosity biases exist</td>
+              </tr>
+              <tr>
+                <td><strong>Error taxonomy rate</strong></td>
+                <td>Which failure modes are occurring and how often?</td>
+                <td>Classify failed runs by failure type; track trends over time</td>
+                <td>Requires manual labeling of failures to establish the taxonomy</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="callout callout-warn">
+            <strong>No single metric is sufficient.</strong> A high task completion rate with a low human preference rate means the agent is completing the wrong task. A high preference rate with a high cost per task may not be economically viable. Build a dashboard of at least three metrics — completion, quality, and cost — and set alert thresholds on all three.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Building Effective Agents</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2312.10997" target="_blank" style="color:var(--accent);text-decoration:none;">Gao et al. — RAG Survey eval framework (arXiv:2312.10997, 2023)</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 05: When NOT to Use Agents ── -->
+        <div class="block">
+          <div class="block-label">05 · WHEN NOT TO USE AGENTS</div>
+          <h2>The Most Underrated Design Decision</h2>
+          <p>
+            An agent is a powerful but expensive, slow, and non-deterministic tool. Knowing when <em>not</em> to use one is as important as knowing how to build one. The overhead of an LLM-driven loop — latency, cost, failure modes, observability complexity — is only justified when the task requires genuine reasoning, language understanding, or adaptation to variability that a simpler system cannot handle.
+          </p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;">
+            <div style="background:var(--surface-2);border:1px solid var(--border-red,#e54d42);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--red);margin-bottom:0.5rem;">DO NOT USE AN AGENT WHEN…</div>
+              <ul style="margin:0;padding-left:1.2rem;line-height:1.9;font-size:0.85rem;color:var(--text-muted);">
+                <li>The task is deterministic and fully specified — use a function or a script</li>
+                <li>Latency under ~500ms is required — LLM calls take 500ms–3s minimum</li>
+                <li>The output must be 100% reproducible — LLMs are non-deterministic even at temp=0</li>
+                <li>The action is immediately irreversible and high-stakes with no review step</li>
+                <li>The task can be solved with a single well-crafted prompt — no loop needed</li>
+                <li>You cannot instrument, log, and monitor the agent's decisions</li>
+              </ul>
+            </div>
+            <div style="background:var(--surface-2);border:1px solid var(--border-green,#30a46c);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--green);margin-bottom:0.5rem;">USE AN AGENT WHEN…</div>
+              <ul style="margin:0;padding-left:1.2rem;line-height:1.9;font-size:0.85rem;color:var(--text-muted);">
+                <li>The task requires dynamic decisions based on intermediate results</li>
+                <li>Multiple tools must be called in an order determined at runtime</li>
+                <li>The input is natural language and highly variable in structure</li>
+                <li>Latency of seconds is acceptable for the use case</li>
+                <li>There is a clear feedback signal to know when the task is done</li>
+                <li>Errors are recoverable — the agent can retry, replan, or escalate</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="callout callout-info">
+            <strong>Anthropic's guidance on minimal footprint:</strong> Agents should request only the permissions and resources needed for the current task, avoid storing sensitive information beyond immediate needs, prefer reversible over irreversible actions, and err on the side of doing less and confirming with users when uncertain about intended scope. This is not just an ethical principle — it is good engineering practice that reduces blast radius when the agent makes mistakes.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Agentic Guidance (minimal footprint)</a> &nbsp;·&nbsp; <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Building Effective Agents</a>
+          </div>
+        </div>
+
+        <!-- ── SOURCES TABLE ── -->
+        <div class="block">
+          <div class="block-label">SOURCES USED IN THIS SECTION</div>
+          <h2>Verified References</h2>
+          <p>Every claim in this section is grounded in one of these sources. No content is generated from model training data alone.</p>
+          <table class="compare-table">
+            <thead>
+              <tr><th>Source</th><th>Type</th><th>Covers</th><th>Recency</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" style="color:var(--accent);">Anthropic — Building Effective Agents</a></td>
+                <td>Official guide (Anthropic)</td>
+                <td>Architecture patterns, when to use agents, pipeline vs. orchestrator, human-in-the-loop</td>
+                <td>2024</td>
+              </tr>
+              <tr>
+                <td><a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);">Anthropic — Agentic &amp; Tool Use Docs</a></td>
+                <td>Official docs</td>
+                <td>Minimal footprint, agentic guidance, failure handling, scope constraints</td>
+                <td>Maintained 2024–2026</td>
+              </tr>
+              <tr>
+                <td><a href="https://arxiv.org/abs/2312.10997" target="_blank" style="color:var(--accent);">Gao et al. — RAG Survey</a></td>
+                <td>Academic survey</td>
+                <td>Evaluation frameworks applicable to agentic retrieval tasks</td>
+                <td>2023</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div><!-- end theory -->
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- QUIZ                                        -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div id="quiz" class="block">
+        <div class="block-label">KNOWLEDGE CHECK</div>
+        <h2>Section 12 Quiz</h2>
+        <p style="margin-bottom:1.5rem;">8 questions covering all theory blocks. Select one answer per question, then submit.</p>
+
+        <div class="lab-container">
+          <div class="lab-header">
+            <div class="lab-icon">📝</div>
+            <div class="lab-title-wrap">
+              <div class="lab-title">Section 12 — Real-World Applications</div>
+              <div class="lab-subtitle">8 QUESTIONS · MULTIPLE CHOICE · UNLIMITED RETRIES</div>
+            </div>
+          </div>
+          <div style="padding:1.5rem 2rem;">
+
+            <!-- Q1 -->
+            <div class="quiz-q" id="q1">
+              <div class="quiz-num">Question 1 of 8</div>
+              <div class="quiz-text">Software engineering is considered one of the best-proven agent use cases because the feedback loop maps directly to the ReAct loop. What property of software engineering tasks makes them particularly well-suited to autonomous agents?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q1" value="a"> <span>Code generation requires very large context windows that only agents can manage</span></label>
+                <label class="quiz-option"><input type="radio" name="q1" value="b"> <span>Outcomes are objectively verifiable — tests pass or they don't — so the agent has unambiguous feedback at each step</span></label>
+                <label class="quiz-option"><input type="radio" name="q1" value="c"> <span>Code tasks require no tools — the LLM can solve them from parametric knowledge alone</span></label>
+                <label class="quiz-option"><input type="radio" name="q1" value="d"> <span>Software tasks always complete within the iteration budget, so no replanning is needed</span></label>
+              </div>
+              <div class="quiz-feedback" id="f1"></div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="quiz-q" id="q2">
+              <div class="quiz-num">Question 2 of 8</div>
+              <div class="quiz-text">According to Anthropic's "Building Effective Agents" guidance, what is the recommended approach when deciding how much autonomy to give an agent?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q2" value="a"> <span>Always build the most sophisticated multi-agent architecture from the start to handle future complexity</span></label>
+                <label class="quiz-option"><input type="radio" name="q2" value="b"> <span>Start with the simplest pattern that solves the task and add autonomy only when simpler approaches demonstrably fall short</span></label>
+                <label class="quiz-option"><input type="radio" name="q2" value="c"> <span>Fully autonomous agents always outperform human-in-the-loop patterns in production</span></label>
+                <label class="quiz-option"><input type="radio" name="q2" value="d"> <span>Use orchestrator-subagent patterns by default, regardless of task complexity</span></label>
+              </div>
+              <div class="quiz-feedback" id="f2"></div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="quiz-q" id="q3">
+              <div class="quiz-num">Question 3 of 8</div>
+              <div class="quiz-text">A deployed customer service agent shows a high task completion rate but users keep requesting to speak with a human anyway. What failure mode does this likely indicate?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q3" value="a"> <span>Tool schema drift — the agent's tools stopped returning correct results</span></label>
+                <label class="quiz-option"><input type="radio" name="q3" value="b"> <span>The agent is completing the wrong task or completing it in a way that does not satisfy users — high completion rate with low satisfaction is a quality problem, not a capability problem</span></label>
+                <label class="quiz-option"><input type="radio" name="q3" value="c"> <span>Model version regression — the LLM was upgraded and behavior changed</span></label>
+                <label class="quiz-option"><input type="radio" name="q3" value="d"> <span>Context accumulation bug — the agent's history is too long</span></label>
+              </div>
+              <div class="quiz-feedback" id="f3"></div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="quiz-q" id="q4">
+              <div class="quiz-num">Question 4 of 8</div>
+              <div class="quiz-text">In a human-in-the-loop agent architecture, at which point should the human checkpoint ideally occur?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q4" value="a"> <span>After every single LLM call to verify each output before proceeding</span></label>
+                <label class="quiz-option"><input type="radio" name="q4" value="b"> <span>Only when the agent encounters an error it cannot resolve</span></label>
+                <label class="quiz-option"><input type="radio" name="q4" value="c"> <span>Before executing irreversible or high-stakes actions — a designed gate where the agent surfaces its intended action for approval before running it</span></label>
+                <label class="quiz-option"><input type="radio" name="q4" value="d"> <span>At the end of the run to review the full output before it is stored</span></label>
+              </div>
+              <div class="quiz-feedback" id="f4"></div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="quiz-q" id="q5">
+              <div class="quiz-num">Question 5 of 8</div>
+              <div class="quiz-text">Which of the following scenarios is LEAST suited to an autonomous agent, according to the guidelines in this section?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q5" value="a"> <span>Extracting structured data from a large batch of variable-format invoices</span></label>
+                <label class="quiz-option"><input type="radio" name="q5" value="b"> <span>Answering customer questions by searching a knowledge base</span></label>
+                <label class="quiz-option"><input type="radio" name="q5" value="c"> <span>Computing the square root of a number in under 50 milliseconds for a high-frequency trading system</span></label>
+                <label class="quiz-option"><input type="radio" name="q5" value="d"> <span>Drafting a research summary from multiple web sources</span></label>
+              </div>
+              <div class="quiz-feedback" id="f5"></div>
+            </div>
+
+            <!-- Q6 -->
+            <div class="quiz-q" id="q6">
+              <div class="quiz-num">Question 6 of 8</div>
+              <div class="quiz-text">"Prompt brittleness" as a production failure mode means:</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q6" value="a"> <span>The system prompt is too long and exceeds the context window</span></label>
+                <label class="quiz-option"><input type="radio" name="q6" value="b"> <span>The agent's prompts were designed to be changed frequently, making the system hard to maintain</span></label>
+                <label class="quiz-option"><input type="radio" name="q6" value="c"> <span>A prompt that worked on the development eval set fails on real production inputs because real user language is more varied and ambiguous than the test cases</span></label>
+                <label class="quiz-option"><input type="radio" name="q6" value="d"> <span>The LLM refuses to follow the system prompt due to safety filters</span></label>
+              </div>
+              <div class="quiz-feedback" id="f6"></div>
+            </div>
+
+            <!-- Q7 -->
+            <div class="quiz-q" id="q7">
+              <div class="quiz-num">Question 7 of 8</div>
+              <div class="quiz-text">The "routing and specialization" architecture pattern routes each incoming request to a specialist agent. What is the primary benefit of this approach over a single general-purpose agent?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q7" value="a"> <span>It eliminates the need for a system prompt entirely</span></label>
+                <label class="quiz-option"><input type="radio" name="q7" value="b"> <span>It reduces cost by running smaller models for every request</span></label>
+                <label class="quiz-option"><input type="radio" name="q7" value="c"> <span>Each specialist agent has a narrow, focused context and optimized instructions — improving accuracy, reducing confusion, and making each agent easier to test and maintain</span></label>
+                <label class="quiz-option"><input type="radio" name="q7" value="d"> <span>It guarantees that no request will ever require a human escalation</span></label>
+              </div>
+              <div class="quiz-feedback" id="f7"></div>
+            </div>
+
+            <!-- Q8 -->
+            <div class="quiz-q" id="q8">
+              <div class="quiz-num">Question 8 of 8</div>
+              <div class="quiz-text">Anthropic's "minimal footprint" principle states that agents should prefer reversible over irreversible actions. Which of the following agent behaviors best exemplifies this principle?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q8" value="a"> <span>Permanently deleting all duplicate records from a database immediately when asked to "clean up" the data</span></label>
+                <label class="quiz-option"><input type="radio" name="q8" value="b"> <span>Moving duplicate records to an archive table first, reporting what was found, and asking for confirmation before any permanent deletion</span></label>
+                <label class="quiz-option"><input type="radio" name="q8" value="c"> <span>Requesting administrator-level permissions to ensure no future action is blocked</span></label>
+                <label class="quiz-option"><input type="radio" name="q8" value="d"> <span>Running all planned actions in parallel to complete the task faster</span></label>
+              </div>
+              <div class="quiz-feedback" id="f8"></div>
+            </div>
+
+            <div style="margin-top:2rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
+              <button class="btn btn-accent" onclick="submitQuiz()">Submit Answers</button>
+              <button class="btn btn-outline" onclick="resetQuiz()" style="display:none;" id="retryBtn">Try Again</button>
+              <div id="quiz-score" style="font-family:var(--font-mono);font-size:0.85rem;color:var(--text-muted);"></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end quiz -->
+
+      <!-- MARK COMPLETE + NAVIGATION -->
+      <div class="mark-complete-bar">
+        <p>Finished the theory and passed the quiz? Mark this section complete to track your progress.</p>
+        <button class="btn btn-outline" id="completeBtn2" data-section="12" onclick="document.getElementById('completeBtn').click()">Mark Section 12 Complete</button>
+      </div>
+
+      <div style="text-align:center;margin:2rem 0 0;font-family:var(--font-mono);font-size:0.62rem;color:var(--text-dim);">
+        Last updated: <time datetime="2026-04-05">April 5, 2026</time>
+      </div>
+      <div class="section-nav-footer">
+        <a href="11-deployment.html" class="nav-prev">← Section 11: Deploying Agents</a>
+        <a href="13-mcp.html" class="nav-next">Section 13: MCP &amp; Protocols →</a>
+      </div>
+
+    </div><!-- end page -->
+  </main>
+</div>
+
+<script src="../course.js"></script>
+<script>
+const QUIZ_ANSWERS = { q1:'b', q2:'b', q3:'b', q4:'c', q5:'c', q6:'c', q7:'c', q8:'b' };
+
+const QUIZ_EXPLANATIONS = {
+  q1: 'Correct. Software engineering tasks have objective, verifiable outcomes — either the tests pass or they fail. This gives the agent an unambiguous reward signal at each step without needing human judges. This is why coding agents have achieved the highest benchmark scores among all agent categories.',
+  q2: 'Correct. Anthropic\'s "Building Effective Agents" guide explicitly recommends starting with the simplest pattern that works and adding autonomy and complexity only when simpler solutions demonstrably fall short. Complexity adds cost, failure surface, and operational burden.',
+  q3: 'Correct. A high task completion rate combined with low user satisfaction signals a quality problem: the agent is completing something, but not what users actually needed. Task completion rate measures effort, not value. Human preference rate or escalation rate would have revealed this earlier.',
+  q4: 'Correct. The human checkpoint is most valuable immediately before an irreversible or high-stakes action — not after every call (too disruptive) and not only on errors (too late). The agent should surface what it intends to do, get approval, then execute. This is a designed safety gate, not a fallback.',
+  q5: 'Correct. A computation requiring under 50ms latency in a high-frequency trading system is completely wrong for an agent: LLM calls take 500ms–3s minimum, the task is purely deterministic, and it requires 100% reproducible results. A function or formula is the right tool.',
+  q6: 'Correct. Prompt brittleness is the gap between development-time performance (on curated test cases) and production performance (on real, messy user inputs). Real user language is shorter, more ambiguous, and more varied than what developers write in eval sets. It is one of the most common post-launch surprises.',
+  q7: 'Correct. Routing to specialist agents keeps each agent\'s context narrow and its instructions highly optimized for one task category. A general-purpose agent must handle all cases with one prompt — which is harder to tune, harder to test, and more likely to confuse category boundaries.',
+  q8: 'Correct. The minimal footprint principle means preferring reversible actions (archiving, staging, drafting) over irreversible ones (deleting, sending, deploying) — and confirming with users when uncertain about scope. Moving records to an archive and asking before deleting is the textbook application of this principle.'
+};
+
+const QUIZ_WRONG_HINTS = {
+  q1: 'Think about what makes a task easy to give an agent feedback on. The key word is "verifiable." What does passing or failing a test suite give the agent that most other task types don\'t?',
+  q2: 'Anthropic\'s guide starts with the simplest approach. Think about what increases engineering complexity without necessarily increasing capability — and why that matters in production.',
+  q3: 'The agent is completing tasks but users are still unhappy. If the completion rate is high, the problem isn\'t capability. What does user behavior (requesting human agents) tell you about the quality of the completions?',
+  q4: 'The most expensive type of action to recover from is one that has already happened. When should a human approve before the agent acts, rather than reviewing after?',
+  q5: 'Think about the two hard constraints mentioned in the "When NOT to use agents" section: latency requirements and determinism requirements. Which option clearly violates both?',
+  q6: 'The word "brittle" refers to something that performs well under controlled conditions but breaks under real-world variability. What is the "controlled condition" during agent development, and what is the "real-world variability" in production?',
+  q7: 'Think about what changes when you have one agent that handles all request types vs. separate specialized agents. What does each specialist agent gain that a generalist agent cannot have?',
+  q8: 'The minimal footprint principle is about reversibility and confirmation before high-stakes actions. Which option keeps the most options open and gets confirmation before making a permanent change?'
+};
+
+function submitQuiz() {
+  let score = 0;
+  let allAnswered = true;
+
+  for (let i = 1; i <= 8; i++) {
+    const key = 'q' + i;
+    const selected = document.querySelector(`input[name="${key}"]:checked`);
+    const feedback = document.getElementById('f' + i);
+    const qEl = document.getElementById(key);
+
+    if (!selected) { allAnswered = false; continue; }
+
+    const options = qEl.querySelectorAll('.quiz-option');
+    options.forEach(opt => {
+      opt.style.pointerEvents = 'none';
+      const inp = opt.querySelector('input');
+      if (inp.value === QUIZ_ANSWERS[key]) {
+        opt.style.color = 'var(--green)';
+        opt.style.borderColor = 'var(--green)';
+      }
+    });
+
+    if (selected.value === QUIZ_ANSWERS[key]) {
+      score++;
+      feedback.innerHTML = '<span style="color:var(--green);">✓ ' + QUIZ_EXPLANATIONS[key] + '</span>';
+    } else {
+      feedback.innerHTML = '<span style="color:var(--red);">✗ Not quite. ' + QUIZ_WRONG_HINTS[key] + '</span>';
+      selected.closest('.quiz-option').style.color = 'var(--red)';
+    }
+    feedback.style.display = 'block';
+  }
+
+  if (!allAnswered) {
+    document.getElementById('quiz-score').textContent = 'Please answer all questions before submitting.';
+    return;
+  }
+
+  const pct = Math.round((score / 8) * 100);
+  let msg = '';
+  if (score === 8) msg = '— Perfect score! You are ready for Section 13.';
+  else if (score >= 6) msg = '— Good. Review the ones you missed before moving on.';
+  else msg = '— Re-read the theory sections you struggled with, then retry.';
+
+  document.getElementById('quiz-score').innerHTML =
+    '<strong style="color:var(--accent);">' + score + '/8 (' + pct + '%)</strong> ' + msg;
+  document.getElementById('retryBtn').style.display = 'inline-flex';
+  document.querySelector('[onclick="submitQuiz()"]').style.display = 'none';
+}
+
+function resetQuiz() {
+  for (let i = 1; i <= 8; i++) {
+    const key = 'q' + i;
+    document.querySelectorAll(`input[name="${key}"]`).forEach(inp => { inp.checked = false; });
+    const feedback = document.getElementById('f' + i);
+    feedback.innerHTML = '';
+    feedback.style.display = 'none';
+    const qEl = document.getElementById(key);
+    qEl.querySelectorAll('.quiz-option').forEach(opt => {
+      opt.style.color = '';
+      opt.style.borderColor = '';
+      opt.style.pointerEvents = '';
+    });
+  }
+  document.getElementById('quiz-score').innerHTML = '';
+  document.getElementById('retryBtn').style.display = 'none';
+  document.querySelector('[onclick="submitQuiz()"]').style.display = 'inline-flex';
+}
+</script>
+</body>
+</html>

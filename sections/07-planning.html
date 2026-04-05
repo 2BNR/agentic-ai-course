@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>07 — Decision-Making &amp; Planning · Agentic AI Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="../style.css">
+<noscript><style>
+/* No-JS: make sidebar visible and stack layout vertically on mobile */
+@media (max-width: 768px) {
+  .sidebar { transform: none; position: relative; width: 100%; height: auto; }
+  .layout  { flex-direction: column; }
+}
+</style></noscript>
+<link rel="manifest" href="../manifest.json">
+</head>
+<body data-section="7">
+<noscript>
+  <div style="background:#1a1200;border-bottom:2px solid #c87d00;color:#f0c060;padding:0.75rem 1.5rem;font-family:monospace;font-size:0.82rem;text-align:center;position:relative;z-index:999;">
+    &#9888; JavaScript is disabled. Progress tracking, quizzes, and interactive features require JavaScript.
+  </div>
+</noscript>
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <a href="../index.html" class="sidebar-logo" style="text-decoration:none;display:block;">
+      <div class="logo-eyebrow">// AGENTIC AI COURSE</div>
+      <div class="logo-name">Learn <span>Agentic AI</span><br>2026 Edition</div>
+    </a>
+    <div class="sidebar-progress">
+      <div class="progress-row">
+        <span class="progress-label">OVERALL PROGRESS</span>
+        <span class="progress-count" id="progressCount">0 / 16</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+    <div class="sidebar-nav">
+      <div class="nav-group-label">Foundation</div>
+      <a href="01-intro.html" class="nav-item" data-section="1"><span class="nav-num">01</span> Intro to Agentic AI <span class="nav-check">✓</span></a>
+      <a href="02-ml-fundamentals.html" class="nav-item" data-section="2"><span class="nav-num">02</span> AI &amp; ML Fundamentals <span class="nav-check">✓</span></a>
+      <a href="03-frameworks.html" class="nav-item" data-section="3"><span class="nav-num">03</span> Programming &amp; Frameworks <span class="nav-check">✓</span></a>
+      <a href="04-llms.html" class="nav-item" data-section="4"><span class="nav-num">04</span> Large Language Models <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">Core Agents</div>
+      <a href="05-understanding-agents.html" class="nav-item" data-section="5"><span class="nav-num">05</span> Understanding Agents <span class="nav-check">✓</span></a>
+      <a href="06-memory.html" class="nav-item" data-section="6"><span class="nav-num">06</span> Memory &amp; Knowledge <span class="nav-check">✓</span></a>
+      <a href="07-planning.html" class="nav-item active" data-section="7"><span class="nav-num">07</span> Decision-Making &amp; Planning <span class="nav-check">✓</span></a>
+      <a href="08-prompting.html" class="nav-item" data-section="8"><span class="nav-num">08</span> Prompt Engineering <span class="nav-check">✓</span></a>
+      <a href="09-rl.html" class="nav-item" data-section="9"><span class="nav-num">09</span> RL &amp; Self-Improvement <span class="nav-check">✓</span></a>
+      <a href="10-rag.html" class="nav-item" data-section="10"><span class="nav-num">10</span> RAG <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">Production</div>
+      <a href="11-deployment.html" class="nav-item" data-section="11"><span class="nav-num">11</span> Deploying Agents <span class="nav-check">✓</span></a>
+      <a href="12-real-world.html" class="nav-item" data-section="12"><span class="nav-num">12</span> Real-World Applications <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">2026 New</div>
+      <a href="13-mcp.html" class="nav-item" data-section="13"><span class="nav-num">13</span> MCP &amp; Protocols <span class="nav-check">✓</span></a>
+      <a href="14-multi-agent.html" class="nav-item" data-section="14"><span class="nav-num">14</span> Multi-Agent Orchestration <span class="nav-check">✓</span></a>
+      <a href="15-security.html" class="nav-item" data-section="15"><span class="nav-num">15</span> Agent Security <span class="nav-check">✓</span></a>
+      <a href="16-long-horizon.html" class="nav-item" data-section="16"><span class="nav-num">16</span> Long-Horizon Agents <span class="nav-check">✓</span></a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="topbar-breadcrumb">
+        <a href="../index.html" style="color:var(--text-muted);text-decoration:none;">Course</a>
+        &nbsp;/&nbsp; <span>07 · Decision-Making &amp; Planning</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn btn-outline" id="completeBtn" data-section="7">Mark Complete</button>
+      </div>
+    </div>
+
+    <div class="page">
+
+      <!-- HERO -->
+      <div class="section-hero">
+        <div class="hero-meta">
+          <span class="hero-num">SECTION 07</span>
+          <span class="hero-tag tag-core">CORE</span>
+          <span class="hero-tag tag-lab">LAB</span>
+        </div>
+        <h1 class="section-title">Decision-Making<br><span>&amp; Planning</span></h1>
+        <p class="section-intro">
+          Knowing how to call a tool is not enough. Real-world tasks require breaking a goal into ordered steps, deciding which step to take next given intermediate results, and recovering when a step fails. This section covers the planning techniques that separate toy demos from production agents: chain-of-thought decomposition, plan-and-execute architecture, Tree of Thoughts search, and principled replanning when things go wrong.
+        </p>
+        <div class="hero-actions">
+          <a href="#theory" class="btn btn-accent">📖 Start Theory</a>
+          <a href="#lab" class="btn btn-outline">🔬 Jump to Lab</a>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- THEORY                                      -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div id="theory">
+
+        <!-- ── BLOCK 01: From Prompt to Plan ── -->
+        <div class="block">
+          <div class="block-label">01 · FROM PROMPT TO PLAN</div>
+          <h2>How LLMs Decompose Goals</h2>
+          <p>
+            An LLM's base capability is completing a prompt. Planning is the structured use of that capability to break a complex goal into a sequence of smaller, achievable subgoals. The key insight from the Chain-of-Thought paper (Wei et al., 2022) is that prompting the model to show its reasoning step-by-step — rather than jumping straight to an answer — dramatically improves performance on multi-step tasks.
+          </p>
+          <p>
+            For agents, Chain-of-Thought is the mechanism behind every planning step. When you ask an agent to "research competitor pricing and write a summary report," it must decompose that into: identify competitors → search each → extract prices → compare → draft report. If the model tries to do all of this in one shot, it hallucinates. If it reasons through each step explicitly, each step becomes a verifiable, correctable unit.
+          </p>
+
+          <!-- CoT vs direct prompting -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.2rem 0;">
+            <div style="background:var(--surface);border:1px solid var(--red);border-radius:8px;padding:1.2rem;">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.5rem;">WITHOUT PLANNING</div>
+              <div style="font-size:0.8rem;color:var(--text-muted);line-height:1.7;font-family:var(--font-mono);">
+                User: "Research our top 3 competitors and write a pricing summary."<br><br>
+                Agent: [one giant API call, guesses competitor names, fabricates prices, returns confident-sounding hallucination]
+              </div>
+            </div>
+            <div style="background:var(--surface);border:1px solid var(--green);border-radius:8px;padding:1.2rem;">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--green);margin-bottom:0.5rem;">WITH PLANNING</div>
+              <div style="font-size:0.8rem;color:var(--text-muted);line-height:1.7;font-family:var(--font-mono);">
+                Step 1: Search "top SaaS competitors in [category]"<br>
+                Step 2: Search "[Competitor A] pricing page"<br>
+                Step 3: Search "[Competitor B] pricing page"<br>
+                Step 4: Compare extracted prices<br>
+                Step 5: Write summary from verified data
+              </div>
+            </div>
+          </div>
+
+          <div class="callout callout-info">
+            <strong>Planning also enables verification.</strong> When an agent's steps are explicit, each output can be checked — either programmatically (does the search return results?) or by a human reviewer. An agent that thinks in one opaque step gives you no intervention point when something goes wrong.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://arxiv.org/abs/2201.11903" target="_blank" style="color:var(--accent);text-decoration:none;">Wei et al. — Chain-of-Thought Prompting (arXiv:2201.11903, 2022)</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2305.04091" target="_blank" style="color:var(--accent);text-decoration:none;">Wang et al. — Plan-and-Solve (arXiv:2305.04091, 2023)</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 02: Plan-and-Execute Architecture ── -->
+        <div class="block">
+          <div class="block-label">02 · PLAN-AND-EXECUTE ARCHITECTURE</div>
+          <h2>Separate Planning from Execution</h2>
+          <p>
+            In a standard ReAct loop, the agent plans and acts interleaved — each iteration decides the next step based on the last observation. This works well for tasks where the path is truly unknown until runtime. But for tasks that <em>can</em> be decomposed upfront, a cleaner architecture is <strong>plan-and-execute</strong>: one LLM call to produce the full step list, then a separate executor loop that works through that list.
+          </p>
+          <p>
+            The Plan-and-Solve paper (Wang et al., 2023) showed that explicitly prompting the model to first devise a plan before solving improves accuracy on reasoning benchmarks. The architectural benefit for agents is even bigger: a pre-generated plan can be inspected, logged, and modified before execution begins — enabling human-in-the-loop approval of the plan before the agent takes any irreversible actions.
+          </p>
+
+          <!-- Architecture diagram -->
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin:1.2rem 0;font-family:var(--font-mono);font-size:0.72rem;">
+            <div style="color:var(--text-dim);margin-bottom:1rem;">// PLAN-AND-EXECUTE FLOW</div>
+            <div style="display:flex;flex-direction:column;gap:0.6rem;">
+              <div style="display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;">
+                <span style="background:var(--bg);border:1px solid var(--accent);padding:0.3rem 0.8rem;border-radius:4px;color:var(--accent);">User Goal</span>
+                <span style="color:var(--text-dim);">→</span>
+                <span style="background:var(--bg);border:1px solid var(--green);padding:0.3rem 0.8rem;border-radius:4px;color:var(--green);">PLANNER LLM CALL</span>
+                <span style="color:var(--text-dim);">→</span>
+                <span style="background:var(--bg);border:1px solid var(--border);padding:0.3rem 0.8rem;border-radius:4px;">[Step 1, Step 2, Step 3, ...]</span>
+              </div>
+              <div style="padding-left:2rem;color:var(--text-dim);">↓ (optional: human reviews plan here)</div>
+              <div style="display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;">
+                <span style="background:var(--bg);border:1px solid var(--border);padding:0.3rem 0.8rem;border-radius:4px;">[Step 1, Step 2, Step 3, ...]</span>
+                <span style="color:var(--text-dim);">→</span>
+                <span style="background:var(--bg);border:1px solid var(--orange);padding:0.3rem 0.8rem;border-radius:4px;color:var(--orange);">EXECUTOR LOOP</span>
+                <span style="color:var(--text-dim);">→</span>
+                <span style="background:var(--bg);border:1px solid var(--accent);padding:0.3rem 0.8rem;border-radius:4px;color:var(--accent);">Final Output</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="concept-grid" style="grid-template-columns:repeat(2,1fr);">
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--green);margin-bottom:0.4rem;">ADVANTAGES</div>
+              <div class="concept-desc" style="line-height:1.8;">
+                ✓ Plan is inspectable before execution<br>
+                ✓ Enables human-in-the-loop plan approval<br>
+                ✓ Independent steps can run in parallel<br>
+                ✓ Cleaner separation of concerns<br>
+                ✓ Easier to log, replay, and debug
+              </div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.4rem;">LIMITATIONS</div>
+              <div class="concept-desc" style="line-height:1.8;">
+                ✗ Plan may be invalidated by early step results<br>
+                ✗ Requires a replanning mechanism for failures<br>
+                ✗ Extra LLM call upfront increases cost and latency<br>
+                ✗ Not suitable for highly dynamic, open-ended tasks
+              </div>
+            </div>
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://arxiv.org/abs/2305.04091" target="_blank" style="color:var(--accent);text-decoration:none;">Wang et al. — Plan-and-Solve (arXiv:2305.04091, 2023)</a> &nbsp;·&nbsp; <a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Agents &amp; Tool Use Docs</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 03: Tree of Thoughts ── -->
+        <div class="block">
+          <div class="block-label">03 · TREE OF THOUGHTS</div>
+          <h2>Search Over Reasoning Paths</h2>
+          <p>
+            Chain-of-Thought generates a single reasoning path. <strong>Tree of Thoughts (ToT)</strong> (Yao et al., 2023) generalises this: instead of committing to one reasoning chain, the model explores <em>multiple candidate next steps</em> at each decision point, evaluates them, and pursues the most promising branch — like a search tree over the space of possible reasoning paths.
+          </p>
+          <p>
+            ToT is overkill for most agent tasks, but it is the right tool for problems where the solution space is large, where greedy step-by-step reasoning fails, and where you have a way to evaluate intermediate states. Classic examples: creative writing with constraints, multi-step math, and strategic planning with competing options.
+          </p>
+
+          <!-- ToT vs CoT diagram -->
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin:1.2rem 0;font-family:var(--font-mono);font-size:0.68rem;line-height:2;">
+            <div style="color:var(--text-dim);margin-bottom:0.5rem;">// CHAIN-OF-THOUGHT vs TREE-OF-THOUGHTS</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+              <div>
+                <div style="color:var(--text-muted);margin-bottom:0.3rem;">CoT — single path</div>
+                <div style="color:var(--text-dim);">
+                  Goal<br>
+                  &nbsp;└─ Step A<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;└─ Step B<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ Step C → Answer
+                </div>
+              </div>
+              <div>
+                <div style="color:var(--text-muted);margin-bottom:0.3rem;">ToT — branching search</div>
+                <div style="color:var(--text-dim);">
+                  Goal<br>
+                  &nbsp;├─ Path A1 <span style="color:var(--red);">[score: 0.4 ✗]</span><br>
+                  &nbsp;├─ Path A2 <span style="color:var(--orange);">[score: 0.7]</span><br>
+                  &nbsp;│&nbsp;&nbsp;&nbsp;├─ B1 <span style="color:var(--red);">[score: 0.3 ✗]</span><br>
+                  &nbsp;│&nbsp;&nbsp;&nbsp;└─ B2 <span style="color:var(--green);">[score: 0.9 → Answer]</span><br>
+                  &nbsp;└─ Path A3 <span style="color:var(--red);">[score: 0.2 ✗]</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout callout-warning">
+            <strong>ToT is expensive.</strong> Each branch requires at least one LLM call, and evaluating branches requires another. A ToT with branching factor 3 and depth 3 may require 12+ LLM calls for a single request. Use it only when output quality justifies the cost — and always set a hard branching budget.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://arxiv.org/abs/2305.10601" target="_blank" style="color:var(--accent);text-decoration:none;">Yao et al. — Tree of Thoughts (arXiv:2305.10601, 2023)</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2201.11903" target="_blank" style="color:var(--accent);text-decoration:none;">Wei et al. — Chain-of-Thought (arXiv:2201.11903, 2022)</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 04: Decision-Making Under Uncertainty ── -->
+        <div class="block">
+          <div class="block-label">04 · DECISION-MAKING UNDER UNCERTAINTY</div>
+          <h2>When to Act, When to Ask, When to Stop</h2>
+          <p>
+            Production agents constantly face ambiguous situations: the user's goal is underspecified, a tool returns unexpected data, or two valid next steps have unknown consequences. Anthropic's guidance is explicit: agents should prefer <strong>cautious actions</strong>, accept a worse expected outcome in exchange for lower variance, and err on the side of doing less and confirming with users when uncertain about intended scope. The key principle is <em>minimal footprint</em>.
+          </p>
+
+          <div class="concept-grid" style="grid-template-columns:repeat(3,1fr);">
+            <div class="concept-card">
+              <div class="concept-icon">❓</div>
+              <div class="concept-name">Ask for Clarification</div>
+              <div class="concept-desc">When the goal is ambiguous enough that different interpretations lead to meaningfully different actions. Ask before a long irreversible run, not mid-way through it.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">PREFER: before irreversible steps</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">🛑</div>
+              <div class="concept-name">Pause for Approval</div>
+              <div class="concept-desc">Before any action that cannot be undone — sending emails, deleting data, spending money, deploying code. Gate these with an explicit human checkpoint.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--orange);">REQUIRED: irreversible actions</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">🔁</div>
+              <div class="concept-name">Replan</div>
+              <div class="concept-desc">When a step fails or produces unexpected results, do not blindly retry. Update the remaining step list based on new information and continue from the revised plan.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">PREFER: over blind retry</div>
+            </div>
+          </div>
+
+          <!-- Reversibility table -->
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem 1.5rem;margin:1.2rem 0;">
+            <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--text-dim);margin-bottom:0.8rem;">// ACTION CLASSIFICATION — REVERSIBILITY</div>
+            <table style="width:100%;border-collapse:collapse;font-size:0.78rem;">
+              <thead>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <th style="text-align:left;padding:0.4rem 0.6rem;color:var(--text-dim);font-family:var(--font-mono);font-size:0.6rem;">ACTION</th>
+                  <th style="text-align:left;padding:0.4rem 0.6rem;color:var(--text-dim);font-family:var(--font-mono);font-size:0.6rem;">REVERSIBLE?</th>
+                  <th style="text-align:left;padding:0.4rem 0.6rem;color:var(--text-dim);font-family:var(--font-mono);font-size:0.6rem;">POLICY</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:0.4rem 0.6rem;color:var(--text-muted);">Read file / search web</td>
+                  <td style="padding:0.4rem 0.6rem;color:var(--green);">Yes</td>
+                  <td style="padding:0.4rem 0.6rem;color:var(--text-muted);">Execute freely</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:0.4rem 0.6rem;color:var(--text-muted);">Write to a draft / temp file</td>
+                  <td style="padding:0.4rem 0.6rem;color:var(--green);">Yes</td>
+                  <td style="padding:0.4rem 0.6rem;color:var(--text-muted);">Execute freely</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:0.4rem 0.6rem;color:var(--text-muted);">Overwrite existing file</td>
+                  <td style="padding:0.4rem 0.6rem;color:var(--orange);">Partially</td>
+                  <td style="padding:0.4rem 0.6rem;color:var(--text-muted);">Create backup first</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:0.4rem 0.6rem;color:var(--text-muted);">Send email / Slack message</td>
+                  <td style="padding:0.4rem 0.6rem;color:var(--red);">No</td>
+                  <td style="padding:0.4rem 0.6rem;color:var(--red);">Require explicit human approval</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:0.4rem 0.6rem;color:var(--text-muted);">Delete records from DB</td>
+                  <td style="padding:0.4rem 0.6rem;color:var(--red);">No</td>
+                  <td style="padding:0.4rem 0.6rem;color:var(--red);">Require explicit human approval</td>
+                </tr>
+                <tr>
+                  <td style="padding:0.4rem 0.6rem;color:var(--text-muted);">Deploy to production</td>
+                  <td style="padding:0.4rem 0.6rem;color:var(--red);">No</td>
+                  <td style="padding:0.4rem 0.6rem;color:var(--red);">Require explicit human approval</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Agentic Guidance (minimal footprint, irreversible actions)</a> &nbsp;·&nbsp; <a href="https://lilianweng.github.io/posts/2023-06-23-agent/" target="_blank" style="color:var(--accent);text-decoration:none;">Lilian Weng — LLM Powered Autonomous Agents (2023)</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 05: Replanning and Failure Recovery ── -->
+        <div class="block">
+          <div class="block-label">05 · REPLANNING &amp; FAILURE RECOVERY</div>
+          <h2>Plans Break — Agents Must Adapt</h2>
+          <p>
+            A plan generated upfront is a best-guess, not a contract. Tool calls fail, APIs return unexpected data, and intermediate results invalidate later steps. A robust agent must detect these situations and replan rather than crashing or blindly retrying the same failing step.
+          </p>
+          <p>
+            <strong>Retrying</strong> repeats the same action hoping for a different result. <strong>Replanning</strong> calls the LLM again with the current state — what has been done, what failed, what remains — and asks for a revised step list. The new plan incorporates the failure as information.
+          </p>
+
+          <div class="concept-grid" style="grid-template-columns:repeat(2,1fr);">
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.4rem;">FAILURE TYPE 01 — Tool Error</div>
+              <div class="concept-name">Tool returns an error</div>
+              <div class="concept-desc">The executor raised an exception or returned an error string. Catch it, return it as the tool result, and let the LLM decide whether to retry with different inputs, use a fallback tool, or report failure.</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.4rem;">FAILURE TYPE 02 — Wrong Result</div>
+              <div class="concept-name">Tool succeeds but result is useless</div>
+              <div class="concept-desc">Search returns irrelevant results; a file exists but has no useful content. The LLM must recognise this in its Observation and choose a different query or tool rather than proceeding on bad data.</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.4rem;">FAILURE TYPE 03 — Stale Plan</div>
+              <div class="concept-name">Early step invalidates later steps</div>
+              <div class="concept-desc">Step 1 reveals the task is different from what was assumed. Trigger explicit replanning — call the LLM with a summary of progress and the new information, and ask for a revised remaining plan.</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.4rem;">FAILURE TYPE 04 — Max Iterations</div>
+              <div class="concept-name">Agent stuck in a loop</div>
+              <div class="concept-desc">The agent keeps trying the same approach without progress. Hard iteration budget + escalation path: when the limit is reached, surface partial results with a clear explanation of where the agent got stuck.</div>
+            </div>
+          </div>
+
+          <div class="callout callout-info" style="margin-top:1rem;">
+            <strong>Always return errors as tool results — never raise unhandled exceptions.</strong> If your tool executor crashes and the exception propagates, the agent loop terminates with no useful output. Wrap all tool calls in try/except and return the error message as a string. The LLM can recover from an error it can read; it cannot recover from a Python stack trace.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://arxiv.org/abs/2303.11366" target="_blank" style="color:var(--accent);text-decoration:none;">Shinn et al. — Reflexion (arXiv:2303.11366, 2023)</a> &nbsp;·&nbsp; <a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Tool Use &amp; Agentic Guidance</a>
+          </div>
+        </div>
+
+        <!-- ── SOURCES TABLE ── -->
+        <div class="block">
+          <div class="block-label">SOURCES USED IN THIS SECTION</div>
+          <h2>Verified References</h2>
+          <p>Every claim in this section is grounded in one of these sources.</p>
+          <table class="compare-table">
+            <thead>
+              <tr><th>Source</th><th>Type</th><th>Covers</th><th>Recency</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://arxiv.org/abs/2201.11903" target="_blank" style="color:var(--accent);">Wei et al. — Chain-of-Thought Prompting</a></td>
+                <td>Academic paper</td>
+                <td>Chain-of-thought reasoning, step-by-step decomposition, emergent planning</td>
+                <td>2022</td>
+              </tr>
+              <tr>
+                <td><a href="https://arxiv.org/abs/2305.04091" target="_blank" style="color:var(--accent);">Wang et al. — Plan-and-Solve</a></td>
+                <td>Academic paper</td>
+                <td>Plan-and-execute architecture, planner/executor split, reasoning benchmarks</td>
+                <td>2023</td>
+              </tr>
+              <tr>
+                <td><a href="https://arxiv.org/abs/2305.10601" target="_blank" style="color:var(--accent);">Yao et al. — Tree of Thoughts</a></td>
+                <td>Academic paper</td>
+                <td>ToT framework, branching search over reasoning paths, evaluation heuristics</td>
+                <td>2023</td>
+              </tr>
+              <tr>
+                <td><a href="https://arxiv.org/abs/2303.11366" target="_blank" style="color:var(--accent);">Shinn et al. — Reflexion</a></td>
+                <td>Academic paper</td>
+                <td>Failure recovery, verbal reinforcement, replanning from failure</td>
+                <td>2023</td>
+              </tr>
+              <tr>
+                <td><a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);">Anthropic — Tool Use &amp; Agentic Guidance</a></td>
+                <td>Official docs</td>
+                <td>Minimal footprint, irreversible actions, human-in-the-loop checkpoints</td>
+                <td>Maintained 2024–2026</td>
+              </tr>
+              <tr>
+                <td><a href="https://lilianweng.github.io/posts/2023-06-23-agent/" target="_blank" style="color:var(--accent);">Lilian Weng — LLM Powered Autonomous Agents</a></td>
+                <td>Blog / Survey</td>
+                <td>Planning survey, task decomposition, decision-making under uncertainty</td>
+                <td>June 2023</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div><!-- end theory -->
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- LAB                                         -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div id="lab" class="block">
+        <div class="block-label">HANDS-ON LAB</div>
+        <h2>Build a Plan-and-Execute Agent with Replanning</h2>
+        <p style="margin-bottom:1.5rem;">
+          You will build a plan-and-execute agent that first generates a structured step list, then works through each step with a tool-calling executor. When a step fails, the agent replans — calling the LLM again with current state to generate a revised plan. This is the pattern behind production research and automation agents.
+        </p>
+
+        <div class="lab-container">
+          <div class="lab-header">
+            <div class="lab-icon">🔬</div>
+            <div class="lab-title-wrap">
+              <div class="lab-title">Plan-and-Execute Agent with Replanning</div>
+              <div class="lab-subtitle">PYTHON · ~120 LINES · ANTHROPIC API KEY REQUIRED</div>
+            </div>
+          </div>
+
+          <div class="lab-steps">
+
+            <!-- Step 1 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">1</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Set up the file
+                </div>
+                <div class="step-body">
+                  <p>Use the same <code>agent-lab</code> environment from previous sections:</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">BASH</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>cd agent-lab && source .venv/bin/activate
+touch plan_execute_agent.py</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">2</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Define tools including a deliberately flaky one
+                </div>
+                <div class="step-body">
+                  <p>Three tools: simulated web search, a calculator, and a <code>flaky_api</code> that fails 50% of the time — so you can watch replanning trigger reliably.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — plan_execute_agent.py</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre><span class="kw">import</span> os, json, random
+<span class="kw">import</span> anthropic
+<span class="kw">from</span> dotenv <span class="kw">import</span> load_dotenv
+
+<span class="fn">load_dotenv</span>()
+client = anthropic.<span class="cl">Anthropic</span>()
+
+TOOLS = [
+    {
+        <span class="st">"name"</span>: <span class="st">"web_search"</span>,
+        <span class="st">"description"</span>: <span class="st">"Search the web. Returns a short text result."</span>,
+        <span class="st">"input_schema"</span>: {
+            <span class="st">"type"</span>: <span class="st">"object"</span>,
+            <span class="st">"properties"</span>: {<span class="st">"query"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>}},
+            <span class="st">"required"</span>: [<span class="st">"query"</span>]
+        }
+    },
+    {
+        <span class="st">"name"</span>: <span class="st">"calculator"</span>,
+        <span class="st">"description"</span>: <span class="st">"Evaluate a Python arithmetic expression. Returns the result as a string."</span>,
+        <span class="st">"input_schema"</span>: {
+            <span class="st">"type"</span>: <span class="st">"object"</span>,
+            <span class="st">"properties"</span>: {
+                <span class="st">"expression"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>, <span class="st">"description"</span>: <span class="st">"A safe arithmetic expression, e.g. '365 * 24 * 60 * 60'"</span>}
+            },
+            <span class="st">"required"</span>: [<span class="st">"expression"</span>]
+        }
+    },
+    {
+        <span class="st">"name"</span>: <span class="st">"flaky_api"</span>,
+        <span class="st">"description"</span>: <span class="st">"Fetch data from an external API. Sometimes fails — use web_search as a fallback."</span>,
+        <span class="st">"input_schema"</span>: {
+            <span class="st">"type"</span>: <span class="st">"object"</span>,
+            <span class="st">"properties"</span>: {<span class="st">"endpoint"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>}},
+            <span class="st">"required"</span>: [<span class="st">"endpoint"</span>]
+        }
+    },
+]
+
+SEARCH_DB = {
+    <span class="st">"python popularity"</span>: <span class="st">"Python is ranked #1 in the TIOBE index as of 2024–2026."</span>,
+    <span class="st">"tiobe index"</span>: <span class="st">"TIOBE index ranks Python #1, C #2, C++ #3, Java #4 (2024–2026)."</span>,
+    <span class="st">"javascript popularity"</span>: <span class="st">"JavaScript dominates web development, ranked top 5 in all major surveys."</span>,
+}
+
+<span class="kw">def</span> <span class="fn">execute_tool</span>(name: str, tool_input: dict) -&gt; str:
+    <span class="kw">try</span>:
+        <span class="kw">if</span> name == <span class="st">"web_search"</span>:
+            q = tool_input[<span class="st">"query"</span>].<span class="fn">lower</span>()
+            <span class="kw">for</span> key, val <span class="kw">in</span> SEARCH_DB.<span class="fn">items</span>():
+                <span class="kw">if</span> key <span class="kw">in</span> q:
+                    <span class="kw">return</span> val
+            <span class="kw">return</span> <span class="st">f'No results for "{tool_input["query"]}".'</span>
+        <span class="kw">if</span> name == <span class="st">"calculator"</span>:
+            result = <span class="fn">eval</span>(tool_input[<span class="st">"expression"</span>], {<span class="st">"__builtins__"</span>: {}})
+            <span class="kw">return</span> <span class="fn">str</span>(result)
+        <span class="kw">if</span> name == <span class="st">"flaky_api"</span>:
+            <span class="kw">if</span> random.<span class="fn">random</span>() &lt; <span class="nu">0.5</span>:
+                <span class="kw">raise</span> <span class="cl">ConnectionError</span>(<span class="st">"API timeout after 30s"</span>)
+            <span class="kw">return</span> <span class="st">f"API response for {tool_input['endpoint']}: status=200, data=42"</span>
+        <span class="kw">return</span> <span class="st">f"Unknown tool: {name}"</span>
+    <span class="kw">except</span> <span class="cl">Exception</span> <span class="kw">as</span> e:
+        <span class="cm"># Always return errors as strings — never let them propagate</span>
+        <span class="kw">return</span> <span class="st">f"Tool error: {type(e).__name__}: {e}"</span></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">3</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Implement the planner
+                </div>
+                <div class="step-body">
+                  <p>One LLM call that returns a JSON array of steps. When called with a <code>context</code> argument, it acts as a replanner — revising the remaining steps given what has already happened.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — plan_execute_agent.py (continued)</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>PLANNER_SYSTEM = <span class="st">"""You are a planning assistant.
+Given a user goal, produce a step-by-step plan as a JSON array.
+Each step: {"step": integer, "description": string, "tool_hint": string}
+tool_hint must be one of: web_search, calculator, flaky_api, none
+Return ONLY the JSON array, no other text."""</span>
+
+
+<span class="kw">def</span> <span class="fn">generate_plan</span>(goal: str, context: str = <span class="st">""</span>) -&gt; list[dict]:
+    prompt = <span class="st">f"Goal: {goal}"</span>
+    <span class="kw">if</span> context:
+        prompt += <span class="st">f"\n\nContext (work done and failures so far):\n{context}"</span>
+        prompt += <span class="st">"\n\nRevise the remaining steps given this context."</span>
+
+    response = client.messages.<span class="fn">create</span>(
+        model=<span class="st">"claude-opus-4-6"</span>,
+        max_tokens=<span class="nu">512</span>,
+        system=PLANNER_SYSTEM,
+        messages=[{<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: prompt}]
+    )
+    raw = response.content[<span class="nu">0</span>].text.<span class="fn">strip</span>()
+    <span class="kw">try</span>:
+        <span class="kw">return</span> json.<span class="fn">loads</span>(raw)
+    <span class="kw">except</span> json.<span class="cl">JSONDecodeError</span>:
+        start, end = raw.<span class="fn">find</span>(<span class="st">"["</span>), raw.<span class="fn">rfind</span>(<span class="st">"]"</span>) + <span class="nu">1</span>
+        <span class="kw">return</span> json.<span class="fn">loads</span>(raw[start:end])</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">4</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Implement the executor loop with replanning
+                </div>
+                <div class="step-body">
+                  <p>The executor works through each plan step. When a step fails, it triggers replanning with a summary of what has been done and what failed.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — plan_execute_agent.py (continued)</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>EXECUTOR_SYSTEM = <span class="st">"""You are an execution assistant.
+Complete the given step using available tools.
+When done, summarise what you did and what you found in 1-2 sentences."""</span>
+
+MAX_REPLAN = <span class="nu">2</span>
+
+
+<span class="kw">def</span> <span class="fn">execute_step</span>(step: dict) -&gt; tuple[str, bool]:
+    <span class="st">"""Execute one plan step. Returns (summary, success)."""</span>
+    messages = [{<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="st">f"Complete this step: {step['description']}"</span>}]
+
+    <span class="kw">for</span> _ <span class="kw">in</span> <span class="fn">range</span>(<span class="nu">5</span>):
+        response = client.messages.<span class="fn">create</span>(
+            model=<span class="st">"claude-opus-4-6"</span>,
+            max_tokens=<span class="nu">512</span>,
+            system=EXECUTOR_SYSTEM,
+            tools=TOOLS,
+            messages=messages
+        )
+        messages.<span class="fn">append</span>({<span class="st">"role"</span>: <span class="st">"assistant"</span>, <span class="st">"content"</span>: response.content})
+
+        <span class="kw">if</span> response.stop_reason == <span class="st">"end_turn"</span>:
+            summary = <span class="st">""</span>.<span class="fn">join</span>(b.text <span class="kw">for</span> b <span class="kw">in</span> response.content <span class="kw">if</span> <span class="fn">hasattr</span>(b, <span class="st">"text"</span>))
+            failed = <span class="st">"error"</span> <span class="kw">in</span> summary.<span class="fn">lower</span>() <span class="kw">or</span> <span class="st">"failed"</span> <span class="kw">in</span> summary.<span class="fn">lower</span>()
+            <span class="kw">return</span> summary, <span class="kw">not</span> failed
+
+        <span class="kw">if</span> response.stop_reason == <span class="st">"tool_use"</span>:
+            tool_results = []
+            <span class="kw">for</span> block <span class="kw">in</span> response.content:
+                <span class="kw">if</span> block.type == <span class="st">"tool_use"</span>:
+                    result = <span class="fn">execute_tool</span>(block.name, block.input)
+                    <span class="fn">print</span>(<span class="st">f"    tool: {block.name}({block.input}) → {result[:80]}"</span>)
+                    tool_results.<span class="fn">append</span>({
+                        <span class="st">"type"</span>: <span class="st">"tool_result"</span>,
+                        <span class="st">"tool_use_id"</span>: block.id,
+                        <span class="st">"content"</span>: result
+                    })
+            messages.<span class="fn">append</span>({<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: tool_results})
+
+    <span class="kw">return</span> <span class="st">"Step did not complete within iteration budget."</span>, <span class="kw">False</span>
+
+
+<span class="kw">def</span> <span class="fn">run_plan_execute</span>(goal: str) -&gt; None:
+    <span class="fn">print</span>(<span class="st">f"\n{'='*60}\nGOAL: {goal}\n{'='*60}"</span>)
+
+    plan = <span class="fn">generate_plan</span>(goal)
+    replan_count = <span class="nu">0</span>
+    completed: list[str] = []
+
+    <span class="kw">while</span> plan <span class="kw">and</span> replan_count &lt;= MAX_REPLAN:
+        step = plan.<span class="fn">pop</span>(<span class="nu">0</span>)
+        <span class="fn">print</span>(<span class="st">f"\n[step {step['step']}] {step['description']}"</span>)
+
+        summary, success = <span class="fn">execute_step</span>(step)
+        <span class="fn">print</span>(<span class="st">f"  → {summary}"</span>)
+
+        <span class="kw">if</span> success:
+            completed.<span class="fn">append</span>(<span class="st">f"Step {step['step']}: {summary}"</span>)
+        <span class="kw">else</span>:
+            <span class="fn">print</span>(<span class="st">f"\n  ⚠ Step failed. Replanning... ({replan_count + 1}/{MAX_REPLAN})"</span>)
+            context = <span class="st">"\n"</span>.<span class="fn">join</span>(completed) + <span class="st">f"\nFailed: {step['description']}\nReason: {summary}"</span>
+            plan = <span class="fn">generate_plan</span>(goal, context=context)
+            replan_count += <span class="nu">1</span>
+            <span class="fn">print</span>(<span class="st">f"  Revised plan has {len(plan)} remaining steps."</span>)
+
+    <span class="fn">print</span>(<span class="st">f"\n{'='*60}\nCOMPLETED STEPS:"</span>)
+    <span class="kw">for</span> c <span class="kw">in</span> completed:
+        <span class="fn">print</span>(<span class="st">f"  ✓ {c}"</span>)
+    <span class="fn">print</span>(<span class="st">f"{'='*60}"</span>)
+
+
+<span class="kw">if</span> __name__ == <span class="st">"__main__"</span>:
+    <span class="fn">run_plan_execute</span>(
+        <span class="st">"Research the most popular programming language in 2024–2026, "</span>
+        <span class="st">"then calculate how many seconds are in a year."</span>
+    )</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">5</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Run it and observe plan generation and replanning
+                </div>
+                <div class="step-body">
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">BASH</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>python plan_execute_agent.py</pre>
+                  </div>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">EXPECTED OUTPUT (replanning triggered)</span></div>
+                    <pre>============================================================
+GOAL: Research the most popular programming language ...
+============================================================
+
+[step 1] Search for the most popular programming language 2024-2026
+    tool: web_search({'query': 'python popularity'}) → Python is ranked #1...
+  → Found that Python is ranked #1 by the TIOBE index for 2024–2026.
+
+[step 2] Fetch supporting data from the TIOBE API
+    tool: flaky_api({'endpoint': 'tiobe/rankings'}) → Tool error: ConnectionError: API timeout
+  → Step failed due to API timeout error.
+
+  ⚠ Step failed. Replanning... (1/2)
+  Revised plan has 2 remaining steps.
+
+[step 2] Search for TIOBE index rankings as fallback
+    tool: web_search({'query': 'tiobe index'}) → TIOBE index ranks Python #1, C #2...
+  → Confirmed via web search: Python #1, C #2, C++ #3.
+
+[step 3] Calculate seconds in a year
+    tool: calculator({'expression': '365 * 24 * 60 * 60'}) → 31536000
+  → There are 31,536,000 seconds in a year.
+
+============================================================
+COMPLETED STEPS:
+  ✓ Step 1: Python is ranked #1 by TIOBE for 2024–2026.
+  ✓ Step 2: Confirmed Python #1 via web search fallback.
+  ✓ Step 3: 31,536,000 seconds in a year.
+============================================================</pre>
+                  </div>
+                  <div class="callout callout-info" style="margin-top:1rem;">
+                    <strong>What to observe:</strong> Run it several times. About half the time <code>flaky_api</code> succeeds and the plan runs straight through. The other half it fails and you see the replanning trigger — the revised plan replaces the broken step with a web search fallback. This is how production agents handle unreliable external dependencies.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">6</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Extension: add a human-in-the-loop plan approval gate
+                </div>
+                <div class="step-body">
+                  <p>After <code>generate_plan</code> returns, print the plan and ask the user to approve it before execution begins. This implements the minimal footprint principle — the user reviews intended actions before any tool runs.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — add after generate_plan in run_plan_execute</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre><span class="cm"># Print plan and request approval before execution</span>
+<span class="fn">print</span>(<span class="st">"\nProposed plan:"</span>)
+<span class="kw">for</span> s <span class="kw">in</span> plan:
+    <span class="fn">print</span>(<span class="st">f"  {s['step']}. {s['description']} [tool: {s['tool_hint']}]"</span>)
+
+approval = <span class="fn">input</span>(<span class="st">"\nApprove this plan? (yes/no): "</span>).<span class="fn">strip</span>().<span class="fn">lower</span>()
+<span class="kw">if</span> approval != <span class="st">"yes"</span>:
+    <span class="fn">print</span>(<span class="st">"Plan rejected. Exiting."</span>)
+    <span class="kw">return</span></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- end lab-steps -->
+        </div><!-- end lab-container -->
+
+      </div><!-- end lab -->
+
+      <!-- MARK COMPLETE + NAVIGATION -->
+      <div class="mark-complete-bar">
+        <p>Finished the theory and completed the lab? Mark this section complete to track your progress.</p>
+        <button class="btn btn-outline" id="completeBtn2" data-section="7" onclick="document.getElementById('completeBtn').click()">Mark Section 7 Complete</button>
+      </div>
+
+      <div style="text-align:center;margin:2rem 0 0;font-family:var(--font-mono);font-size:0.62rem;color:var(--text-dim);">
+        Last updated: <time datetime="2026-04-05">April 5, 2026</time>
+      </div>
+      <div class="section-nav-footer">
+        <a href="06-memory.html" class="nav-prev">← Section 06: Memory &amp; Knowledge</a>
+        <a href="08-prompting.html" class="nav-next">Section 08: Prompt Engineering →</a>
+      </div>
+
+    </div><!-- end page -->
+  </main>
+</div>
+
+<script src="../course.js"></script>
+<script>
+function stepDone(checkbox) {
+  checkbox.closest('.step-content').style.opacity = checkbox.checked ? '0.6' : '1';
+}
+function copyCode(btn) {
+  const pre = btn.closest('.code-block').querySelector('pre');
+  navigator.clipboard.writeText(pre.innerText).then(() => {
+    btn.textContent = 'copied!';
+    setTimeout(() => { btn.textContent = 'copy'; }, 2000);
+  });
+}
+</script>
+</body>
+</html>

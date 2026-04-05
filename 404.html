@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>404 — Page Not Found · Agentic AI Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+<style>
+  .error-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(108,99,255,0.1) 0%, transparent 70%);
+  }
+  .error-code {
+    font-family: var(--font-mono);
+    font-size: clamp(6rem, 20vw, 10rem);
+    font-weight: 700;
+    line-height: 1;
+    background: linear-gradient(135deg, #6c63ff 0%, #00cfff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+  }
+  .error-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  .error-title {
+    font-family: var(--font-head);
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+  .error-desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 480px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+  .error-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .error-nav {
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    width: 100%;
+    max-width: 600px;
+  }
+  .error-nav-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .error-sections {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+  .error-sections a {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 0.3rem 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .error-sections a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+</style>
+<noscript><style>
+/* No-JS: make sidebar visible and stack layout vertically on mobile */
+@media (max-width: 768px) {
+  .sidebar { transform: none; position: relative; width: 100%; height: auto; }
+  .layout  { flex-direction: column; }
+}
+</style></noscript>
+<link rel="manifest" href="manifest.json">
+</head>
+<body>
+<noscript>
+  <div style="background:#1a1200;border-bottom:2px solid #c87d00;color:#f0c060;padding:0.75rem 1.5rem;font-family:monospace;font-size:0.82rem;text-align:center;position:relative;z-index:999;">
+    &#9888; JavaScript is disabled. Progress tracking, quizzes, and interactive features require JavaScript.
+  </div>
+</noscript>
+<div class="error-page">
+
+  <div class="error-code">404</div>
+  <div class="error-label">// page not found</div>
+
+  <h1 class="error-title">This page doesn't exist&hellip; yet.</h1>
+  <p class="error-desc">
+    The URL you followed may be broken, or the page may have been moved or removed.
+    Head back to the course homepage to keep learning.
+  </p>
+
+  <div class="error-actions">
+    <a href="index.html" class="btn btn-accent">← Back to Course Home</a>
+    <a href="sections/01-intro.html" class="btn btn-outline">Start from Section 01</a>
+  </div>
+
+  <div class="error-nav">
+    <div class="error-nav-label">Jump to a section</div>
+    <div class="error-sections">
+      <a href="sections/01-intro.html">01 · Intro</a>
+      <a href="sections/02-ml-fundamentals.html">02 · ML Fundamentals</a>
+      <a href="sections/03-frameworks.html">03 · Frameworks</a>
+      <a href="sections/04-llms.html">04 · LLMs</a>
+      <a href="sections/05-understanding-agents.html">05 · Agents</a>
+      <a href="sections/06-memory.html">06 · Memory</a>
+      <a href="sections/07-planning.html">07 · Planning</a>
+      <a href="sections/08-prompting.html">08 · Prompting</a>
+      <a href="sections/09-rl.html">09 · RL</a>
+      <a href="sections/10-rag.html">10 · RAG</a>
+      <a href="sections/11-deployment.html">11 · Deployment</a>
+      <a href="sections/12-real-world.html">12 · Real-World</a>
+      <a href="sections/13-mcp.html">13 · MCP</a>
+      <a href="sections/14-multi-agent.html">14 · Multi-Agent</a>
+      <a href="sections/15-security.html">15 · Security</a>
+      <a href="sections/16-long-horizon.html">16 · Long-Horizon</a>
+    </div>
+  </div>
+
+</div>
+<script src="course.js"></script>
+</body>
+</html>

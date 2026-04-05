@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10 — RAG · Agentic AI Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="../style.css">
+<noscript><style>
+/* No-JS: make sidebar visible and stack layout vertically on mobile */
+@media (max-width: 768px) {
+  .sidebar { transform: none; position: relative; width: 100%; height: auto; }
+  .layout  { flex-direction: column; }
+}
+</style></noscript>
+<link rel="manifest" href="../manifest.json">
+</head>
+<body data-section="10">
+<noscript>
+  <div style="background:#1a1200;border-bottom:2px solid #c87d00;color:#f0c060;padding:0.75rem 1.5rem;font-family:monospace;font-size:0.82rem;text-align:center;position:relative;z-index:999;">
+    &#9888; JavaScript is disabled. Progress tracking, quizzes, and interactive features require JavaScript.
+  </div>
+</noscript>
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <a href="../index.html" class="sidebar-logo" style="text-decoration:none;display:block;">
+      <div class="logo-eyebrow">// AGENTIC AI COURSE</div>
+      <div class="logo-name">Learn <span>Agentic AI</span><br>2026 Edition</div>
+    </a>
+    <div class="sidebar-progress">
+      <div class="progress-row">
+        <span class="progress-label">OVERALL PROGRESS</span>
+        <span class="progress-count" id="progressCount">0 / 16</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+    <div class="sidebar-nav">
+      <div class="nav-group-label">Foundation</div>
+      <a href="01-intro.html" class="nav-item" data-section="1"><span class="nav-num">01</span> Intro to Agentic AI <span class="nav-check">✓</span></a>
+      <a href="02-ml-fundamentals.html" class="nav-item" data-section="2"><span class="nav-num">02</span> AI &amp; ML Fundamentals <span class="nav-check">✓</span></a>
+      <a href="03-frameworks.html" class="nav-item" data-section="3"><span class="nav-num">03</span> Programming &amp; Frameworks <span class="nav-check">✓</span></a>
+      <a href="04-llms.html" class="nav-item" data-section="4"><span class="nav-num">04</span> Large Language Models <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">Core Agents</div>
+      <a href="05-understanding-agents.html" class="nav-item" data-section="5"><span class="nav-num">05</span> Understanding Agents <span class="nav-check">✓</span></a>
+      <a href="06-memory.html" class="nav-item" data-section="6"><span class="nav-num">06</span> Memory &amp; Knowledge <span class="nav-check">✓</span></a>
+      <a href="07-planning.html" class="nav-item" data-section="7"><span class="nav-num">07</span> Decision-Making &amp; Planning <span class="nav-check">✓</span></a>
+      <a href="08-prompting.html" class="nav-item" data-section="8"><span class="nav-num">08</span> Prompt Engineering <span class="nav-check">✓</span></a>
+      <a href="09-rl.html" class="nav-item" data-section="9"><span class="nav-num">09</span> RL &amp; Self-Improvement <span class="nav-check">✓</span></a>
+      <a href="10-rag.html" class="nav-item active" data-section="10"><span class="nav-num">10</span> RAG <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">Production</div>
+      <a href="11-deployment.html" class="nav-item" data-section="11"><span class="nav-num">11</span> Deploying Agents <span class="nav-check">✓</span></a>
+      <a href="12-real-world.html" class="nav-item" data-section="12"><span class="nav-num">12</span> Real-World Applications <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">2026 New</div>
+      <a href="13-mcp.html" class="nav-item" data-section="13"><span class="nav-num">13</span> MCP &amp; Protocols <span class="nav-check">✓</span></a>
+      <a href="14-multi-agent.html" class="nav-item" data-section="14"><span class="nav-num">14</span> Multi-Agent Orchestration <span class="nav-check">✓</span></a>
+      <a href="15-security.html" class="nav-item" data-section="15"><span class="nav-num">15</span> Agent Security <span class="nav-check">✓</span></a>
+      <a href="16-long-horizon.html" class="nav-item" data-section="16"><span class="nav-num">16</span> Long-Horizon Agents <span class="nav-check">✓</span></a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="topbar-breadcrumb">
+        <a href="../index.html" style="color:var(--text-muted);text-decoration:none;">Course</a>
+        &nbsp;/&nbsp; <span>10 · RAG</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn btn-outline" id="completeBtn" data-section="10">Mark Complete</button>
+      </div>
+    </div>
+
+    <div class="page">
+
+      <!-- HERO -->
+      <div class="section-hero">
+        <div class="hero-meta">
+          <span class="hero-num">SECTION 10</span>
+          <span class="hero-tag tag-lab">LAB</span>
+          <span class="hero-tag tag-core">CORE</span>
+        </div>
+        <h1 class="section-title">Retrieval-Augmented<br><span>Generation</span></h1>
+        <p class="section-intro">
+          An LLM's knowledge is frozen at training time. RAG breaks that constraint: instead of relying on weights alone, the agent retrieves relevant documents at query time and injects them into the context before generating. This section covers the full pipeline — chunking, embedding, vector search, and reranking — and the lab builds a working RAG system from scratch using ChromaDB and the Anthropic API.
+        </p>
+        <div class="hero-actions">
+          <a href="#theory" class="btn btn-accent">📖 Start Theory</a>
+          <a href="#lab" class="btn btn-outline">🔬 Jump to Lab</a>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- THEORY                                      -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div id="theory">
+
+        <!-- ── BLOCK 01: RAG Architecture ── -->
+        <div class="block">
+          <div class="block-label">01 · RAG ARCHITECTURE</div>
+          <h2>Retrieve, Augment, Generate</h2>
+          <p>
+            Retrieval-Augmented Generation (RAG) was formalized by Lewis et al. (2020) as a method for grounding LLM outputs in a document corpus. The core idea: at inference time, retrieve the most relevant documents for the user's query, inject them into the prompt as context, and then let the LLM generate a response that is grounded in that retrieved evidence — rather than relying purely on parametric knowledge baked into the weights during training.
+          </p>
+
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0;">
+            <div style="background:var(--surface-2);border:1px solid var(--accent);border-radius:6px;padding:1.25rem;text-align:center;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">PHASE 1</div>
+              <div style="font-size:1.5rem;margin-bottom:0.5rem;">🔍</div>
+              <div style="font-weight:600;margin-bottom:0.4rem;">Retrieval</div>
+              <div style="font-size:0.82rem;color:var(--text-muted);">Convert the query to an embedding, search the vector store, return the top-k most similar chunks.</div>
+            </div>
+            <div style="background:var(--surface-2);border:1px solid var(--accent);border-radius:6px;padding:1.25rem;text-align:center;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">PHASE 2</div>
+              <div style="font-size:1.5rem;margin-bottom:0.5rem;">📎</div>
+              <div style="font-weight:600;margin-bottom:0.4rem;">Augmentation</div>
+              <div style="font-size:0.82rem;color:var(--text-muted);">Assemble retrieved chunks into a context block, inject into the prompt alongside the original query.</div>
+            </div>
+            <div style="background:var(--surface-2);border:1px solid var(--accent);border-radius:6px;padding:1.25rem;text-align:center;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">PHASE 3</div>
+              <div style="font-size:1.5rem;margin-bottom:0.5rem;">✍</div>
+              <div style="font-weight:600;margin-bottom:0.4rem;">Generation</div>
+              <div style="font-size:0.82rem;color:var(--text-muted);">The LLM generates a response grounded in the retrieved context. The response can cite specific chunks.</div>
+            </div>
+          </div>
+
+          <div class="callout callout-info">
+            <strong>RAG vs fine-tuning:</strong> Fine-tuning bakes knowledge into model weights — expensive, requires retraining when knowledge changes, and the model can still confabulate. RAG keeps knowledge in an external store — cheaper to update, auditable (you can log what was retrieved), and grounded (the model can quote its sources). Most production knowledge-retrieval systems use RAG; fine-tuning is reserved for changing <em>behavior</em>, not updating facts.
+          </div>
+
+          <div class="concept-grid">
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">VARIANT 01</div>
+              <div class="concept-name">Naive RAG</div>
+              <div class="concept-desc">Index documents → embed query → top-k similarity search → stuff chunks into prompt → generate. Simple but brittle: no reranking, no query reformulation, sensitive to chunk boundaries.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--orange);">BASELINE (2020–2022)</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">VARIANT 02</div>
+              <div class="concept-name">Advanced RAG</div>
+              <div class="concept-desc">Adds query rewriting, hybrid search (dense + BM25), reranking, and context compression. Significantly improves precision and faithfulness at the cost of pipeline complexity.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">WIDELY USED (2023–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">VARIANT 03</div>
+              <div class="concept-name">Modular RAG</div>
+              <div class="concept-desc">Decomposes the pipeline into swappable modules: retriever, reranker, filter, generator. Enables A/B testing individual components and mixing retrieval strategies per query type.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">EMERGING PATTERN (2024–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">VARIANT 04</div>
+              <div class="concept-name">Agentic RAG</div>
+              <div class="concept-desc">The LLM decides when and what to retrieve, formulates multi-step retrieval plans, and iteratively refines queries based on retrieved context. RAG becomes a tool call in an agent loop.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">EMERGING PATTERN (2024–2026)</div>
+            </div>
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://arxiv.org/abs/2005.11401" target="_blank" style="color:var(--accent);text-decoration:none;">Lewis et al. — RAG (arXiv:2005.11401, 2020)</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2312.10997" target="_blank" style="color:var(--accent);text-decoration:none;">Gao et al. — RAG Survey (arXiv:2312.10997, 2023)</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 02: Chunking ── -->
+        <div class="block">
+          <div class="block-label">02 · CHUNKING STRATEGIES</div>
+          <h2>How You Split Documents Determines What You Retrieve</h2>
+          <p>
+            Before indexing, documents must be split into chunks — the units that will be embedded and stored. Chunk size and splitting strategy have an outsized effect on retrieval quality. Too large and chunks are noisy (irrelevant text dilutes the signal). Too small and chunks lose surrounding context needed to interpret them correctly.
+          </p>
+
+          <table class="compare-table" style="margin:1.5rem 0;">
+            <thead>
+              <tr><th>Strategy</th><th>How It Works</th><th>Best For</th><th>Trade-off</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Fixed-size</strong></td>
+                <td>Split every N tokens, with optional overlap (e.g., 512 tokens, 50 overlap)</td>
+                <td>Simple uniform corpora, quick prototype</td>
+                <td>May cut sentences mid-thought; overlap creates duplication</td>
+              </tr>
+              <tr>
+                <td><strong>Recursive character</strong></td>
+                <td>Split on paragraphs → sentences → words until chunks are under max size</td>
+                <td>General-purpose; default in LangChain</td>
+                <td>Still size-based; does not respect semantic structure</td>
+              </tr>
+              <tr>
+                <td><strong>Sentence-window</strong></td>
+                <td>Embed each sentence individually; retrieve with ±N surrounding sentences for context</td>
+                <td>Precise retrieval + full surrounding context</td>
+                <td>More chunks; context assembly logic required</td>
+              </tr>
+              <tr>
+                <td><strong>Semantic chunking</strong></td>
+                <td>Embed sentences; split when embedding cosine similarity drops below a threshold</td>
+                <td>Corpora with topic shifts mid-document</td>
+                <td>Slower ingestion; variable chunk sizes</td>
+              </tr>
+              <tr>
+                <td><strong>Document structure</strong></td>
+                <td>Split on HTML/Markdown headers, PDF sections, code blocks</td>
+                <td>Structured docs (wikis, API refs, PDFs)</td>
+                <td>Requires parser per format; sections vary wildly in size</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="callout callout-warn">
+            <strong>Chunk size rule of thumb:</strong> For question-answering, 256–512 tokens with 10–15% overlap is a reliable starting point. For long-form synthesis (summarization, report generation), 1,024–2,048 tokens per chunk gives the model more complete "units of thought" to work with. Always evaluate on your actual retrieval task — the right chunk size is domain-specific.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://arxiv.org/abs/2312.10997" target="_blank" style="color:var(--accent);text-decoration:none;">Gao et al. — RAG Survey (arXiv:2312.10997, 2023)</a> &nbsp;·&nbsp; <a href="https://docs.trychroma.com/" target="_blank" style="color:var(--accent);text-decoration:none;">ChromaDB Docs</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 03: Embeddings & Vector Search ── -->
+        <div class="block">
+          <div class="block-label">03 · EMBEDDINGS &amp; VECTOR SEARCH</div>
+          <h2>Turning Text Into Searchable Geometry</h2>
+          <p>
+            An <strong>embedding model</strong> converts a piece of text into a dense vector of floating-point numbers — a point in a high-dimensional space (typically 768–3,072 dimensions) where semantically similar texts are geometrically close. This is the foundation of semantic search: instead of matching keywords, you match <em>meaning</em>.
+          </p>
+          <p>
+            Retrieval works by embedding the query, then finding the stored chunk vectors nearest to it. The two dominant similarity metrics are <strong>cosine similarity</strong> (angle between vectors — scale-invariant) and <strong>dot product</strong> (angle × magnitude — better when embedding norms carry signal). Cosine similarity is the default in most vector stores.
+          </p>
+
+          <div class="concept-grid">
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">SEARCH TYPE 01</div>
+              <div class="concept-name">Dense Retrieval (ANN)</div>
+              <div class="concept-desc">Approximate Nearest Neighbor (ANN) search over embedding vectors. Fast, semantic, handles synonyms and paraphrases. Requires an embedding model at index and query time. HNSW is the standard ANN index algorithm.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">WIDELY USED (2021–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">SEARCH TYPE 02</div>
+              <div class="concept-name">Sparse Retrieval (BM25)</div>
+              <div class="concept-desc">Term-frequency inverse-document-frequency search — exact keyword matching with frequency weighting. Fast, no embedding model needed. Excels at matching rare terms, IDs, product codes, and proper nouns that embedding models may not encode well.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">WIDELY USED (classic–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">SEARCH TYPE 03</div>
+              <div class="concept-name">Hybrid Search</div>
+              <div class="concept-desc">Run dense and sparse retrieval in parallel; merge results using a fusion algorithm (e.g., Reciprocal Rank Fusion). Combines semantic matching with exact-term precision. The standard in production RAG systems as of 2024–2026.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">EMERGING STANDARD (2023–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">TOOL 01</div>
+              <div class="concept-name">ChromaDB</div>
+              <div class="concept-desc">Open-source, embedded vector database. Runs in-process (no server) or as a server. Default embedding: sentence-transformers. Supports metadata filtering, persistent storage, and multiple collections. Ideal for prototyping and small-to-medium corpora.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">WIDELY USED (2023–2026)</div>
+            </div>
+          </div>
+
+          <div class="callout callout-info">
+            <strong>Embedding model matters:</strong> The embedding model is the biggest lever on retrieval quality. For English-only corpora, <code>all-MiniLM-L6-v2</code> is fast and compact (22M params). For multilingual or higher-stakes use, larger models (Voyage AI, OpenAI text-embedding-3, Cohere embed-v3) outperform significantly. Anthropic recommends Voyage AI for embeddings used with Claude.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://arxiv.org/abs/2004.04906" target="_blank" style="color:var(--accent);text-decoration:none;">Karpukhin et al. — DPR (arXiv:2004.04906, 2020)</a> &nbsp;·&nbsp; <a href="https://docs.trychroma.com/" target="_blank" style="color:var(--accent);text-decoration:none;">ChromaDB Docs</a> &nbsp;·&nbsp; <a href="https://docs.anthropic.com/en/docs/build-with-claude/embeddings" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Embeddings (Voyage AI)</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 04: Reranking & Context Assembly ── -->
+        <div class="block">
+          <div class="block-label">04 · RERANKING &amp; CONTEXT ASSEMBLY</div>
+          <h2>Precision After Recall</h2>
+          <p>
+            Vector search is optimized for <em>recall</em> — returning everything that might be relevant. But recall ≠ precision. Top-k results often include chunks that are tangentially related, duplicative, or poorly ordered. Reranking is a second-pass step that takes the candidate set from the retriever and scores each chunk against the query with higher precision.
+          </p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;">
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">APPROACH A — CROSS-ENCODER RERANKER</div>
+              <p style="margin:0;font-size:0.85rem;">A small transformer encodes the (query, chunk) pair jointly — unlike bi-encoders that embed query and chunk independently. Cross-encoders produce more accurate relevance scores but are too slow to run over the entire corpus, so they are applied only to the top-k candidates from the first-stage retriever. Cohere Rerank, Voyage AI reranking, and local cross-encoders (sentence-transformers) are common options.</p>
+            </div>
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">APPROACH B — LLM-AS-RERANKER</div>
+              <p style="margin:0;font-size:0.85rem;">For small candidate sets, ask the LLM itself to rank passages by relevance. "Given these 10 passages and the query, rank them from most to least relevant." Slower and more expensive than a dedicated reranker, but useful when no reranking model is available and the candidate set is small (3–10 chunks).</p>
+            </div>
+          </div>
+
+          <p>Once reranking is done, the top chunks are assembled into a <strong>context block</strong> for the prompt. Key assembly decisions:</p>
+          <ul style="color:var(--text-muted);line-height:1.8;margin:0.5rem 0 1rem 1.5rem;">
+            <li><strong>Order:</strong> Place the most relevant chunk first (primacy effect) or last (recency effect). Avoid burying high-signal chunks in the middle (Lost in the Middle, Section 04).</li>
+            <li><strong>Deduplication:</strong> Chunks from the same document may overlap. Hash or fuzzy-deduplicate before assembly.</li>
+            <li><strong>Citation markers:</strong> Tag each chunk with a source ID so the LLM can cite it: <code>[Source: doc_id, chunk_3]</code>.</li>
+            <li><strong>Budget:</strong> Reserve enough context for the query, the system prompt, and the generated response. Truncate lower-ranked chunks first when context is tight.</li>
+          </ul>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://arxiv.org/abs/2312.10997" target="_blank" style="color:var(--accent);text-decoration:none;">Gao et al. — RAG Survey (arXiv:2312.10997, 2023)</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2307.03172" target="_blank" style="color:var(--accent);text-decoration:none;">Liu et al. — Lost in the Middle (arXiv:2307.03172, 2023)</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 05: Failure Modes & Eval ── -->
+        <div class="block">
+          <div class="block-label">05 · RAG FAILURE MODES &amp; EVALUATION</div>
+          <h2>What Goes Wrong — and How to Measure It</h2>
+          <p>
+            RAG introduces two compounding failure modes: retrieval failures (wrong chunks retrieved) and generation failures (wrong answer despite correct retrieval). A robust RAG pipeline must measure both independently.
+          </p>
+
+          <div class="concept-grid">
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.6rem;">RETRIEVAL FAILURE 01</div>
+              <div class="concept-name">Retrieval Miss</div>
+              <div class="concept-desc">The answer exists in the corpus but was not retrieved. Causes: poor chunking that split the answer across boundaries, embedding model doesn't capture the query-document semantic relationship, or the query is too ambiguous.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--red);">ACTIVE RISK</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.6rem;">RETRIEVAL FAILURE 02</div>
+              <div class="concept-name">Noisy Retrieval</div>
+              <div class="concept-desc">Irrelevant chunks retrieved alongside relevant ones. The LLM must filter signal from noise in the context. High noise increases hallucination risk: the model may blend irrelevant retrieved content with parametric knowledge.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--red);">ACTIVE RISK</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.6rem;">GENERATION FAILURE 01</div>
+              <div class="concept-name">Hallucination Despite Retrieval</div>
+              <div class="concept-desc">The correct chunks are retrieved, but the LLM ignores them and generates from parametric memory anyway. Mitigation: strong system prompt instruction to answer only from provided context; "I don't know" as an explicit valid response.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--red);">ACTIVE RISK</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.6rem;">GENERATION FAILURE 02</div>
+              <div class="concept-name">Context Stuffing</div>
+              <div class="concept-desc">Injecting too many chunks degrades generation quality. The LLM must locate the relevant sentence within a large noisy context block — triggering the Lost-in-the-Middle effect. Cap context chunks; prefer precision over recall at assembly time.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--red);">ACTIVE RISK</div>
+            </div>
+          </div>
+
+          <p style="margin-top:1.5rem;">The RAG eval framework from Gao et al. (2023) measures three dimensions independently:</p>
+          <table class="compare-table" style="margin-top:0.75rem;">
+            <thead>
+              <tr><th>Metric</th><th>What It Measures</th><th>How to Compute</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Context Recall</strong></td><td>Did retrieval surface the answer-bearing chunks?</td><td>Check if ground-truth answer source appears in retrieved set</td></tr>
+              <tr><td><strong>Context Precision</strong></td><td>What fraction of retrieved chunks are relevant?</td><td>Label retrieved chunks as relevant/irrelevant; compute precision</td></tr>
+              <tr><td><strong>Answer Faithfulness</strong></td><td>Is the generated answer grounded in the retrieved context?</td><td>LLM-as-judge: does every claim in the answer appear in the retrieved chunks?</td></tr>
+              <tr><td><strong>Answer Relevance</strong></td><td>Does the answer address the original question?</td><td>LLM-as-judge or human eval on generated output vs. query</td></tr>
+            </tbody>
+          </table>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://arxiv.org/abs/2312.10997" target="_blank" style="color:var(--accent);text-decoration:none;">Gao et al. — RAG Survey (arXiv:2312.10997, 2023)</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2307.03172" target="_blank" style="color:var(--accent);text-decoration:none;">Liu et al. — Lost in the Middle (arXiv:2307.03172, 2023)</a>
+          </div>
+        </div>
+
+        <!-- ── SOURCES TABLE ── -->
+        <div class="block">
+          <div class="block-label">SOURCES USED IN THIS SECTION</div>
+          <h2>Verified References</h2>
+          <p>Every claim in this section is grounded in one of these sources. No content is generated from model training data alone.</p>
+          <table class="compare-table">
+            <thead>
+              <tr><th>Source</th><th>Type</th><th>Covers</th><th>Recency</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://arxiv.org/abs/2005.11401" target="_blank" style="color:var(--accent);">Lewis et al. — Retrieval-Augmented Generation</a></td>
+                <td>Academic paper (Meta)</td>
+                <td>Original RAG formulation — retrieval, augmentation, generation pipeline</td>
+                <td>2020 (foundational)</td>
+              </tr>
+              <tr>
+                <td><a href="https://arxiv.org/abs/2312.10997" target="_blank" style="color:var(--accent);">Gao et al. — RAG Survey</a></td>
+                <td>Academic survey</td>
+                <td>Naive, Advanced, and Modular RAG; chunking; evaluation framework</td>
+                <td>2023</td>
+              </tr>
+              <tr>
+                <td><a href="https://arxiv.org/abs/2004.04906" target="_blank" style="color:var(--accent);">Karpukhin et al. — Dense Passage Retrieval (DPR)</a></td>
+                <td>Academic paper (Meta)</td>
+                <td>Dense retrieval, bi-encoder architecture, ANN search</td>
+                <td>2020 (foundational)</td>
+              </tr>
+              <tr>
+                <td><a href="https://arxiv.org/abs/2307.03172" target="_blank" style="color:var(--accent);">Liu et al. — Lost in the Middle</a></td>
+                <td>Academic paper</td>
+                <td>Context position bias, chunk ordering in RAG context assembly</td>
+                <td>2023</td>
+              </tr>
+              <tr>
+                <td><a href="https://docs.trychroma.com/" target="_blank" style="color:var(--accent);">ChromaDB Documentation</a></td>
+                <td>Official docs</td>
+                <td>Vector store setup, collections, embedding functions, metadata filtering</td>
+                <td>Maintained 2023–2026</td>
+              </tr>
+              <tr>
+                <td><a href="https://docs.anthropic.com/en/docs/build-with-claude/embeddings" target="_blank" style="color:var(--accent);">Anthropic — Embeddings (Voyage AI)</a></td>
+                <td>Official docs</td>
+                <td>Embedding model recommendations for use with Claude</td>
+                <td>Maintained 2024–2026</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div><!-- end theory -->
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- LAB                                         -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div id="lab" class="block">
+        <div class="block-label">HANDS-ON LAB</div>
+        <h2>Build a RAG Pipeline from Scratch</h2>
+        <p style="margin-bottom:1.5rem;">
+          You will build a working RAG system in Python: chunk a small document corpus, index it in ChromaDB, retrieve with semantic search, and generate grounded answers using the Anthropic API. The complete script is <code>rag_agent.py</code>.
+        </p>
+
+        <div class="lab-container">
+          <div class="lab-header">
+            <div class="lab-icon">🔬</div>
+            <div class="lab-title-wrap">
+              <div class="lab-title">Section 10 Lab — RAG Pipeline</div>
+              <div class="lab-subtitle">6 STEPS · PYTHON · ~45 MIN</div>
+            </div>
+          </div>
+
+          <div class="lab-steps">
+
+            <!-- Step 1 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">1</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Install dependencies and create the file
+                </div>
+                <div class="step-body">
+                  <p>ChromaDB ships its own embedding model (sentence-transformers), so no separate embedding API key is required for this lab. All you need is your Anthropic API key for the generation step.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">BASH</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>pip install chromadb anthropic</pre>
+                  </div>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">BASH</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>touch rag_agent.py</pre>
+                  </div>
+                  <div class="callout callout-info" style="margin-top:1rem;">
+                    ChromaDB's default embedding function uses <code>all-MiniLM-L6-v2</code> — a compact (22M parameter) sentence-transformer that runs locally. No internet access or embedding API key required during retrieval.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">2</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Set up the corpus and chunk it
+                </div>
+                <div class="step-body">
+                  <p>We use a small hardcoded corpus of paragraphs about agentic AI topics. Each paragraph is one chunk. In a real system you would load documents from files, PDFs, or a database and split them using a proper chunking strategy.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — rag_agent.py</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre><span class="kw">import</span> os
+<span class="kw">import</span> chromadb
+<span class="kw">import</span> anthropic
+
+client = anthropic.<span class="fn">Anthropic</span>(api_key=os.environ[<span class="st">"ANTHROPIC_API_KEY"</span>])
+
+<span class="cm"># Our corpus: each entry is one "document chunk"</span>
+CORPUS = [
+    {
+        <span class="st">"id"</span>: <span class="st">"chunk_01"</span>,
+        <span class="st">"text"</span>: (
+            <span class="st">"ReAct agents interleave reasoning and action in a loop. "</span>
+            <span class="st">"The model produces a Thought, selects an Action (tool call), "</span>
+            <span class="st">"receives an Observation, and repeats until it emits a final answer. "</span>
+            <span class="st">"This was introduced by Yao et al. (2022) in arXiv:2210.03629."</span>
+        ),
+        <span class="st">"source"</span>: <span class="st">"section-05-agents"</span>,
+    },
+    {
+        <span class="st">"id"</span>: <span class="st">"chunk_02"</span>,
+        <span class="st">"text"</span>: (
+            <span class="st">"Memory in agents is classified into four types: in-context (the active prompt window), "</span>
+            <span class="st">"external semantic (vector stores), episodic (structured logs of past sessions), "</span>
+            <span class="st">"and procedural (persistent rules embedded in the system prompt). "</span>
+            <span class="st">"This taxonomy comes from Lilian Weng's 2023 survey of LLM-powered agents."</span>
+        ),
+        <span class="st">"source"</span>: <span class="st">"section-06-memory"</span>,
+    },
+    {
+        <span class="st">"id"</span>: <span class="st">"chunk_03"</span>,
+        <span class="st">"text"</span>: (
+            <span class="st">"Plan-and-execute agents separate planning from execution. A planner LLM generates "</span>
+            <span class="st">"a full step list upfront. An executor LLM works through each step using tools. "</span>
+            <span class="st">"When a step fails, the planner is called again with a context summary to replan. "</span>
+            <span class="st">"This pattern is documented in Wang et al. (2023), arXiv:2305.04091."</span>
+        ),
+        <span class="st">"source"</span>: <span class="st">"section-07-planning"</span>,
+    },
+    {
+        <span class="st">"id"</span>: <span class="st">"chunk_04"</span>,
+        <span class="st">"text"</span>: (
+            <span class="st">"Prompt injection is the top LLM-specific vulnerability in the OWASP LLM Top 10. "</span>
+            <span class="st">"An attacker embeds instructions in user-controlled content (e.g., a webpage or file) "</span>
+            <span class="st">"that override the agent's system prompt and redirect its behavior. "</span>
+            <span class="st">"Defences include input delimiting, privilege separation, and instruction anchoring."</span>
+        ),
+        <span class="st">"source"</span>: <span class="st">"section-08-prompting"</span>,
+    },
+    {
+        <span class="st">"id"</span>: <span class="st">"chunk_05"</span>,
+        <span class="st">"text"</span>: (
+            <span class="st">"RLHF has three stages: SFT (supervised fine-tuning on demonstration data), "</span>
+            <span class="st">"reward model training (on human preference rankings of response pairs), "</span>
+            <span class="st">"and PPO fine-tuning (updating the policy to maximize the reward model's score). "</span>
+            <span class="st">"A KL-divergence penalty prevents the model from drifting too far from the SFT baseline."</span>
+        ),
+        <span class="st">"source"</span>: <span class="st">"section-09-rl"</span>,
+    },
+    {
+        <span class="st">"id"</span>: <span class="st">"chunk_06"</span>,
+        <span class="st">"text"</span>: (
+            <span class="st">"Constitutional AI (Bai et al., 2022) replaces the human preference labeling step in RLHF "</span>
+            <span class="st">"with AI-generated feedback guided by a written set of principles. "</span>
+            <span class="st">"The AI critiques and revises its own responses according to the constitution, "</span>
+            <span class="st">"and AI-generated preference rankings replace human annotators in the RLAIF stage."</span>
+        ),
+        <span class="st">"source"</span>: <span class="st">"section-09-rl"</span>,
+    },
+    {
+        <span class="st">"id"</span>: <span class="st">"chunk_07"</span>,
+        <span class="st">"text"</span>: (
+            <span class="st">"DPO (Direct Preference Optimization, Rafailov et al. 2023) eliminates the separate "</span>
+            <span class="st">"reward model and PPO training loop from RLHF. It reparametrizes the reward in terms "</span>
+            <span class="st">"of the policy itself, training directly on preference pairs via binary cross-entropy. "</span>
+            <span class="st">"DPO is now the dominant alignment fine-tuning method for open-weight models."</span>
+        ),
+        <span class="st">"source"</span>: <span class="st">"section-09-rl"</span>,
+    },
+    {
+        <span class="st">"id"</span>: <span class="st">"chunk_08"</span>,
+        <span class="st">"text"</span>: (
+            <span class="st">"Transformers use self-attention to process all tokens in a sequence in parallel. "</span>
+            <span class="st">"Every token attends to every other token simultaneously, computing a weighted sum "</span>
+            <span class="st">"of value vectors based on query-key dot products. This replaced recurrent (RNN) processing "</span>
+            <span class="st">"and is the architectural foundation of all modern large language models."</span>
+        ),
+        <span class="st">"source"</span>: <span class="st">"section-04-llms"</span>,
+    },
+]</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">3</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Build the vector index
+                </div>
+                <div class="step-body">
+                  <p>Create an in-memory ChromaDB collection and add all corpus chunks. ChromaDB automatically embeds each chunk's text using the default sentence-transformer model.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — rag_agent.py (continued)</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre><span class="kw">def</span> <span class="fn">build_index</span>() -&gt; chromadb.Collection:
+    <span class="st">"""Build an in-memory ChromaDB collection from the corpus."""</span>
+    db = chromadb.<span class="fn">Client</span>()  <span class="cm"># ephemeral in-memory client</span>
+    collection = db.<span class="fn">create_collection</span>(
+        name=<span class="st">"course_knowledge"</span>,
+        metadata={<span class="st">"hnsw:space"</span>: <span class="st">"cosine"</span>}  <span class="cm"># cosine similarity</span>
+    )
+
+    collection.<span class="fn">add</span>(
+        ids=[chunk[<span class="st">"id"</span>] <span class="kw">for</span> chunk <span class="kw">in</span> CORPUS],
+        documents=[chunk[<span class="st">"text"</span>] <span class="kw">for</span> chunk <span class="kw">in</span> CORPUS],
+        metadatas=[{<span class="st">"source"</span>: chunk[<span class="st">"source"</span>]} <span class="kw">for</span> chunk <span class="kw">in</span> CORPUS],
+    )
+
+    <span class="fn">print</span>(<span class="st">f"Index built: {collection.count()} chunks indexed."</span>)
+    <span class="kw">return</span> collection</pre>
+                  </div>
+                  <div class="callout callout-info" style="margin-top:1rem;">
+                    <strong>Persistence:</strong> This uses an ephemeral in-memory client — data is lost when the script exits. For production, use <code>chromadb.PersistentClient(path="./chroma_db")</code> to save the index to disk. Only run <code>build_index()</code> when new documents are added; load the existing collection on subsequent runs.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">4</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Implement the retriever and the RAG generator
+                </div>
+                <div class="step-body">
+                  <p>The retriever embeds the query and returns the top-k most similar chunks. The generator assembles them into a context block and calls the Anthropic API, instructed to answer only from the provided context.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — rag_agent.py (continued)</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>TOP_K = <span class="nu">3</span>
+
+RAG_SYSTEM = <span class="st">"""You are a precise question-answering assistant.
+Answer the user's question using ONLY the information in the provided context blocks.
+Each context block is labeled with a source ID.
+If the answer is not in the context, say: "I don't have that information in the provided context."
+Do not use outside knowledge. Cite the source ID when you use it."""</span>
+
+
+<span class="kw">def</span> <span class="fn">retrieve</span>(collection: chromadb.Collection, query: str, top_k: int = TOP_K) -&gt; list[dict]:
+    <span class="st">"""Retrieve the top-k most relevant chunks for a query."""</span>
+    results = collection.<span class="fn">query</span>(
+        query_texts=[query],
+        n_results=top_k,
+        include=[<span class="st">"documents"</span>, <span class="st">"metadatas"</span>, <span class="st">"distances"</span>],
+    )
+    chunks = []
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="fn">len</span>(results[<span class="st">"ids"</span>][<span class="nu">0</span>])):
+        chunks.<span class="fn">append</span>({
+            <span class="st">"id"</span>:       results[<span class="st">"ids"</span>][<span class="nu">0</span>][i],
+            <span class="st">"text"</span>:     results[<span class="st">"documents"</span>][<span class="nu">0</span>][i],
+            <span class="st">"source"</span>:   results[<span class="st">"metadatas"</span>][<span class="nu">0</span>][i][<span class="st">"source"</span>],
+            <span class="st">"distance"</span>: results[<span class="st">"distances"</span>][<span class="nu">0</span>][i],
+        })
+    <span class="kw">return</span> chunks
+
+
+<span class="kw">def</span> <span class="fn">rag_answer</span>(collection: chromadb.Collection, query: str) -&gt; str:
+    <span class="st">"""Full RAG pipeline: retrieve → augment → generate."""</span>
+    <span class="cm"># 1. Retrieve</span>
+    chunks = <span class="fn">retrieve</span>(collection, query)
+
+    <span class="fn">print</span>(<span class="st">f"\n  Retrieved {len(chunks)} chunks:"</span>)
+    <span class="kw">for</span> c <span class="kw">in</span> chunks:
+        <span class="fn">print</span>(<span class="st">f"    [{c['id']}] distance={c['distance']:.3f} source={c['source']}"</span>)
+        <span class="fn">print</span>(<span class="st">f"    {c['text'][:80]}..."</span>)
+
+    <span class="cm"># 2. Augment — assemble context block</span>
+    context_block = <span class="st">"\n\n"</span>.<span class="fn">join</span>(
+        <span class="st">f"[Source: {c['id']} | {c['source']}]\n{c['text']}"</span>
+        <span class="kw">for</span> c <span class="kw">in</span> chunks
+    )
+    augmented_query = <span class="st">f"Context:\n{context_block}\n\nQuestion: {query}"</span>
+
+    <span class="cm"># 3. Generate</span>
+    response = client.messages.<span class="fn">create</span>(
+        model=<span class="st">"claude-haiku-4-5-20251001"</span>,
+        max_tokens=<span class="nu">512</span>,
+        system=RAG_SYSTEM,
+        messages=[{<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: augmented_query}],
+    )
+    <span class="kw">return</span> response.content[<span class="nu">0</span>].text</pre>
+                  </div>
+                  <div class="callout callout-warn" style="margin-top:1rem;">
+                    <strong>Why Haiku?</strong> This lab uses the smallest Claude model to keep costs low during experimentation. The generation quality depends far more on retrieval quality than model size in a RAG setting. Switch to a larger model only when the context is complex and synthesis quality matters.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">5</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Run the full pipeline and test with queries
+                </div>
+                <div class="step-body">
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — rag_agent.py (continued)</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>TEST_QUERIES = [
+    <span class="st">"How does a ReAct agent loop work?"</span>,
+    <span class="st">"What are the four types of memory in agents?"</span>,
+    <span class="st">"How does DPO differ from RLHF?"</span>,
+    <span class="st">"What is prompt injection and how is it defended against?"</span>,
+    <span class="st">"What year was the iPhone 15 released?"</span>,  <span class="cm"># out-of-corpus query</span>
+]
+
+
+<span class="kw">if</span> __name__ == <span class="st">"__main__"</span>:
+    collection = <span class="fn">build_index</span>()
+
+    <span class="kw">for</span> query <span class="kw">in</span> TEST_QUERIES:
+        <span class="fn">print</span>(<span class="st">f"\n{'='*60}"</span>)
+        <span class="fn">print</span>(<span class="st">f"QUERY: {query}"</span>)
+        answer = <span class="fn">rag_answer</span>(collection, query)
+        <span class="fn">print</span>(<span class="st">f"\nANSWER:\n{answer}"</span>)</pre>
+                  </div>
+                  <div class="code-block" style="margin-top:1rem;">
+                    <div class="code-header"><span class="code-lang">BASH</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>python rag_agent.py</pre>
+                  </div>
+                  <div class="code-block" style="margin-top:1rem;">
+                    <div class="code-header"><span class="code-lang">EXPECTED OUTPUT (abridged)</span></div>
+                    <pre>Index built: 8 chunks indexed.
+
+============================================================
+QUERY: How does a ReAct agent loop work?
+
+  Retrieved 3 chunks:
+    [chunk_01] distance=0.081 source=section-05-agents
+    The ReAct agent interleaves reasoning and action in a loop...
+    [chunk_03] distance=0.412 source=section-07-planning
+    Plan-and-execute agents separate planning from execution...
+    [chunk_02] distance=0.451 source=section-06-memory
+    Memory in agents is classified into four types...
+
+ANSWER:
+According to [chunk_01 | section-05-agents], a ReAct agent loop works
+by interleaving reasoning and action: the model produces a Thought,
+selects an Action (a tool call), receives an Observation, and repeats
+this cycle until it emits a final answer. This approach was introduced
+by Yao et al. (2022).
+
+============================================================
+QUERY: What year was the iPhone 15 released?
+
+  Retrieved 3 chunks:
+    [chunk_04] distance=0.682 ...
+    [chunk_01] distance=0.711 ...
+    [chunk_07] distance=0.731 ...
+
+ANSWER:
+I don't have that information in the provided context.</pre>
+                  </div>
+                  <div class="callout callout-info" style="margin-top:1rem;">
+                    <strong>What to observe:</strong> (1) The first query retrieves chunk_01 with very low distance (0.08) — high confidence match. (2) The out-of-corpus query retrieves chunks with distances above 0.6 — far away semantically — and the model correctly refuses to answer rather than hallucinating. This is the core RAG safety property: the model cannot answer what isn't in the retrieved context.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">6</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Extension: add an LLM reranker for multi-chunk queries
+                </div>
+                <div class="step-body">
+                  <p>Retrieve more candidates than needed (top-6), then ask the LLM to rank them by relevance before assembly. This is the "LLM-as-reranker" pattern — useful when you don't have a dedicated cross-encoder model and the candidate set is small.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — add to rag_agent.py</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>RERANKER_SYSTEM = <span class="st">"""You are a relevance ranker.
+Given a query and a list of numbered passages, return ONLY a JSON array
+of passage numbers in order of relevance to the query, most relevant first.
+Example: [2, 5, 1] means passage 2 is most relevant, then 5, then 1.
+Return ONLY the JSON array, no other text."""</span>
+
+
+<span class="kw">def</span> <span class="fn">llm_rerank</span>(query: str, chunks: list[dict], keep: int = <span class="nu">3</span>) -&gt; list[dict]:
+    <span class="st">"""Use the LLM to rerank a candidate chunk list."""</span>
+    passages = <span class="st">"\n\n"</span>.<span class="fn">join</span>(
+        <span class="st">f"[{i+1}] {c['text'][:200]}"</span> <span class="kw">for</span> i, c <span class="kw">in</span> <span class="fn">enumerate</span>(chunks)
+    )
+    prompt = <span class="st">f"Query: {query}\n\nPassages:\n{passages}"</span>
+
+    response = client.messages.<span class="fn">create</span>(
+        model=<span class="st">"claude-haiku-4-5-20251001"</span>,
+        max_tokens=<span class="nu">64</span>,
+        system=RERANKER_SYSTEM,
+        messages=[{<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: prompt}],
+    )
+    <span class="kw">import</span> json
+    ranked_indices = json.<span class="fn">loads</span>(response.content[<span class="nu">0</span>].text.<span class="fn">strip</span>())
+    <span class="cm"># Convert 1-indexed to 0-indexed, cap at available chunks</span>
+    reranked = [chunks[i - <span class="nu">1</span>] <span class="kw">for</span> i <span class="kw">in</span> ranked_indices <span class="kw">if</span> <span class="nu">1</span> &lt;= i &lt;= <span class="fn">len</span>(chunks)]
+    <span class="kw">return</span> reranked[:keep]
+
+
+<span class="kw">def</span> <span class="fn">rag_answer_reranked</span>(collection: chromadb.Collection, query: str) -&gt; str:
+    <span class="st">"""RAG with LLM reranking: retrieve 6 → rerank → take top 3 → generate."""</span>
+    candidates = <span class="fn">retrieve</span>(collection, query, top_k=<span class="nu">6</span>)
+    top_chunks = <span class="fn">llm_rerank</span>(query, candidates, keep=<span class="nu">3</span>)
+
+    <span class="fn">print</span>(<span class="st">f"  After reranking, using chunks: {[c['id'] for c in top_chunks]}"</span>)
+
+    context_block = <span class="st">"\n\n"</span>.<span class="fn">join</span>(
+        <span class="st">f"[Source: {c['id']} | {c['source']}]\n{c['text']}"</span>
+        <span class="kw">for</span> c <span class="kw">in</span> top_chunks
+    )
+    augmented_query = <span class="st">f"Context:\n{context_block}\n\nQuestion: {query}"</span>
+
+    response = client.messages.<span class="fn">create</span>(
+        model=<span class="st">"claude-haiku-4-5-20251001"</span>,
+        max_tokens=<span class="nu">512</span>,
+        system=RAG_SYSTEM,
+        messages=[{<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: augmented_query}],
+    )
+    <span class="kw">return</span> response.content[<span class="nu">0</span>].text</pre>
+                  </div>
+                  <div class="callout callout-info" style="margin-top:1rem;">
+                    <strong>When reranking helps most:</strong> Queries where the initial embedding distance scores are clustered (all between 0.3–0.5) — the retriever found several plausible candidates but couldn't confidently rank them. The LLM's joint understanding of query + passage pairs resolves the tie more accurately than cosine similarity alone.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- end lab-steps -->
+        </div><!-- end lab-container -->
+
+      </div><!-- end lab -->
+
+      <!-- MARK COMPLETE + NAVIGATION -->
+      <div class="mark-complete-bar">
+        <p>Finished the theory and completed the lab? Mark this section complete to track your progress.</p>
+        <button class="btn btn-outline" id="completeBtn2" data-section="10" onclick="document.getElementById('completeBtn').click()">Mark Section 10 Complete</button>
+      </div>
+
+      <div style="text-align:center;margin:2rem 0 0;font-family:var(--font-mono);font-size:0.62rem;color:var(--text-dim);">
+        Last updated: <time datetime="2026-04-05">April 5, 2026</time>
+      </div>
+      <div class="section-nav-footer">
+        <a href="09-rl.html" class="nav-prev">← Section 09: RL &amp; Self-Improvement</a>
+        <a href="11-deployment.html" class="nav-next">Section 11: Deploying Agents →</a>
+      </div>
+
+    </div><!-- end page -->
+  </main>
+</div>
+
+<script src="../course.js"></script>
+<script>
+function stepDone(checkbox) {
+  const stepContent = checkbox.closest('.step-content');
+  if (checkbox.checked) {
+    stepContent.style.opacity = '0.6';
+  } else {
+    stepContent.style.opacity = '1';
+  }
+}
+
+function copyCode(btn) {
+  const pre = btn.closest('.code-block').querySelector('pre');
+  navigator.clipboard.writeText(pre.innerText).then(() => {
+    btn.textContent = 'copied!';
+    setTimeout(() => { btn.textContent = 'copy'; }, 2000);
+  });
+}
+</script>
+</body>
+</html>

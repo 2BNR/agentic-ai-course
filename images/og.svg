@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#060609"/>
+      <stop offset="100%" stop-color="#0e0e18"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6c63ff" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#00cfff" stop-opacity="0.05"/>
+    </linearGradient>
+    <radialGradient id="orb" cx="75%" cy="20%" r="50%">
+      <stop offset="0%" stop-color="#6c63ff" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#6c63ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#orb)"/>
+
+  <!-- Top border accent -->
+  <rect x="0" y="0" width="1200" height="3" fill="url(#glow)"/>
+  <rect x="60" y="0" width="340" height="3" fill="#6c63ff"/>
+
+  <!-- Logo mark -->
+  <rect x="60" y="60" width="56" height="56" rx="12" fill="#6c63ff" fill-opacity="0.15"/>
+  <rect x="60" y="60" width="56" height="56" rx="12" stroke="#6c63ff" stroke-width="1.5" fill="none"/>
+  <text x="88" y="101" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="700" fill="#ffffff" text-anchor="middle">A</text>
+  <circle cx="107" cy="69" r="5" fill="#00e5a0"/>
+
+  <!-- Site label -->
+  <text x="130" y="84" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="400" fill="#5a5a90" letter-spacing="3" text-anchor="start">// AGENTIC AI COURSE</text>
+  <text x="130" y="104" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="400" fill="#5a5a90" letter-spacing="1" text-anchor="start">2026 EDITION</text>
+
+  <!-- Main headline -->
+  <text x="60" y="290" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="800" fill="#ddddf5" letter-spacing="-2">Build AI Agents</text>
+  <text x="60" y="370" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="800" fill="#6c63ff" letter-spacing="-2">That Actually Work.</text>
+
+  <!-- Subheadline -->
+  <text x="60" y="430" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="400" fill="#5a5a90">16 sections · Labs &amp; quizzes · From ML basics to multi-agent systems</text>
+
+  <!-- Tags -->
+  <rect x="60" y="500" width="130" height="36" rx="8" fill="#6c63ff" fill-opacity="0.12"/>
+  <rect x="60" y="500" width="130" height="36" rx="8" stroke="#6c63ff" stroke-width="1" fill="none"/>
+  <text x="125" y="523" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#6c63ff" text-anchor="middle">Free Course</text>
+
+  <rect x="208" y="500" width="130" height="36" rx="8" fill="#00e5a0" fill-opacity="0.08"/>
+  <rect x="208" y="500" width="130" height="36" rx="8" stroke="#00e5a0" stroke-width="1" fill="none"/>
+  <text x="273" y="523" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#00e5a0" text-anchor="middle">Hands-On Labs</text>
+
+  <rect x="356" y="500" width="130" height="36" rx="8" fill="#00cfff" fill-opacity="0.08"/>
+  <rect x="356" y="500" width="130" height="36" rx="8" stroke="#00cfff" stroke-width="1" fill="none"/>
+  <text x="421" y="523" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#00cfff" text-anchor="middle">Self-Paced</text>
+
+  <!-- Right decoration: node graph -->
+  <circle cx="950" cy="315" r="60" fill="none" stroke="#6c63ff" stroke-width="1" stroke-opacity="0.3"/>
+  <circle cx="950" cy="315" r="8" fill="#6c63ff" fill-opacity="0.8"/>
+  <circle cx="1060" cy="210" r="6" fill="#00e5a0" fill-opacity="0.7"/>
+  <circle cx="1080" cy="380" r="6" fill="#00cfff" fill-opacity="0.7"/>
+  <circle cx="840" cy="200" r="5" fill="#6c63ff" fill-opacity="0.5"/>
+  <circle cx="820" cy="420" r="5" fill="#ff7c3e" fill-opacity="0.5"/>
+  <circle cx="1100" cy="300" r="4" fill="#6c63ff" fill-opacity="0.4"/>
+  <line x1="950" y1="315" x2="1060" y2="210" stroke="#6c63ff" stroke-width="1" stroke-opacity="0.25"/>
+  <line x1="950" y1="315" x2="1080" y2="380" stroke="#00cfff" stroke-width="1" stroke-opacity="0.25"/>
+  <line x1="950" y1="315" x2="840" y2="200" stroke="#6c63ff" stroke-width="1" stroke-opacity="0.2"/>
+  <line x1="950" y1="315" x2="820" y2="420" stroke="#ff7c3e" stroke-width="1" stroke-opacity="0.2"/>
+  <line x1="950" y1="315" x2="1100" y2="300" stroke="#6c63ff" stroke-width="1" stroke-opacity="0.2"/>
+  <line x1="1060" y1="210" x2="1080" y2="380" stroke="#00e5a0" stroke-width="0.5" stroke-opacity="0.15"/>
+  <line x1="840" y1="200" x2="1060" y2="210" stroke="#6c63ff" stroke-width="0.5" stroke-opacity="0.15"/>
+</svg>

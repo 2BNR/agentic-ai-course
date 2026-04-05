@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agentic AI Course 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+<style>
+body { background-image: radial-gradient(ellipse 60% 40% at 70% -10%, rgba(108,99,255,0.08) 0%, transparent 60%); }
+
+.section-row { cursor: pointer; }
+
+.divider {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--text-dim);
+  letter-spacing: 0.15em;
+  padding: 1.2rem 0 0.4rem;
+  text-transform: uppercase;
+  max-width: 860px;
+  margin: 0 auto;
+  padding-left: 2rem;
+}
+
+.hero-bg-text {
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-head);
+  font-size: 8rem;
+  font-weight: 800;
+  color: var(--text-dim);
+  opacity: 0.08;
+  pointer-events: none;
+  letter-spacing: -0.05em;
+  user-select: none;
+}
+</style>
+<noscript><style>
+/* No-JS: make sidebar visible and stack layout vertically on mobile */
+@media (max-width: 768px) {
+  .sidebar { transform: none; position: relative; width: 100%; height: auto; }
+  .layout  { flex-direction: column; }
+}
+</style></noscript>
+<link rel="manifest" href="manifest.json">
+</head>
+<body>
+<noscript>
+  <div style="background:#1a1200;border-bottom:2px solid #c87d00;color:#f0c060;padding:0.75rem 1.5rem;font-family:monospace;font-size:0.82rem;text-align:center;position:relative;z-index:999;">
+    &#9888; JavaScript is disabled. Progress tracking, quizzes, and interactive features require JavaScript.
+  </div>
+</noscript>
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <a href="./" class="sidebar-logo" style="text-decoration:none;display:block;">
+      <div class="logo-eyebrow">// AGENTIC AI COURSE</div>
+      <div class="logo-name">Learn <span>Agentic AI</span><br>2026 Edition</div>
+    </a>
+    <div class="sidebar-progress">
+      <div class="progress-row">
+        <span class="progress-label">OVERALL PROGRESS</span>
+        <span class="progress-count" id="progressCount">0 / 16</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+    <div class="sidebar-nav">
+      <div class="nav-group-label">Foundation</div>
+      <a href="sections/01-intro.html" class="nav-item" data-section="1"><span class="nav-num">01</span> Intro to Agentic AI <span class="nav-check">✓</span></a>
+      <a href="sections/02-ml-fundamentals.html" class="nav-item" data-section="2"><span class="nav-num">02</span> AI & ML Fundamentals <span class="nav-check">✓</span></a>
+      <a href="sections/03-frameworks.html" class="nav-item" data-section="3"><span class="nav-num">03</span> Programming & Frameworks <span class="nav-check">✓</span></a>
+      <a href="sections/04-llms.html" class="nav-item" data-section="4"><span class="nav-num">04</span> Large Language Models <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">Core Agents</div>
+      <a href="sections/05-understanding-agents.html" class="nav-item" data-section="5"><span class="nav-num">05</span> Understanding Agents <span class="nav-check">✓</span></a>
+      <a href="sections/06-memory.html" class="nav-item" data-section="6"><span class="nav-num">06</span> Memory & Knowledge <span class="nav-check">✓</span></a>
+      <a href="sections/07-planning.html" class="nav-item" data-section="7"><span class="nav-num">07</span> Decision-Making & Planning <span class="nav-check">✓</span></a>
+      <a href="sections/08-prompting.html" class="nav-item" data-section="8"><span class="nav-num">08</span> Prompt Engineering <span class="nav-check">✓</span></a>
+      <a href="sections/09-rl.html" class="nav-item" data-section="9"><span class="nav-num">09</span> RL & Self-Improvement <span class="nav-check">✓</span></a>
+      <a href="sections/10-rag.html" class="nav-item" data-section="10"><span class="nav-num">10</span> RAG <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">Production</div>
+      <a href="sections/11-deployment.html" class="nav-item" data-section="11"><span class="nav-num">11</span> Deploying Agents <span class="nav-check">✓</span></a>
+      <a href="sections/12-real-world.html" class="nav-item" data-section="12"><span class="nav-num">12</span> Real-World Applications <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">2026 New</div>
+      <a href="sections/13-mcp.html" class="nav-item" data-section="13"><span class="nav-num">13</span> MCP & Protocols <span class="nav-check">✓</span></a>
+      <a href="sections/14-multi-agent.html" class="nav-item" data-section="14"><span class="nav-num">14</span> Multi-Agent Orchestration <span class="nav-check">✓</span></a>
+      <a href="sections/15-security.html" class="nav-item" data-section="15"><span class="nav-num">15</span> Agent Security <span class="nav-check">✓</span></a>
+      <a href="sections/16-long-horizon.html" class="nav-item" data-section="16"><span class="nav-num">16</span> Long-Horizon Agents <span class="nav-check">✓</span></a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="index-hero" style="position:relative;">
+      <div class="hero-bg-text">AI</div>
+      <div class="index-eyebrow">// FULL COURSE · 2026 EDITION · UPDATED</div>
+      <h1 class="index-title">Roadmap to<br><span>Agentic AI</span></h1>
+      <p class="index-subtitle">A complete self-paced course covering everything from ML fundamentals to production multi-agent systems — with theory, visuals, step-by-step labs, and a direct line to Claude for help.</p>
+
+      <div class="stats-row">
+        <div class="stat"><div class="stat-num">16</div><div class="stat-label">SECTIONS</div></div>
+        <div class="stat"><div class="stat-num">9</div><div class="stat-label">HANDS-ON LABS</div></div>
+        <div class="stat"><div class="stat-num">7</div><div class="stat-label">QUIZZES</div></div>
+        <div class="stat"><div class="stat-num">2026</div><div class="stat-label">UPDATED</div></div>
+      </div>
+
+      <div style="display:flex;gap:0.7rem;flex-wrap:wrap;">
+        <a href="sections/01-intro.html" class="btn btn-accent">▶ Start Course</a>
+      </div>
+    </div>
+
+    <!-- SECTIONS LIST -->
+    <div class="divider">// FOUNDATION</div>
+    <div class="section-grid">
+      <a href="sections/01-intro.html" class="section-row" data-section="1">
+        <span class="section-row-num">01</span>
+        <div class="section-row-info">
+          <div class="section-row-title">Introduction to Agentic AI</div>
+          <div class="section-row-desc">What agents are, how they differ from regular AI, the core perceive→reason→act loop</div>
+        </div>
+        <span class="section-row-status status-notstarted" id="status-1">NOT STARTED</span>
+      </a>
+
+      <a href="sections/02-ml-fundamentals.html" class="section-row" data-section="2">
+        <span class="section-row-num">02</span>
+        <div class="section-row-info">
+          <div class="section-row-title">AI & ML Fundamentals</div>
+          <div class="section-row-desc">Supervised learning, neural networks, transformers, gradient descent</div>
+        </div>
+        <span class="section-row-status status-notstarted" id="status-2">NOT STARTED</span>
+      </a>
+
+      <a href="sections/03-frameworks.html" class="section-row" data-section="3">
+        <span class="section-row-num">03</span>
+        <div class="section-row-info">
+          <div class="section-row-title">Programming & AI Frameworks</div>
+          <div class="section-row-desc">LangChain, LangGraph, CrewAI, Anthropic SDK, Mastra — when to use which</div>
+        </div>
+        <span class="section-row-status status-updated" id="status-3">UPDATED 2026</span>
+      </a>
+
+      <a href="sections/04-llms.html" class="section-row" data-section="4">
+        <span class="section-row-num">04</span>
+        <div class="section-row-info">
+          <div class="section-row-title">Large Language Models</div>
+          <div class="section-row-desc">Transformer architecture, tokenization, model families, cost vs. capability trade-offs</div>
+        </div>
+        <span class="section-row-status status-notstarted" id="status-4">NOT STARTED</span>
+      </a>
+    </div>
+
+    <div class="divider">// CORE AGENTS</div>
+    <div class="section-grid">
+      <a href="sections/05-understanding-agents.html" class="section-row" data-section="5">
+        <span class="section-row-num">05</span>
+        <div class="section-row-info">
+          <div class="section-row-title">Understanding AI Agents</div>
+          <div class="section-row-desc">ReAct, Reflection, Tool Use patterns — the design vocabulary every AI engineer needs</div>
+        </div>
+        <span class="section-row-status status-notstarted" id="status-5">NOT STARTED</span>
+      </a>
+
+      <a href="sections/06-memory.html" class="section-row" data-section="6">
+        <span class="section-row-num">06</span>
+        <div class="section-row-info">
+          <div class="section-row-title">AI Memory & Knowledge Retrieval</div>
+          <div class="section-row-desc">4 memory types, vector databases, embeddings, semantic search, chunking</div>
+        </div>
+        <span class="section-row-status status-notstarted" id="status-6">NOT STARTED</span>
+      </a>
+
+      <a href="sections/07-planning.html" class="section-row" data-section="7">
+        <span class="section-row-num">07</span>
+        <div class="section-row-info">
+          <div class="section-row-title">Decision-Making & Planning</div>
+          <div class="section-row-desc">Task decomposition, hierarchical planning, error handling, conditional branching</div>
+        </div>
+        <span class="section-row-status status-notstarted" id="status-7">NOT STARTED</span>
+      </a>
+
+      <a href="sections/08-prompting.html" class="section-row" data-section="8">
+        <span class="section-row-num">08</span>
+        <div class="section-row-info">
+          <div class="section-row-title">Prompt Engineering & Adaptation</div>
+          <div class="section-row-desc">Few-shot, chain-of-thought, system prompt design, prompt compression</div>
+        </div>
+        <span class="section-row-status status-notstarted" id="status-8">NOT STARTED</span>
+      </a>
+
+      <a href="sections/09-rl.html" class="section-row" data-section="9">
+        <span class="section-row-num">09</span>
+        <div class="section-row-info">
+          <div class="section-row-title">Reinforcement Learning & Self-Improvement</div>
+          <div class="section-row-desc">RLHF, PPO, DPO, reward modeling, self-reflection patterns</div>
+        </div>
+        <span class="section-row-status status-notstarted" id="status-9">NOT STARTED</span>
+      </a>
+
+      <a href="sections/10-rag.html" class="section-row" data-section="10">
+        <span class="section-row-num">10</span>
+        <div class="section-row-info">
+          <div class="section-row-title">Retrieval-Augmented Generation (RAG)</div>
+          <div class="section-row-desc">Naive RAG, advanced techniques, HyDE, re-ranking, RAGAS evaluation, GraphRAG</div>
+        </div>
+        <span class="section-row-status status-notstarted" id="status-10">NOT STARTED</span>
+      </a>
+    </div>
+
+    <div class="divider">// PRODUCTION</div>
+    <div class="section-grid">
+      <a href="sections/11-deployment.html" class="section-row" data-section="11">
+        <span class="section-row-num">11</span>
+        <div class="section-row-info">
+          <div class="section-row-title">Deploying AI Agents</div>
+          <div class="section-row-desc">Docker, async execution, token cost management, observability, FinOps</div>
+        </div>
+        <span class="section-row-status status-updated" id="status-11">UPDATED 2026</span>
+      </a>
+
+      <a href="sections/12-real-world.html" class="section-row" data-section="12">
+        <span class="section-row-num">12</span>
+        <div class="section-row-info">
+          <div class="section-row-title">Real-World AI Agent Applications</div>
+          <div class="section-row-desc">Business automation, enterprise integrations, human oversight workflows</div>
+        </div>
+        <span class="section-row-status status-notstarted" id="status-12">NOT STARTED</span>
+      </a>
+    </div>
+
+    <div class="divider">// NEW IN 2026</div>
+    <div class="section-grid">
+      <a href="sections/13-mcp.html" class="section-row" data-section="13">
+        <span class="section-row-num">13</span>
+        <div class="section-row-info">
+          <div class="section-row-title">MCP & Agent Communication Protocols</div>
+          <div class="section-row-desc">Model Context Protocol, A2A, building and consuming MCP servers</div>
+        </div>
+        <span class="section-row-status status-new" id="status-13">NEW 2026</span>
+      </a>
+
+      <a href="sections/14-multi-agent.html" class="section-row" data-section="14">
+        <span class="section-row-num">14</span>
+        <div class="section-row-info">
+          <div class="section-row-title">Multi-Agent Orchestration</div>
+          <div class="section-row-desc">Orchestrator-subagent patterns, specialist agents, parallel execution, debugging</div>
+        </div>
+        <span class="section-row-status status-new" id="status-14">NEW 2026</span>
+      </a>
+
+      <a href="sections/15-security.html" class="section-row" data-section="15">
+        <span class="section-row-num">15</span>
+        <div class="section-row-info">
+          <div class="section-row-title">Agent Security & Adversarial Robustness</div>
+          <div class="section-row-desc">Prompt injection, sandboxing, least privilege, supply chain attacks, audit logging</div>
+        </div>
+        <span class="section-row-status status-new" id="status-15">NEW 2026</span>
+      </a>
+
+      <a href="sections/16-long-horizon.html" class="section-row" data-section="16">
+        <span class="section-row-num">16</span>
+        <div class="section-row-info">
+          <div class="section-row-title">Long-Horizon Agents & Production Reliability</div>
+          <div class="section-row-desc">Checkpointing, graceful degradation, error propagation, token budget optimization</div>
+        </div>
+        <span class="section-row-status status-new" id="status-16">NEW 2026</span>
+      </a>
+    </div>
+
+  </main>
+</div>
+
+<script src="course.js"></script>
+<script>
+// Update status badges from localStorage
+document.addEventListener('DOMContentLoaded', () => {
+  const completed = getCompleted();
+  completed.forEach(id => {
+    const el = document.getElementById('status-' + id);
+    if (el) { el.textContent = 'DONE ✓'; el.className = 'section-row-status status-done'; }
+    const row = document.querySelector('.section-row[data-section="' + id + '"]');
+    if (row) row.classList.add('completed');
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>03 — Programming & Frameworks · Agentic AI Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="../style.css">
+<noscript><style>
+/* No-JS: make sidebar visible and stack layout vertically on mobile */
+@media (max-width: 768px) {
+  .sidebar { transform: none; position: relative; width: 100%; height: auto; }
+  .layout  { flex-direction: column; }
+}
+</style></noscript>
+<link rel="manifest" href="../manifest.json">
+</head>
+<body data-section="3">
+<noscript>
+  <div style="background:#1a1200;border-bottom:2px solid #c87d00;color:#f0c060;padding:0.75rem 1.5rem;font-family:monospace;font-size:0.82rem;text-align:center;position:relative;z-index:999;">
+    &#9888; JavaScript is disabled. Progress tracking, quizzes, and interactive features require JavaScript.
+  </div>
+</noscript>
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <a href="../index.html" class="sidebar-logo" style="text-decoration:none;display:block;">
+      <div class="logo-eyebrow">// AGENTIC AI COURSE</div>
+      <div class="logo-name">Learn <span>Agentic AI</span><br>2026 Edition</div>
+    </a>
+    <div class="sidebar-progress">
+      <div class="progress-row">
+        <span class="progress-label">OVERALL PROGRESS</span>
+        <span class="progress-count" id="progressCount">0 / 16</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+    <div class="sidebar-nav">
+      <div class="nav-group-label">Foundation</div>
+      <a href="01-intro.html" class="nav-item" data-section="1"><span class="nav-num">01</span> Intro to Agentic AI <span class="nav-check">✓</span></a>
+      <a href="02-ml-fundamentals.html" class="nav-item" data-section="2"><span class="nav-num">02</span> AI & ML Fundamentals <span class="nav-check">✓</span></a>
+      <a href="03-frameworks.html" class="nav-item active" data-section="3"><span class="nav-num">03</span> Programming & Frameworks <span class="nav-check">✓</span></a>
+      <a href="04-llms.html" class="nav-item" data-section="4"><span class="nav-num">04</span> Large Language Models <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">Core Agents</div>
+      <a href="05-understanding-agents.html" class="nav-item" data-section="5"><span class="nav-num">05</span> Understanding Agents <span class="nav-check">✓</span></a>
+      <a href="06-memory.html" class="nav-item" data-section="6"><span class="nav-num">06</span> Memory & Knowledge <span class="nav-check">✓</span></a>
+      <a href="07-planning.html" class="nav-item" data-section="7"><span class="nav-num">07</span> Decision-Making & Planning <span class="nav-check">✓</span></a>
+      <a href="08-prompting.html" class="nav-item" data-section="8"><span class="nav-num">08</span> Prompt Engineering <span class="nav-check">✓</span></a>
+      <a href="09-rl.html" class="nav-item" data-section="9"><span class="nav-num">09</span> RL & Self-Improvement <span class="nav-check">✓</span></a>
+      <a href="10-rag.html" class="nav-item" data-section="10"><span class="nav-num">10</span> RAG <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">Production</div>
+      <a href="11-deployment.html" class="nav-item" data-section="11"><span class="nav-num">11</span> Deploying Agents <span class="nav-check">✓</span></a>
+      <a href="12-real-world.html" class="nav-item" data-section="12"><span class="nav-num">12</span> Real-World Applications <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">2026 New</div>
+      <a href="13-mcp.html" class="nav-item" data-section="13"><span class="nav-num">13</span> MCP & Protocols <span class="nav-check">✓</span></a>
+      <a href="14-multi-agent.html" class="nav-item" data-section="14"><span class="nav-num">14</span> Multi-Agent Orchestration <span class="nav-check">✓</span></a>
+      <a href="15-security.html" class="nav-item" data-section="15"><span class="nav-num">15</span> Agent Security <span class="nav-check">✓</span></a>
+      <a href="16-long-horizon.html" class="nav-item" data-section="16"><span class="nav-num">16</span> Long-Horizon Agents <span class="nav-check">✓</span></a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="topbar-breadcrumb">
+        <a href="../index.html" style="color:var(--text-muted);text-decoration:none;">Course</a>
+        &nbsp;/&nbsp; <span>03 · Programming & Frameworks</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn btn-outline" id="completeBtn" data-section="3">Mark Complete</button>
+      </div>
+    </div>
+
+    <div class="page">
+
+      <!-- HERO -->
+      <div class="section-hero">
+        <div class="hero-meta">
+          <span class="hero-num">SECTION 03</span>
+          <span class="hero-tag tag-core">CORE</span>
+          <span class="hero-tag tag-new">LAB</span>
+        </div>
+        <h1 class="section-title">Programming &<br><span>Frameworks</span></h1>
+        <p class="section-intro">
+          This is where the concepts become code. You'll learn the Python patterns that appear in every agent codebase, how the Anthropic SDK's tool use loop actually works at the API level, and when to reach for a framework like LangGraph versus building on the raw SDK. The lab ends with a working tool-calling agent you wrote yourself.
+        </p>
+        <div class="hero-actions">
+          <a href="#theory" class="btn btn-accent">📖 Start Theory</a>
+          <a href="#lab" class="btn btn-outline">🔬 Jump to Lab</a>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- THEORY                                      -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div id="theory">
+
+        <!-- ── BLOCK 01: The Python Stack ── -->
+        <div class="block">
+          <div class="block-label">01 · THE PYTHON STACK FOR AGENT BUILDERS</div>
+          <h2>Why Python, and What You Actually Need</h2>
+          <p>Python is the dominant language for agent development — not because it's the fastest at runtime, but because virtually every AI SDK, ML library, and vector database client ships a Python SDK first. For building agents, you don't need deep Python expertise, but you do need fluency with a specific set of patterns that appear constantly.</p>
+
+          <div class="concept-grid" style="grid-template-columns:repeat(2,1fr);">
+            <div class="concept-card">
+              <div class="concept-icon">🔄</div>
+              <div class="concept-name">async / await</div>
+              <div class="concept-desc">Most agent loops make many I/O calls — API requests, tool executions, database reads. Async Python lets these run concurrently instead of sequentially. Most modern AI SDKs offer async clients.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">ESSENTIAL PATTERN</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">📐</div>
+              <div class="concept-name">Pydantic models</div>
+              <div class="concept-desc">Pydantic provides runtime type validation for Python. Agent tool inputs and outputs are JSON — Pydantic models validate that structure and catch malformed tool calls before they cause silent failures.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">ESSENTIAL PATTERN</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">🔑</div>
+              <div class="concept-name">Environment variables</div>
+              <div class="concept-desc">API keys should never be hardcoded. The <code style="font-size:0.78rem;">python-dotenv</code> library loads a <code style="font-size:0.78rem;">.env</code> file into <code style="font-size:0.78rem;">os.environ</code> at startup. All major SDKs read keys from environment variables by default.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">ESSENTIAL PATTERN</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">📦</div>
+              <div class="concept-name">Virtual environments</div>
+              <div class="concept-desc">Use <code style="font-size:0.78rem;">python -m venv .venv</code> (or <code style="font-size:0.78rem;">uv</code>) to isolate project dependencies. Agent projects pull in many libraries — isolating them prevents version conflicts across projects.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">ESSENTIAL PATTERN</div>
+            </div>
+          </div>
+
+          <h3>Minimal project setup</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">BASH</span>
+              <button class="code-copy" onclick="copyCode(this)">copy</button>
+            </div>
+            <pre><span class="cm"># Create and activate a virtual environment</span>
+python -m venv .venv
+source .venv/bin/activate        <span class="cm"># Linux / macOS</span>
+<span class="cm"># .venv\Scripts\activate          # Windows</span>
+
+<span class="cm"># Install the core agent stack</span>
+pip install anthropic python-dotenv pydantic
+
+<span class="cm"># Create your .env file (never commit this to git)</span>
+echo <span class="st">"ANTHROPIC_API_KEY=your_key_here"</span> &gt; .env
+echo <span class="st">".env"</span> &gt;&gt; .gitignore</pre>
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://docs.anthropic.com/en/api/getting-started" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Getting Started</a> &nbsp;·&nbsp; <a href="https://github.com/anthropics/anthropic-sdk-python" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic Python SDK (GitHub)</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 02: The Anthropic SDK ── -->
+        <div class="block">
+          <div class="block-label">02 · THE ANTHROPIC SDK — MESSAGES API</div>
+          <h2>How Every API Call Is Structured</h2>
+          <p>The Anthropic SDK's <code style="font-size:0.88rem;">messages.create</code> is the primitive every agent is built on. Before adding any framework, you need to understand this call deeply — what goes in, what comes out, and how the conversation state is maintained between turns.</p>
+
+          <div class="diagram">
+            <div class="diagram-title">// ANATOMY OF A messages.create CALL</div>
+            <div style="display:flex;flex-direction:column;gap:0.8rem;font-size:0.82rem;">
+              <div style="display:grid;grid-template-columns:160px 1fr;gap:1rem;align-items:start;background:var(--surface3);border:1px solid var(--border2);padding:0.8rem;">
+                <span style="font-family:var(--font-mono);font-size:0.62rem;color:var(--accent);letter-spacing:0.08em;padding-top:0.1rem;">model</span>
+                <span style="color:var(--text-muted);">Which model to use. Pass the model ID string. Check Anthropic docs for current available models.</span>
+              </div>
+              <div style="display:grid;grid-template-columns:160px 1fr;gap:1rem;align-items:start;background:var(--surface3);border:1px solid var(--border2);padding:0.8rem;">
+                <span style="font-family:var(--font-mono);font-size:0.62rem;color:var(--accent);letter-spacing:0.08em;padding-top:0.1rem;">max_tokens</span>
+                <span style="color:var(--text-muted);">Maximum tokens the model may generate in this response. Required. Does not include input tokens — you pay for both.</span>
+              </div>
+              <div style="display:grid;grid-template-columns:160px 1fr;gap:1rem;align-items:start;background:var(--surface3);border:1px solid var(--border2);padding:0.8rem;">
+                <span style="font-family:var(--font-mono);font-size:0.62rem;color:var(--green);letter-spacing:0.08em;padding-top:0.1rem;">system</span>
+                <span style="color:var(--text-muted);">The system prompt — the agent's persistent instructions, persona, and constraints. Separate from the messages list. Set it once per agent session.</span>
+              </div>
+              <div style="display:grid;grid-template-columns:160px 1fr;gap:1rem;align-items:start;background:var(--surface3);border:1px solid var(--border2);padding:0.8rem;">
+                <span style="font-family:var(--font-mono);font-size:0.62rem;color:var(--green);letter-spacing:0.08em;padding-top:0.1rem;">messages</span>
+                <span style="color:var(--text-muted);">The conversation history as a list of <code style="font-size:0.75rem;">&#123;"role": "user"|"assistant", "content": ...&#125;</code> dicts. You are responsible for maintaining this list across turns — the API is stateless.</span>
+              </div>
+              <div style="display:grid;grid-template-columns:160px 1fr;gap:1rem;align-items:start;background:var(--surface3);border:1px solid var(--border2);padding:0.8rem;">
+                <span style="font-family:var(--font-mono);font-size:0.62rem;color:var(--yellow);letter-spacing:0.08em;padding-top:0.1rem;">tools</span>
+                <span style="color:var(--text-muted);">List of tool definitions the model may call. Each tool has a name, description, and JSON Schema for its input. Optional — omit for non-agent prompts.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="code-block" style="margin-top:1.2rem;">
+            <div class="code-header">
+              <span class="code-lang">PYTHON</span>
+              <button class="code-copy" onclick="copyCode(this)">copy</button>
+            </div>
+            <pre><span class="kw">import</span> anthropic
+
+client = anthropic.<span class="cl">Anthropic</span>()  <span class="cm"># reads ANTHROPIC_API_KEY from env</span>
+
+response = client.messages.<span class="fn">create</span>(
+    model=<span class="st">"claude-opus-4-6"</span>,          <span class="cm"># check docs.anthropic.com for current models</span>
+    max_tokens=<span class="nu">1024</span>,
+    system=<span class="st">"You are a helpful assistant."</span>,
+    messages=[
+        {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="st">"What is the capital of France?"</span>}
+    ]
+)
+
+<span class="fn">print</span>(response.content[<span class="nu">0</span>].text)   <span class="cm"># "Paris is the capital of France."</span>
+<span class="fn">print</span>(response.stop_reason)         <span class="cm"># "end_turn"</span>
+<span class="fn">print</span>(response.usage)               <span class="cm"># input_tokens, output_tokens</span></pre>
+          </div>
+
+          <div class="callout callout-warning">
+            <strong>The API is stateless.</strong> Each call to <code>messages.create</code> is independent. The model has no memory of previous calls. You must pass the full conversation history in the <code>messages</code> list on every call. This is why agents maintain a <code>messages</code> list and append to it after each turn.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://docs.anthropic.com/en/api/messages" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Messages API Reference</a> &nbsp;·&nbsp; <a href="https://github.com/anthropics/anthropic-sdk-python" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic Python SDK</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 03: Tool Use Loop ── -->
+        <div class="block">
+          <div class="block-label">03 · THE TOOL USE LOOP</div>
+          <h2>How Tool Calling Works at the API Level</h2>
+          <p>Tool use is the mechanism that turns a single-response LLM call into an agent loop. When you pass tool definitions to the API, the model may respond with a <code style="font-size:0.88rem;">tool_use</code> content block instead of (or alongside) text — indicating it wants to call one of your tools. You execute the tool and send the result back. This is the complete agent loop.</p>
+
+          <div class="diagram">
+            <div class="diagram-title">// THE TOOL USE LOOP — FULL SEQUENCE</div>
+            <div style="display:flex;flex-direction:column;gap:0.5rem;font-size:0.82rem;font-family:var(--font-mono);">
+              <div style="background:var(--surface3);border:1px solid var(--border2);padding:0.7rem 1rem;border-left:3px solid var(--accent);">
+                <span style="color:var(--text-dim);font-size:0.6rem;">YOU → API</span><br>
+                <span style="color:var(--text);">messages.create(messages=[...], tools=[calculator_tool])</span>
+              </div>
+              <div style="background:var(--surface);border:1px solid var(--border);padding:0.7rem 1rem;border-left:3px solid var(--yellow);">
+                <span style="color:var(--yellow);font-size:0.6rem;">API → YOU &nbsp; stop_reason = "tool_use"</span><br>
+                <span style="color:var(--text-muted);">content: [TextBlock("I'll calculate that."), ToolUseBlock(id="tu_01", name="calculator", input=&#123;"op":"multiply","a":1234,"b":5678&#125;)]</span>
+              </div>
+              <div style="background:var(--surface);border:1px solid var(--border);padding:0.7rem 1rem;border-left:3px solid var(--green);">
+                <span style="color:var(--green);font-size:0.6rem;">YOU — execute the tool locally</span><br>
+                <span style="color:var(--text-muted);">result = run_calculator("multiply", 1234, 5678)  →  7006652</span>
+              </div>
+              <div style="background:var(--surface3);border:1px solid var(--border2);padding:0.7rem 1rem;border-left:3px solid var(--accent);">
+                <span style="color:var(--text-dim);font-size:0.6rem;">YOU → API &nbsp; send tool result back</span><br>
+                <span style="color:var(--text);">messages.append(&#123;"role":"user", "content":[&#123;"type":"tool_result","tool_use_id":"tu_01","content":"7006652"&#125;]&#125;)</span>
+              </div>
+              <div style="background:var(--surface);border:1px solid var(--border);padding:0.7rem 1rem;border-left:3px solid var(--border2);">
+                <span style="color:var(--text-dim);font-size:0.6rem;">API → YOU &nbsp; stop_reason = "end_turn"</span><br>
+                <span style="color:var(--text-muted);">content: [TextBlock("1234 × 5678 = 7,006,652")]</span>
+              </div>
+            </div>
+          </div>
+
+          <h3>Defining a tool — the JSON Schema format</h3>
+          <p>Every tool definition has three required fields. The <code style="font-size:0.85rem;">input_schema</code> is standard JSON Schema — the model uses it to know what parameters to pass.</p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">PYTHON</span>
+              <button class="code-copy" onclick="copyCode(this)">copy</button>
+            </div>
+            <pre>calculator_tool = {
+    <span class="st">"name"</span>: <span class="st">"calculator"</span>,
+    <span class="st">"description"</span>: <span class="st">"Performs basic arithmetic. Use this whenever the user</span>
+<span class="st">                   asks for a calculation involving numbers."</span>,
+    <span class="st">"input_schema"</span>: {
+        <span class="st">"type"</span>: <span class="st">"object"</span>,
+        <span class="st">"properties"</span>: {
+            <span class="st">"operation"</span>: {
+                <span class="st">"type"</span>: <span class="st">"string"</span>,
+                <span class="st">"enum"</span>: [<span class="st">"add"</span>, <span class="st">"subtract"</span>, <span class="st">"multiply"</span>, <span class="st">"divide"</span>],
+                <span class="st">"description"</span>: <span class="st">"The arithmetic operation to perform"</span>
+            },
+            <span class="st">"a"</span>: {<span class="st">"type"</span>: <span class="st">"number"</span>, <span class="st">"description"</span>: <span class="st">"First operand"</span>},
+            <span class="st">"b"</span>: {<span class="st">"type"</span>: <span class="st">"number"</span>, <span class="st">"description"</span>: <span class="st">"Second operand"</span>}
+        },
+        <span class="st">"required"</span>: [<span class="st">"operation"</span>, <span class="st">"a"</span>, <span class="st">"b"</span>]
+    }
+}</pre>
+          </div>
+
+          <div class="callout callout-info">
+            <strong>Description quality matters.</strong> The model decides <em>when</em> to call a tool based on its description. Be specific about what the tool does and when to use it. Vague descriptions lead to the model either over-calling or under-calling the tool.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Source: <a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Tool Use Documentation</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 04: Framework Landscape ── -->
+        <div class="block">
+          <div class="block-label">04 · THE FRAMEWORK LANDSCAPE</div>
+          <h2>LangChain, LangGraph, CrewAI, AutoGen</h2>
+          <p>Several open-source frameworks have emerged to handle the plumbing that appears in every agent project: managing conversation state, registering tool libraries, implementing retry logic, connecting to vector stores, and providing observability. Understanding what each one does — and what it costs in complexity — lets you make an informed choice.</p>
+
+          <div class="concept-grid" style="grid-template-columns:repeat(2,1fr);">
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.5rem;">LANGCHAIN</div>
+              <div class="concept-name">The Component Library</div>
+              <div class="concept-desc">The original Python framework for LLM applications. Provides chains, tool integrations, document loaders, and a large ecosystem of connectors. Broad but has a reputation for abstractions that obscure what's happening underneath.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">WIDELY USED (2022–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.5rem;">LANGGRAPH</div>
+              <div class="concept-name">Graph-Based State Machines</div>
+              <div class="concept-desc">Built by the LangChain team. Models agent workflows as graphs where nodes are processing steps and edges define routing logic. Handles state persistence, cycles, and human-in-the-loop interrupts natively. Strong fit for supervised agents.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">WIDELY USED (2024–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--cyan);margin-bottom:0.5rem;">CREWAI</div>
+              <div class="concept-name">Role-Based Multi-Agent</div>
+              <div class="concept-desc">Organizes agents as a "crew" of role-playing specialists coordinated by a process (sequential or hierarchical). Minimal boilerplate for multi-agent pipelines. Less flexible than LangGraph for complex routing.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--cyan);">EMERGING (2024–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--cyan);margin-bottom:0.5rem;">AUTOGEN</div>
+              <div class="concept-name">Conversational Multi-Agent</div>
+              <div class="concept-desc">Microsoft Research's framework. Agents communicate through a message-passing protocol, supporting both LLM-based and human-in-the-loop agents in the same conversation. Strong research lineage.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--cyan);">EMERGING (2024–2026)</div>
+            </div>
+          </div>
+
+          <table class="compare-table" style="margin-top:1.2rem;">
+            <thead>
+              <tr>
+                <th>Framework</th>
+                <th>Best for</th>
+                <th>Key strength</th>
+                <th>Watch out for</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>LangChain</strong></td>
+                <td>Rapid prototyping, broad tool ecosystem</td>
+                <td>Huge library of integrations</td>
+                <td>Abstractions hide API details; debugging is harder</td>
+              </tr>
+              <tr>
+                <td><strong>LangGraph</strong></td>
+                <td>Production agents needing state, cycles, human checkpoints</td>
+                <td>Explicit state machine; resumable workflows</td>
+                <td>More setup than simple chains</td>
+              </tr>
+              <tr>
+                <td><strong>CrewAI</strong></td>
+                <td>Role-based multi-agent pipelines with minimal code</td>
+                <td>Fast to define agent crews and task sequences</td>
+                <td>Less control over routing logic</td>
+              </tr>
+              <tr>
+                <td><strong>AutoGen</strong></td>
+                <td>Research, conversational multi-agent experiments</td>
+                <td>Flexible agent-to-agent communication protocols</td>
+                <td>Less battle-tested in production than LangGraph</td>
+              </tr>
+              <tr>
+                <td><strong>Raw SDK</strong></td>
+                <td>Learning, simple agents, maximum control</td>
+                <td>You see exactly what happens — no magic</td>
+                <td>You write more boilerplate yourself</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://python.langchain.com/docs/" target="_blank" style="color:var(--accent);text-decoration:none;">LangChain Docs</a> &nbsp;·&nbsp; <a href="https://langchain-ai.github.io/langgraph/" target="_blank" style="color:var(--accent);text-decoration:none;">LangGraph Docs</a> &nbsp;·&nbsp; <a href="https://docs.crewai.com" target="_blank" style="color:var(--accent);text-decoration:none;">CrewAI Docs</a> &nbsp;·&nbsp; <a href="https://microsoft.github.io/autogen/" target="_blank" style="color:var(--accent);text-decoration:none;">AutoGen Docs</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 05: Framework vs Raw SDK ── -->
+        <div class="block">
+          <div class="block-label">05 · FRAMEWORK vs RAW SDK</div>
+          <h2>When to Use Each</h2>
+          <p>Anthropic's own documentation is explicit on this point: for simple agents, adding a framework is often unnecessary overhead. The right choice depends on what complexity you're actually dealing with.</p>
+
+          <div class="diagram">
+            <div class="diagram-title">// DECISION GUIDE — FRAMEWORK OR RAW SDK?</div>
+            <div style="display:flex;flex-direction:column;gap:0;">
+              <div style="padding:0.9rem 1.2rem;background:var(--surface3);border:1px solid var(--border2);border-bottom:none;">
+                <div style="font-family:var(--font-mono);font-size:0.62rem;color:var(--text-muted);margin-bottom:0.4rem;">USE RAW SDK WHEN</div>
+                <div style="display:flex;flex-direction:column;gap:0.3rem;font-size:0.83rem;color:var(--text-muted);">
+                  <div>✓ You are learning — you need to see every step to understand what's happening</div>
+                  <div>✓ Your agent has one or two tools and a simple loop</div>
+                  <div>✓ You need maximum debuggability and control</div>
+                  <div>✓ You are building a custom architecture that doesn't fit standard patterns</div>
+                </div>
+              </div>
+              <div style="padding:0.9rem 1.2rem;background:var(--accent-light);border:1px solid rgba(108,99,255,0.3);">
+                <div style="font-family:var(--font-mono);font-size:0.62rem;color:var(--accent);margin-bottom:0.4rem;">REACH FOR A FRAMEWORK WHEN</div>
+                <div style="display:flex;flex-direction:column;gap:0.3rem;font-size:0.83rem;color:var(--text-muted);">
+                  <div>✓ You need <strong style="color:var(--text);">state persistence</strong> across runs (LangGraph checkpointing)</div>
+                  <div>✓ You need <strong style="color:var(--text);">human-in-the-loop interrupts</strong> — pause, approve, resume (LangGraph)</div>
+                  <div>✓ You need to connect to <strong style="color:var(--text);">many external systems</strong> quickly (LangChain integrations)</div>
+                  <div>✓ You are building <strong style="color:var(--text);">multi-agent pipelines</strong> with role specialization (CrewAI, AutoGen)</div>
+                  <div>✓ You need <strong style="color:var(--text);">observability</strong> — tracing, replay, debugging agent runs (LangSmith + LangGraph)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout callout-success">
+            <strong>Course approach:</strong> This section's lab uses the raw Anthropic SDK so you can see every step clearly. Later sections (07 Planning, 14 Multi-Agent) introduce LangGraph where the graph-based state management genuinely earns its complexity.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Source: <a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Tool Use Documentation</a> &nbsp;·&nbsp; <a href="https://langchain-ai.github.io/langgraph/" target="_blank" style="color:var(--accent);text-decoration:none;">LangGraph Docs</a>
+          </div>
+        </div>
+
+        <!-- ── SOURCES TABLE ── -->
+        <div class="block">
+          <div class="block-label">SOURCES USED IN THIS SECTION</div>
+          <h2>Verified References</h2>
+          <table class="compare-table">
+            <thead>
+              <tr><th>Source</th><th>Type</th><th>Covers</th><th>Recency</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://docs.anthropic.com/en/api/messages" target="_blank" style="color:var(--accent);">Anthropic — Messages API Reference</a></td>
+                <td>Official docs</td>
+                <td>messages.create parameters, response structure, stop reasons</td>
+                <td>Maintained 2024–2026</td>
+              </tr>
+              <tr>
+                <td><a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);">Anthropic — Tool Use Documentation</a></td>
+                <td>Official docs</td>
+                <td>Tool definition schema, tool_use loop, tool_result format</td>
+                <td>Maintained 2024–2026</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/anthropics/anthropic-sdk-python" target="_blank" style="color:var(--accent);">Anthropic Python SDK (GitHub)</a></td>
+                <td>Official SDK</td>
+                <td>Client setup, async client, code examples</td>
+                <td>Maintained 2023–2026</td>
+              </tr>
+              <tr>
+                <td><a href="https://langchain-ai.github.io/langgraph/" target="_blank" style="color:var(--accent);">LangGraph Documentation</a></td>
+                <td>Official docs</td>
+                <td>Graph-based agent architecture, state persistence, human-in-the-loop</td>
+                <td>Maintained 2024–2026</td>
+              </tr>
+              <tr>
+                <td><a href="https://python.langchain.com/docs/" target="_blank" style="color:var(--accent);">LangChain Documentation</a></td>
+                <td>Official docs</td>
+                <td>Framework overview, chains, tool integrations ecosystem</td>
+                <td>Maintained 2022–2026</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div><!-- end theory -->
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- LAB                                         -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div id="lab" class="block">
+        <div class="block-label">HANDS-ON LAB</div>
+        <h2>Build Your First Tool-Using Agent</h2>
+        <p style="margin-bottom:1.5rem;">You'll implement the full tool use loop from scratch using the Anthropic SDK — no framework. By the end you'll have a working agent that can call a calculator tool, observe the result, and deliver a final answer. This is the same pattern used by every agent framework under the hood.</p>
+
+        <div class="lab-container">
+          <div class="lab-header">
+            <div class="lab-icon">🔬</div>
+            <div class="lab-title-wrap">
+              <div class="lab-title">Tool-Using Agent — Raw Anthropic SDK</div>
+              <div class="lab-subtitle">PYTHON · ~50 LINES · ANTHROPIC API KEY REQUIRED</div>
+            </div>
+          </div>
+
+          <div class="lab-steps">
+
+            <!-- Step 1 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">1</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Set up your environment
+                </div>
+                <div class="step-body">
+                  <p>Create a new directory, set up a virtual environment, and install the SDK.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">BASH</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>mkdir agent-lab && cd agent-lab
+python -m venv .venv
+source .venv/bin/activate    <span class="cm"># Windows: .venv\Scripts\activate</span>
+pip install anthropic python-dotenv
+
+<span class="cm"># Create .env with your API key</span>
+echo <span class="st">"ANTHROPIC_API_KEY=your_key_here"</span> &gt; .env</pre>
+                  </div>
+                  <p>Get your API key from <a href="https://console.anthropic.com" target="_blank" style="color:var(--accent);">console.anthropic.com</a> → API Keys.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">2</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Define the tool
+                </div>
+                <div class="step-body">
+                  <p>Create <code>agent.py</code> and define a calculator tool. Note the JSON Schema structure — this is what the model uses to know what inputs to pass.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — agent.py</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre><span class="kw">import</span> os
+<span class="kw">import</span> json
+<span class="kw">import</span> anthropic
+<span class="kw">from</span> dotenv <span class="kw">import</span> load_dotenv
+
+<span class="fn">load_dotenv</span>()
+
+client = anthropic.<span class="cl">Anthropic</span>()
+
+<span class="cm"># Tool definition — JSON Schema for inputs</span>
+TOOLS = [
+    {
+        <span class="st">"name"</span>: <span class="st">"calculator"</span>,
+        <span class="st">"description"</span>: (
+            <span class="st">"Performs arithmetic: add, subtract, multiply, divide. "</span>
+            <span class="st">"Use this whenever the user asks for a calculation."</span>
+        ),
+        <span class="st">"input_schema"</span>: {
+            <span class="st">"type"</span>: <span class="st">"object"</span>,
+            <span class="st">"properties"</span>: {
+                <span class="st">"operation"</span>: {
+                    <span class="st">"type"</span>: <span class="st">"string"</span>,
+                    <span class="st">"enum"</span>: [<span class="st">"add"</span>, <span class="st">"subtract"</span>, <span class="st">"multiply"</span>, <span class="st">"divide"</span>],
+                    <span class="st">"description"</span>: <span class="st">"The arithmetic operation"</span>
+                },
+                <span class="st">"a"</span>: {<span class="st">"type"</span>: <span class="st">"number"</span>, <span class="st">"description"</span>: <span class="st">"First operand"</span>},
+                <span class="st">"b"</span>: {<span class="st">"type"</span>: <span class="st">"number"</span>, <span class="st">"description"</span>: <span class="st">"Second operand"</span>}
+            },
+            <span class="st">"required"</span>: [<span class="st">"operation"</span>, <span class="st">"a"</span>, <span class="st">"b"</span>]
+        }
+    }
+]</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">3</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Implement the tool executor
+                </div>
+                <div class="step-body">
+                  <p>Write the Python function that actually runs when the model requests the calculator tool. This runs locally — the model never executes code directly.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — agent.py (continued)</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre><span class="kw">def</span> <span class="fn">run_calculator</span>(operation: str, a: float, b: float) -&gt; str:
+    <span class="st">"""Execute the calculator tool and return result as string."""</span>
+    <span class="kw">if</span> operation == <span class="st">"add"</span>:
+        result = a + b
+    <span class="kw">elif</span> operation == <span class="st">"subtract"</span>:
+        result = a - b
+    <span class="kw">elif</span> operation == <span class="st">"multiply"</span>:
+        result = a * b
+    <span class="kw">elif</span> operation == <span class="st">"divide"</span>:
+        <span class="kw">if</span> b == <span class="nu">0</span>:
+            <span class="kw">return</span> <span class="st">"Error: division by zero"</span>
+        result = a / b
+    <span class="kw">else</span>:
+        <span class="kw">return</span> <span class="st">f"Unknown operation: </span>{operation}<span class="st">"</span>
+    <span class="kw">return</span> <span class="fn">str</span>(result)
+
+
+<span class="kw">def</span> <span class="fn">execute_tool</span>(tool_name: str, tool_input: dict) -&gt; str:
+    <span class="st">"""Route tool calls to the correct executor function."""</span>
+    <span class="kw">if</span> tool_name == <span class="st">"calculator"</span>:
+        <span class="kw">return</span> <span class="fn">run_calculator</span>(
+            tool_input[<span class="st">"operation"</span>],
+            tool_input[<span class="st">"a"</span>],
+            tool_input[<span class="st">"b"</span>]
+        )
+    <span class="kw">raise</span> <span class="cl">ValueError</span>(<span class="st">f"Unknown tool: </span>{tool_name}<span class="st">"</span>)</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">4</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Implement the agent loop
+                </div>
+                <div class="step-body">
+                  <p>Write the core loop. It calls the API, checks the stop reason, executes tools if requested, sends results back, and repeats until the model signals <code>end_turn</code>.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — agent.py (continued)</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre><span class="kw">def</span> <span class="fn">run_agent</span>(user_message: str) -&gt; str:
+    <span class="st">"""Run the agent loop until end_turn or max iterations."""</span>
+    messages = [
+        {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: user_message}
+    ]
+    max_iterations = <span class="nu">10</span>  <span class="cm"># guard against infinite loops</span>
+
+    <span class="kw">for</span> iteration <span class="kw">in</span> <span class="fn">range</span>(max_iterations):
+        <span class="fn">print</span>(<span class="st">f"\n[iteration </span>{iteration + <span class="nu">1</span>}<span class="st">] calling API..."</span>)
+
+        response = client.messages.<span class="fn">create</span>(
+            model=<span class="st">"claude-opus-4-6"</span>,  <span class="cm"># use a current model from docs.anthropic.com</span>
+            max_tokens=<span class="nu">1024</span>,
+            tools=TOOLS,
+            messages=messages
+        )
+
+        <span class="cm"># Append the assistant's response to history</span>
+        messages.<span class="fn">append</span>({
+            <span class="st">"role"</span>: <span class="st">"assistant"</span>,
+            <span class="st">"content"</span>: response.content
+        })
+
+        <span class="fn">print</span>(<span class="st">f"  stop_reason: </span>{response.stop_reason}<span class="st">"</span>)
+
+        <span class="cm"># Done — extract and return the final text</span>
+        <span class="kw">if</span> response.stop_reason == <span class="st">"end_turn"</span>:
+            <span class="kw">for</span> block <span class="kw">in</span> response.content:
+                <span class="kw">if</span> <span class="fn">hasattr</span>(block, <span class="st">"text"</span>):
+                    <span class="kw">return</span> block.text
+            <span class="kw">return</span> <span class="st">"(no text response)"</span>
+
+        <span class="cm"># Model wants to call tools — execute each one</span>
+        <span class="kw">if</span> response.stop_reason == <span class="st">"tool_use"</span>:
+            tool_results = []
+            <span class="kw">for</span> block <span class="kw">in</span> response.content:
+                <span class="kw">if</span> block.type == <span class="st">"tool_use"</span>:
+                    <span class="fn">print</span>(<span class="st">f"  tool call: </span>{block.name}<span class="st">(</span>{block.input}<span class="st">)"</span>)
+                    result = <span class="fn">execute_tool</span>(block.name, block.input)
+                    <span class="fn">print</span>(<span class="st">f"  tool result: </span>{result}<span class="st">"</span>)
+                    tool_results.<span class="fn">append</span>({
+                        <span class="st">"type"</span>: <span class="st">"tool_result"</span>,
+                        <span class="st">"tool_use_id"</span>: block.id,
+                        <span class="st">"content"</span>: result
+                    })
+            <span class="cm"># Send tool results back as a user message</span>
+            messages.<span class="fn">append</span>({
+                <span class="st">"role"</span>: <span class="st">"user"</span>,
+                <span class="st">"content"</span>: tool_results
+            })
+
+    <span class="kw">return</span> <span class="st">"Max iterations reached without end_turn."</span>
+
+
+<span class="kw">if</span> __name__ == <span class="st">"__main__"</span>:
+    answer = <span class="fn">run_agent</span>(<span class="st">"What is 1234 multiplied by 5678?"</span>)
+    <span class="fn">print</span>(<span class="st">f"\nAgent: </span>{answer}<span class="st">"</span>)</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">5</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Run it and read the output
+                </div>
+                <div class="step-body">
+                  <p>Run the agent and observe the loop in action. You should see the iteration count, the tool call with its inputs, the tool result, and the final answer.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">BASH</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>python agent.py</pre>
+                  </div>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">EXPECTED OUTPUT</span></div>
+                    <pre style="color:var(--text-muted);">[iteration 1] calling API...
+  stop_reason: tool_use
+  tool call: calculator({'operation': 'multiply', 'a': 1234, 'b': 5678})
+  tool result: 7006652.0
+
+[iteration 2] calling API...
+  stop_reason: end_turn
+
+Agent: 1234 multiplied by 5678 equals 7,006,652.</pre>
+                  </div>
+                  <p>Notice the two iterations: first the model decides to call the tool (stop_reason: tool_use), then after receiving the result it produces the final answer (stop_reason: end_turn). This is the complete ReAct loop from Section 01 — in code.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">6</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Extend: add a second tool
+                </div>
+                <div class="step-body">
+                  <p>Add a <code>get_today</code> tool that returns the current date, then ask the agent a question that requires both tools: <em>"If today's date number is multiplied by 100, what do you get?"</em> This forces a multi-tool, multi-iteration loop.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — add to TOOLS list</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>{
+    <span class="st">"name"</span>: <span class="st">"get_today"</span>,
+    <span class="st">"description"</span>: <span class="st">"Returns today's date as a string (YYYY-MM-DD)."</span>,
+    <span class="st">"input_schema"</span>: {
+        <span class="st">"type"</span>: <span class="st">"object"</span>,
+        <span class="st">"properties"</span>: {},
+        <span class="st">"required"</span>: []
+    }
+}</pre>
+                  </div>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — add to execute_tool()</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre><span class="kw">from</span> datetime <span class="kw">import</span> date
+
+<span class="kw">if</span> tool_name == <span class="st">"get_today"</span>:
+    <span class="kw">return</span> <span class="fn">str</span>(date.<span class="fn">today</span>())</pre>
+                  </div>
+                  <p>Observe how the agent now runs three or more iterations — calling <code>get_today</code> first, then <code>calculator</code> with the extracted date number, then returning the final answer. You've built a multi-tool, multi-step agent.</p>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- end lab-steps -->
+        </div><!-- end lab-container -->
+
+      </div><!-- end lab -->
+
+      <!-- MARK COMPLETE + NAVIGATION -->
+      <div class="mark-complete-bar">
+        <p>Finished the theory and completed the lab? Mark this section complete.</p>
+        <button class="btn btn-outline" id="completeBtn2" data-section="3" onclick="document.getElementById('completeBtn').click()">Mark Section 3 Complete</button>
+      </div>
+
+      <div style="text-align:center;margin:2rem 0 0;font-family:var(--font-mono);font-size:0.62rem;color:var(--text-dim);">
+        Last updated: <time datetime="2026-04-05">April 5, 2026</time>
+      </div>
+      <div class="section-nav-footer">
+        <a href="02-ml-fundamentals.html" class="nav-prev">← Section 02: AI & ML Fundamentals</a>
+        <a href="04-llms.html" class="nav-next">Section 04: Large Language Models →</a>
+      </div>
+
+    </div><!-- end page -->
+  </main>
+</div>
+
+<script src="../course.js"></script>
+<script>
+function copyCode(btn) {
+  const pre = btn.closest('.code-block').querySelector('pre');
+  navigator.clipboard.writeText(pre.innerText).then(() => {
+    btn.textContent = 'copied!';
+    setTimeout(() => { btn.textContent = 'copy'; }, 2000);
+  });
+}
+
+function stepDone(checkbox) {
+  const step = checkbox.closest('.step');
+  if (checkbox.checked) {
+    step.classList.add('done');
+  } else {
+    step.classList.remove('done');
+  }
+}
+</script>
+</body>
+</html>

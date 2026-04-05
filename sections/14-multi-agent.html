@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>14 — Multi-Agent Orchestration · Agentic AI Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="../style.css">
+<noscript><style>
+/* No-JS: make sidebar visible and stack layout vertically on mobile */
+@media (max-width: 768px) {
+  .sidebar { transform: none; position: relative; width: 100%; height: auto; }
+  .layout  { flex-direction: column; }
+}
+</style></noscript>
+<link rel="manifest" href="../manifest.json">
+</head>
+<body data-section="14">
+<noscript>
+  <div style="background:#1a1200;border-bottom:2px solid #c87d00;color:#f0c060;padding:0.75rem 1.5rem;font-family:monospace;font-size:0.82rem;text-align:center;position:relative;z-index:999;">
+    &#9888; JavaScript is disabled. Progress tracking, quizzes, and interactive features require JavaScript.
+  </div>
+</noscript>
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <a href="../index.html" class="sidebar-logo" style="text-decoration:none;display:block;">
+      <div class="logo-eyebrow">// AGENTIC AI COURSE</div>
+      <div class="logo-name">Learn <span>Agentic AI</span><br>2026 Edition</div>
+    </a>
+    <div class="sidebar-progress">
+      <div class="progress-row">
+        <span class="progress-label">OVERALL PROGRESS</span>
+        <span class="progress-count" id="progressCount">0 / 16</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+    <div class="sidebar-nav">
+      <div class="nav-group-label">Foundation</div>
+      <a href="01-intro.html" class="nav-item" data-section="1"><span class="nav-num">01</span> Intro to Agentic AI <span class="nav-check">✓</span></a>
+      <a href="02-ml-fundamentals.html" class="nav-item" data-section="2"><span class="nav-num">02</span> AI &amp; ML Fundamentals <span class="nav-check">✓</span></a>
+      <a href="03-frameworks.html" class="nav-item" data-section="3"><span class="nav-num">03</span> Programming &amp; Frameworks <span class="nav-check">✓</span></a>
+      <a href="04-llms.html" class="nav-item" data-section="4"><span class="nav-num">04</span> Large Language Models <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">Core Agents</div>
+      <a href="05-understanding-agents.html" class="nav-item" data-section="5"><span class="nav-num">05</span> Understanding Agents <span class="nav-check">✓</span></a>
+      <a href="06-memory.html" class="nav-item" data-section="6"><span class="nav-num">06</span> Memory &amp; Knowledge <span class="nav-check">✓</span></a>
+      <a href="07-planning.html" class="nav-item" data-section="7"><span class="nav-num">07</span> Decision-Making &amp; Planning <span class="nav-check">✓</span></a>
+      <a href="08-prompting.html" class="nav-item" data-section="8"><span class="nav-num">08</span> Prompt Engineering <span class="nav-check">✓</span></a>
+      <a href="09-rl.html" class="nav-item" data-section="9"><span class="nav-num">09</span> RL &amp; Self-Improvement <span class="nav-check">✓</span></a>
+      <a href="10-rag.html" class="nav-item" data-section="10"><span class="nav-num">10</span> RAG <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">Production</div>
+      <a href="11-deployment.html" class="nav-item" data-section="11"><span class="nav-num">11</span> Deploying Agents <span class="nav-check">✓</span></a>
+      <a href="12-real-world.html" class="nav-item" data-section="12"><span class="nav-num">12</span> Real-World Applications <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">2026 New</div>
+      <a href="13-mcp.html" class="nav-item" data-section="13"><span class="nav-num">13</span> MCP &amp; Protocols <span class="nav-check">✓</span></a>
+      <a href="14-multi-agent.html" class="nav-item active" data-section="14"><span class="nav-num">14</span> Multi-Agent Orchestration <span class="nav-check">✓</span></a>
+      <a href="15-security.html" class="nav-item" data-section="15"><span class="nav-num">15</span> Agent Security <span class="nav-check">✓</span></a>
+      <a href="16-long-horizon.html" class="nav-item" data-section="16"><span class="nav-num">16</span> Long-Horizon Agents <span class="nav-check">✓</span></a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="topbar-breadcrumb">
+        <a href="../index.html" style="color:var(--text-muted);text-decoration:none;">Course</a>
+        &nbsp;/&nbsp; <span>14 · Multi-Agent Orchestration</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn btn-outline" id="completeBtn" data-section="14">Mark Complete</button>
+      </div>
+    </div>
+
+    <div class="page">
+
+      <!-- HERO -->
+      <div class="section-hero">
+        <div class="hero-meta">
+          <span class="hero-num">SECTION 14</span>
+          <span class="hero-tag tag-lab">LAB</span>
+          <span class="hero-tag" style="background:rgba(139,92,246,0.15);color:#a78bfa;border-color:rgba(139,92,246,0.3);">2026 NEW</span>
+        </div>
+        <h1 class="section-title">Multi-Agent<br><span>Orchestration</span></h1>
+        <p class="section-intro">
+          A single agent has a single context window, a single thread of execution, and a single set of tools. Multi-agent systems break those limits: tasks too large for one context window get decomposed across specialists; independent subtasks run in parallel; a critic agent reviews the worker's output before it is accepted. This section covers why and how to structure multiple agents, and the lab builds a three-agent research pipeline — orchestrator, researcher, and critic — from scratch.
+        </p>
+        <div class="hero-actions">
+          <a href="#theory" class="btn btn-accent">📖 Start Theory</a>
+          <a href="#lab" class="btn btn-outline">🔬 Jump to Lab</a>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- THEORY                                      -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div id="theory">
+
+        <!-- ── BLOCK 01: Why Multi-Agent? ── -->
+        <div class="block">
+          <div class="block-label">01 · WHY MULTI-AGENT?</div>
+          <h2>Three Problems That One Agent Cannot Solve Alone</h2>
+          <p>
+            Multi-agent systems add significant engineering complexity — more LLM calls, more failure surfaces, harder debugging. They are only justified when they solve a problem that a single agent genuinely cannot. Anthropic's guidance on multi-agent systems identifies three classes of tasks where the multi-agent approach pays off.
+          </p>
+
+          <div style="display:grid;gap:1rem;margin:1.5rem 0;">
+            <div style="background:var(--surface-2);border:1px solid var(--accent);border-radius:6px;padding:1.25rem;display:grid;grid-template-columns:48px 1fr;gap:1rem;align-items:start;">
+              <div style="font-size:2rem;text-align:center;">📐</div>
+              <div>
+                <div style="font-weight:600;margin-bottom:0.4rem;">Tasks too large for a single context window</div>
+                <p style="margin:0;font-size:0.85rem;color:var(--text-muted);">A 500-page codebase, a year of email history, a corpus of 10,000 documents — no context window holds all of it. A multi-agent system decomposes the task: the orchestrator divides the work, subagents process chunks in parallel, and results are synthesized. This is the most common and clearest justification for multiple agents.</p>
+              </div>
+            </div>
+            <div style="background:var(--surface-2);border:1px solid var(--accent);border-radius:6px;padding:1.25rem;display:grid;grid-template-columns:48px 1fr;gap:1rem;align-items:start;">
+              <div style="font-size:2rem;text-align:center;">⚡</div>
+              <div>
+                <div style="font-weight:600;margin-bottom:0.4rem;">Independent subtasks that benefit from parallelism</div>
+                <p style="margin:0;font-size:0.85rem;color:var(--text-muted);">A research task with three independent sub-questions can be answered three times faster by running three agents simultaneously than by running one agent sequentially. Parallelism is the clearest performance win in multi-agent systems — but only works when subtasks truly do not depend on each other's output.</p>
+              </div>
+            </div>
+            <div style="background:var(--surface-2);border:1px solid var(--accent);border-radius:6px;padding:1.25rem;display:grid;grid-template-columns:48px 1fr;gap:1rem;align-items:start;">
+              <div style="font-size:2rem;text-align:center;">🔍</div>
+              <div>
+                <div style="font-weight:600;margin-bottom:0.4rem;">Quality improvement through specialized roles</div>
+                <p style="margin:0;font-size:0.85rem;color:var(--text-muted);">A worker agent and a critic agent — each with a focused system prompt — produce better outputs than a single agent asked to both do the work and check it. The generator and evaluator roles actively conflict when merged: the agent that wrote the answer is poorly positioned to objectively critique it. Separation of concerns applies to agents too.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout callout-warn">
+            <strong>The complexity cost is real.</strong> Every agent you add is another LLM call, another failure point, another source of inconsistent output format, and another thing to log and debug. Multi-agent systems are not a default upgrade from single-agent — they are a deliberate architectural choice with a concrete justification.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Building Effective Agents</a> &nbsp;·&nbsp; <a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Agentic Guidance</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 02: Orchestration Patterns ── -->
+        <div class="block">
+          <div class="block-label">02 · ORCHESTRATION PATTERNS</div>
+          <h2>How Agents Are Structured and Connected</h2>
+          <p>
+            The relationship between agents in a multi-agent system determines how information flows, where errors propagate, and what each agent is responsible for. Three patterns dominate production deployments.
+          </p>
+
+          <div style="display:grid;gap:1rem;margin:1.5rem 0;">
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.75rem;">PATTERN A — ORCHESTRATOR + WORKERS</div>
+              <p style="margin:0 0 0.75rem;font-size:0.85rem;">A central orchestrator LLM decomposes the goal, delegates subtasks to worker agents, collects results, and synthesizes the final output. Workers are stateless — they receive a task, complete it, and return a result. The orchestrator maintains the overall plan and handles worker failures. Workers can be specialized: a web-search agent, a code-execution agent, a data-analysis agent.</p>
+              <div style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-dim);background:var(--bg);padding:0.75rem;border-radius:4px;">
+                Orchestrator → [Worker A, Worker B, Worker C] → Synthesizer
+              </div>
+            </div>
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.75rem;">PATTERN B — GENERATOR + CRITIC</div>
+              <p style="margin:0 0 0.75rem;font-size:0.85rem;">A worker agent generates an output (draft, code, plan, summary). A separate critic agent evaluates it against a rubric and returns structured feedback — score, specific issues, and suggested revisions. The orchestrator (or a loop) decides whether to accept the output, send it back to the generator for revision, or escalate to a human. This pattern significantly improves output quality for writing, coding, and analysis tasks.</p>
+              <div style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-dim);background:var(--bg);padding:0.75rem;border-radius:4px;">
+                Generator → output → Critic → [accept | revise] → (loop or done)
+              </div>
+            </div>
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.75rem;">PATTERN C — PARALLEL WORKERS + FAN-IN</div>
+              <p style="margin:0 0 0.75rem;font-size:0.85rem;">The orchestrator fans out independent subtasks to multiple workers running concurrently (<code>asyncio.gather</code> or <code>ThreadPoolExecutor</code>). When all workers complete, a fan-in step collects results and synthesizes. Use only when subtasks are genuinely independent — if any worker's output must feed into another worker, use sequential orchestration instead.</p>
+              <div style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-dim);background:var(--bg);padding:0.75rem;border-radius:4px;">
+                Orchestrator → [Worker A ∥ Worker B ∥ Worker C] → Fan-in → Result
+              </div>
+            </div>
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Building Effective Agents</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2308.08155" target="_blank" style="color:var(--accent);text-decoration:none;">Wu et al. — AutoGen (arXiv:2308.08155, 2023)</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 03: Agent Communication ── -->
+        <div class="block">
+          <div class="block-label">03 · AGENT COMMUNICATION</div>
+          <h2>How Agents Pass Information Between Each Other</h2>
+          <p>
+            Agents in a multi-agent system communicate by passing structured messages — not by sharing memory directly. Each agent has its own context window; the only way one agent's output reaches another is by being explicitly passed as input. This is not a limitation — it is a feature that makes multi-agent systems debuggable and auditable.
+          </p>
+
+          <div class="concept-grid">
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">CHANNEL 01</div>
+              <div class="concept-name">Direct function calls (same process)</div>
+              <div class="concept-desc">The orchestrator calls a Python function that runs a subagent: <code>result = run_researcher(subtask)</code>. The simplest implementation — no networking, no serialization overhead. Works when all agents run in the same process. Used in this section's lab.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">SIMPLEST — START HERE</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">CHANNEL 02</div>
+              <div class="concept-name">Tool calls (subagent as tool)</div>
+              <div class="concept-desc">The orchestrator treats a subagent as a tool it can call. The orchestrator's tool schema includes a <code>delegate_to_researcher</code> tool. When invoked, the tool executor calls the subagent and returns its result as a tool result. The orchestrator decides when and how to delegate, giving it full autonomy over subagent invocation.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">WIDELY USED (2024–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">CHANNEL 03</div>
+              <div class="concept-name">Message queues (distributed)</div>
+              <div class="concept-desc">For distributed multi-agent systems where agents run on separate machines, messages are passed via a queue (Redis, SQS, Kafka). The orchestrator publishes subtask messages; workers consume and publish results. Enables true parallelism across hosts and handles backpressure when workers are slower than the orchestrator.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--orange);">EMERGING (2024–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">CHANNEL 04</div>
+              <div class="concept-name">Shared state store</div>
+              <div class="concept-desc">Agents read and write to a shared store (a database, a key-value store, a file) rather than passing messages directly. The orchestrator writes the task spec; the worker reads it, writes results back; the orchestrator reads results. Requires careful concurrency handling — two agents writing to the same key simultaneously produces a race condition.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--orange);">PRODUCTION PATTERN</div>
+            </div>
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Building Effective Agents</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2308.08155" target="_blank" style="color:var(--accent);text-decoration:none;">Wu et al. — AutoGen (arXiv:2308.08155, 2023)</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 04: Trust Between Agents ── -->
+        <div class="block">
+          <div class="block-label">04 · TRUST BETWEEN AGENTS</div>
+          <h2>Orchestrators, Subagents, and the Trust Hierarchy</h2>
+          <p>
+            When an orchestrator instructs a subagent to take an action, the subagent should not automatically trust that instruction any more than it would trust a user message. A subagent that blindly executes any instruction it receives from an orchestrator is vulnerable to two attack vectors: a compromised orchestrator, and prompt injection through data the orchestrator retrieved and passed along.
+          </p>
+
+          <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.5rem;margin:1.5rem 0;">
+            <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.75rem;">ANTHROPIC'S GUIDANCE ON MULTI-AGENT TRUST</div>
+            <p style="margin:0 0 0.75rem;font-size:0.9rem;">
+              Anthropic's agentic documentation explicitly states that subagents should <strong>behave safely and ethically regardless of the instruction source</strong>. A subagent receiving an instruction from an orchestrator should apply the same safety checks it would apply to a human user's instruction. It should refuse requests that violate its principles, even if the requester claims to be another Claude model or a trusted orchestrator.
+            </p>
+            <p style="margin:0;font-size:0.9rem;">
+              The implication: <strong>there is no elevated trust level for LLM-to-LLM messages.</strong> The orchestrator's instructions arrive in the <em>user</em> turn of the subagent's context, not the system prompt turn — so they carry user-level trust, not operator-level trust.
+            </p>
+          </div>
+
+          <table class="compare-table">
+            <thead>
+              <tr><th>Message position in subagent context</th><th>Trust level</th><th>Typical source</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>System prompt</td><td>Operator-level (high)</td><td>The developer who built the subagent</td></tr>
+              <tr><td>User turn</td><td>User-level (standard)</td><td>Orchestrator messages, human input, tool results</td></tr>
+              <tr><td>Tool result</td><td>Untrusted data</td><td>External APIs, web content, retrieved documents</td></tr>
+            </tbody>
+          </table>
+
+          <div class="callout callout-warn" style="margin-top:1rem;">
+            <strong>Prompt injection via orchestrator:</strong> If the orchestrator retrieves content from the web, reads files, or processes user-supplied data and then passes it to a subagent as instructions, that content may contain embedded prompt injection. The subagent must treat all content that originated outside the developer-controlled system prompt as untrusted — regardless of which agent delivered it.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Multi-Agent Trust &amp; Agentic Guidance</a> &nbsp;·&nbsp; <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Building Effective Agents</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 05: Coordination Failure Modes ── -->
+        <div class="block">
+          <div class="block-label">05 · COORDINATION FAILURE MODES</div>
+          <h2>What Goes Wrong in Multi-Agent Systems</h2>
+          <p>
+            Multi-agent systems inherit all single-agent failure modes — plus a new class of failures that arise from the coordination between agents. These are subtler, harder to reproduce in development, and can compound across agents before surfacing as a visible problem.
+          </p>
+
+          <div class="concept-grid">
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.6rem;">FAILURE 01</div>
+              <div class="concept-name">Error Amplification</div>
+              <div class="concept-desc">A small inaccuracy in an early agent's output becomes the premise for a later agent's work. By the time the final agent synthesizes results, the error has been amplified through multiple reasoning steps. No single agent made an obvious mistake — the pipeline compounded them.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--red);">ACTIVE RISK</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.6rem;">FAILURE 02</div>
+              <div class="concept-name">Output Format Mismatch</div>
+              <div class="concept-desc">Worker agent A returns results in a format that the orchestrator (or worker agent B) does not expect. One agent returns a list, another expects a dict. Without explicit output schema enforcement at each handoff, format mismatches cause silent failures — the receiving agent misinterprets the data rather than raising an error.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--red);">ACTIVE RISK</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.6rem;">FAILURE 03</div>
+              <div class="concept-name">Runaway Cost</div>
+              <div class="concept-desc">A bug causes the orchestrator to re-run workers indefinitely — each retry spawning more API calls. Without per-agent token budgets AND a system-level budget cap, a single orchestration failure can exhaust the entire month's API quota before an alert fires.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--red);">ACTIVE RISK</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.6rem;">FAILURE 04</div>
+              <div class="concept-name">Context Pollution</div>
+              <div class="concept-desc">An orchestrator accumulates all worker outputs in its context window as the system runs. After many worker calls, the orchestrator's context is dominated by prior results and reasoning traces — crowding out the original task instructions and causing instruction-following degradation (Lost in the Middle, Section 04).</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--orange);">OPERATIONAL RISK</div>
+            </div>
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Building Effective Agents</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2308.08155" target="_blank" style="color:var(--accent);text-decoration:none;">Wu et al. — AutoGen (arXiv:2308.08155, 2023)</a>
+          </div>
+        </div>
+
+        <!-- ── SOURCES TABLE ── -->
+        <div class="block">
+          <div class="block-label">SOURCES USED IN THIS SECTION</div>
+          <h2>Verified References</h2>
+          <p>Every claim in this section is grounded in one of these sources.</p>
+          <table class="compare-table">
+            <thead>
+              <tr><th>Source</th><th>Type</th><th>Covers</th><th>Recency</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" style="color:var(--accent);">Anthropic — Building Effective Agents</a></td>
+                <td>Official guide (Anthropic)</td>
+                <td>Why multi-agent, orchestration patterns, trust model, when not to use</td>
+                <td>2024</td>
+              </tr>
+              <tr>
+                <td><a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);">Anthropic — Agentic &amp; Multi-Agent Docs</a></td>
+                <td>Official docs</td>
+                <td>Subagent trust levels, orchestrator guidance, minimal footprint</td>
+                <td>Maintained 2024–2026</td>
+              </tr>
+              <tr>
+                <td><a href="https://arxiv.org/abs/2308.08155" target="_blank" style="color:var(--accent);">Wu et al. — AutoGen (arXiv:2308.08155)</a></td>
+                <td>Academic paper (Microsoft)</td>
+                <td>Multi-agent conversation framework, agent roles, human-in-the-loop patterns</td>
+                <td>2023</td>
+              </tr>
+              <tr>
+                <td><a href="https://langchain-ai.github.io/langgraph/" target="_blank" style="color:var(--accent);">LangGraph Documentation</a></td>
+                <td>Official docs</td>
+                <td>Graph-based multi-agent orchestration, state management, parallel execution</td>
+                <td>Maintained 2024–2026</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div><!-- end theory -->
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- LAB                                         -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div id="lab" class="block">
+        <div class="block-label">HANDS-ON LAB</div>
+        <h2>Build a Three-Agent Research Pipeline</h2>
+        <p style="margin-bottom:1.5rem;">
+          You will build a pipeline with three specialized agents: an <strong>Orchestrator</strong> that decomposes a research question into subtasks, a <strong>Researcher</strong> that answers each subtask using a search tool, and a <strong>Critic</strong> that scores each answer before the orchestrator synthesizes a final report. The complete script is <code>multi_agent.py</code>.
+        </p>
+
+        <div class="lab-container">
+          <div class="lab-header">
+            <div class="lab-icon">🔬</div>
+            <div class="lab-title-wrap">
+              <div class="lab-title">Section 14 Lab — Multi-Agent Research Pipeline</div>
+              <div class="lab-subtitle">6 STEPS · PYTHON · ~50 MIN</div>
+            </div>
+          </div>
+
+          <div class="lab-steps">
+
+            <!-- Step 1 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">1</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Create the file and shared infrastructure
+                </div>
+                <div class="step-body">
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">BASH</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>touch multi_agent.py</pre>
+                  </div>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — multi_agent.py</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre><span class="kw">import</span> os, json
+<span class="kw">import</span> anthropic
+
+client = anthropic.<span class="fn">Anthropic</span>(api_key=os.environ[<span class="st">"ANTHROPIC_API_KEY"</span>])
+MODEL = <span class="st">"claude-haiku-4-5-20251001"</span>  <span class="cm"># cheap model for all three agents</span>
+
+<span class="cm"># ── Shared knowledge base (stands in for real search) ─────────────</span>
+KNOWLEDGE = {
+    <span class="st">"transformer architecture"</span>:
+        <span class="st">"The Transformer uses self-attention to process all tokens in parallel. "</span>
+        <span class="st">"Introduced by Vaswani et al. (2017). Replaced recurrent networks for NLP."</span>,
+    <span class="st">"rlhf"</span>:
+        <span class="st">"RLHF fine-tunes LLMs using human preference rankings. Three stages: SFT, "</span>
+        <span class="st">"reward model training, PPO. Introduced at scale by Ouyang et al. (2022)."</span>,
+    <span class="st">"rag"</span>:
+        <span class="st">"RAG retrieves relevant documents at query time and injects them as context. "</span>
+        <span class="st">"Solves the knowledge staleness problem without retraining. Lewis et al. (2020)."</span>,
+    <span class="st">"react agents"</span>:
+        <span class="st">"ReAct agents interleave Thought, Action, and Observation in a loop. "</span>
+        <span class="st">"Enables dynamic tool use with visible reasoning. Yao et al. (2022)."</span>,
+    <span class="st">"mcp"</span>:
+        <span class="st">"Model Context Protocol is Anthropic's open standard for connecting LLM agents "</span>
+        <span class="st">"to tools and data sources via a standard wire protocol. Released Nov 2024."</span>,
+}
+
+SEARCH_TOOLS = [{
+    <span class="st">"name"</span>: <span class="st">"search"</span>,
+    <span class="st">"description"</span>: <span class="st">"Search the knowledge base for information on a topic."</span>,
+    <span class="st">"input_schema"</span>: {
+        <span class="st">"type"</span>: <span class="st">"object"</span>,
+        <span class="st">"properties"</span>: {<span class="st">"query"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>}},
+        <span class="st">"required"</span>: [<span class="st">"query"</span>],
+    },
+}]
+
+<span class="kw">def</span> <span class="fn">search</span>(query: str) -&gt; str:
+    q = query.<span class="fn">lower</span>()
+    <span class="kw">for</span> key, val <span class="kw">in</span> KNOWLEDGE.<span class="fn">items</span>():
+        <span class="kw">if</span> key <span class="kw">in</span> q:
+            <span class="kw">return</span> val
+    <span class="kw">return</span> <span class="st">f'No results found for "{query}".'</span></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">2</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Implement the Orchestrator agent
+                </div>
+                <div class="step-body">
+                  <p>The orchestrator takes the user's research question, decomposes it into 2–3 focused subtasks, and returns them as a JSON list. It will also be responsible for the final synthesis step.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — multi_agent.py (continued)</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>ORCHESTRATOR_SYSTEM = <span class="st">"""You are a research orchestrator.
+Given a research question, decompose it into 2–3 focused subtasks.
+Each subtask should be answerable with a single targeted search.
+Return ONLY a JSON array of subtask strings.
+Example: ["What is X?", "How does Y work?", "What are the tradeoffs of Z?"]"""</span>
+
+SYNTHESIZER_SYSTEM = <span class="st">"""You are a research synthesizer.
+Given a research question and a list of (subtask, answer, quality_score) triples,
+write a concise 3–5 sentence summary that answers the original question.
+Only use information from the provided answers — do not add outside knowledge."""</span>
+
+
+<span class="kw">def</span> <span class="fn">orchestrate</span>(question: str) -&gt; list[str]:
+    <span class="st">"""Decompose a research question into focused subtasks."""</span>
+    response = client.messages.<span class="fn">create</span>(
+        model=MODEL, max_tokens=<span class="nu">256</span>,
+        system=ORCHESTRATOR_SYSTEM,
+        messages=[{<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="st">f"Research question: {question}"</span>}],
+    )
+    raw = response.content[<span class="nu">0</span>].text.<span class="fn">strip</span>()
+    <span class="kw">try</span>:
+        <span class="kw">return</span> json.<span class="fn">loads</span>(raw)
+    <span class="kw">except</span> json.<span class="cl">JSONDecodeError</span>:
+        start, end = raw.<span class="fn">find</span>(<span class="st">"["</span>), raw.<span class="fn">rfind</span>(<span class="st">"]"</span>) + <span class="nu">1</span>
+        <span class="kw">return</span> json.<span class="fn">loads</span>(raw[start:end])
+
+
+<span class="kw">def</span> <span class="fn">synthesize</span>(question: str, results: list[dict]) -&gt; str:
+    <span class="st">"""Synthesize all research results into a final answer."""</span>
+    results_text = <span class="st">"\n\n"</span>.<span class="fn">join</span>(
+        <span class="st">f"Subtask: {r['subtask']}\nAnswer: {r['answer']}\nQuality: {r['score']}/5"</span>
+        <span class="kw">for</span> r <span class="kw">in</span> results
+    )
+    response = client.messages.<span class="fn">create</span>(
+        model=MODEL, max_tokens=<span class="nu">400</span>,
+        system=SYNTHESIZER_SYSTEM,
+        messages=[{
+            <span class="st">"role"</span>: <span class="st">"user"</span>,
+            <span class="st">"content"</span>: <span class="st">f"Original question: {question}\n\nResearch results:\n{results_text}"</span>,
+        }],
+    )
+    <span class="kw">return</span> response.content[<span class="nu">0</span>].text</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">3</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Implement the Researcher subagent
+                </div>
+                <div class="step-body">
+                  <p>The researcher runs a mini ReAct loop — it can call the search tool as many times as needed, then produces a concise answer. Note the system prompt explicitly states its role and scope.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — multi_agent.py (continued)</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>RESEARCHER_SYSTEM = <span class="st">"""You are a focused research assistant.
+You will receive a single subtask. Use the search tool to find relevant information,
+then write a concise 2–3 sentence answer grounded in what you found.
+Do not add information beyond what the search tool returns."""</span>
+
+
+<span class="kw">def</span> <span class="fn">research</span>(subtask: str) -&gt; str:
+    <span class="st">"""Run the researcher agent on a single subtask. Returns a text answer."""</span>
+    messages = [{<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: subtask}]
+
+    <span class="kw">for</span> _ <span class="kw">in</span> <span class="fn">range</span>(<span class="nu">4</span>):  <span class="cm"># small iteration cap per subagent</span>
+        response = client.messages.<span class="fn">create</span>(
+            model=MODEL, max_tokens=<span class="nu">256</span>,
+            system=RESEARCHER_SYSTEM,
+            tools=SEARCH_TOOLS,
+            messages=messages,
+        )
+        messages.<span class="fn">append</span>({<span class="st">"role"</span>: <span class="st">"assistant"</span>, <span class="st">"content"</span>: response.content})
+
+        <span class="kw">if</span> response.stop_reason == <span class="st">"end_turn"</span>:
+            <span class="kw">return</span> <span class="st">""</span>.<span class="fn">join</span>(b.text <span class="kw">for</span> b <span class="kw">in</span> response.content <span class="kw">if</span> <span class="fn">hasattr</span>(b, <span class="st">"text"</span>))
+
+        <span class="kw">if</span> response.stop_reason == <span class="st">"tool_use"</span>:
+            tool_results = []
+            <span class="kw">for</span> block <span class="kw">in</span> response.content:
+                <span class="kw">if</span> block.type == <span class="st">"tool_use"</span>:
+                    result = <span class="fn">search</span>(block.input[<span class="st">"query"</span>])
+                    tool_results.<span class="fn">append</span>({
+                        <span class="st">"type"</span>: <span class="st">"tool_result"</span>,
+                        <span class="st">"tool_use_id"</span>: block.id,
+                        <span class="st">"content"</span>: result,
+                    })
+            messages.<span class="fn">append</span>({<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: tool_results})
+
+    <span class="kw">return</span> <span class="st">"Researcher did not complete within iteration budget."</span></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">4</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Implement the Critic subagent
+                </div>
+                <div class="step-body">
+                  <p>The critic receives the subtask and the researcher's answer, and returns a structured JSON critique with a 1–5 quality score and specific feedback. The orchestrator uses the score to decide whether to accept or flag the answer.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — multi_agent.py (continued)</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>CRITIC_SYSTEM = <span class="st">"""You are a research quality critic.
+Given a subtask and a proposed answer, evaluate the answer on:
+- Relevance: does it address the subtask?
+- Groundedness: does it only use verifiable information?
+- Conciseness: is it clear and appropriately brief?
+
+Return ONLY a JSON object with this exact structure:
+{"score": integer 1-5, "feedback": "one sentence of specific feedback"}
+5 = excellent, 3 = acceptable but could improve, 1 = missing or wrong."""</span>
+
+
+<span class="kw">def</span> <span class="fn">critique</span>(subtask: str, answer: str) -&gt; dict:
+    <span class="st">"""Run the critic agent. Returns {"score": int, "feedback": str}."""</span>
+    response = client.messages.<span class="fn">create</span>(
+        model=MODEL, max_tokens=<span class="nu">128</span>,
+        system=CRITIC_SYSTEM,
+        messages=[{
+            <span class="st">"role"</span>: <span class="st">"user"</span>,
+            <span class="st">"content"</span>: <span class="st">f"Subtask: {subtask}\n\nProposed answer: {answer}"</span>,
+        }],
+    )
+    raw = response.content[<span class="nu">0</span>].text.<span class="fn">strip</span>()
+    <span class="kw">try</span>:
+        <span class="kw">return</span> json.<span class="fn">loads</span>(raw)
+    <span class="kw">except</span> json.<span class="cl">JSONDecodeError</span>:
+        <span class="cm"># Fallback: extract JSON from response if wrapped in prose</span>
+        start = raw.<span class="fn">find</span>(<span class="st">"{"</span>)
+        end = raw.<span class="fn">rfind</span>(<span class="st">"}"</span>) + <span class="nu">1</span>
+        <span class="kw">return</span> json.<span class="fn">loads</span>(raw[start:end])</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">5</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Wire the pipeline together and run it
+                </div>
+                <div class="step-body">
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — multi_agent.py (continued)</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre><span class="kw">def</span> <span class="fn">run_pipeline</span>(question: str) -&gt; None:
+    <span class="fn">print</span>(<span class="st">f"\n{'='*60}\nQUESTION: {question}\n{'='*60}"</span>)
+
+    <span class="cm"># 1. Orchestrator decomposes the question</span>
+    subtasks = <span class="fn">orchestrate</span>(question)
+    <span class="fn">print</span>(<span class="st">f"\n[Orchestrator] Decomposed into {len(subtasks)} subtasks:"</span>)
+    <span class="kw">for</span> i, s <span class="kw">in</span> <span class="fn">enumerate</span>(subtasks, <span class="nu">1</span>):
+        <span class="fn">print</span>(<span class="st">f"  {i}. {s}"</span>)
+
+    results = []
+    <span class="kw">for</span> subtask <span class="kw">in</span> subtasks:
+        <span class="fn">print</span>(<span class="st">f"\n[Researcher] Working on: {subtask}"</span>)
+
+        <span class="cm"># 2. Researcher answers the subtask</span>
+        answer = <span class="fn">research</span>(subtask)
+        <span class="fn">print</span>(<span class="st">f"  Answer: {answer[:100]}..."</span>)
+
+        <span class="cm"># 3. Critic scores the answer</span>
+        review = <span class="fn">critique</span>(subtask, answer)
+        score = review.<span class="fn">get</span>(<span class="st">"score"</span>, <span class="nu">0</span>)
+        feedback = review.<span class="fn">get</span>(<span class="st">"feedback"</span>, <span class="st">"no feedback"</span>)
+        <span class="fn">print</span>(<span class="st">f"  [Critic] Score: {score}/5 — {feedback}"</span>)
+
+        results.<span class="fn">append</span>({<span class="st">"subtask"</span>: subtask, <span class="st">"answer"</span>: answer, <span class="st">"score"</span>: score})
+
+    <span class="cm"># 4. Orchestrator synthesizes the final report</span>
+    report = <span class="fn">synthesize</span>(question, results)
+    avg_score = <span class="fn">sum</span>(r[<span class="st">"score"</span>] <span class="kw">for</span> r <span class="kw">in</span> results) / <span class="fn">len</span>(results)
+
+    <span class="fn">print</span>(<span class="st">f"\n{'='*60}"</span>)
+    <span class="fn">print</span>(<span class="st">f"FINAL REPORT (avg quality: {avg_score:.1f}/5):"</span>)
+    <span class="fn">print</span>(<span class="st">f"{'='*60}"</span>)
+    <span class="fn">print</span>(report)
+
+
+<span class="kw">if</span> __name__ == <span class="st">"__main__"</span>:
+    <span class="fn">run_pipeline</span>(
+        <span class="st">"How do modern LLM agents learn to follow instructions "</span>
+        <span class="st">"and use tools effectively?"</span>
+    )</pre>
+                  </div>
+                  <div class="code-block" style="margin-top:1rem;">
+                    <div class="code-header"><span class="code-lang">BASH</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>python multi_agent.py</pre>
+                  </div>
+                  <div class="code-block" style="margin-top:1rem;">
+                    <div class="code-header"><span class="code-lang">EXPECTED OUTPUT (abridged)</span></div>
+                    <pre>============================================================
+QUESTION: How do modern LLM agents learn to follow instructions and use tools?
+============================================================
+
+[Orchestrator] Decomposed into 3 subtasks:
+  1. How does RLHF train LLMs to follow instructions?
+  2. How do ReAct agents use tools at runtime?
+  3. What role does the Transformer architecture play?
+
+[Researcher] Working on: How does RLHF train LLMs to follow instructions?
+  Answer: RLHF fine-tunes LLMs using human preference rankings...
+  [Critic] Score: 4/5 — Clear and grounded but could mention the KL penalty.
+
+[Researcher] Working on: How do ReAct agents use tools at runtime?
+  Answer: ReAct agents interleave Thought, Action, and Observation...
+  [Critic] Score: 5/5 — Concise, accurate, and well-sourced.
+
+[Researcher] Working on: What role does the Transformer architecture play?
+  Answer: The Transformer uses self-attention to process all tokens...
+  [Critic] Score: 4/5 — Good but could connect more directly to tool use.
+
+============================================================
+FINAL REPORT (avg quality: 4.3/5):
+============================================================
+Modern LLM agents learn to follow instructions through RLHF, which fine-tunes
+the model on human preference rankings across three stages... [continues]</pre>
+                  </div>
+                  <div class="callout callout-info" style="margin-top:1rem;">
+                    <strong>What to observe:</strong> Four separate LLM calls per subtask (orchestrate, research, critique, synthesize = 3 researchers + 3 critics + 1 orchestrator + 1 synthesizer = 8 calls total). Each agent has a focused system prompt and receives only the information it needs — no agent accumulates the full pipeline context.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">6</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Extension: run researcher subtasks in parallel
+                </div>
+                <div class="step-body">
+                  <p>The three researcher calls are independent — they can run simultaneously. Replace the sequential loop with <code>ThreadPoolExecutor</code> to run all researchers in parallel and cut wall-clock time by ~3×.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — replace the research+critique loop in run_pipeline</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre><span class="kw">from</span> concurrent.futures <span class="kw">import</span> ThreadPoolExecutor, <span class="fn">as_completed</span>
+
+<span class="kw">def</span> <span class="fn">research_and_critique</span>(subtask: str) -&gt; dict:
+    <span class="st">"""Run researcher + critic for one subtask. Safe to call in parallel."""</span>
+    answer = <span class="fn">research</span>(subtask)
+    review = <span class="fn">critique</span>(subtask, answer)
+    <span class="kw">return</span> {
+        <span class="st">"subtask"</span>: subtask,
+        <span class="st">"answer"</span>: answer,
+        <span class="st">"score"</span>: review.<span class="fn">get</span>(<span class="st">"score"</span>, <span class="nu">0</span>),
+        <span class="st">"feedback"</span>: review.<span class="fn">get</span>(<span class="st">"feedback"</span>, <span class="st">""</span>),
+    }
+
+
+<span class="cm"># Replace the sequential loop with this:</span>
+<span class="kw">with</span> <span class="fn">ThreadPoolExecutor</span>(max_workers=<span class="fn">len</span>(subtasks)) <span class="kw">as</span> executor:
+    futures = {executor.<span class="fn">submit</span>(<span class="fn">research_and_critique</span>, s): s <span class="kw">for</span> s <span class="kw">in</span> subtasks}
+    results = [future.<span class="fn">result</span>() <span class="kw">for</span> future <span class="kw">in</span> <span class="fn">as_completed</span>(futures)]
+
+<span class="fn">print</span>(<span class="st">f"\nAll {len(results)} subtasks completed in parallel."</span>)
+<span class="kw">for</span> r <span class="kw">in</span> results:
+    <span class="fn">print</span>(<span class="st">f"  [{r['score']}/5] {r['subtask'][:60]}"</span>)</pre>
+                  </div>
+                  <div class="callout callout-warn" style="margin-top:1rem;">
+                    <strong>Rate limit awareness:</strong> Running 3 agents in parallel triples your tokens-per-minute consumption. If you hit a 429, the SDK's built-in retry with backoff handles it — but set <code>max_workers</code> conservatively (2–3) for accounts on lower-tier rate limits.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- end lab-steps -->
+        </div><!-- end lab-container -->
+
+      </div><!-- end lab -->
+
+      <!-- MARK COMPLETE + NAVIGATION -->
+      <div class="mark-complete-bar">
+        <p>Finished the theory and completed the lab? Mark this section complete to track your progress.</p>
+        <button class="btn btn-outline" id="completeBtn2" data-section="14" onclick="document.getElementById('completeBtn').click()">Mark Section 14 Complete</button>
+      </div>
+
+      <div style="text-align:center;margin:2rem 0 0;font-family:var(--font-mono);font-size:0.62rem;color:var(--text-dim);">
+        Last updated: <time datetime="2026-04-05">April 5, 2026</time>
+      </div>
+      <div class="section-nav-footer">
+        <a href="13-mcp.html" class="nav-prev">← Section 13: MCP &amp; Protocols</a>
+        <a href="15-security.html" class="nav-next">Section 15: Agent Security →</a>
+      </div>
+
+    </div><!-- end page -->
+  </main>
+</div>
+
+<script src="../course.js"></script>
+<script>
+function stepDone(checkbox) {
+  const stepContent = checkbox.closest('.step-content');
+  if (checkbox.checked) {
+    stepContent.style.opacity = '0.6';
+  } else {
+    stepContent.style.opacity = '1';
+  }
+}
+
+function copyCode(btn) {
+  const pre = btn.closest('.code-block').querySelector('pre');
+  navigator.clipboard.writeText(pre.innerText).then(() => {
+    btn.textContent = 'copied!';
+    setTimeout(() => { btn.textContent = 'copy'; }, 2000);
+  });
+}
+</script>
+</body>
+</html>

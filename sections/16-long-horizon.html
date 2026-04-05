@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>16 — Long-Horizon Agents · Agentic AI Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="../style.css">
+<noscript><style>
+/* No-JS: make sidebar visible and stack layout vertically on mobile */
+@media (max-width: 768px) {
+  .sidebar { transform: none; position: relative; width: 100%; height: auto; }
+  .layout  { flex-direction: column; }
+}
+</style></noscript>
+<link rel="manifest" href="../manifest.json">
+</head>
+<body data-section="16">
+<noscript>
+  <div style="background:#1a1200;border-bottom:2px solid #c87d00;color:#f0c060;padding:0.75rem 1.5rem;font-family:monospace;font-size:0.82rem;text-align:center;position:relative;z-index:999;">
+    &#9888; JavaScript is disabled. Progress tracking, quizzes, and interactive features require JavaScript.
+  </div>
+</noscript>
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <a href="../index.html" class="sidebar-logo" style="text-decoration:none;display:block;">
+      <div class="logo-eyebrow">// AGENTIC AI COURSE</div>
+      <div class="logo-name">Learn <span>Agentic AI</span><br>2026 Edition</div>
+    </a>
+    <div class="sidebar-progress">
+      <div class="progress-row">
+        <span class="progress-label">OVERALL PROGRESS</span>
+        <span class="progress-count" id="progressCount">0 / 16</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+    <div class="sidebar-nav">
+      <div class="nav-group-label">Foundation</div>
+      <a href="01-intro.html" class="nav-item" data-section="1"><span class="nav-num">01</span> Intro to Agentic AI <span class="nav-check">✓</span></a>
+      <a href="02-ml-fundamentals.html" class="nav-item" data-section="2"><span class="nav-num">02</span> AI &amp; ML Fundamentals <span class="nav-check">✓</span></a>
+      <a href="03-frameworks.html" class="nav-item" data-section="3"><span class="nav-num">03</span> Programming &amp; Frameworks <span class="nav-check">✓</span></a>
+      <a href="04-llms.html" class="nav-item" data-section="4"><span class="nav-num">04</span> Large Language Models <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">Core Agents</div>
+      <a href="05-understanding-agents.html" class="nav-item" data-section="5"><span class="nav-num">05</span> Understanding Agents <span class="nav-check">✓</span></a>
+      <a href="06-memory.html" class="nav-item" data-section="6"><span class="nav-num">06</span> Memory &amp; Knowledge <span class="nav-check">✓</span></a>
+      <a href="07-planning.html" class="nav-item" data-section="7"><span class="nav-num">07</span> Decision-Making &amp; Planning <span class="nav-check">✓</span></a>
+      <a href="08-prompting.html" class="nav-item" data-section="8"><span class="nav-num">08</span> Prompt Engineering <span class="nav-check">✓</span></a>
+      <a href="09-rl.html" class="nav-item" data-section="9"><span class="nav-num">09</span> RL &amp; Self-Improvement <span class="nav-check">✓</span></a>
+      <a href="10-rag.html" class="nav-item" data-section="10"><span class="nav-num">10</span> RAG <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">Production</div>
+      <a href="11-deployment.html" class="nav-item" data-section="11"><span class="nav-num">11</span> Deploying Agents <span class="nav-check">✓</span></a>
+      <a href="12-real-world.html" class="nav-item" data-section="12"><span class="nav-num">12</span> Real-World Applications <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">2026 New</div>
+      <a href="13-mcp.html" class="nav-item" data-section="13"><span class="nav-num">13</span> MCP &amp; Protocols <span class="nav-check">✓</span></a>
+      <a href="14-multi-agent.html" class="nav-item" data-section="14"><span class="nav-num">14</span> Multi-Agent Orchestration <span class="nav-check">✓</span></a>
+      <a href="15-security.html" class="nav-item" data-section="15"><span class="nav-num">15</span> Agent Security <span class="nav-check">✓</span></a>
+      <a href="16-long-horizon.html" class="nav-item active" data-section="16"><span class="nav-num">16</span> Long-Horizon Agents <span class="nav-check">✓</span></a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="topbar-breadcrumb">
+        <a href="../index.html" style="color:var(--text-muted);text-decoration:none;">Course</a>
+        &nbsp;/&nbsp; <span>16 · Long-Horizon Agents</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn btn-outline" id="completeBtn" data-section="16">Mark Complete</button>
+      </div>
+    </div>
+
+    <div class="page">
+
+      <!-- HERO -->
+      <div class="section-hero">
+        <div class="hero-meta">
+          <span class="hero-num">SECTION 16</span>
+          <span class="hero-tag" style="background:rgba(0,229,160,0.15);color:#00e5a0;border-color:rgba(0,229,160,0.3);">FINAL SECTION</span>
+          <span class="hero-tag" style="background:rgba(139,92,246,0.15);color:#a78bfa;border-color:rgba(139,92,246,0.3);">2026 NEW</span>
+        </div>
+        <h1 class="section-title">Long-Horizon<br><span>Agents</span></h1>
+        <p class="section-intro">
+          Single-turn agents answer questions. Long-horizon agents <em>complete projects</em> — spanning dozens of steps, hours of clock time, and multiple sessions. This section covers the unique engineering challenges of state, context, planning, recovery, and evaluation that arise when agents must sustain coherent work across an extended timeline.
+        </p>
+        <div class="hero-actions">
+          <a href="#theory" class="btn btn-accent">📖 Start Theory</a>
+          <a href="#quiz" class="btn btn-outline">📝 Take the Quiz</a>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- THEORY                                      -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div id="theory">
+
+        <!-- ── BLOCK 01: What Makes a Task Long-Horizon? ── -->
+        <div class="block">
+          <div class="block-label">01 · WHAT IS A LONG-HORIZON TASK?</div>
+          <h2>Multi-Step, Persistent, and Fault-Tolerant by Design</h2>
+          <p>
+            A long-horizon task cannot be answered in a single LLM call. Each step depends on the outputs of earlier steps — tool results, written files, API responses — forming a <strong>directed dependency graph</strong>, not a linear list. Long-horizon agents run for <strong>minutes to hours</strong>, not seconds, and must survive failures mid-run.
+          </p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin:1.5rem 0;">
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">WIDELY USED (2024–2026)</div>
+              <strong>Multi-Step Dependency</strong>
+              <p style="margin:0.5rem 0 0;font-size:0.85rem;color:var(--text-muted);">Step N depends on step N−1. No single prompt can shortcut a sequence that requires reading files, running tests, interpreting failures, and revising — each phase builds on the last.</p>
+            </div>
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">WIDELY USED (2024–2026)</div>
+              <strong>Extended Duration</strong>
+              <p style="margin:0.5rem 0 0;font-size:0.85rem;color:var(--text-muted);">Runs lasting minutes to hours expose concerns single-turn agents never face: API timeouts, session expiry, machine restarts, billing cap hits, and user disconnects mid-task.</p>
+            </div>
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">WIDELY USED (2024–2026)</div>
+              <strong>Persistent State</strong>
+              <p style="margin:0.5rem 0 0;font-size:0.85rem;color:var(--text-muted);">The agent must track what it has done and what remains. Without explicit state management, a restarted agent either repeats completed work (costly) or skips it (silent partial completion).</p>
+            </div>
+          </div>
+
+          <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;margin:1rem 0;">
+            <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">EMERGING PATTERN (2025–2026) — SWE-BENCH: THE CANONICAL LONG-HORIZON BENCHMARK</div>
+            <p style="margin:0 0 0.75rem;font-size:0.85rem;">SWE-bench (Jimenez et al., 2023) gives an agent a real GitHub issue and checks whether its generated patch passes the repository's test suite. Each task requires reading dozens of files, reproducing a bug, editing code, running tests, interpreting failures, and iterating — a canonical long-horizon evaluation.</p>
+            <div style="font-family:var(--font-mono);font-size:0.8rem;background:var(--bg);padding:0.75rem;border-radius:4px;color:var(--text-muted);">
+              1. Clone repo, read issue description<br>
+              2. Explore file structure, find relevant code<br>
+              3. Reproduce the bug via tests<br>
+              4. Hypothesise fix → edit source files<br>
+              5. Run tests → observe failures → refine fix<br>
+              6. Repeat steps 4–5 until tests pass → submit patch
+            </div>
+          </div>
+
+          <div class="callout callout-warn">
+            <strong>What changes at scale:</strong> A 5-step ReAct loop is a single-turn agent. A 50-step coding pipeline that writes files, runs a test suite, interprets failures, and iterates is a long-horizon agent. The LLM calls are the same — the engineering around them is fundamentally different.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://arxiv.org/abs/2310.06770" target="_blank" style="color:var(--accent);text-decoration:none;">Jimenez et al. — SWE-bench (arXiv:2310.06770, 2023)</a> &nbsp;·&nbsp; <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Building Effective Agents (2024)</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 02: State & Checkpointing ── -->
+        <div class="block">
+          <div class="block-label">02 · STATE MANAGEMENT &amp; CHECKPOINTING</div>
+          <h2>Durable State Outside the Context Window</h2>
+          <p>
+            The central challenge of long-horizon agents is <strong>durable state</strong>: persisting enough information that the agent can resume after a crash, timeout, or deliberate pause — without replaying all prior work. All mutable task state must live <em>outside</em> the context window, in a database, file system, or task queue.
+          </p>
+
+          <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;margin:1.5rem 0;">
+            <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">MINIMAL DURABLE STATE SCHEMA</div>
+            <div style="font-family:var(--font-mono);font-size:0.8rem;background:var(--bg);padding:0.75rem;border-radius:4px;color:var(--text-muted);">task_state = &#123;<br>
+&nbsp;&nbsp;"task_id":        "proj-abc123",<br>
+&nbsp;&nbsp;"status":         "in_progress",  # pending | in_progress | done | failed<br>
+&nbsp;&nbsp;"plan":           ["step1", "step2", ...],<br>
+&nbsp;&nbsp;"completed":      ["step1"],      # steps already done<br>
+&nbsp;&nbsp;"artifacts":      &#123;"step1": "/tmp/outline.md"&#125;,<br>
+&nbsp;&nbsp;"last_checkpoint": "2026-04-04T10:32:00Z"<br>
+&#125;</div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;">
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">WIDELY USED (2024–2026) — MILESTONE CHECKPOINTING</div>
+              <p style="margin:0 0 0.5rem;font-size:0.85rem;">Checkpoint only at <strong>milestone boundaries</strong> — natural stopping points where an artefact is complete. Checkpointing after every LLM call wastes I/O; checkpointing only at phase completion balances durability with overhead.</p>
+              <p style="margin:0;font-size:0.82rem;color:var(--text-muted);font-style:italic;">Analogy: a video game saves at the end of a level, not after every enemy killed. If you die mid-level you replay only that level.</p>
+            </div>
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">EMERGING PATTERN (2025–2026) — IDEMPOTENT TOOL CALLS</div>
+              <p style="margin:0 0 0.5rem;font-size:0.85rem;">When an agent resumes from a checkpoint, it may replay the step that failed. Tool calls should be <strong>idempotent</strong>: calling "write file X with content Y" twice should produce the same result as calling it once — preventing duplicate emails or duplicate DB inserts on recovery.</p>
+            </div>
+          </div>
+
+          <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;margin:1rem 0;">
+            <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">WIDELY USED (2024–2026) — LANGGRAPH PERSISTENT STATE</div>
+            <p style="margin:0 0 0.75rem;font-size:0.85rem;">LangGraph's <code>SqliteSaver</code> checkpointer automatically snapshots graph state after each node execution. Pass a <code>thread_id</code> to resume from the last checkpoint — no manual serialisation required.</p>
+            <div style="font-family:var(--font-mono);font-size:0.8rem;background:var(--bg);padding:0.75rem;border-radius:4px;color:var(--text-muted);">from langgraph.checkpoint.sqlite import SqliteSaver<br><br>
+checkpointer = SqliteSaver.from_conn_string("tasks.db")<br>
+app = graph.compile(checkpointer=checkpointer)<br><br>
+# First run — starts the task<br>
+app.invoke(&#123;"task": "..."&#125;, config=&#123;"configurable": &#123;"thread_id": "run-1"&#125;&#125;)<br><br>
+# Resume after crash — picks up from last checkpoint<br>
+app.invoke(None, config=&#123;"configurable": &#123;"thread_id": "run-1"&#125;&#125;)</div>
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://langchain-ai.github.io/langgraph/" target="_blank" style="color:var(--accent);text-decoration:none;">LangGraph docs — persistence &amp; checkpointing (2024)</a> &nbsp;·&nbsp; <a href="https://docs.anthropic.com/en/docs/agents" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Agentic AI docs</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 03: Context Management ── -->
+        <div class="block">
+          <div class="block-label">03 · CONTEXT MANAGEMENT OVER LONG TASKS</div>
+          <h2>Preventing Context Overflow Without Losing Progress</h2>
+          <p>
+            Every LLM has a finite context window. A long-horizon agent accumulates tool outputs, intermediate results, and prior reasoning until it hits this limit. Without active management, the agent either crashes or silently drops early context — losing knowledge of work it already completed.
+          </p>
+
+          <div style="display:grid;gap:1rem;margin:1.5rem 0;">
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">WIDELY USED (2024–2026) — HIERARCHICAL SUMMARISATION</div>
+              <p style="margin:0 0 0.75rem;font-size:0.85rem;">When a phase completes, <strong>replace its detailed messages with a compact summary</strong> and archive the details externally. The active context always contains: (1) the original task + high-level plan, (2) summaries of completed phases, (3) full detail of the current phase only.</p>
+              <div style="font-family:var(--font-mono);font-size:0.8rem;background:var(--bg);padding:0.75rem;border-radius:4px;color:var(--text-muted);">def summarize_phase(client, messages, phase_name):<br>
+&nbsp;&nbsp;resp = client.messages.create(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;model=MODEL, max_tokens=512,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;system="Summarise key facts, decisions, and artefacts. Omit raw tool outputs.",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;messages=[*messages,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#123;"role":"user","content":f"Summarise '{phase_name}' in ≤200 words."&#125;]<br>
+&nbsp;&nbsp;)<br>
+&nbsp;&nbsp;return resp.content[0].text</div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+              <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+                <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">WIDELY USED (2024–2026) — EXTERNAL ARTEFACT MEMORY</div>
+                <p style="margin:0;font-size:0.85rem;color:var(--text-muted);">Large outputs (file contents, API responses, test logs) should never live in the context window. Write to disk → store the <em>path and a one-line description</em> in context → retrieve on demand via a read-file tool.</p>
+              </div>
+              <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+                <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">EMERGING PATTERN (2025–2026) — TOKEN BUDGET TRACKING</div>
+                <p style="margin:0;font-size:0.85rem;color:var(--text-muted);">Proactively track cumulative token usage. When approaching ~70% of the context window, trigger summarisation <em>before</em> the window fills — not after the API returns a <code>context_length_exceeded</code> error.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout callout-warn">
+            <strong>Pitfall — Silent context truncation:</strong> Some providers silently drop messages when the context window fills rather than returning an error. Always monitor token usage explicitly and test with long runs during development.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://arxiv.org/abs/2304.03442" target="_blank" style="color:var(--accent);text-decoration:none;">Park et al. — Generative Agents (arXiv:2304.03442, 2023)</a> &nbsp;·&nbsp; <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/long-context-tips" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Long context tips</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 04: Hierarchical Planning & Replanning ── -->
+        <div class="block">
+          <div class="block-label">04 · HIERARCHICAL PLANNING &amp; DYNAMIC REPLANNING</div>
+          <h2>Planning at Two Levels — and Updating When Reality Diverges</h2>
+          <p>
+            A long task requires a plan at multiple granularities. When a step fails or new information arrives, the agent must <strong>replan</strong> — updating the execution plan without abandoning the overall objective.
+          </p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;">
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">WIDELY USED (2024–2026) — TWO-LEVEL PLAN</div>
+              <p style="margin:0 0 0.5rem;font-size:0.85rem;"><strong>Level 1 — Phase plan:</strong> stable, rarely changes. "Phase 1: gather requirements. Phase 2: scaffold codebase. Phase 3: implement. Phase 4: test."</p>
+              <p style="margin:0;font-size:0.85rem;color:var(--text-muted);"><strong>Level 2 — Step plan:</strong> generated fresh at the start of each phase, using current agent state as context. Keeps detailed plans accurate without over-committing up front.</p>
+            </div>
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">EMERGING PATTERN (2025–2026) — REPLANNING TRIGGERS</div>
+              <p style="margin:0 0 0.5rem;font-size:0.85rem;">A replanning step should fire when:</p>
+              <ul style="margin:0;padding-left:1.2rem;line-height:1.8;font-size:0.85rem;color:var(--text-muted);">
+                <li>A required tool call fails</li>
+                <li>An intermediate result invalidates downstream assumptions</li>
+                <li>A step produces unexpectedly large or complex output</li>
+                <li>A human checkpoint reveals a misunderstood requirement</li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;margin:1rem 0;">
+            <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">WIDELY USED (2024–2026) — HUMAN-IN-THE-LOOP CHECKPOINTS</div>
+            <p style="margin:0 0 0.75rem;font-size:0.85rem;">Insert mandatory human approval gates at <strong>high-stakes phase transitions</strong>: before writing to production, before sending external communications, before deleting data. Human checkpoints prevent error amplification across phases.</p>
+            <p style="margin:0;font-size:0.82rem;color:var(--text-muted);font-style:italic;">Analogy: a contractor builds the frame, then the homeowner inspects before drywall goes up — because fixing mistakes is cheap before walls are closed and expensive after.</p>
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://arxiv.org/abs/2305.04091" target="_blank" style="color:var(--accent);text-decoration:none;">Wang et al. — Plan-and-Solve (arXiv:2305.04091, 2023)</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2303.11366" target="_blank" style="color:var(--accent);text-decoration:none;">Shinn et al. — Reflexion (arXiv:2303.11366, 2023)</a> &nbsp;·&nbsp; <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Building Effective Agents (2024)</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 05: Evaluation ── -->
+        <div class="block">
+          <div class="block-label">05 · EVALUATING LONG-HORIZON AGENTS</div>
+          <h2>Measuring Trajectories, Not Just Final Answers</h2>
+          <p>
+            Standard LLM evals measure a single response. Long-horizon evaluation must assess an <em>entire trajectory</em> — including whether intermediate steps were correct, whether the agent recovered from errors, and whether the final output is usable.
+          </p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;">
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">EMERGING PATTERN (2025–2026) — SWE-BENCH OUTCOME EVAL</div>
+              <p style="margin:0 0 0.5rem;font-size:0.85rem;">Pass the test suite of a real GitHub repo with the agent's generated patch. Outcome is binary (tests pass / fail) — no human rater required. Fully automated, objective, and resistant to post-hoc rationalisation.</p>
+              <p style="margin:0;font-size:0.82rem;color:var(--text-muted);"><strong>Pitfall:</strong> an agent that deletes the failing tests passes SWE-bench but is useless. Validate that changes are behaviorally correct, not just technically passing.</p>
+            </div>
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">EMERGING PATTERN (2025–2026) — STEP-LEVEL PARTIAL CREDIT</div>
+              <p style="margin:0 0 0.5rem;font-size:0.85rem;">Binary pass/fail misses progress. Step-level scoring awards partial credit for completing phases correctly even if the final result fails — useful for diagnosing <em>where</em> agents break down.</p>
+              <div style="font-family:var(--font-mono);font-size:0.75rem;background:var(--bg);padding:0.6rem;border-radius:4px;color:var(--text-muted);">Phase 1 — Reproduce bug:   ✓ 20 pts<br>Phase 2 — Locate cause:    ✓ 20 pts<br>Phase 3 — Implement fix:   ~ 10/20 pts<br>Phase 4 — Pass tests:      ✗ 0/40 pts<br>────────────────────────────<br>Total: 50 / 100</div>
+            </div>
+          </div>
+
+          <table class="compare-table" style="margin:1.5rem 0;">
+            <thead>
+              <tr><th>Trajectory metric</th><th>What it measures</th><th>Direction</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Steps to completion</td><td>Efficiency of the path taken</td><td>Lower is better</td></tr>
+              <tr><td>Replanning rate</td><td>Quality of the initial plan</td><td>Lower is better</td></tr>
+              <tr><td>Recovery rate</td><td>Robustness to mid-task failures</td><td>Higher is better</td></tr>
+              <tr><td>Token cost per task</td><td>Economic viability</td><td>Lower is better</td></tr>
+              <tr><td>Human interrupts needed</td><td>Degree of autonomy achieved</td><td>Lower is better</td></tr>
+            </tbody>
+          </table>
+
+          <div class="callout callout-warn">
+            <strong>Current state of the field (2026):</strong> Long-horizon agents remain an active research frontier. Performance on SWE-bench has improved sharply since 2024, but tasks requiring &gt;100 interdependent steps, multi-day persistence, or complex human collaboration are still not reliably solved. The techniques in this section represent best current practice — not a solved problem.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://arxiv.org/abs/2310.06770" target="_blank" style="color:var(--accent);text-decoration:none;">Jimenez et al. — SWE-bench (arXiv:2310.06770, 2023)</a> &nbsp;·&nbsp; <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Building Effective Agents (2024)</a> &nbsp;·&nbsp; <a href="https://docs.anthropic.com/en/docs/agents" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Agentic AI docs</a>
+          </div>
+        </div>
+
+        <!-- ── SOURCES TABLE ── -->
+        <div class="block">
+          <div class="block-label">SOURCES USED IN THIS SECTION</div>
+          <h2>Verified References</h2>
+          <p>Every claim in this section is grounded in one of these sources. No content is generated from model training data alone.</p>
+          <table class="compare-table">
+            <thead>
+              <tr><th>Source</th><th>Type</th><th>Covers</th><th>Recency</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://arxiv.org/abs/2310.06770" target="_blank" style="color:var(--accent);">Jimenez et al. arXiv:2310.06770</a></td>
+                <td>Peer-reviewed paper</td>
+                <td>SWE-bench — code agent benchmark on real GitHub issues</td>
+                <td>Oct 2023</td>
+              </tr>
+              <tr>
+                <td><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" style="color:var(--accent);">Anthropic — Building Effective Agents</a></td>
+                <td>Official guide</td>
+                <td>Patterns for long-running and multi-step agents</td>
+                <td>2024</td>
+              </tr>
+              <tr>
+                <td><a href="https://docs.anthropic.com/en/docs/agents" target="_blank" style="color:var(--accent);">Anthropic — Agentic AI docs</a></td>
+                <td>Official docs</td>
+                <td>State management, tool use, approval patterns</td>
+                <td>2025</td>
+              </tr>
+              <tr>
+                <td><a href="https://arxiv.org/abs/2304.03442" target="_blank" style="color:var(--accent);">Park et al. arXiv:2304.03442</a></td>
+                <td>Peer-reviewed paper</td>
+                <td>Generative Agents — long-running three-tier memory architecture</td>
+                <td>Apr 2023</td>
+              </tr>
+              <tr>
+                <td><a href="https://arxiv.org/abs/2305.04091" target="_blank" style="color:var(--accent);">Wang et al. arXiv:2305.04091</a></td>
+                <td>Peer-reviewed paper</td>
+                <td>Plan-and-Solve — explicit planning before execution</td>
+                <td>May 2023</td>
+              </tr>
+              <tr>
+                <td><a href="https://arxiv.org/abs/2303.11366" target="_blank" style="color:var(--accent);">Shinn et al. arXiv:2303.11366</a></td>
+                <td>Peer-reviewed paper</td>
+                <td>Reflexion — verbal self-reflection and replanning</td>
+                <td>Mar 2023</td>
+              </tr>
+              <tr>
+                <td><a href="https://langchain-ai.github.io/langgraph/" target="_blank" style="color:var(--accent);">LangGraph docs</a></td>
+                <td>Official docs</td>
+                <td>Persistent state, checkpointing, resumable graphs</td>
+                <td>2025</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div><!-- end theory -->
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- QUIZ                                        -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div id="quiz" class="block">
+        <div class="block-label">KNOWLEDGE CHECK</div>
+        <h2>Section 16 Quiz</h2>
+        <p style="margin-bottom:1.5rem;">8 questions covering all theory blocks. Select one answer per question, then submit.</p>
+
+        <div class="lab-container">
+          <div class="lab-header">
+            <div class="lab-icon">📝</div>
+            <div class="lab-title-wrap">
+              <div class="lab-title">Section 16 — Long-Horizon Agents</div>
+              <div class="lab-subtitle">8 QUESTIONS · MULTIPLE CHOICE · UNLIMITED RETRIES</div>
+            </div>
+          </div>
+          <div style="padding:1.5rem 2rem;">
+
+            <!-- Q1 -->
+            <div class="quiz-q" id="q1">
+              <div class="quiz-num">Question 1 of 8</div>
+              <div class="quiz-text">Which characteristic most distinguishes a long-horizon agent task from a standard single-turn task?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q1" value="a"> <span>It uses a larger language model with more parameters</span></label>
+                <label class="quiz-option"><input type="radio" name="q1" value="b"> <span>It requires multiple interdependent steps, spans many LLM calls, and must persist state across possible failures</span></label>
+                <label class="quiz-option"><input type="radio" name="q1" value="c"> <span>It always involves at least three different tools running in parallel</span></label>
+                <label class="quiz-option"><input type="radio" name="q1" value="d"> <span>It returns a structured JSON response instead of plain text</span></label>
+              </div>
+              <div class="quiz-feedback" id="f1"></div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="quiz-q" id="q2">
+              <div class="quiz-num">Question 2 of 8</div>
+              <div class="quiz-text">When designing a checkpointing strategy for a long-horizon agent, which approach best balances durability with I/O overhead?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q2" value="a"> <span>Save the full conversation history to disk after every single LLM call</span></label>
+                <label class="quiz-option"><input type="radio" name="q2" value="b"> <span>Define milestone boundaries and checkpoint only when a complete phase or artefact is finished</span></label>
+                <label class="quiz-option"><input type="radio" name="q2" value="c"> <span>Skip checkpointing and restart from scratch on failure with a longer API timeout</span></label>
+                <label class="quiz-option"><input type="radio" name="q2" value="d"> <span>Rely on the context window to hold all state since it persists across API calls</span></label>
+              </div>
+              <div class="quiz-feedback" id="f2"></div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="quiz-q" id="q3">
+              <div class="quiz-num">Question 3 of 8</div>
+              <div class="quiz-text">An agent is 40 steps into a 70-step task and approaching its context window limit. What is the most effective mitigation?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q3" value="a"> <span>Increase <code>max_tokens</code> to force the model to produce shorter individual outputs</span></label>
+                <label class="quiz-option"><input type="radio" name="q3" value="b"> <span>Delete the oldest messages until there is room, discarding their content permanently</span></label>
+                <label class="quiz-option"><input type="radio" name="q3" value="c"> <span>Summarise completed phases, replace their detailed messages with a compact summary, and archive the originals externally</span></label>
+                <label class="quiz-option"><input type="radio" name="q3" value="d"> <span>Switch to a different provider with a larger context window and re-send the full history</span></label>
+              </div>
+              <div class="quiz-feedback" id="f3"></div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="quiz-q" id="q4">
+              <div class="quiz-num">Question 4 of 8</div>
+              <div class="quiz-text">In a hierarchical plan-and-execute system, what should ideally trigger a replanning step?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q4" value="a"> <span>Successfully completing every subtask in order</span></label>
+                <label class="quiz-option"><input type="radio" name="q4" value="b"> <span>Any LLM output that is longer than the expected token count</span></label>
+                <label class="quiz-option"><input type="radio" name="q4" value="c"> <span>A subtask failure or new information that invalidates assumptions in the downstream plan</span></label>
+                <label class="quiz-option"><input type="radio" name="q4" value="d"> <span>Reaching exactly 50% of the total token budget for the run</span></label>
+              </div>
+              <div class="quiz-feedback" id="f4"></div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="quiz-q" id="q5">
+              <div class="quiz-num">Question 5 of 8</div>
+              <div class="quiz-text">SWE-bench evaluates agents by:</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q5" value="a"> <span>Counting the number of tool calls the agent makes per task and penalising excessive use</span></label>
+                <label class="quiz-option"><input type="radio" name="q5" value="b"> <span>Asking human raters to score the quality of each step in the agent's reasoning trace</span></label>
+                <label class="quiz-option"><input type="radio" name="q5" value="c"> <span>Giving the agent a real GitHub issue and checking whether its generated patch passes the associated repository test suite</span></label>
+                <label class="quiz-option"><input type="radio" name="q5" value="d"> <span>Measuring average API response latency across a fixed set of standardised prompts</span></label>
+              </div>
+              <div class="quiz-feedback" id="f5"></div>
+            </div>
+
+            <!-- Q6 -->
+            <div class="quiz-q" id="q6">
+              <div class="quiz-num">Question 6 of 8</div>
+              <div class="quiz-text">Which of the following best describes the correct placement of a human-in-the-loop approval checkpoint in a long-horizon workflow?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q6" value="a"> <span>After every single LLM call, to ensure nothing unexpected happens</span></label>
+                <label class="quiz-option"><input type="radio" name="q6" value="b"> <span>Only at the very end of the task, after all work is complete</span></label>
+                <label class="quiz-option"><input type="radio" name="q6" value="c"> <span>At high-stakes phase transitions where errors would be expensive or irreversible — before writing to production, deleting data, or sending external communications</span></label>
+                <label class="quiz-option"><input type="radio" name="q6" value="d"> <span>Whenever the agent uses more than three different tools in a single step</span></label>
+              </div>
+              <div class="quiz-feedback" id="f6"></div>
+            </div>
+
+            <!-- Q7 -->
+            <div class="quiz-q" id="q7">
+              <div class="quiz-num">Question 7 of 8</div>
+              <div class="quiz-text">Which failure mode is most specific to long-horizon agents and rarely occurs in single-turn agents?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q7" value="a"> <span>Prompt injection attacks embedded in tool results</span></label>
+                <label class="quiz-option"><input type="radio" name="q7" value="b"> <span>Exceeding the <code>max_tokens</code> limit on a single LLM call</span></label>
+                <label class="quiz-option"><input type="radio" name="q7" value="c"> <span>Silent partial completion — the agent stops mid-task without signalling failure, leaving the system in an inconsistent intermediate state</span></label>
+                <label class="quiz-option"><input type="radio" name="q7" value="d"> <span>Rate limiting from the LLM provider's API</span></label>
+              </div>
+              <div class="quiz-feedback" id="f7"></div>
+            </div>
+
+            <!-- Q8 -->
+            <div class="quiz-q" id="q8">
+              <div class="quiz-num">Question 8 of 8</div>
+              <div class="quiz-text">Which combination of techniques most directly addresses both context overflow and mid-task failure recovery in long-horizon agents?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q8" value="a"> <span>Using a larger model and adding more tools to the agent's toolkit</span></label>
+                <label class="quiz-option"><input type="radio" name="q8" value="b"> <span>Hierarchical phase summarisation paired with milestone-based checkpointing</span></label>
+                <label class="quiz-option"><input type="radio" name="q8" value="c"> <span>Parallelising all steps with a thread pool and increasing worker count</span></label>
+                <label class="quiz-option"><input type="radio" name="q8" value="d"> <span>Using streaming API responses and setting temperature to 0 for determinism</span></label>
+              </div>
+              <div class="quiz-feedback" id="f8"></div>
+            </div>
+
+            <div style="margin-top:2rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
+              <button class="btn btn-accent" onclick="submitQuiz()">Submit Answers</button>
+              <button class="btn btn-outline" onclick="resetQuiz()" style="display:none;" id="retryBtn">Try Again</button>
+              <div id="quiz-score" style="font-family:var(--font-mono);font-size:0.85rem;color:var(--text-muted);"></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end quiz -->
+
+      <!-- MARK COMPLETE + NAVIGATION -->
+      <div class="mark-complete-bar">
+        <p>Finished the theory and passed the quiz? Mark this section complete to track your progress.</p>
+        <button class="btn btn-outline" id="completeBtn2" data-section="16" onclick="document.getElementById('completeBtn').click()">Mark Section 16 Complete</button>
+      </div>
+
+      <div style="text-align:center;margin:2rem 0 0;font-family:var(--font-mono);font-size:0.62rem;color:var(--text-dim);">
+        Last updated: <time datetime="2026-04-05">April 5, 2026</time>
+      </div>
+      <div class="section-nav-footer">
+        <a href="15-security.html" class="nav-prev">← Section 15: Agent Security</a>
+        <a href="../index.html" class="nav-next">Back to Course Home →</a>
+      </div>
+
+    </div><!-- end page -->
+  </main>
+</div>
+
+<script src="../course.js"></script>
+<script>
+const QUIZ_ANSWERS = { q1:'b', q2:'b', q3:'c', q4:'c', q5:'c', q6:'c', q7:'c', q8:'b' };
+
+const QUIZ_EXPLANATIONS = {
+  q1: 'Correct. Long-horizon tasks require multi-step execution with persistent state and fault tolerance — fundamentally different engineering from a single-turn prompt-response. The LLM calls are the same; the scaffolding around them is not.',
+  q2: 'Correct. Milestone-based checkpointing saves state at meaningful boundaries — completing a phase — balancing durability with the overhead of serialisation. After every call is too expensive; at the end only is too risky.',
+  q3: 'Correct. Hierarchical summarisation preserves the semantic content of completed phases in a compact form while archiving full detail externally, freeing context space for current work without permanent information loss.',
+  q4: 'Correct. Replanning should fire when reality diverges from the plan — a failed step or new information that makes downstream steps invalid. Replanning without cause wastes tokens and introduces plan instability.',
+  q5: 'Correct. SWE-bench provides real GitHub issues and checks agent-generated patches against the repository\'s test suite — a fully automated, objective long-horizon evaluation that requires no human raters.',
+  q6: 'Correct. Human checkpoints are most valuable at high-stakes phase transitions where mistakes are expensive to reverse — production writes, data deletion, external communications. Not after every call, which defeats the purpose of autonomous agents.',
+  q7: 'Correct. Silent partial completion is unique to long-horizon agents: the task appears to have ended but critical steps were skipped, leaving the system in an inconsistent state with no error raised. Single-turn agents either answer or fail explicitly.',
+  q8: 'Correct. Hierarchical summarisation addresses context overflow by compressing completed phases; milestone checkpointing addresses recovery by preserving state at meaningful boundaries. These two techniques are complementary and directly target the two core long-horizon challenges.'
+};
+
+const QUIZ_WRONG_HINTS = {
+  q1: 'Model size is orthogonal to horizon length. The defining characteristic of a long-horizon task is about structure and duration — what properties of the task\'s execution make it different from a single round-trip to the LLM?',
+  q2: 'The context window is volatile — a crash destroys it. Restarting from scratch means repeating all completed work. The question is about balancing how often to persist state against the cost of doing so. Which granularity gives a meaningful recovery point without excessive overhead?',
+  q3: '<code>max_tokens</code> controls output length, not context window size. Deleting messages permanently loses information. Switching providers doesn\'t solve the problem. Which technique compresses the information from completed phases while preserving it?',
+  q4: 'Successful completion means the plan is working — no replanning needed. Output length is not a reliable planning signal. Token budget thresholds are cost guardrails, not plan signals. What condition means the plan is no longer valid?',
+  q5: 'SWE-bench doesn\'t count tool calls or measure latency. Human raters are not involved in standard SWE-bench. It is a code-level evaluation — what does it actually check to determine whether the agent succeeded?',
+  q6: 'Approving every LLM call defeats the purpose of autonomous agents. End-only approval catches problems too late. Tool count is not a risk signal — the risk is in the consequence of an action. At what transition points are mistakes most expensive to undo?',
+  q7: 'Prompt injection and rate limiting affect any agent, not specifically long-horizon ones. max_tokens limits apply to any single LLM call. What failure mode requires the agent to have been running for an extended period before it can occur?',
+  q8: 'Model size and tool count change capability, not resilience. Parallelism improves throughput but doesn\'t address context overflow or checkpointing. Streaming and temperature affect output style. Which two techniques map directly onto the two problems (overflow and recovery)?'
+};
+
+function submitQuiz() {
+  let score = 0;
+  let allAnswered = true;
+
+  for (let i = 1; i <= 8; i++) {
+    const key = 'q' + i;
+    const selected = document.querySelector(`input[name="${key}"]:checked`);
+    const feedback = document.getElementById('f' + i);
+    const qEl = document.getElementById(key);
+
+    if (!selected) { allAnswered = false; continue; }
+
+    const options = qEl.querySelectorAll('.quiz-option');
+    options.forEach(opt => {
+      opt.style.pointerEvents = 'none';
+      const inp = opt.querySelector('input');
+      if (inp.value === QUIZ_ANSWERS[key]) {
+        opt.style.color = 'var(--green)';
+        opt.style.borderColor = 'var(--green)';
+      }
+    });
+
+    if (selected.value === QUIZ_ANSWERS[key]) {
+      score++;
+      feedback.innerHTML = '<span style="color:var(--green);">✓ ' + QUIZ_EXPLANATIONS[key] + '</span>';
+    } else {
+      feedback.innerHTML = '<span style="color:var(--red);">✗ Not quite. ' + QUIZ_WRONG_HINTS[key] + '</span>';
+      selected.closest('.quiz-option').style.color = 'var(--red)';
+    }
+    feedback.style.display = 'block';
+  }
+
+  if (!allAnswered) {
+    document.getElementById('quiz-score').textContent = 'Please answer all questions before submitting.';
+    return;
+  }
+
+  const pct = Math.round((score / 8) * 100);
+  let msg = '';
+  if (score === 8) msg = '— Perfect score! You\'ve completed the course.';
+  else if (score >= 6) msg = '— Good. Review the ones you missed before finishing.';
+  else msg = '— Re-read the theory sections you struggled with, then retry.';
+
+  document.getElementById('quiz-score').innerHTML =
+    '<strong style="color:var(--accent);">' + score + '/8 (' + pct + '%)</strong> ' + msg;
+  document.getElementById('retryBtn').style.display = 'inline-flex';
+  document.querySelector('[onclick="submitQuiz()"]').style.display = 'none';
+}
+
+function resetQuiz() {
+  for (let i = 1; i <= 8; i++) {
+    const key = 'q' + i;
+    document.querySelectorAll(`input[name="${key}"]`).forEach(inp => { inp.checked = false; });
+    const feedback = document.getElementById('f' + i);
+    feedback.innerHTML = '';
+    feedback.style.display = 'none';
+    const qEl = document.getElementById(key);
+    qEl.querySelectorAll('.quiz-option').forEach(opt => {
+      opt.style.color = '';
+      opt.style.borderColor = '';
+      opt.style.pointerEvents = '';
+    });
+  }
+  document.getElementById('quiz-score').innerHTML = '';
+  document.getElementById('retryBtn').style.display = 'none';
+  document.querySelector('[onclick="submitQuiz()"]').style.display = 'inline-flex';
+}
+</script>
+</body>
+</html>

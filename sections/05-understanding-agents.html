@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>05 — Understanding Agents · Agentic AI Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="../style.css">
+<noscript><style>
+/* No-JS: make sidebar visible and stack layout vertically on mobile */
+@media (max-width: 768px) {
+  .sidebar { transform: none; position: relative; width: 100%; height: auto; }
+  .layout  { flex-direction: column; }
+}
+</style></noscript>
+<link rel="manifest" href="../manifest.json">
+</head>
+<body data-section="5">
+<noscript>
+  <div style="background:#1a1200;border-bottom:2px solid #c87d00;color:#f0c060;padding:0.75rem 1.5rem;font-family:monospace;font-size:0.82rem;text-align:center;position:relative;z-index:999;">
+    &#9888; JavaScript is disabled. Progress tracking, quizzes, and interactive features require JavaScript.
+  </div>
+</noscript>
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <a href="../index.html" class="sidebar-logo" style="text-decoration:none;display:block;">
+      <div class="logo-eyebrow">// AGENTIC AI COURSE</div>
+      <div class="logo-name">Learn <span>Agentic AI</span><br>2026 Edition</div>
+    </a>
+    <div class="sidebar-progress">
+      <div class="progress-row">
+        <span class="progress-label">OVERALL PROGRESS</span>
+        <span class="progress-count" id="progressCount">0 / 16</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+    <div class="sidebar-nav">
+      <div class="nav-group-label">Foundation</div>
+      <a href="01-intro.html" class="nav-item" data-section="1"><span class="nav-num">01</span> Intro to Agentic AI <span class="nav-check">✓</span></a>
+      <a href="02-ml-fundamentals.html" class="nav-item" data-section="2"><span class="nav-num">02</span> AI &amp; ML Fundamentals <span class="nav-check">✓</span></a>
+      <a href="03-frameworks.html" class="nav-item" data-section="3"><span class="nav-num">03</span> Programming &amp; Frameworks <span class="nav-check">✓</span></a>
+      <a href="04-llms.html" class="nav-item" data-section="4"><span class="nav-num">04</span> Large Language Models <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">Core Agents</div>
+      <a href="05-understanding-agents.html" class="nav-item active" data-section="5"><span class="nav-num">05</span> Understanding Agents <span class="nav-check">✓</span></a>
+      <a href="06-memory.html" class="nav-item" data-section="6"><span class="nav-num">06</span> Memory &amp; Knowledge <span class="nav-check">✓</span></a>
+      <a href="07-planning.html" class="nav-item" data-section="7"><span class="nav-num">07</span> Decision-Making &amp; Planning <span class="nav-check">✓</span></a>
+      <a href="08-prompting.html" class="nav-item" data-section="8"><span class="nav-num">08</span> Prompt Engineering <span class="nav-check">✓</span></a>
+      <a href="09-rl.html" class="nav-item" data-section="9"><span class="nav-num">09</span> RL &amp; Self-Improvement <span class="nav-check">✓</span></a>
+      <a href="10-rag.html" class="nav-item" data-section="10"><span class="nav-num">10</span> RAG <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">Production</div>
+      <a href="11-deployment.html" class="nav-item" data-section="11"><span class="nav-num">11</span> Deploying Agents <span class="nav-check">✓</span></a>
+      <a href="12-real-world.html" class="nav-item" data-section="12"><span class="nav-num">12</span> Real-World Applications <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">2026 New</div>
+      <a href="13-mcp.html" class="nav-item" data-section="13"><span class="nav-num">13</span> MCP &amp; Protocols <span class="nav-check">✓</span></a>
+      <a href="14-multi-agent.html" class="nav-item" data-section="14"><span class="nav-num">14</span> Multi-Agent Orchestration <span class="nav-check">✓</span></a>
+      <a href="15-security.html" class="nav-item" data-section="15"><span class="nav-num">15</span> Agent Security <span class="nav-check">✓</span></a>
+      <a href="16-long-horizon.html" class="nav-item" data-section="16"><span class="nav-num">16</span> Long-Horizon Agents <span class="nav-check">✓</span></a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="topbar-breadcrumb">
+        <a href="../index.html" style="color:var(--text-muted);text-decoration:none;">Course</a>
+        &nbsp;/&nbsp; <span>05 · Understanding Agents</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn btn-outline" id="completeBtn" data-section="5">Mark Complete</button>
+      </div>
+    </div>
+
+    <div class="page">
+
+      <!-- HERO -->
+      <div class="section-hero">
+        <div class="hero-meta">
+          <span class="hero-num">SECTION 05</span>
+          <span class="hero-tag tag-core">CORE</span>
+          <span class="hero-tag tag-lab">LAB</span>
+        </div>
+        <h1 class="section-title">Understanding<br><span>Agents</span></h1>
+        <p class="section-intro">
+          In Section 03 you ran your first tool loop. Now you go one level deeper: understanding the architectural patterns behind every real-world agent, how an agent perceives and acts on its environment, how to make reasoning visible through explicit traces, and how to decide whether a task actually needs an agent at all. The lab builds a ReAct agent with step-by-step reasoning you can read and debug.
+        </p>
+        <div class="hero-actions">
+          <a href="#theory" class="btn btn-accent">📖 Start Theory</a>
+          <a href="#lab" class="btn btn-outline">🔬 Jump to Lab</a>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- THEORY                                      -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div id="theory">
+
+        <!-- ── BLOCK 01: Agent Architecture Patterns ── -->
+        <div class="block">
+          <div class="block-label">01 · AGENT ARCHITECTURE PATTERNS</div>
+          <h2>Four Patterns — One Spectrum of Complexity</h2>
+          <p>
+            Not all agents are equal. The architecture you choose determines how the agent reasons, how much it costs to run, and what failure modes you inherit. There are four patterns in wide production use as of 2024–2026, ranging from a simple reactive loop to agents that self-critique and revise their own plans.
+          </p>
+
+          <!-- Architecture comparison -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.2rem 0;">
+
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.5rem;">PATTERN 01</div>
+              <div style="font-weight:600;margin-bottom:0.5rem;">Simple Reactive Loop</div>
+              <div style="font-size:0.8rem;color:var(--text-muted);line-height:1.6;margin-bottom:0.8rem;">Prompt → LLM call → tool call (optional) → response. No explicit reasoning trace. Fast and cheap. Used for straightforward tool-augmented chat.</div>
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--border);background:var(--bg);padding:0.6rem;border-radius:4px;">
+                User → [LLM + Tools] → Answer
+              </div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">WIDELY USED (2023–2026)</div>
+            </div>
+
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--green);margin-bottom:0.5rem;">PATTERN 02</div>
+              <div style="font-weight:600;margin-bottom:0.5rem;">ReAct (Reason + Act)</div>
+              <div style="font-size:0.8rem;color:var(--text-muted);line-height:1.6;margin-bottom:0.8rem;">Interleaves explicit Thought steps with Action steps. Each iteration the model reasons about what to do before doing it. Reasoning is visible and debuggable. (Yao et al., ICLR 2023)</div>
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--border);background:var(--bg);padding:0.6rem;border-radius:4px;">
+                Thought → Action → Observation → Thought → ...
+              </div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">WIDELY USED (2023–2026)</div>
+            </div>
+
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--orange);margin-bottom:0.5rem;">PATTERN 03</div>
+              <div style="font-weight:600;margin-bottom:0.5rem;">Plan-and-Execute</div>
+              <div style="font-size:0.8rem;color:var(--text-muted);line-height:1.6;margin-bottom:0.8rem;">A planner LLM call first decomposes the task into a step list. A separate executor call works through the list. Enables parallelism and clearer task decomposition for complex goals.</div>
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--border);background:var(--bg);padding:0.6rem;border-radius:4px;">
+                [Planner LLM] → [Step 1, 2, 3] → [Executor LLM × N]
+              </div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--orange);">EMERGING (2024–2026)</div>
+            </div>
+
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.5rem;">PATTERN 04</div>
+              <div style="font-weight:600;margin-bottom:0.5rem;">Reflection / Self-Critique</div>
+              <div style="font-size:0.8rem;color:var(--text-muted);line-height:1.6;margin-bottom:0.8rem;">After producing an output, the agent (or a second LLM call) critiques it against goals and revises. Based on Reflexion (Shinn et al., 2023). Higher quality at higher cost.</div>
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--border);background:var(--bg);padding:0.6rem;border-radius:4px;">
+                Act → Critique → Revise → Critique → ... → Done
+              </div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--orange);">EMERGING (2023–2026)</div>
+            </div>
+          </div>
+
+          <div class="callout callout-info">
+            <strong>Which pattern should you use?</strong> Start with the simplest pattern that solves your problem. ReAct is a strong default for multi-step tasks because the explicit reasoning trace makes debugging straightforward. Add plan-and-execute when tasks are complex enough to benefit from decomposition. Add reflection only when output quality justifies the extra API calls and cost.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://arxiv.org/abs/2210.03629" target="_blank" style="color:var(--accent);text-decoration:none;">Yao et al. — ReAct (arXiv:2210.03629, ICLR 2023)</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2303.11366" target="_blank" style="color:var(--accent);text-decoration:none;">Shinn et al. — Reflexion (arXiv:2303.11366, 2023)</a> &nbsp;·&nbsp; <a href="https://lilianweng.github.io/posts/2023-06-23-agent/" target="_blank" style="color:var(--accent);text-decoration:none;">Lilian Weng — LLM Powered Autonomous Agents (2023)</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 02: Perception-Action Cycle ── -->
+        <div class="block">
+          <div class="block-label">02 · THE PERCEPTION-ACTION CYCLE</div>
+          <h2>How an Agent Experiences Its Environment</h2>
+          <p>
+            Every agent operates within a <strong>perception-action cycle</strong> — a concept borrowed from cognitive science and robotics, applied to LLM-based systems. The agent does not "see" the world directly; it perceives a <em>representation</em> of the world through its context window, decides what to do, acts via tools, and receives a new observation that updates its representation.
+          </p>
+
+          <!-- Perception-action cycle diagram -->
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.8rem;margin:1.2rem 0;text-align:center;font-family:var(--font-mono);font-size:0.72rem;">
+            <div style="color:var(--text-dim);margin-bottom:1.2rem;text-align:left;">// THE AGENT'S WORLD MODEL</div>
+            <div style="display:flex;justify-content:center;align-items:center;gap:1rem;flex-wrap:wrap;">
+              <div style="border:1px solid var(--border);border-radius:6px;padding:0.8rem 1rem;background:var(--bg);">
+                <div style="color:var(--text-dim);font-size:0.58rem;">ENVIRONMENT</div>
+                <div style="color:var(--text);margin-top:0.2rem;">Files · APIs · Web · DB</div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:0.3rem;align-items:center;">
+                <div style="color:var(--green);font-size:0.65rem;">← Observation</div>
+                <div style="color:var(--accent);font-size:0.65rem;">Action →</div>
+              </div>
+              <div style="border:2px solid var(--accent);border-radius:6px;padding:0.8rem 1.2rem;background:var(--bg);">
+                <div style="color:var(--accent);font-size:0.58rem;">AGENT</div>
+                <div style="color:var(--text);margin-top:0.2rem;">LLM + Context Window</div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:0.3rem;align-items:center;">
+                <div style="color:var(--text-muted);font-size:0.65rem;">← Response</div>
+                <div style="color:var(--text-muted);font-size:0.65rem;">Request →</div>
+              </div>
+              <div style="border:1px solid var(--border);border-radius:6px;padding:0.8rem 1rem;background:var(--bg);">
+                <div style="color:var(--text-dim);font-size:0.58rem;">USER / ORCHESTRATOR</div>
+                <div style="color:var(--text);margin-top:0.2rem;">Goal · Feedback</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="concept-grid" style="grid-template-columns:repeat(3,1fr);">
+            <div class="concept-card">
+              <div class="concept-icon">👁️</div>
+              <div class="concept-name">Perception</div>
+              <div class="concept-desc">What the agent can see: the system prompt, conversation history, tool results, and any documents injected into context. Everything outside this window is invisible to the agent.</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">🧭</div>
+              <div class="concept-name">Decision</div>
+              <div class="concept-desc">The LLM reasons over its current perception and selects an action — a tool call, a clarifying question, or a final response. This is the one step the agent "thinks."</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">🎬</div>
+              <div class="concept-name">Action</div>
+              <div class="concept-desc">The chosen action is executed by your application code — not the LLM. The LLM only produces a description of the action; your code runs it and returns the result.</div>
+            </div>
+          </div>
+
+          <div class="callout callout-warning" style="margin-top:1rem;">
+            <strong>The LLM never executes tools directly.</strong> When a model calls a tool, it outputs a structured request (a JSON object). Your application code intercepts that request, runs the real function or API call, and returns the result as a new message. The model never touches external systems — your code does. This boundary is where you implement security controls and error handling.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://lilianweng.github.io/posts/2023-06-23-agent/" target="_blank" style="color:var(--accent);text-decoration:none;">Lilian Weng — LLM Powered Autonomous Agents (2023)</a> &nbsp;·&nbsp; <a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Tool Use Documentation</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 03: Anatomy of a Production Agent ── -->
+        <div class="block">
+          <div class="block-label">03 · ANATOMY OF A PRODUCTION AGENT</div>
+          <h2>Five Components Every Agent Has</h2>
+          <p>
+            Whether you write a raw-SDK agent in 80 lines or use a framework like LangGraph, every production agent is composed of the same five functional components. Understanding each one lets you reason about agent behavior independently of which library you use.
+          </p>
+
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin:1.2rem 0;">
+            <table style="width:100%;border-collapse:collapse;font-size:0.8rem;">
+              <thead>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <th style="text-align:left;padding:0.5rem 0.8rem;font-family:var(--font-mono);font-size:0.65rem;color:var(--text-dim);">COMPONENT</th>
+                  <th style="text-align:left;padding:0.5rem 0.8rem;font-family:var(--font-mono);font-size:0.65rem;color:var(--text-dim);">WHAT IT DOES</th>
+                  <th style="text-align:left;padding:0.5rem 0.8rem;font-family:var(--font-mono);font-size:0.65rem;color:var(--text-dim);">IMPLEMENTED AS</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:0.6rem 0.8rem;font-family:var(--font-mono);color:var(--accent);">System Prompt</td>
+                  <td style="padding:0.6rem 0.8rem;color:var(--text-muted);">Defines the agent's role, capabilities, constraints, output format, and available tools. The agent's "personality and rules."</td>
+                  <td style="padding:0.6rem 0.8rem;color:var(--text-muted);">The <code>system</code> parameter in the API call</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:0.6rem 0.8rem;font-family:var(--font-mono);color:var(--accent);">Tool Registry</td>
+                  <td style="padding:0.6rem 0.8rem;color:var(--text-muted);">The list of tools available to the agent — their names, descriptions, and input schemas. The agent can only call what is registered.</td>
+                  <td style="padding:0.6rem 0.8rem;color:var(--text-muted);">The <code>tools</code> list in the API call</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:0.6rem 0.8rem;font-family:var(--font-mono);color:var(--accent);">Message History</td>
+                  <td style="padding:0.6rem 0.8rem;color:var(--text-muted);">The accumulated conversation — user messages, assistant reasoning, tool calls, and tool results. This is the agent's working memory.</td>
+                  <td style="padding:0.6rem 0.8rem;color:var(--text-muted);">The <code>messages</code> list, grown each iteration</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:0.6rem 0.8rem;font-family:var(--font-mono);color:var(--accent);">Loop Controller</td>
+                  <td style="padding:0.6rem 0.8rem;color:var(--text-muted);">The application code that calls the API, inspects <code>stop_reason</code>, routes tool calls to executors, appends results, and decides when to stop.</td>
+                  <td style="padding:0.6rem 0.8rem;color:var(--text-muted);">Your Python <code>while</code> / <code>for</code> loop</td>
+                </tr>
+                <tr>
+                  <td style="padding:0.6rem 0.8rem;font-family:var(--font-mono);color:var(--accent);">Tool Executors</td>
+                  <td style="padding:0.6rem 0.8rem;color:var(--text-muted);">The functions that actually run when a tool is called — hitting APIs, running code, reading files. They return a result string that goes back into the message history.</td>
+                  <td style="padding:0.6rem 0.8rem;color:var(--text-muted);">Your Python functions, dispatched by tool name</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout callout-info">
+            <strong>Frameworks don't change this anatomy.</strong> LangGraph, AutoGen, and CrewAI all implement these same five components — they just give you higher-level abstractions and pre-built tool executors. When a framework "does something unexpected," trace it back to one of these five components to find the root cause.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Tool Use Docs</a> &nbsp;·&nbsp; <a href="https://langchain-ai.github.io/langgraph/" target="_blank" style="color:var(--accent);text-decoration:none;">LangGraph Documentation</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 04: When NOT to Use an Agent ── -->
+        <div class="block">
+          <div class="block-label">04 · WHEN NOT TO USE AN AGENT</div>
+          <h2>The Decision Framework</h2>
+          <p>
+            Agents are powerful but expensive — in tokens, latency, and error surface. Anthropic's official guidance states plainly: "use the simplest solution that works." An agent loop where a single prompt would suffice is over-engineering, not good architecture. Use this decision tree before choosing an agent.
+          </p>
+
+          <!-- Decision tree -->
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin:1.2rem 0;font-family:var(--font-mono);font-size:0.72rem;line-height:2;">
+            <div style="color:var(--text-dim);margin-bottom:0.8rem;">// AGENT OR NOT? — DECISION FLOW</div>
+            <div style="padding-left:0;">
+              <div>Can a <span style="color:var(--accent);">single LLM call</span> solve this? → <span style="color:var(--green);">Yes → Use a prompt, not an agent.</span></div>
+              <div style="padding-left:1.5rem;">↓ No</div>
+              <div>Does the task require <span style="color:var(--accent);">tools or external data</span>? → <span style="color:var(--orange);">No → Use chain-of-thought or a multi-turn conversation.</span></div>
+              <div style="padding-left:1.5rem;">↓ Yes</div>
+              <div>Is the number of steps <span style="color:var(--accent);">known and fixed</span>? → <span style="color:var(--orange);">Yes → Use a hardcoded chain (faster, cheaper, more reliable).</span></div>
+              <div style="padding-left:1.5rem;">↓ No</div>
+              <div>Does the task require <span style="color:var(--accent);">branching decisions</span> based on intermediate results? → <span style="color:var(--green);">Yes → Use an agent.</span></div>
+            </div>
+          </div>
+
+          <div class="concept-grid" style="grid-template-columns:repeat(2,1fr);">
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--green);margin-bottom:0.4rem;">USE AN AGENT WHEN</div>
+              <div class="concept-desc" style="line-height:1.8;">
+                ✓ Steps are unknown until runtime<br>
+                ✓ Task requires dynamic tool selection<br>
+                ✓ Output of one step determines the next<br>
+                ✓ Recovery from tool failures is needed<br>
+                ✓ Task may need to ask for clarification
+              </div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.4rem;">SKIP THE AGENT WHEN</div>
+              <div class="concept-desc" style="line-height:1.8;">
+                ✗ One prompt with a retrieval step handles it<br>
+                ✗ The pipeline is always the same N steps<br>
+                ✗ Latency is critical and you can't afford multiple API calls<br>
+                ✗ The task is purely generative (writing, summarizing)<br>
+                ✗ You don't have a way to verify tool outputs
+              </div>
+            </div>
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Agents &amp; When to Use Them</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2210.03629" target="_blank" style="color:var(--accent);text-decoration:none;">Yao et al. — ReAct (arXiv:2210.03629)</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 05: Observability ── -->
+        <div class="block">
+          <div class="block-label">05 · AGENT OBSERVABILITY</div>
+          <h2>You Cannot Debug What You Cannot See</h2>
+          <p>
+            An agent that fails silently is worse than no agent at all. A core practice in production agent development is <strong>structured tracing</strong> — logging every iteration's inputs, tool calls, tool results, and stop reasons in a format that can be replayed and inspected. Without it, debugging a multi-step failure is nearly impossible.
+          </p>
+
+          <div class="concept-grid" style="grid-template-columns:repeat(3,1fr);">
+            <div class="concept-card">
+              <div class="concept-icon">📋</div>
+              <div class="concept-name">Iteration Logs</div>
+              <div class="concept-desc">Log the iteration number, stop_reason, and number of tool calls for every loop cycle. The first sign of an infinite loop is a monotonically increasing iteration count with no end_turn.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">PRODUCTION ESSENTIAL</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">🔍</div>
+              <div class="concept-name">Tool Call Traces</div>
+              <div class="concept-desc">Log every tool call: name, input arguments, and return value. This trace is the primary artifact for understanding what the agent decided and why. Store it alongside the final output.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">PRODUCTION ESSENTIAL</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">💬</div>
+              <div class="concept-name">Reasoning Traces</div>
+              <div class="concept-desc">In ReAct-style agents, the model's Thought content is explicit reasoning you can read. Log it. When the agent makes a surprising decision, the Thought often reveals the wrong assumption.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">PRODUCTION ESSENTIAL</div>
+            </div>
+          </div>
+
+          <div class="callout callout-warning" style="margin-top:1rem;">
+            <strong>Token budget monitoring:</strong> Track cumulative input tokens across iterations. An agent's context grows with every tool result appended to the message history. If you don't monitor this, you will eventually hit the context window limit mid-task with no graceful recovery. Log total_tokens after every API call and add a hard stop before the limit.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Tool Use &amp; Agent Guidance</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2303.11366" target="_blank" style="color:var(--accent);text-decoration:none;">Shinn et al. — Reflexion (arXiv:2303.11366, 2023)</a>
+          </div>
+        </div>
+
+        <!-- ── SOURCES TABLE ── -->
+        <div class="block">
+          <div class="block-label">SOURCES USED IN THIS SECTION</div>
+          <h2>Verified References</h2>
+          <p>Every claim in this section is grounded in one of these sources.</p>
+          <table class="compare-table">
+            <thead>
+              <tr><th>Source</th><th>Type</th><th>Covers</th><th>Recency</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://arxiv.org/abs/2210.03629" target="_blank" style="color:var(--accent);">Yao et al. — ReAct</a></td>
+                <td>Academic paper</td>
+                <td>ReAct pattern, Thought/Action/Observation trace, ICLR 2023</td>
+                <td>Oct 2022 / ICLR 2023</td>
+              </tr>
+              <tr>
+                <td><a href="https://arxiv.org/abs/2303.11366" target="_blank" style="color:var(--accent);">Shinn et al. — Reflexion</a></td>
+                <td>Academic paper</td>
+                <td>Reflection pattern, self-critique, verbal reinforcement</td>
+                <td>2023</td>
+              </tr>
+              <tr>
+                <td><a href="https://lilianweng.github.io/posts/2023-06-23-agent/" target="_blank" style="color:var(--accent);">Lilian Weng — LLM Powered Autonomous Agents</a></td>
+                <td>Blog / Survey</td>
+                <td>Architecture patterns, perception-action, agent taxonomy</td>
+                <td>June 2023</td>
+              </tr>
+              <tr>
+                <td><a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);">Anthropic — Tool Use &amp; Agent Docs</a></td>
+                <td>Official docs</td>
+                <td>Tool loop mechanics, stop_reason, agent design guidance</td>
+                <td>Maintained 2024–2026</td>
+              </tr>
+              <tr>
+                <td><a href="https://langchain-ai.github.io/langgraph/" target="_blank" style="color:var(--accent);">LangGraph Documentation</a></td>
+                <td>Official docs</td>
+                <td>Graph-based agent architecture, state management</td>
+                <td>Maintained 2024–2026</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div><!-- end theory -->
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- LAB                                         -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div id="lab" class="block">
+        <div class="block-label">HANDS-ON LAB</div>
+        <h2>Build a ReAct Agent with Explicit Reasoning Traces</h2>
+        <p style="margin-bottom:1.5rem;">
+          You will build a research agent that uses the ReAct pattern explicitly — printing Thought, Action, and Observation at every step so you can watch the agent reason in real time. It has two tools: a simulated web search and a word counter. The goal is to understand the loop deeply enough that you can trace any agent failure back to a specific step.
+        </p>
+
+        <div class="lab-container">
+          <div class="lab-header">
+            <div class="lab-icon">🔬</div>
+            <div class="lab-title-wrap">
+              <div class="lab-title">ReAct Research Agent — Explicit Trace</div>
+              <div class="lab-subtitle">PYTHON · ~90 LINES · ANTHROPIC API KEY REQUIRED</div>
+            </div>
+          </div>
+
+          <div class="lab-steps">
+
+            <!-- Step 1 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">1</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Set up the project
+                </div>
+                <div class="step-body">
+                  <p>If you already have the <code>agent-lab</code> directory from Section 03, just create a new file in it. Otherwise, set up fresh.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">BASH</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>mkdir -p agent-lab && cd agent-lab
+python -m venv .venv
+source .venv/bin/activate    <span class="cm"># Windows: .venv\Scripts\activate</span>
+pip install anthropic python-dotenv
+echo <span class="st">"ANTHROPIC_API_KEY=your_key_here"</span> &gt; .env</pre>
+                  </div>
+                  <p>Get your API key from <a href="https://console.anthropic.com" target="_blank" style="color:var(--accent);">console.anthropic.com</a> → API Keys.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">2</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Define the system prompt and tools
+                </div>
+                <div class="step-body">
+                  <p>Create <code>react_agent.py</code>. The system prompt explicitly instructs the model to reason step by step before every action — this is what makes it a ReAct agent rather than a simple reactive loop.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — react_agent.py</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre><span class="kw">import</span> os
+<span class="kw">import</span> anthropic
+<span class="kw">from</span> dotenv <span class="kw">import</span> load_dotenv
+
+<span class="fn">load_dotenv</span>()
+client = anthropic.<span class="cl">Anthropic</span>()
+
+<span class="cm"># The system prompt enforces ReAct: think before every action</span>
+SYSTEM = <span class="st">"""You are a research agent that follows the ReAct pattern strictly.
+Before every tool call, write a Thought explaining your reasoning.
+After receiving a tool result, write an Observation summarising what you learned.
+Keep thinking and acting until you have enough information to give a complete answer.
+When you are done, write your final answer clearly."""</span>
+
+<span class="cm"># Two tools: simulated search and a word counter</span>
+TOOLS = [
+    {
+        <span class="st">"name"</span>: <span class="st">"web_search"</span>,
+        <span class="st">"description"</span>: (
+            <span class="st">"Search the web for information on a topic. "</span>
+            <span class="st">"Returns a short summary of the top result. "</span>
+            <span class="st">"Use this when you need factual information you don't know."</span>
+        ),
+        <span class="st">"input_schema"</span>: {
+            <span class="st">"type"</span>: <span class="st">"object"</span>,
+            <span class="st">"properties"</span>: {
+                <span class="st">"query"</span>: {
+                    <span class="st">"type"</span>: <span class="st">"string"</span>,
+                    <span class="st">"description"</span>: <span class="st">"The search query"</span>
+                }
+            },
+            <span class="st">"required"</span>: [<span class="st">"query"</span>]
+        }
+    },
+    {
+        <span class="st">"name"</span>: <span class="st">"count_words"</span>,
+        <span class="st">"description"</span>: <span class="st">"Counts the number of words in a given text string."</span>,
+        <span class="st">"input_schema"</span>: {
+            <span class="st">"type"</span>: <span class="st">"object"</span>,
+            <span class="st">"properties"</span>: {
+                <span class="st">"text"</span>: {
+                    <span class="st">"type"</span>: <span class="st">"string"</span>,
+                    <span class="st">"description"</span>: <span class="st">"The text to count words in"</span>
+                }
+            },
+            <span class="st">"required"</span>: [<span class="st">"text"</span>]
+        }
+    }
+]</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">3</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Implement the tool executors
+                </div>
+                <div class="step-body">
+                  <p>The web search is simulated with a static lookup — in a real agent you would call a search API like Brave or Serper. The word counter is exact Python logic. Notice the pattern: both return a plain string to pass back to the model.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — react_agent.py (continued)</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre><span class="cm"># Simulated search DB — swap for a real search API in production</span>
+SEARCH_DB = {
+    <span class="st">"ReAct paper"</span>: (
+        <span class="st">"ReAct: Synergizing Reasoning and Acting in Language Models. "</span>
+        <span class="st">"Yao et al., arXiv:2210.03629, published at ICLR 2023. "</span>
+        <span class="st">"Interleaves chain-of-thought reasoning with action steps."</span>
+    ),
+    <span class="st">"LangGraph"</span>: (
+        <span class="st">"LangGraph is a library for building stateful, multi-actor applications with LLMs. "</span>
+        <span class="st">"Built by LangChain. Uses a graph of nodes and edges to model agent workflows. "</span>
+        <span class="st">"Supports cycles, branching, and human-in-the-loop patterns."</span>
+    ),
+    <span class="st">"Anthropic"</span>: (
+        <span class="st">"Anthropic is an AI safety company founded in 2021. "</span>
+        <span class="st">"Creators of the Claude model family. Developed Constitutional AI (CAI). "</span>
+        <span class="st">"Focused on AI safety research and interpretability."</span>
+    ),
+}
+
+<span class="kw">def</span> <span class="fn">web_search</span>(query: str) -&gt; str:
+    <span class="kw">for</span> key, result <span class="kw">in</span> SEARCH_DB.<span class="fn">items</span>():
+        <span class="kw">if</span> key.<span class="fn">lower</span>() <span class="kw">in</span> query.<span class="fn">lower</span>():
+            <span class="kw">return</span> result
+    <span class="kw">return</span> <span class="st">f'No results found for "{query}". Try a different query.'</span>
+
+
+<span class="kw">def</span> <span class="fn">count_words</span>(text: str) -&gt; str:
+    count = <span class="fn">len</span>(text.<span class="fn">split</span>())
+    <span class="kw">return</span> <span class="st">f"Word count: {count}"</span>
+
+
+<span class="kw">def</span> <span class="fn">execute_tool</span>(name: str, tool_input: dict) -&gt; str:
+    <span class="kw">if</span> name == <span class="st">"web_search"</span>:
+        <span class="kw">return</span> <span class="fn">web_search</span>(tool_input[<span class="st">"query"</span>])
+    <span class="kw">if</span> name == <span class="st">"count_words"</span>:
+        <span class="kw">return</span> <span class="fn">count_words</span>(tool_input[<span class="st">"text"</span>])
+    <span class="kw">return</span> <span class="st">f"Unknown tool: {name}"</span></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">4</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Implement the ReAct loop with trace printing
+                </div>
+                <div class="step-body">
+                  <p>This loop is similar to Section 03's, but it prints the full reasoning trace — every Thought block and every tool call — so you can see the agent's reasoning in real time. Study how the token budget accumulates.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — react_agent.py (continued)</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre><span class="kw">def</span> <span class="fn">run_react_agent</span>(user_message: str, max_iterations: int = <span class="nu">8</span>) -&gt; str:
+    messages = [{<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: user_message}]
+    total_input_tokens = <span class="nu">0</span>
+
+    <span class="fn">print</span>(<span class="st">f"\n{'='*60}"</span>)
+    <span class="fn">print</span>(<span class="st">f"USER: {user_message}"</span>)
+    <span class="fn">print</span>(<span class="st">f"{'='*60}"</span>)
+
+    <span class="kw">for</span> iteration <span class="kw">in</span> <span class="fn">range</span>(max_iterations):
+        <span class="fn">print</span>(<span class="st">f"\n[iteration {iteration + 1}]"</span>)
+
+        response = client.messages.<span class="fn">create</span>(
+            model=<span class="st">"claude-opus-4-6"</span>,  <span class="cm"># check docs.anthropic.com for current models</span>
+            max_tokens=<span class="nu">1024</span>,
+            system=SYSTEM,
+            tools=TOOLS,
+            messages=messages
+        )
+
+        total_input_tokens += response.usage.input_tokens
+        <span class="fn">print</span>(<span class="st">f"  stop_reason  : {response.stop_reason}"</span>)
+        <span class="fn">print</span>(<span class="st">f"  input_tokens : {response.usage.input_tokens} (total: {total_input_tokens})"</span>)
+
+        <span class="cm"># Print the full reasoning trace from this iteration</span>
+        <span class="kw">for</span> block <span class="kw">in</span> response.content:
+            <span class="kw">if</span> <span class="fn">hasattr</span>(block, <span class="st">"text"</span>) <span class="kw">and</span> block.text.<span class="fn">strip</span>():
+                <span class="fn">print</span>(<span class="st">f"\n  THOUGHT/TEXT:\n  {block.text.strip()}"</span>)
+            <span class="kw">elif</span> block.type == <span class="st">"tool_use"</span>:
+                <span class="fn">print</span>(<span class="st">f"\n  ACTION: {block.name}({block.input})"</span>)
+
+        <span class="cm"># Append assistant turn to history</span>
+        messages.<span class="fn">append</span>({<span class="st">"role"</span>: <span class="st">"assistant"</span>, <span class="st">"content"</span>: response.content})
+
+        <span class="cm"># Done</span>
+        <span class="kw">if</span> response.stop_reason == <span class="st">"end_turn"</span>:
+            <span class="kw">for</span> block <span class="kw">in</span> response.content:
+                <span class="kw">if</span> <span class="fn">hasattr</span>(block, <span class="st">"text"</span>):
+                    <span class="fn">print</span>(<span class="st">f"\n{'='*60}"</span>)
+                    <span class="fn">print</span>(<span class="st">f"FINAL ANSWER:\n{block.text}"</span>)
+                    <span class="fn">print</span>(<span class="st">f"{'='*60}"</span>)
+                    <span class="fn">print</span>(<span class="st">f"Total input tokens used: {total_input_tokens}"</span>)
+                    <span class="kw">return</span> block.text
+            <span class="kw">return</span> <span class="st">"(end_turn with no text)"</span>
+
+        <span class="cm"># Execute tool calls, collect observations</span>
+        <span class="kw">if</span> response.stop_reason == <span class="st">"tool_use"</span>:
+            tool_results = []
+            <span class="kw">for</span> block <span class="kw">in</span> response.content:
+                <span class="kw">if</span> block.type == <span class="st">"tool_use"</span>:
+                    result = <span class="fn">execute_tool</span>(block.name, block.input)
+                    <span class="fn">print</span>(<span class="st">f"  OBSERVATION: {result}"</span>)
+                    tool_results.<span class="fn">append</span>({
+                        <span class="st">"type"</span>: <span class="st">"tool_result"</span>,
+                        <span class="st">"tool_use_id"</span>: block.id,
+                        <span class="st">"content"</span>: result
+                    })
+            messages.<span class="fn">append</span>({<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: tool_results})
+
+    <span class="kw">return</span> <span class="st">"Max iterations reached."</span>
+
+
+<span class="kw">if</span> __name__ == <span class="st">"__main__"</span>:
+    <span class="fn">run_react_agent</span>(
+        <span class="st">"Search for the ReAct paper, then count how many words "</span>
+        <span class="st">"are in the result you find."</span>
+    )</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">5</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Run it and read the trace
+                </div>
+                <div class="step-body">
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">BASH</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>python react_agent.py</pre>
+                  </div>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">EXPECTED OUTPUT</span></div>
+                    <pre>============================================================
+USER: Search for the ReAct paper, then count how many words are in the result.
+============================================================
+
+[iteration 1]
+  stop_reason  : tool_use
+  input_tokens : 612 (total: 612)
+
+  THOUGHT/TEXT:
+  I'll search for the ReAct paper first.
+
+  ACTION: web_search({'query': 'ReAct paper'})
+  OBSERVATION: ReAct: Synergizing Reasoning and Acting in Language Models.
+               Yao et al., arXiv:2210.03629, published at ICLR 2023.
+               Interleaves chain-of-thought reasoning with action steps.
+
+[iteration 2]
+  stop_reason  : tool_use
+  input_tokens : 743 (total: 1355)
+
+  THOUGHT/TEXT:
+  I found the ReAct paper. Now I'll count the words in that result.
+
+  ACTION: count_words({'text': 'ReAct: Synergizing Reasoning ...'})
+  OBSERVATION: Word count: 30
+
+[iteration 3]
+  stop_reason  : end_turn
+  input_tokens : 821 (total: 2176)
+
+  THOUGHT/TEXT:
+  I have all the information needed to answer.
+
+============================================================
+FINAL ANSWER:
+The ReAct paper (Yao et al., arXiv:2210.03629, ICLR 2023) describes a pattern
+that interleaves chain-of-thought reasoning with action steps. The search result
+summary contains 30 words.
+============================================================
+Total input tokens used: 2176</pre>
+                  </div>
+                  <div class="callout callout-info" style="margin-top:1rem;">
+                    <strong>Read the trace carefully.</strong> Notice that the input token count grows with each iteration — this is the context window accumulating. After 3 iterations, it has grown from 612 to 2,176 tokens. A long agent run with large tool outputs can reach tens of thousands of tokens. This is why monitoring token usage is a production essential, not an afterthought.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">6</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Extension: add a third tool and test a failed search
+                </div>
+                <div class="step-body">
+                  <p>Add a <code>get_current_date</code> tool that returns today's date. Then run the agent with a query the search DB doesn't have — observe how it handles the "No results found" observation and either retries with a different query or gracefully reports the failure. This is how you discover your agent's error recovery behavior before production.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — add to TOOLS list</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>{
+    <span class="st">"name"</span>: <span class="st">"get_current_date"</span>,
+    <span class="st">"description"</span>: <span class="st">"Returns today's date in ISO 8601 format (YYYY-MM-DD)."</span>,
+    <span class="st">"input_schema"</span>: {<span class="st">"type"</span>: <span class="st">"object"</span>, <span class="st">"properties"</span>: {}}
+}</pre>
+                  </div>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — add to execute_tool</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre><span class="kw">from</span> datetime <span class="kw">import</span> date
+
+<span class="kw">if</span> name == <span class="st">"get_current_date"</span>:
+    <span class="kw">return</span> <span class="fn">str</span>(date.<span class="fn">today</span>())</pre>
+                  </div>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — new test call</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre><span class="fn">run_react_agent</span>(<span class="st">"What is today's date, and search for 'quantum computing'."</span>)</pre>
+                  </div>
+                  <p>Watch how the agent handles the "No results found" response — does it give up, retry with a different query, or tell the user it couldn't find anything? This reveals whether your system prompt provides adequate guidance for failure recovery.</p>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- end lab-steps -->
+        </div><!-- end lab-container -->
+
+      </div><!-- end lab -->
+
+      <!-- MARK COMPLETE + NAVIGATION -->
+      <div class="mark-complete-bar">
+        <p>Finished the theory and completed the lab? Mark this section complete to track your progress.</p>
+        <button class="btn btn-outline" id="completeBtn2" data-section="5" onclick="document.getElementById('completeBtn').click()">Mark Section 5 Complete</button>
+      </div>
+
+      <div style="text-align:center;margin:2rem 0 0;font-family:var(--font-mono);font-size:0.62rem;color:var(--text-dim);">
+        Last updated: <time datetime="2026-04-05">April 5, 2026</time>
+      </div>
+      <div class="section-nav-footer">
+        <a href="04-llms.html" class="nav-prev">← Section 04: Large Language Models</a>
+        <a href="06-memory.html" class="nav-next">Section 06: Memory &amp; Knowledge →</a>
+      </div>
+
+    </div><!-- end page -->
+  </main>
+</div>
+
+<script src="../course.js"></script>
+<script>
+function stepDone(checkbox) {
+  const stepContent = checkbox.closest('.step-content');
+  if (checkbox.checked) {
+    stepContent.style.opacity = '0.6';
+  } else {
+    stepContent.style.opacity = '1';
+  }
+}
+
+function copyCode(btn) {
+  const pre = btn.closest('.code-block').querySelector('pre');
+  navigator.clipboard.writeText(pre.innerText).then(() => {
+    btn.textContent = 'copied!';
+    setTimeout(() => { btn.textContent = 'copy'; }, 2000);
+  });
+}
+</script>
+</body>
+</html>

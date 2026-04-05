@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>09 — RL &amp; Self-Improvement · Agentic AI Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="../style.css">
+<noscript><style>
+/* No-JS: make sidebar visible and stack layout vertically on mobile */
+@media (max-width: 768px) {
+  .sidebar { transform: none; position: relative; width: 100%; height: auto; }
+  .layout  { flex-direction: column; }
+}
+</style></noscript>
+<link rel="manifest" href="../manifest.json">
+</head>
+<body data-section="9">
+<noscript>
+  <div style="background:#1a1200;border-bottom:2px solid #c87d00;color:#f0c060;padding:0.75rem 1.5rem;font-family:monospace;font-size:0.82rem;text-align:center;position:relative;z-index:999;">
+    &#9888; JavaScript is disabled. Progress tracking, quizzes, and interactive features require JavaScript.
+  </div>
+</noscript>
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <a href="../index.html" class="sidebar-logo" style="text-decoration:none;display:block;">
+      <div class="logo-eyebrow">// AGENTIC AI COURSE</div>
+      <div class="logo-name">Learn <span>Agentic AI</span><br>2026 Edition</div>
+    </a>
+    <div class="sidebar-progress">
+      <div class="progress-row">
+        <span class="progress-label">OVERALL PROGRESS</span>
+        <span class="progress-count" id="progressCount">0 / 16</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+    <div class="sidebar-nav">
+      <div class="nav-group-label">Foundation</div>
+      <a href="01-intro.html" class="nav-item" data-section="1"><span class="nav-num">01</span> Intro to Agentic AI <span class="nav-check">✓</span></a>
+      <a href="02-ml-fundamentals.html" class="nav-item" data-section="2"><span class="nav-num">02</span> AI &amp; ML Fundamentals <span class="nav-check">✓</span></a>
+      <a href="03-frameworks.html" class="nav-item" data-section="3"><span class="nav-num">03</span> Programming &amp; Frameworks <span class="nav-check">✓</span></a>
+      <a href="04-llms.html" class="nav-item" data-section="4"><span class="nav-num">04</span> Large Language Models <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">Core Agents</div>
+      <a href="05-understanding-agents.html" class="nav-item" data-section="5"><span class="nav-num">05</span> Understanding Agents <span class="nav-check">✓</span></a>
+      <a href="06-memory.html" class="nav-item" data-section="6"><span class="nav-num">06</span> Memory &amp; Knowledge <span class="nav-check">✓</span></a>
+      <a href="07-planning.html" class="nav-item" data-section="7"><span class="nav-num">07</span> Decision-Making &amp; Planning <span class="nav-check">✓</span></a>
+      <a href="08-prompting.html" class="nav-item" data-section="8"><span class="nav-num">08</span> Prompt Engineering <span class="nav-check">✓</span></a>
+      <a href="09-rl.html" class="nav-item active" data-section="9"><span class="nav-num">09</span> RL &amp; Self-Improvement <span class="nav-check">✓</span></a>
+      <a href="10-rag.html" class="nav-item" data-section="10"><span class="nav-num">10</span> RAG <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">Production</div>
+      <a href="11-deployment.html" class="nav-item" data-section="11"><span class="nav-num">11</span> Deploying Agents <span class="nav-check">✓</span></a>
+      <a href="12-real-world.html" class="nav-item" data-section="12"><span class="nav-num">12</span> Real-World Applications <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">2026 New</div>
+      <a href="13-mcp.html" class="nav-item" data-section="13"><span class="nav-num">13</span> MCP &amp; Protocols <span class="nav-check">✓</span></a>
+      <a href="14-multi-agent.html" class="nav-item" data-section="14"><span class="nav-num">14</span> Multi-Agent Orchestration <span class="nav-check">✓</span></a>
+      <a href="15-security.html" class="nav-item" data-section="15"><span class="nav-num">15</span> Agent Security <span class="nav-check">✓</span></a>
+      <a href="16-long-horizon.html" class="nav-item" data-section="16"><span class="nav-num">16</span> Long-Horizon Agents <span class="nav-check">✓</span></a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="topbar-breadcrumb">
+        <a href="../index.html" style="color:var(--text-muted);text-decoration:none;">Course</a>
+        &nbsp;/&nbsp; <span>09 · RL &amp; Self-Improvement</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn btn-outline" id="completeBtn" data-section="9">Mark Complete</button>
+      </div>
+    </div>
+
+    <div class="page">
+
+      <!-- HERO -->
+      <div class="section-hero">
+        <div class="hero-meta">
+          <span class="hero-num">SECTION 09</span>
+          <span class="hero-tag tag-core">CORE</span>
+          <span class="hero-tag tag-core">THEORY</span>
+        </div>
+        <h1 class="section-title">RL &amp; Self-<br><span>Improvement</span></h1>
+        <p class="section-intro">
+          LLMs don't just learn from text — they learn from feedback. Reinforcement Learning from Human Feedback (RLHF) is what separates a next-token predictor from a helpful assistant. And self-improvement loops — where agents reflect on failures and revise their behavior without gradient updates — are what separate brittle bots from adaptive agents. This section gives you the mental model behind both.
+        </p>
+        <div class="hero-actions">
+          <a href="#theory" class="btn btn-accent">📖 Start Theory</a>
+          <a href="#quiz" class="btn btn-outline">📝 Take the Quiz</a>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- THEORY                                      -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div id="theory">
+
+        <!-- ── BLOCK 01: The RL Feedback Loop ── -->
+        <div class="block">
+          <div class="block-label">01 · THE RL FEEDBACK LOOP</div>
+          <h2>Agents, Environments, and Reward Signals</h2>
+          <p>
+            Reinforcement Learning (RL) describes a training paradigm where an <strong>agent</strong> takes <strong>actions</strong> in an <strong>environment</strong>, receives a <strong>reward signal</strong>, and updates its <strong>policy</strong> to maximize cumulative future reward. Unlike supervised learning — which needs labeled input-output pairs — RL only requires a reward function that evaluates outputs after the fact.
+          </p>
+          <p>
+            The core loop is: observe state → select action → receive reward → update policy. Formally, this is modeled as a <strong>Markov Decision Process (MDP)</strong>: at each step, the policy maps the current state to a probability distribution over actions, and the environment returns a new state and a scalar reward.
+          </p>
+
+          <div class="concept-grid">
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">TERM 01</div>
+              <div class="concept-name">Policy (π)</div>
+              <div class="concept-desc">The agent's decision function — maps a state to an action (or a distribution over actions). For an LLM, the policy is the model weights that determine what token to output next.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">FOUNDATIONAL CONCEPT</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">TERM 02</div>
+              <div class="concept-name">Reward Signal</div>
+              <div class="concept-desc">A scalar value provided after each action (or at episode end) that tells the agent how well it did. The reward function is the most critical design decision in any RL system — it determines what the agent optimizes for.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">FOUNDATIONAL CONCEPT</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">TERM 03</div>
+              <div class="concept-name">Environment</div>
+              <div class="concept-desc">Everything outside the agent. For a game-playing agent it is the game engine. For an LLM agent it is the tools, APIs, file systems, and user turns — everything that returns observations in response to actions.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">FOUNDATIONAL CONCEPT</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);margin-bottom:0.6rem;">TERM 04</div>
+              <div class="concept-name">PPO (Proximal Policy Optimization)</div>
+              <div class="concept-desc">The RL algorithm most commonly used to train LLMs on reward signals. PPO updates the policy while preventing it from drifting too far from the previous policy in a single step — the "proximal" constraint stabilizes training.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--orange);">WIDELY USED (2022–2026)</div>
+            </div>
+          </div>
+
+          <div class="callout callout-warn">
+            <strong>Analogy:</strong> RL is like training a dog. You don't show the dog a labeled dataset of "correct sits." You reward the dog when it sits, withhold treats when it doesn't, and the dog's behavior converges toward more sitting. The reward function is the trainer's intent — if you accidentally reward jumping up instead of sitting, you get a jumpy dog. The same misalignment risk applies to LLM reward models.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://arxiv.org/abs/2203.02155" target="_blank" style="color:var(--accent);text-decoration:none;">Ouyang et al. — InstructGPT (arXiv:2203.02155, 2022)</a> &nbsp;·&nbsp; <a href="https://spinningup.openai.com/en/latest/algorithms/ppo.html" target="_blank" style="color:var(--accent);text-decoration:none;">OpenAI Spinning Up — PPO</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 02: RLHF ── -->
+        <div class="block">
+          <div class="block-label">02 · RLHF</div>
+          <h2>Reinforcement Learning from Human Feedback</h2>
+          <p>
+            Pretraining teaches an LLM to predict text. But predicting text is not the same as being helpful, honest, or harmless. RLHF — introduced at scale in the InstructGPT paper (Ouyang et al., 2022) — is the training pipeline that bridges this gap. It has three stages:
+          </p>
+
+          <div style="display:grid;gap:1rem;margin:1.5rem 0;">
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">STAGE 1 — SUPERVISED FINE-TUNING (SFT)</div>
+              <p style="margin:0;font-size:0.9rem;">Human labelers write high-quality example responses to a diverse set of prompts. The model is fine-tuned on these demonstration pairs using standard supervised learning. This gives the model the right output <em>format and style</em> before RL begins.</p>
+            </div>
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">STAGE 2 — REWARD MODEL TRAINING</div>
+              <p style="margin:0;font-size:0.9rem;">For each prompt, the SFT model generates multiple candidate responses. Human labelers rank these responses from best to worst. A separate neural network — the <strong>reward model (RM)</strong> — is trained to predict these preference rankings, outputting a scalar score for any given (prompt, response) pair.</p>
+            </div>
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">STAGE 3 — RL FINE-TUNING (PPO)</div>
+              <p style="margin:0;font-size:0.9rem;">The SFT model (now the policy) generates responses to prompts sampled from the training distribution. Each response is scored by the frozen reward model. PPO updates the policy weights to maximize reward — while a <strong>KL-divergence penalty</strong> prevents the policy from drifting too far from the SFT model and collapsing into reward-hacking behavior.</p>
+            </div>
+          </div>
+
+          <div class="callout callout-info">
+            <strong>Why KL divergence matters:</strong> Without the KL penalty, the policy would quickly learn to generate outputs that score high on the reward model but look nothing like natural language — a phenomenon called <strong>reward hacking</strong>. The penalty anchors the RL-trained model to the SFT baseline, acting as a regularizer.
+          </div>
+
+          <p>
+            The reward model is trained on human <em>preferences</em> (ranking A over B), not on absolute quality labels. This is cheaper to collect and more reliable — it is easier for humans to say "this response is better than that one" than to assign a number from 1 to 10. The Elo-style comparisons also scale across annotators with differing absolute standards.
+          </p>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://arxiv.org/abs/2203.02155" target="_blank" style="color:var(--accent);text-decoration:none;">Ouyang et al. — InstructGPT / RLHF (arXiv:2203.02155, 2022)</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 03: Constitutional AI & RLAIF ── -->
+        <div class="block">
+          <div class="block-label">03 · CONSTITUTIONAL AI &amp; RLAIF</div>
+          <h2>Replacing Human Labels with AI Feedback</h2>
+          <p>
+            Human preference labeling is expensive, slow, and inconsistent across annotators. Constitutional AI (CAI), introduced by Anthropic in Bai et al. (2022), proposes a partial solution: replace the human preference labeling step with <strong>AI-generated feedback</strong>, guided by a written set of principles called a <strong>constitution</strong>.
+          </p>
+          <p>
+            The CAI pipeline has two phases:
+          </p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;">
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">PHASE 1 — SUPERVISED CRITIQUE &amp; REVISION (SL-CAI)</div>
+              <p style="margin:0;font-size:0.85rem;">The model generates a response. A second model call critiques it against the constitutional principles ("Is this response harmful according to principle 3?") and then revises it. This revision becomes training data for a new SFT stage.</p>
+            </div>
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;">PHASE 2 — RLAIF (RL from AI Feedback)</div>
+              <p style="margin:0;font-size:0.85rem;">For RLHF's preference ranking step, AI models evaluate pairs of responses according to constitutional principles — producing preference labels at scale, without human raters. A reward model is trained on these AI-generated preferences.</p>
+            </div>
+          </div>
+
+          <table class="compare-table" style="margin-top:1.5rem;">
+            <thead>
+              <tr>
+                <th>Dimension</th>
+                <th>Standard RLHF</th>
+                <th>Constitutional AI (CAI)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Preference labels</td>
+                <td>Human raters</td>
+                <td>AI model guided by written principles</td>
+              </tr>
+              <tr>
+                <td>Scalability</td>
+                <td>Bottlenecked by human capacity</td>
+                <td>Scales with compute, not headcount</td>
+              </tr>
+              <tr>
+                <td>Transparency</td>
+                <td>Human preferences are implicit</td>
+                <td>Principles are explicit and auditable</td>
+              </tr>
+              <tr>
+                <td>Consistency</td>
+                <td>Varies across annotators</td>
+                <td>More consistent — same model, same principles</td>
+              </tr>
+              <tr>
+                <td>Limitation</td>
+                <td>Human annotation cost and speed</td>
+                <td>AI feedback quality depends on the model used as critic</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="callout callout-warn">
+            <strong>Not a replacement:</strong> CAI reduces but does not eliminate the need for human judgment. The constitutional principles themselves must be written and reviewed by humans. The AI evaluator's quality sets the ceiling on feedback quality.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://arxiv.org/abs/2212.08073" target="_blank" style="color:var(--accent);text-decoration:none;">Bai et al. — Constitutional AI (arXiv:2212.08073, 2022)</a> &nbsp;·&nbsp; <a href="https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Constitutional AI Blog</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 04: DPO ── -->
+        <div class="block">
+          <div class="block-label">04 · DPO — DIRECT PREFERENCE OPTIMIZATION</div>
+          <h2>Dropping the RL in RLHF</h2>
+          <p>
+            RLHF is effective but complex: it requires training a separate reward model, running PPO (which is notoriously unstable), and carefully tuning the KL penalty. Direct Preference Optimization (DPO), introduced by Rafailov et al. (2023), achieves the same alignment objective — training the model to produce preferred responses — using a single supervised learning step, with no RL loop and no explicit reward model.
+          </p>
+          <p>
+            DPO's key insight: there is a closed-form relationship between the optimal policy and the reward function. You can reparametrize the reward in terms of the policy itself, and then directly optimize the policy on preference pairs using a binary cross-entropy loss — without ever constructing a reward model or running PPO.
+          </p>
+
+          <div class="concept-grid">
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--green);margin-bottom:0.6rem;">ADVANTAGE 01</div>
+              <div class="concept-name">No Reward Model Required</div>
+              <div class="concept-desc">DPO optimizes directly on preference pairs (winner, loser) without training a separate scorer. This eliminates a large source of complexity and error in the RLHF pipeline.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">EMERGING PATTERN (2023–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--green);margin-bottom:0.6rem;">ADVANTAGE 02</div>
+              <div class="concept-name">No PPO Instability</div>
+              <div class="concept-desc">PPO requires careful hyperparameter tuning — clip ratio, learning rate, mini-batch size — and can destabilize training. DPO is a supervised update and is generally more stable and reproducible.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">EMERGING PATTERN (2023–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--orange);margin-bottom:0.6rem;">LIMITATION 01</div>
+              <div class="concept-name">Requires Preference Pairs</div>
+              <div class="concept-desc">DPO still needs a dataset of (prompt, chosen response, rejected response) pairs — the same data used to train RLHF reward models. Human or AI labeling is still required; the RL stage is what is eliminated.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--orange);">DATA DEPENDENCY</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--orange);margin-bottom:0.6rem;">LIMITATION 02</div>
+              <div class="concept-name">Static Preference Data</div>
+              <div class="concept-desc">RLHF with PPO generates new responses on-the-fly (online RL). DPO trains on a fixed dataset (offline). It cannot adapt to the model's own evolving outputs during training — a potential quality ceiling in some settings.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--orange);">DESIGN TRADE-OFF</div>
+            </div>
+          </div>
+
+          <div class="callout callout-info">
+            <strong>Practical impact:</strong> DPO and its variants (IPO, KTO, SimPO) have become the dominant approach for alignment fine-tuning of open-weight models as of 2024–2025. Major fine-tuning frameworks (Hugging Face TRL, LLaMA-Factory) ship DPO as a first-class training mode.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://arxiv.org/abs/2305.18290" target="_blank" style="color:var(--accent);text-decoration:none;">Rafailov et al. — DPO (arXiv:2305.18290, 2023)</a> &nbsp;·&nbsp; <a href="https://huggingface.co/docs/trl/dpo_trainer" target="_blank" style="color:var(--accent);text-decoration:none;">Hugging Face TRL — DPO Trainer</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 05: Self-Improvement Loops ── -->
+        <div class="block">
+          <div class="block-label">05 · SELF-IMPROVEMENT LOOPS</div>
+          <h2>Reflexion, Verifiable Rewards, and Process Reward Models</h2>
+          <p>
+            Beyond training-time alignment, agents can improve their <em>behavior at inference time</em> through self-reflection and iterative revision — without gradient updates. These self-improvement loops are increasingly central to how high-capability agents operate.
+          </p>
+
+          <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.5rem;margin:1.5rem 0;">
+            <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.75rem;">PATTERN A — REFLEXION (Shinn et al., 2023)</div>
+            <p style="margin:0 0 0.75rem;font-size:0.9rem;">
+              Reflexion is an inference-time framework where an agent: (1) attempts a task, (2) receives feedback (from the environment or a verifier), (3) generates a verbal reflection on what went wrong and why, and (4) stores that reflection in an episodic memory buffer. On the next attempt, the reflection is injected into the context as additional guidance — improving performance without changing any weights.
+            </p>
+            <div class="code-block">
+              <div class="code-label">Reflexion loop — conceptual pseudocode</div>
+              <pre><code>memory = []
+
+for attempt in range(MAX_ATTEMPTS):
+    result = agent.run(task, memory=memory)
+
+    if result.success:
+        break
+
+    # Reflect on failure in natural language
+    reflection = llm.generate(
+        f"You attempted: {task}\n"
+        f"Your output: {result.output}\n"
+        f"The outcome: {result.feedback}\n"
+        "What went wrong and what will you do differently?"
+    )
+    memory.append(reflection)   # stored for next attempt</code></pre>
+            </div>
+          </div>
+
+          <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.5rem;margin:1.5rem 0;">
+            <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.75rem;">PATTERN B — VERIFIABLE REWARDS &amp; RLVR</div>
+            <p style="margin:0 0 0.75rem;font-size:0.9rem;">
+              Some tasks have ground-truth verifiable answers: mathematical proofs, code that passes unit tests, formal logic. When rewards can be computed automatically (pass/fail, numeric score), RL training becomes far more scalable because human raters are not needed per sample. This <strong>Reinforcement Learning with Verifiable Rewards (RLVR)</strong> approach is the foundation of reasoning model training — where the model learns to produce longer, self-correcting reasoning chains that lead to verifiable correct answers.
+            </p>
+          </div>
+
+          <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:1.5rem;margin:1.5rem 0;">
+            <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.75rem;">PATTERN C — PROCESS REWARD MODELS (PRMs)</div>
+            <p style="margin:0 0 0.75rem;font-size:0.9rem;">
+              Standard reward models evaluate final answers (Outcome Reward Models / ORMs). A <strong>Process Reward Model (PRM)</strong>, introduced in Lightman et al. (2023), instead assigns reward to each intermediate reasoning step. This enables RL to reinforce <em>correct reasoning chains</em>, not just correct final answers — penalizing shortcuts that reach the right answer via flawed logic.
+            </p>
+            <table class="compare-table">
+              <thead>
+                <tr><th>Model Type</th><th>What It Evaluates</th><th>Key Trade-off</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>ORM (Outcome)</td><td>Final answer only</td><td>Simple to train; cannot distinguish lucky-correct from correctly-reasoned</td></tr>
+                <tr><td>PRM (Process)</td><td>Each intermediate step</td><td>More nuanced signal; requires step-level human or AI annotations</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout callout-warn">
+            <strong>Reward Hacking:</strong> A persistent risk across all reward-based training. If the proxy reward signal imperfectly represents the true objective, the model will find and exploit that gap — generating outputs that score well on the reward model but are unhelpful or incorrect in reality. KL-divergence penalties, diverse evaluation sets, and human audits are the primary mitigations in practice.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://arxiv.org/abs/2303.11366" target="_blank" style="color:var(--accent);text-decoration:none;">Shinn et al. — Reflexion (arXiv:2303.11366, 2023)</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2305.20050" target="_blank" style="color:var(--accent);text-decoration:none;">Lightman et al. — Let's Verify Step by Step / PRMs (arXiv:2305.20050, 2023)</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2305.18290" target="_blank" style="color:var(--accent);text-decoration:none;">Rafailov et al. — DPO (arXiv:2305.18290, 2023)</a>
+          </div>
+        </div>
+
+        <!-- ── SOURCES TABLE ── -->
+        <div class="block">
+          <div class="block-label">SOURCES USED IN THIS SECTION</div>
+          <h2>Verified References</h2>
+          <p>Every claim in this section is grounded in one of these sources. No content is generated from model training data alone.</p>
+
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Source</th>
+                <th>Type</th>
+                <th>Covers</th>
+                <th>Recency</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://arxiv.org/abs/2203.02155" target="_blank" style="color:var(--accent);">Ouyang et al. — InstructGPT</a></td>
+                <td>Academic paper (OpenAI)</td>
+                <td>Full RLHF pipeline: SFT, reward model training, PPO fine-tuning</td>
+                <td>2022</td>
+              </tr>
+              <tr>
+                <td><a href="https://arxiv.org/abs/2212.08073" target="_blank" style="color:var(--accent);">Bai et al. — Constitutional AI</a></td>
+                <td>Academic paper (Anthropic)</td>
+                <td>Constitutional AI, RLAIF, AI-generated preference labels</td>
+                <td>2022</td>
+              </tr>
+              <tr>
+                <td><a href="https://arxiv.org/abs/2305.18290" target="_blank" style="color:var(--accent);">Rafailov et al. — DPO</a></td>
+                <td>Academic paper</td>
+                <td>Direct Preference Optimization — eliminates RL from alignment fine-tuning</td>
+                <td>2023</td>
+              </tr>
+              <tr>
+                <td><a href="https://arxiv.org/abs/2303.11366" target="_blank" style="color:var(--accent);">Shinn et al. — Reflexion</a></td>
+                <td>Academic paper</td>
+                <td>Inference-time self-improvement via verbal reflection and episodic memory</td>
+                <td>2023</td>
+              </tr>
+              <tr>
+                <td><a href="https://arxiv.org/abs/2305.20050" target="_blank" style="color:var(--accent);">Lightman et al. — Let's Verify Step by Step</a></td>
+                <td>Academic paper (OpenAI)</td>
+                <td>Process Reward Models (PRMs) vs Outcome Reward Models</td>
+                <td>2023</td>
+              </tr>
+              <tr>
+                <td><a href="https://spinningup.openai.com/en/latest/algorithms/ppo.html" target="_blank" style="color:var(--accent);">OpenAI Spinning Up — PPO</a></td>
+                <td>Official documentation</td>
+                <td>PPO algorithm, policy gradient methods, KL-divergence constraint</td>
+                <td>Maintained 2019–2026</td>
+              </tr>
+              <tr>
+                <td><a href="https://huggingface.co/docs/trl/dpo_trainer" target="_blank" style="color:var(--accent);">Hugging Face TRL — DPO Trainer</a></td>
+                <td>Official documentation</td>
+                <td>Practical DPO implementation, preference data format, training loop</td>
+                <td>Maintained 2024–2026</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div><!-- end theory -->
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- QUIZ                                        -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div id="quiz" class="block">
+        <div class="block-label">KNOWLEDGE CHECK</div>
+        <h2>Section 09 Quiz</h2>
+        <p style="margin-bottom:1.5rem;">8 questions covering all theory blocks. Select one answer per question, then submit.</p>
+
+        <div class="lab-container">
+          <div class="lab-header">
+            <div class="lab-icon">📝</div>
+            <div class="lab-title-wrap">
+              <div class="lab-title">Section 09 — RL &amp; Self-Improvement</div>
+              <div class="lab-subtitle">8 QUESTIONS · MULTIPLE CHOICE · UNLIMITED RETRIES</div>
+            </div>
+          </div>
+          <div style="padding:1.5rem 2rem;">
+
+            <!-- Q1 -->
+            <div class="quiz-q" id="q1">
+              <div class="quiz-num">Question 1 of 8</div>
+              <div class="quiz-text">In the RLHF training pipeline, what role does the reward model play during the PPO fine-tuning stage?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q1" value="a"> <span>It provides the training data for the SFT stage by generating example responses</span></label>
+                <label class="quiz-option"><input type="radio" name="q1" value="b"> <span>It scores each model output with a scalar reward signal, which PPO uses to update the policy weights</span></label>
+                <label class="quiz-option"><input type="radio" name="q1" value="c"> <span>It enforces the KL-divergence penalty to prevent reward hacking</span></label>
+                <label class="quiz-option"><input type="radio" name="q1" value="d"> <span>It generates the constitutional principles used in RLAIF</span></label>
+              </div>
+              <div class="quiz-feedback" id="f1"></div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="quiz-q" id="q2">
+              <div class="quiz-num">Question 2 of 8</div>
+              <div class="quiz-text">Constitutional AI (Bai et al., 2022) differs from standard RLHF primarily because:</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q2" value="a"> <span>It collects a larger volume of human preference labels than standard RLHF</span></label>
+                <label class="quiz-option"><input type="radio" name="q2" value="b"> <span>It skips the SFT stage and starts directly with PPO training</span></label>
+                <label class="quiz-option"><input type="radio" name="q2" value="c"> <span>It replaces human preference labeling with AI-generated feedback guided by a written set of principles</span></label>
+                <label class="quiz-option"><input type="radio" name="q2" value="d"> <span>It uses a rule-based filter instead of a neural reward model</span></label>
+              </div>
+              <div class="quiz-feedback" id="f2"></div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="quiz-q" id="q3">
+              <div class="quiz-num">Question 3 of 8</div>
+              <div class="quiz-text">DPO (Direct Preference Optimization, Rafailov et al. 2023) simplifies the alignment training pipeline by eliminating which component present in standard RLHF?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q3" value="a"> <span>The SFT stage and the human preference dataset</span></label>
+                <label class="quiz-option"><input type="radio" name="q3" value="b"> <span>The separate reward model and the explicit RL training loop (PPO)</span></label>
+                <label class="quiz-option"><input type="radio" name="q3" value="c"> <span>The KL-divergence penalty and the reference model</span></label>
+                <label class="quiz-option"><input type="radio" name="q3" value="d"> <span>The human preference dataset entirely — DPO uses synthetic data only</span></label>
+              </div>
+              <div class="quiz-feedback" id="f3"></div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="quiz-q" id="q4">
+              <div class="quiz-num">Question 4 of 8</div>
+              <div class="quiz-text">In the Reflexion framework (Shinn et al., 2023), how does an agent improve its performance on subsequent attempts without updating its model weights?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q4" value="a"> <span>It uses a larger context window to include more examples</span></label>
+                <label class="quiz-option"><input type="radio" name="q4" value="b"> <span>It trains a new reward model on its own failure cases</span></label>
+                <label class="quiz-option"><input type="radio" name="q4" value="c"> <span>It generates a verbal reflection on what went wrong and stores it in episodic memory, which is injected into future attempts</span></label>
+                <label class="quiz-option"><input type="radio" name="q4" value="d"> <span>It calls a larger base model to verify its outputs before each submission</span></label>
+              </div>
+              <div class="quiz-feedback" id="f4"></div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="quiz-q" id="q5">
+              <div class="quiz-num">Question 5 of 8</div>
+              <div class="quiz-text">When RL terminology is applied to an LLM agent loop, what component plays the role of the "environment"?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q5" value="a"> <span>The reward model that scores each LLM output</span></label>
+                <label class="quiz-option"><input type="radio" name="q5" value="b"> <span>The tools, APIs, databases, and external systems the agent interacts with — which return observations in response to actions</span></label>
+                <label class="quiz-option"><input type="radio" name="q5" value="c"> <span>The system prompt that defines the agent's behavior</span></label>
+                <label class="quiz-option"><input type="radio" name="q5" value="d"> <span>The token sampler that selects the next output token</span></label>
+              </div>
+              <div class="quiz-feedback" id="f5"></div>
+            </div>
+
+            <!-- Q6 -->
+            <div class="quiz-q" id="q6">
+              <div class="quiz-num">Question 6 of 8</div>
+              <div class="quiz-text">A Process Reward Model (PRM) differs from an Outcome Reward Model (ORM) because a PRM:</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q6" value="a"> <span>Requires no training data and can be applied to any task zero-shot</span></label>
+                <label class="quiz-option"><input type="radio" name="q6" value="b"> <span>Only evaluates the final answer and ignores intermediate reasoning steps</span></label>
+                <label class="quiz-option"><input type="radio" name="q6" value="c"> <span>Assigns reward to each intermediate reasoning step, allowing RL to reinforce correct reasoning chains — not just correct final answers</span></label>
+                <label class="quiz-option"><input type="radio" name="q6" value="d"> <span>Replaces human preference labels with mathematical proofs of correctness</span></label>
+              </div>
+              <div class="quiz-feedback" id="f6"></div>
+            </div>
+
+            <!-- Q7 -->
+            <div class="quiz-q" id="q7">
+              <div class="quiz-num">Question 7 of 8</div>
+              <div class="quiz-text">Why are verifiable rewards (e.g., for math or code tasks) advantageous over human preference labels for RL training?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q7" value="a"> <span>They can be computed automatically without human raters — the answer is either correct or not — enabling large-scale RL without annotation bottlenecks</span></label>
+                <label class="quiz-option"><input type="radio" name="q7" value="b"> <span>They produce more creative model outputs than preference-based training</span></label>
+                <label class="quiz-option"><input type="radio" name="q7" value="c"> <span>They are immune to reward hacking because the reward signal is binary</span></label>
+                <label class="quiz-option"><input type="radio" name="q7" value="d"> <span>They allow training on smaller models than RLHF requires</span></label>
+              </div>
+              <div class="quiz-feedback" id="f7"></div>
+            </div>
+
+            <!-- Q8 -->
+            <div class="quiz-q" id="q8">
+              <div class="quiz-num">Question 8 of 8</div>
+              <div class="quiz-text">Which scenario best describes "reward hacking" in an RLHF-trained model?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q8" value="a"> <span>Human annotators deliberately assign misleading preference labels to sabotage training</span></label>
+                <label class="quiz-option"><input type="radio" name="q8" value="b"> <span>The model refuses to answer questions to avoid being assigned a negative reward</span></label>
+                <label class="quiz-option"><input type="radio" name="q8" value="c"> <span>The model learns to exploit patterns that score high on the reward model — such as sounding confident regardless of accuracy — without genuinely improving helpfulness</span></label>
+                <label class="quiz-option"><input type="radio" name="q8" value="d"> <span>The PPO optimizer converges to a local minimum rather than the global optimum</span></label>
+              </div>
+              <div class="quiz-feedback" id="f8"></div>
+            </div>
+
+            <div style="margin-top:2rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
+              <button class="btn btn-accent" onclick="submitQuiz()">Submit Answers</button>
+              <button class="btn btn-outline" onclick="resetQuiz()" style="display:none;" id="retryBtn">Try Again</button>
+              <div id="quiz-score" style="font-family:var(--font-mono);font-size:0.85rem;color:var(--text-muted);"></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end quiz -->
+
+      <!-- MARK COMPLETE + NAVIGATION -->
+      <div class="mark-complete-bar">
+        <p>Finished the theory and passed the quiz? Mark this section complete to track your progress.</p>
+        <button class="btn btn-outline" id="completeBtn2" data-section="9" onclick="document.getElementById('completeBtn').click()">Mark Section 9 Complete</button>
+      </div>
+
+      <div style="text-align:center;margin:2rem 0 0;font-family:var(--font-mono);font-size:0.62rem;color:var(--text-dim);">
+        Last updated: <time datetime="2026-04-05">April 5, 2026</time>
+      </div>
+      <div class="section-nav-footer">
+        <a href="08-prompting.html" class="nav-prev">← Section 08: Prompt Engineering</a>
+        <a href="10-rag.html" class="nav-next">Section 10: RAG →</a>
+      </div>
+
+    </div><!-- end page -->
+  </main>
+</div>
+
+<script src="../course.js"></script>
+<script>
+const QUIZ_ANSWERS = { q1:'b', q2:'c', q3:'b', q4:'c', q5:'b', q6:'c', q7:'a', q8:'c' };
+
+const QUIZ_EXPLANATIONS = {
+  q1: 'Correct. During PPO fine-tuning, the frozen reward model acts as the scorer — it receives each generated response and returns a scalar reward. PPO then updates the policy weights to maximize this reward while the KL penalty prevents the model from drifting too far from the SFT baseline.',
+  q2: 'Correct. Constitutional AI replaces the human labeling step with AI-generated feedback. A model critiques and revises responses according to a written constitution (set of principles), and AI-generated preference rankings replace human annotators in the RLAIF stage.',
+  q3: 'Correct. DPO eliminates both the separate reward model and the RL training loop (PPO). It reparametrizes the RLHF objective so the policy can be optimized directly on preference pairs using a supervised binary cross-entropy loss — achieving similar alignment without the complexity of RL.',
+  q4: 'Correct. Reflexion is entirely inference-time: the agent generates a verbal reflection on its failure, stores it in an episodic memory buffer, and the reflection is injected into the context on the next attempt. No gradient updates or weight changes occur.',
+  q5: 'Correct. In RL terms, the environment is everything the agent acts on and receives observations from. For an LLM agent, this is the tools (web search, code execution, APIs, databases) that return results in response to the agent\'s actions.',
+  q6: 'Correct. A Process Reward Model scores intermediate steps in a reasoning chain — not just the final answer. This is the key finding of Lightman et al. (2023): step-level supervision leads to better reasoning behavior than outcome-only supervision because it penalizes flawed reasoning paths that happen to reach the right answer.',
+  q7: 'Correct. Verifiable rewards (math, code, logic) have automatic ground-truth: the answer is right or wrong, and the test suite passes or fails. This eliminates the human annotation bottleneck in standard RLHF and enables large-scale RL training. This is the core insight behind reasoning model training approaches.',
+  q8: 'Correct. Reward hacking is when the model finds and exploits gaps between the proxy reward metric and the true objective. Classic examples include generating longer responses (if raters favor thoroughness), sounding confident regardless of factual accuracy, or adding qualifications that feel safe without being substantive.'
+};
+
+const QUIZ_WRONG_HINTS = {
+  q1: 'Think about the order of stages: SFT comes first (before the reward model), and human preferences are collected during reward model training — not during PPO. What does the reward model actually output during PPO that the policy optimizer uses?',
+  q2: 'The key word is "replaces." CAI is about replacing a specific expensive component of RLHF with something AI-powered. It does not skip SFT, and it does not require more human labels — quite the opposite.',
+  q3: 'DPO still requires human preference data (chosen vs rejected responses). What it eliminates is the machinery: training a separate model to score outputs, then running an RL loop on top of it.',
+  q4: 'Reflexion does not change model weights — it is entirely inference-time. The key mechanism is storing information across attempts in a form the model can read on its next try. What form does that take?',
+  q5: 'In RL, the environment is what the agent acts on — it returns observations (state) in response to actions. The system prompt is internal to the agent. The reward model is a training artifact. What external systems does an LLM agent interact with?',
+  q6: 'Think about what "process" means: it refers to the intermediate steps, not just the process of training. How does evaluating intermediate reasoning steps differently from evaluating only the final answer change what the model learns?',
+  q7: 'The key advantage is about scalability of the signal, not creativity or model size. With verifiable rewards, who — or what — provides the reward, and why does that matter at scale?',
+  q8: 'Reward hacking is about the model gaming the evaluation metric, not about annotators or optimization failures. Think: what would an LLM do if it learned that confident-sounding answers score higher — even when the model is uncertain?'
+};
+
+function submitQuiz() {
+  let score = 0;
+  let allAnswered = true;
+
+  for (let i = 1; i <= 8; i++) {
+    const key = 'q' + i;
+    const selected = document.querySelector(`input[name="${key}"]:checked`);
+    const feedback = document.getElementById('f' + i);
+    const qEl = document.getElementById(key);
+
+    if (!selected) { allAnswered = false; continue; }
+
+    const options = qEl.querySelectorAll('.quiz-option');
+    options.forEach(opt => {
+      opt.style.pointerEvents = 'none';
+      const inp = opt.querySelector('input');
+      if (inp.value === QUIZ_ANSWERS[key]) {
+        opt.style.color = 'var(--green)';
+        opt.style.borderColor = 'var(--green)';
+      }
+    });
+
+    if (selected.value === QUIZ_ANSWERS[key]) {
+      score++;
+      feedback.innerHTML = '<span style="color:var(--green);">✓ ' + QUIZ_EXPLANATIONS[key] + '</span>';
+    } else {
+      feedback.innerHTML = '<span style="color:var(--red);">✗ Not quite. ' + QUIZ_WRONG_HINTS[key] + '</span>';
+      selected.closest('.quiz-option').style.color = 'var(--red)';
+    }
+    feedback.style.display = 'block';
+  }
+
+  if (!allAnswered) {
+    document.getElementById('quiz-score').textContent = 'Please answer all questions before submitting.';
+    return;
+  }
+
+  const pct = Math.round((score / 8) * 100);
+  let msg = '';
+  if (score === 8) msg = '— Perfect score! You are ready for Section 10.';
+  else if (score >= 6) msg = '— Good. Review the ones you missed before moving on.';
+  else msg = '— Re-read the theory sections you struggled with, then retry.';
+
+  document.getElementById('quiz-score').innerHTML =
+    '<strong style="color:var(--accent);">' + score + '/8 (' + pct + '%)</strong> ' + msg;
+  document.getElementById('retryBtn').style.display = 'inline-flex';
+  document.querySelector('[onclick="submitQuiz()"]').style.display = 'none';
+}
+
+function resetQuiz() {
+  for (let i = 1; i <= 8; i++) {
+    const key = 'q' + i;
+    document.querySelectorAll(`input[name="${key}"]`).forEach(inp => { inp.checked = false; });
+    const feedback = document.getElementById('f' + i);
+    feedback.innerHTML = '';
+    feedback.style.display = 'none';
+    const qEl = document.getElementById(key);
+    qEl.querySelectorAll('.quiz-option').forEach(opt => {
+      opt.style.color = '';
+      opt.style.borderColor = '';
+      opt.style.pointerEvents = '';
+    });
+  }
+  document.getElementById('quiz-score').innerHTML = '';
+  document.getElementById('retryBtn').style.display = 'none';
+  document.querySelector('[onclick="submitQuiz()"]').style.display = 'inline-flex';
+}
+</script>
+</body>
+</html>

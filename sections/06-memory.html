@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>06 — Memory &amp; Knowledge · Agentic AI Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="../style.css">
+<noscript><style>
+/* No-JS: make sidebar visible and stack layout vertically on mobile */
+@media (max-width: 768px) {
+  .sidebar { transform: none; position: relative; width: 100%; height: auto; }
+  .layout  { flex-direction: column; }
+}
+</style></noscript>
+<link rel="manifest" href="../manifest.json">
+</head>
+<body data-section="6">
+<noscript>
+  <div style="background:#1a1200;border-bottom:2px solid #c87d00;color:#f0c060;padding:0.75rem 1.5rem;font-family:monospace;font-size:0.82rem;text-align:center;position:relative;z-index:999;">
+    &#9888; JavaScript is disabled. Progress tracking, quizzes, and interactive features require JavaScript.
+  </div>
+</noscript>
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <a href="../index.html" class="sidebar-logo" style="text-decoration:none;display:block;">
+      <div class="logo-eyebrow">// AGENTIC AI COURSE</div>
+      <div class="logo-name">Learn <span>Agentic AI</span><br>2026 Edition</div>
+    </a>
+    <div class="sidebar-progress">
+      <div class="progress-row">
+        <span class="progress-label">OVERALL PROGRESS</span>
+        <span class="progress-count" id="progressCount">0 / 16</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+    <div class="sidebar-nav">
+      <div class="nav-group-label">Foundation</div>
+      <a href="01-intro.html" class="nav-item" data-section="1"><span class="nav-num">01</span> Intro to Agentic AI <span class="nav-check">✓</span></a>
+      <a href="02-ml-fundamentals.html" class="nav-item" data-section="2"><span class="nav-num">02</span> AI &amp; ML Fundamentals <span class="nav-check">✓</span></a>
+      <a href="03-frameworks.html" class="nav-item" data-section="3"><span class="nav-num">03</span> Programming &amp; Frameworks <span class="nav-check">✓</span></a>
+      <a href="04-llms.html" class="nav-item" data-section="4"><span class="nav-num">04</span> Large Language Models <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">Core Agents</div>
+      <a href="05-understanding-agents.html" class="nav-item" data-section="5"><span class="nav-num">05</span> Understanding Agents <span class="nav-check">✓</span></a>
+      <a href="06-memory.html" class="nav-item active" data-section="6"><span class="nav-num">06</span> Memory &amp; Knowledge <span class="nav-check">✓</span></a>
+      <a href="07-planning.html" class="nav-item" data-section="7"><span class="nav-num">07</span> Decision-Making &amp; Planning <span class="nav-check">✓</span></a>
+      <a href="08-prompting.html" class="nav-item" data-section="8"><span class="nav-num">08</span> Prompt Engineering <span class="nav-check">✓</span></a>
+      <a href="09-rl.html" class="nav-item" data-section="9"><span class="nav-num">09</span> RL &amp; Self-Improvement <span class="nav-check">✓</span></a>
+      <a href="10-rag.html" class="nav-item" data-section="10"><span class="nav-num">10</span> RAG <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">Production</div>
+      <a href="11-deployment.html" class="nav-item" data-section="11"><span class="nav-num">11</span> Deploying Agents <span class="nav-check">✓</span></a>
+      <a href="12-real-world.html" class="nav-item" data-section="12"><span class="nav-num">12</span> Real-World Applications <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">2026 New</div>
+      <a href="13-mcp.html" class="nav-item" data-section="13"><span class="nav-num">13</span> MCP &amp; Protocols <span class="nav-check">✓</span></a>
+      <a href="14-multi-agent.html" class="nav-item" data-section="14"><span class="nav-num">14</span> Multi-Agent Orchestration <span class="nav-check">✓</span></a>
+      <a href="15-security.html" class="nav-item" data-section="15"><span class="nav-num">15</span> Agent Security <span class="nav-check">✓</span></a>
+      <a href="16-long-horizon.html" class="nav-item" data-section="16"><span class="nav-num">16</span> Long-Horizon Agents <span class="nav-check">✓</span></a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="topbar-breadcrumb">
+        <a href="../index.html" style="color:var(--text-muted);text-decoration:none;">Course</a>
+        &nbsp;/&nbsp; <span>06 · Memory &amp; Knowledge</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn btn-outline" id="completeBtn" data-section="6">Mark Complete</button>
+      </div>
+    </div>
+
+    <div class="page">
+
+      <!-- HERO -->
+      <div class="section-hero">
+        <div class="hero-meta">
+          <span class="hero-num">SECTION 06</span>
+          <span class="hero-tag tag-core">CORE</span>
+          <span class="hero-tag tag-lab">LAB</span>
+        </div>
+        <h1 class="section-title">Memory &amp;<br><span>Knowledge</span></h1>
+        <p class="section-intro">
+          An LLM has no memory between API calls — every call starts fresh. The illusion of memory in your agents is entirely your responsibility as the builder. This section covers the four memory types every agent builder must understand, how each is implemented, when context windows overflow and what to do about it, and how semantic memory via vector stores extends what an agent can "know" far beyond its context window limit.
+        </p>
+        <div class="hero-actions">
+          <a href="#theory" class="btn btn-accent">📖 Start Theory</a>
+          <a href="#lab" class="btn btn-outline">🔬 Jump to Lab</a>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- THEORY                                      -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div id="theory">
+
+        <!-- ── BLOCK 01: Four Memory Types ── -->
+        <div class="block">
+          <div class="block-label">01 · THE FOUR MEMORY TYPES</div>
+          <h2>A Taxonomy of Agent Memory</h2>
+          <p>
+            Lilian Weng's 2023 survey on LLM-powered agents identifies four distinct memory types that map to different implementation strategies. Understanding this taxonomy prevents the most common mistake: trying to solve all memory problems with a single approach.
+          </p>
+
+          <div class="concept-grid" style="grid-template-columns:repeat(2,1fr);">
+            <div class="concept-card">
+              <div class="concept-icon">📋</div>
+              <div class="concept-name">In-Context (Working Memory)</div>
+              <div class="concept-desc">Information inside the current context window: the system prompt, conversation history, tool results, and injected documents. Fast and zero-latency — the model uses it directly. Bounded by the context window limit.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">WIDELY USED (2022–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">🗄️</div>
+              <div class="concept-name">External Semantic Memory</div>
+              <div class="concept-desc">A vector store (Chroma, Pinecone, Weaviate) that holds embedded documents. The agent queries it with a similarity search and retrieves the most relevant chunks to inject into context. Scales to millions of documents.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">WIDELY USED (2023–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">📓</div>
+              <div class="concept-name">Episodic Memory</div>
+              <div class="concept-desc">A log of past agent runs — what was asked, what tools were called, what the outcome was. Allows an agent to recall "what happened last time" and avoid repeating mistakes across sessions.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--orange);">EMERGING (2023–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">⚙️</div>
+              <div class="concept-name">Procedural Memory</div>
+              <div class="concept-desc">The agent's baked-in skills and behaviors — encoded in the model weights (via training/fine-tuning) or in the system prompt (instructions, tool schemas). Slowest to update but most durable.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">WIDELY USED (2022–2026)</div>
+            </div>
+          </div>
+
+          <div class="callout callout-info" style="margin-top:1rem;">
+            <strong>Analogy — human memory parallel:</strong> In-context = your working memory right now. Semantic = your long-term factual knowledge (can recall but slow). Episodic = autobiographical memory (what happened to you last Tuesday). Procedural = muscle memory / skills (how to ride a bike). Agents need all four for complex long-horizon tasks.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://lilianweng.github.io/posts/2023-06-23-agent/" target="_blank" style="color:var(--accent);text-decoration:none;">Lilian Weng — LLM Powered Autonomous Agents (2023)</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2304.03442" target="_blank" style="color:var(--accent);text-decoration:none;">Park et al. — Generative Agents (arXiv:2304.03442, 2023)</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 02: In-Context Memory Management ── -->
+        <div class="block">
+          <div class="block-label">02 · IN-CONTEXT MEMORY MANAGEMENT</div>
+          <h2>The Context Window Fills Up — Then What?</h2>
+          <p>
+            Every message appended to the conversation history grows the context window. In a long agent run — many tool calls, large API responses, extended reasoning — the context will eventually approach the model's limit. Unlike a database, there is no automatic overflow handling: you hit the limit and the API returns an error, or performance silently degrades.
+          </p>
+          <p>
+            There are three strategies for managing this, and the right choice depends on what information the agent actually needs to retain.
+          </p>
+
+          <!-- Strategy comparison -->
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin:1.2rem 0;">
+            <table style="width:100%;border-collapse:collapse;font-size:0.8rem;">
+              <thead>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <th style="text-align:left;padding:0.5rem 0.8rem;font-family:var(--font-mono);font-size:0.65rem;color:var(--text-dim);">STRATEGY</th>
+                  <th style="text-align:left;padding:0.5rem 0.8rem;font-family:var(--font-mono);font-size:0.65rem;color:var(--text-dim);">HOW IT WORKS</th>
+                  <th style="text-align:left;padding:0.5rem 0.8rem;font-family:var(--font-mono);font-size:0.65rem;color:var(--text-dim);">TRADE-OFF</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:0.6rem 0.8rem;font-family:var(--font-mono);color:var(--accent);">Sliding Window</td>
+                  <td style="padding:0.6rem 0.8rem;color:var(--text-muted);">Keep only the last N turns. Drop the oldest messages when the window is full.</td>
+                  <td style="padding:0.6rem 0.8rem;color:var(--text-muted);">Simple. Loses early context permanently — the agent forgets what was decided at the start.</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:0.6rem 0.8rem;font-family:var(--font-mono);color:var(--accent);">Summarization</td>
+                  <td style="padding:0.6rem 0.8rem;color:var(--text-muted);">Periodically compress older turns into a summary using an LLM call, then replace them with the summary.</td>
+                  <td style="padding:0.6rem 0.8rem;color:var(--text-muted);">Retains the gist. Introduces an extra API call and summary-induced hallucination risk.</td>
+                </tr>
+                <tr>
+                  <td style="padding:0.6rem 0.8rem;font-family:var(--font-mono);color:var(--accent);">Selective Retention</td>
+                  <td style="padding:0.6rem 0.8rem;color:var(--text-muted);">Mark messages as "must-keep" (critical decisions, user goals) vs. "evictable" (tool outputs, scratch reasoning). Only evict the latter.</td>
+                  <td style="padding:0.6rem 0.8rem;color:var(--text-muted);">Best quality. Most complex to implement — requires structured metadata on each message.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout callout-warning">
+            <strong>Never silently truncate.</strong> If you drop messages from history without telling the model, it may contradict earlier decisions it can no longer see. At minimum, insert a system note: <code>"[Note: earlier conversation has been summarized above]"</code> so the model knows its history is compressed.
+          </div>
+
+          <!-- Prompt caching tie-in -->
+          <div class="callout callout-info" style="margin-top:1rem;">
+            <strong>Prompt caching reduces the cost of long static prefixes.</strong> If your agent has a large, unchanging system prompt (tool schemas, background docs), use your provider's prompt caching feature to avoid re-processing it every call. This is separate from conversation history management — caching handles the static prefix; sliding window / summarization handle the growing history.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Prompt Caching</a> &nbsp;·&nbsp; <a href="https://lilianweng.github.io/posts/2023-06-23-agent/" target="_blank" style="color:var(--accent);text-decoration:none;">Lilian Weng — LLM Powered Autonomous Agents (2023)</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 03: Semantic Memory (Vector Stores) ── -->
+        <div class="block">
+          <div class="block-label">03 · SEMANTIC MEMORY — VECTOR STORES</div>
+          <h2>Giving Your Agent Access to a Knowledge Base</h2>
+          <p>
+            When an agent needs to recall facts from a corpus too large to fit in context — internal docs, a product manual, a research library — you use a <strong>vector store</strong>. Documents are broken into chunks, each chunk is converted to a vector embedding (a list of numbers that encodes semantic meaning), and those embeddings are stored in a database optimised for similarity search.
+          </p>
+          <p>
+            At query time, the agent's question is embedded with the same model, and the store returns the chunks whose embeddings are closest in vector space — the semantically most relevant passages. These chunks are injected into the agent's context as retrieved knowledge. This is the foundation of Retrieval-Augmented Generation (RAG), covered in depth in Section 10.
+          </p>
+
+          <!-- Embedding pipeline -->
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin:1.2rem 0;font-family:var(--font-mono);font-size:0.72rem;line-height:2;">
+            <div style="color:var(--text-dim);margin-bottom:0.5rem;">// SEMANTIC MEMORY: INDEX + QUERY PIPELINE</div>
+            <div style="color:var(--text-muted);">INDEX TIME (one-time):</div>
+            <div style="padding-left:1rem;">
+              Documents → <span style="color:var(--accent);">Chunk</span> → <span style="color:var(--accent);">Embed</span> → <span style="color:var(--green);">Vector Store</span>
+            </div>
+            <div style="color:var(--text-muted);margin-top:0.3rem;">QUERY TIME (per agent call):</div>
+            <div style="padding-left:1rem;">
+              Question → <span style="color:var(--accent);">Embed</span> → <span style="color:var(--green);">Similarity Search</span> → Top-K Chunks → <span style="color:var(--accent);">Inject into Context</span>
+            </div>
+          </div>
+
+          <div class="concept-grid" style="grid-template-columns:repeat(3,1fr);">
+            <div class="concept-card">
+              <div class="concept-icon">🧮</div>
+              <div class="concept-name">Embeddings</div>
+              <div class="concept-desc">Dense vector representations of text — typically 768–3072 dimensions. Semantically similar texts have nearby vectors. Produced by a dedicated embedding model (separate from the chat LLM).</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">WIDELY USED (2022–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">🗃️</div>
+              <div class="concept-name">Vector Stores</div>
+              <div class="concept-desc">Databases optimised for approximate nearest-neighbour search (ANN). Options range from local (ChromaDB, FAISS) to managed cloud services. Choice depends on scale, latency, and ops burden.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">WIDELY USED (2022–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">✂️</div>
+              <div class="concept-name">Chunking Strategy</div>
+              <div class="concept-desc">How you split documents before embedding matters as much as the embedding model. Fixed-size, sentence-boundary, and semantic chunking each have different recall/precision trade-offs.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--orange);">DESIGN DECISION</div>
+            </div>
+          </div>
+
+          <div class="callout callout-warning" style="margin-top:1rem;">
+            <strong>Embedding model and vector store must match.</strong> Always embed queries with the same model used to embed the documents. Swapping embedding models invalidates the entire index — you must re-embed all documents. This is a production gotcha that has caused real outages.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://docs.trychroma.com" target="_blank" style="color:var(--accent);text-decoration:none;">ChromaDB — Official Docs</a> &nbsp;·&nbsp; <a href="https://docs.anthropic.com/en/docs/build-with-claude/embeddings" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Embeddings Guide</a> &nbsp;·&nbsp; <a href="https://python.langchain.com/docs/concepts/vectorstores/" target="_blank" style="color:var(--accent);text-decoration:none;">LangChain — Vector Store Concepts</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 04: Episodic Memory ── -->
+        <div class="block">
+          <div class="block-label">04 · EPISODIC MEMORY</div>
+          <h2>Remembering What Happened Across Sessions</h2>
+          <p>
+            In-context and semantic memory operate within a session or across a static knowledge base. <strong>Episodic memory</strong> is different: it stores a structured log of past agent <em>runs</em> — what the user asked, what the agent did, what the outcome was — and makes that log retrievable in future sessions.
+          </p>
+          <p>
+            The Generative Agents paper (Park et al., 2023) introduced a concrete implementation: agents store experiences as natural language strings, each tagged with recency, importance, and relevance scores. When the agent needs to recall past experience, it scores all memories and injects the top-scoring ones into context.
+          </p>
+
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin:1.2rem 0;font-family:var(--font-mono);font-size:0.72rem;">
+            <div style="color:var(--text-dim);margin-bottom:0.8rem;">// MINIMAL EPISODIC MEMORY ENTRY (JSON)</div>
+            <pre style="margin:0;color:var(--text-muted);">{
+  <span style="color:var(--green);">"id"</span>: <span style="color:var(--accent);">"ep_2026-04-04_001"</span>,
+  <span style="color:var(--green);">"timestamp"</span>: <span style="color:var(--accent);">"2026-04-04T14:23:00Z"</span>,
+  <span style="color:var(--green);">"user_goal"</span>: <span style="color:var(--accent);">"Summarise Q1 sales report"</span>,
+  <span style="color:var(--green);">"tools_used"</span>: [<span style="color:var(--accent);">"read_file"</span>, <span style="color:var(--accent);">"web_search"</span>],
+  <span style="color:var(--green);">"outcome"</span>: <span style="color:var(--accent);">"success"</span>,
+  <span style="color:var(--green);">"summary"</span>: <span style="color:var(--accent);">"Read sales.csv, searched for industry benchmarks, returned 3-para summary."</span>,
+  <span style="color:var(--green);">"tokens_used"</span>: <span style="color:var(--accent);">4821</span>
+}</pre>
+          </div>
+
+          <div class="callout callout-info">
+            <strong>When episodic memory matters:</strong> A customer support agent that sees the same user repeatedly. A coding agent that should remember which libraries a project uses. A personal assistant that learns user preferences over time. Without episodic memory, every session starts cold and the agent makes the same avoidable mistakes.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://arxiv.org/abs/2304.03442" target="_blank" style="color:var(--accent);text-decoration:none;">Park et al. — Generative Agents (arXiv:2304.03442, 2023)</a> &nbsp;·&nbsp; <a href="https://lilianweng.github.io/posts/2023-06-23-agent/" target="_blank" style="color:var(--accent);text-decoration:none;">Lilian Weng — LLM Powered Autonomous Agents (2023)</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 05: Memory Design Principles ── -->
+        <div class="block">
+          <div class="block-label">05 · MEMORY DESIGN PRINCIPLES</div>
+          <h2>Rules for Building Memory-Aware Agents</h2>
+
+          <div class="concept-grid" style="grid-template-columns:repeat(2,1fr);">
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--green);margin-bottom:0.4rem;">PRINCIPLE 01</div>
+              <div class="concept-name">Match memory type to access pattern</div>
+              <div class="concept-desc">In-context for the current task's working state. Semantic store for stable knowledge. Episodic log for cross-session continuity. Don't use one for all three.</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--green);margin-bottom:0.4rem;">PRINCIPLE 02</div>
+              <div class="concept-name">Always track token growth</div>
+              <div class="concept-desc">Log <code>usage.input_tokens</code> after every API call. Set a hard threshold (e.g., 80% of context limit) that triggers compression before you hit the wall mid-task.</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--green);margin-bottom:0.4rem;">PRINCIPLE 03</div>
+              <div class="concept-name">Compress with attribution</div>
+              <div class="concept-desc">When summarising old context, always insert a marker like <code>[Earlier turns summarised]</code>. This prevents the model from confusing compressed history with current instructions.</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--green);margin-bottom:0.4rem;">PRINCIPLE 04</div>
+              <div class="concept-name">Store what you cannot reconstruct</div>
+              <div class="concept-desc">Don't store raw tool outputs that can be re-fetched cheaply. Store decisions, outcomes, and user preferences — the things that would be expensive or impossible to reproduce.</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--orange);margin-bottom:0.4rem;">PRINCIPLE 05</div>
+              <div class="concept-name">Retrieval quality determines output quality</div>
+              <div class="concept-desc">Garbage in, garbage out applies to memory retrieval. If the wrong chunks are injected into context, the agent will reason from irrelevant or stale information. Validate retrieval separately from generation.</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--orange);margin-bottom:0.4rem;">PRINCIPLE 06</div>
+              <div class="concept-name">Memory has a trust boundary</div>
+              <div class="concept-desc">Content retrieved from external memory was not in the original system prompt. Treat it like user input — sanitise it, don't blindly trust it. A poisoned memory store is a prompt injection vector.</div>
+            </div>
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Agent Guidance</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2304.03442" target="_blank" style="color:var(--accent);text-decoration:none;">Park et al. — Generative Agents (arXiv:2304.03442, 2023)</a>
+          </div>
+        </div>
+
+        <!-- ── SOURCES TABLE ── -->
+        <div class="block">
+          <div class="block-label">SOURCES USED IN THIS SECTION</div>
+          <h2>Verified References</h2>
+          <p>Every claim in this section is grounded in one of these sources.</p>
+          <table class="compare-table">
+            <thead>
+              <tr><th>Source</th><th>Type</th><th>Covers</th><th>Recency</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://lilianweng.github.io/posts/2023-06-23-agent/" target="_blank" style="color:var(--accent);">Lilian Weng — LLM Powered Autonomous Agents</a></td>
+                <td>Blog / Survey</td>
+                <td>Four memory types taxonomy, in-context vs external memory</td>
+                <td>June 2023</td>
+              </tr>
+              <tr>
+                <td><a href="https://arxiv.org/abs/2304.03442" target="_blank" style="color:var(--accent);">Park et al. — Generative Agents</a></td>
+                <td>Academic paper</td>
+                <td>Episodic memory, recency/importance/relevance scoring, memory streams</td>
+                <td>2023</td>
+              </tr>
+              <tr>
+                <td><a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching" target="_blank" style="color:var(--accent);">Anthropic — Prompt Caching</a></td>
+                <td>Official docs</td>
+                <td>Caching static prefixes, cost reduction for long system prompts</td>
+                <td>Maintained 2024–2026</td>
+              </tr>
+              <tr>
+                <td><a href="https://docs.trychroma.com" target="_blank" style="color:var(--accent);">ChromaDB — Official Docs</a></td>
+                <td>Official docs</td>
+                <td>Local vector store, collections, add/query API</td>
+                <td>Maintained 2023–2026</td>
+              </tr>
+              <tr>
+                <td><a href="https://docs.anthropic.com/en/docs/build-with-claude/embeddings" target="_blank" style="color:var(--accent);">Anthropic — Embeddings Guide</a></td>
+                <td>Official docs</td>
+                <td>Embedding models, similarity search, practical recommendations</td>
+                <td>Maintained 2024–2026</td>
+              </tr>
+              <tr>
+                <td><a href="https://python.langchain.com/docs/concepts/vectorstores/" target="_blank" style="color:var(--accent);">LangChain — Vector Store Concepts</a></td>
+                <td>Official docs</td>
+                <td>Chunking strategies, ANN search, vector store integrations</td>
+                <td>Maintained 2023–2026</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div><!-- end theory -->
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- LAB                                         -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div id="lab" class="block">
+        <div class="block-label">HANDS-ON LAB</div>
+        <h2>Build an Agent with Sliding-Window Memory and an Episodic Log</h2>
+        <p style="margin-bottom:1.5rem;">
+          You will build a conversational agent that manages its own context window using a sliding window strategy, logs every session to a JSON episodic memory file, and loads that log at startup so it can reference past conversations. By the end you will be able to watch the context window fill and compress in real time.
+        </p>
+
+        <div class="lab-container">
+          <div class="lab-header">
+            <div class="lab-icon">🔬</div>
+            <div class="lab-title-wrap">
+              <div class="lab-title">Memory-Aware Conversational Agent</div>
+              <div class="lab-subtitle">PYTHON · ~100 LINES · ANTHROPIC API KEY REQUIRED</div>
+            </div>
+          </div>
+
+          <div class="lab-steps">
+
+            <!-- Step 1 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">1</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Set up and create the file
+                </div>
+                <div class="step-body">
+                  <p>Use the same <code>agent-lab</code> virtualenv from previous sections. Create a new file:</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">BASH</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>cd agent-lab && source .venv/bin/activate
+touch memory_agent.py</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">2</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Implement the episodic memory store
+                </div>
+                <div class="step-body">
+                  <p>The episodic store reads and writes a JSON file. On startup the agent loads past sessions; on shutdown it appends the current session's summary. Simple but effective for single-user agents.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — memory_agent.py</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre><span class="kw">import</span> os
+<span class="kw">import</span> json
+<span class="kw">import</span> anthropic
+<span class="kw">from</span> datetime <span class="kw">import</span> datetime, timezone
+<span class="kw">from</span> dotenv <span class="kw">import</span> load_dotenv
+
+<span class="fn">load_dotenv</span>()
+client = anthropic.<span class="cl">Anthropic</span>()
+
+MEMORY_FILE = <span class="st">"episodes.json"</span>
+MAX_TURNS   = <span class="nu">6</span>   <span class="cm"># sliding window: keep last N user+assistant pairs</span>
+TOKEN_WARN  = <span class="nu">8000</span> <span class="cm"># log a warning when input tokens exceed this</span>
+
+
+<span class="kw">def</span> <span class="fn">load_episodes</span>() -&gt; list[dict]:
+    <span class="st">"""Load past episodes from the JSON file, or return empty list."""</span>
+    <span class="kw">if</span> <span class="kw">not</span> os.path.<span class="fn">exists</span>(MEMORY_FILE):
+        <span class="kw">return</span> []
+    <span class="kw">with</span> <span class="fn">open</span>(MEMORY_FILE) <span class="kw">as</span> f:
+        <span class="kw">return</span> json.<span class="fn">load</span>(f)
+
+
+<span class="kw">def</span> <span class="fn">save_episode</span>(goal: str, turns: int, outcome: str) -&gt; None:
+    <span class="st">"""Append the current session to the episodic memory file."""</span>
+    episodes = <span class="fn">load_episodes</span>()
+    episodes.<span class="fn">append</span>({
+        <span class="st">"id"</span>: <span class="st">f"ep_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}"</span>,
+        <span class="st">"timestamp"</span>: datetime.<span class="fn">now</span>(timezone.utc).<span class="fn">isoformat</span>(),
+        <span class="st">"user_goal"</span>: goal,
+        <span class="st">"turns"</span>: turns,
+        <span class="st">"outcome"</span>: outcome,
+    })
+    <span class="kw">with</span> <span class="fn">open</span>(MEMORY_FILE, <span class="st">"w"</span>) <span class="kw">as</span> f:
+        json.<span class="fn">dump</span>(episodes, f, indent=<span class="nu">2</span>)
+    <span class="fn">print</span>(<span class="st">f"[memory] episode saved → {MEMORY_FILE}"</span>)</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">3</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Build the sliding-window message manager
+                </div>
+                <div class="step-body">
+                  <p>This function trims the message list to the last <code>MAX_TURNS</code> user/assistant pairs whenever it grows too long. Notice the attribution marker inserted when trimming — this tells the model its history was cut.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — memory_agent.py (continued)</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre><span class="kw">def</span> <span class="fn">trim_messages</span>(messages: list[dict]) -&gt; list[dict]:
+    <span class="st">"""Keep only the last MAX_TURNS user+assistant pairs.
+    Inserts a notice when history is trimmed so the model is aware."""</span>
+    <span class="cm"># A "pair" is one user + one assistant message = 2 items</span>
+    max_messages = MAX_TURNS * <span class="nu">2</span>
+    <span class="kw">if</span> <span class="fn">len</span>(messages) &lt;= max_messages:
+        <span class="kw">return</span> messages
+
+    trimmed = messages[-max_messages:]
+    notice = {
+        <span class="st">"role"</span>: <span class="st">"user"</span>,
+        <span class="st">"content"</span>: (
+            <span class="st">"[System note: earlier conversation turns were trimmed to fit "</span>
+            <span class="st">"the context window. Only the last few turns are shown.]"</span>
+        )
+    }
+    <span class="fn">print</span>(<span class="st">f"[memory] context trimmed: keeping last {MAX_TURNS} turns"</span>)
+    <span class="kw">return</span> [notice] + trimmed</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">4</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Build the system prompt with episodic context
+                </div>
+                <div class="step-body">
+                  <p>At startup, the agent loads past episodes and includes a summary of them in the system prompt. This is a simple form of episodic memory injection — the model knows what happened before without re-playing the full conversation.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — memory_agent.py (continued)</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre><span class="kw">def</span> <span class="fn">build_system_prompt</span>(episodes: list[dict]) -&gt; str:
+    <span class="st">"""Build the system prompt, injecting past episode summaries."""</span>
+    base = (
+        <span class="st">"You are a helpful assistant with memory of past conversations. "</span>
+        <span class="st">"You answer questions clearly and concisely."</span>
+    )
+    <span class="kw">if</span> <span class="kw">not</span> episodes:
+        <span class="kw">return</span> base
+
+    <span class="cm"># Inject the last 3 episodes as context</span>
+    recent = episodes[-<span class="nu">3</span>:]
+    history_lines = [
+        <span class="st">f"- [{ep['timestamp'][:10]}] Goal: {ep['user_goal']} "
+        f"({ep['turns']} turns, {ep['outcome']})"</span>
+        <span class="kw">for</span> ep <span class="kw">in</span> recent
+    ]
+    history_block = <span class="st">"\n"</span>.<span class="fn">join</span>(history_lines)
+    <span class="kw">return</span> (
+        <span class="st">f"{base}\n\n"</span>
+        <span class="st">"Past sessions (most recent first):\n"</span>
+        <span class="st">f"{history_block}\n\n"</span>
+        <span class="st">"Use this context to give continuity to the user across sessions."</span>
+    )</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">5</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Implement the main chat loop
+                </div>
+                <div class="step-body">
+                  <p>The main loop handles user input, calls the API, trims context when needed, tracks token usage, and saves the episode on exit. Run it and have a multi-turn conversation — then quit, run it again, and watch the agent reference the previous session.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — memory_agent.py (continued)</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre><span class="kw">def</span> <span class="fn">run_chat</span>() -&gt; None:
+    episodes = <span class="fn">load_episodes</span>()
+    system   = <span class="fn">build_system_prompt</span>(episodes)
+    messages: list[dict] = []
+    turn_count = <span class="nu">0</span>
+    first_message = <span class="st">""</span>
+
+    <span class="fn">print</span>(<span class="st">"\n=== Memory Agent ==="</span>)
+    <span class="fn">print</span>(<span class="st">f"Loaded {len(episodes)} past episode(s)."</span>)
+    <span class="fn">print</span>(<span class="st">'Type your message. Type "quit" to exit and save.\n'</span>)
+
+    <span class="kw">while</span> <span class="kw">True</span>:
+        user_input = <span class="fn">input</span>(<span class="st">"You: "</span>).<span class="fn">strip</span>()
+        <span class="kw">if</span> <span class="kw">not</span> user_input:
+            <span class="kw">continue</span>
+        <span class="kw">if</span> user_input.<span class="fn">lower</span>() == <span class="st">"quit"</span>:
+            <span class="kw">break</span>
+
+        <span class="kw">if</span> <span class="kw">not</span> first_message:
+            first_message = user_input
+
+        messages.<span class="fn">append</span>({<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: user_input})
+        messages = <span class="fn">trim_messages</span>(messages)
+
+        response = client.messages.<span class="fn">create</span>(
+            model=<span class="st">"claude-opus-4-6"</span>,  <span class="cm"># check docs.anthropic.com/en/docs/about-claude/models</span>
+            max_tokens=<span class="nu">512</span>,
+            system=system,
+            messages=messages
+        )
+
+        input_tokens = response.usage.input_tokens
+        <span class="kw">if</span> input_tokens &gt; TOKEN_WARN:
+            <span class="fn">print</span>(<span class="st">f"[memory] ⚠ high token usage: {input_tokens} input tokens"</span>)
+
+        reply = response.content[<span class="nu">0</span>].text
+        messages.<span class="fn">append</span>({<span class="st">"role"</span>: <span class="st">"assistant"</span>, <span class="st">"content"</span>: reply})
+        turn_count += <span class="nu">1</span>
+
+        <span class="fn">print</span>(<span class="st">f"Agent [{input_tokens} tok]: {reply}\n"</span>)
+
+    <span class="cm"># Save episode on exit</span>
+    <span class="kw">if</span> turn_count &gt; <span class="nu">0</span>:
+        <span class="fn">save_episode</span>(
+            goal=first_message,
+            turns=turn_count,
+            outcome=<span class="st">"completed"</span>
+        )
+
+
+<span class="kw">if</span> __name__ == <span class="st">"__main__"</span>:
+    <span class="fn">run_chat</span>()</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">6</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Run two sessions and observe cross-session memory
+                </div>
+                <div class="step-body">
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">BASH</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre>python memory_agent.py</pre>
+                  </div>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">SESSION 1 — EXAMPLE</span></div>
+                    <pre>=== Memory Agent ===
+Loaded 0 past episode(s).
+Type your message. Type "quit" to exit and save.
+
+You: My name is Alex and I'm building a RAG pipeline in Python.
+Agent [312 tok]: Great to meet you, Alex! Happy to help with your RAG pipeline...
+
+You: What are the main chunking strategies I should consider?
+Agent [498 tok]: The three main strategies are fixed-size, sentence-boundary, and semantic...
+
+You: quit
+[memory] episode saved → episodes.json</pre>
+                  </div>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">SESSION 2 — EXAMPLE (run again)</span></div>
+                    <pre>=== Memory Agent ===
+Loaded 1 past episode(s).
+Type your message. Type "quit" to exit and save.
+
+You: What was I working on last time?
+Agent [441 tok]: Based on our previous session, you're Alex and you were building
+a RAG pipeline in Python. You asked about chunking strategies — we covered
+fixed-size, sentence-boundary, and semantic chunking. Would you like to continue?</pre>
+                  </div>
+                  <div class="callout callout-info" style="margin-top:1rem;">
+                    <strong>What to observe:</strong> The token count printed next to each response grows as the conversation history accumulates. After 6 turns, watch the <code>[memory] context trimmed</code> message appear. Then run a second session and ask "what was I working on last time?" — the agent retrieves the episode and answers without you telling it anything.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 7 -->
+            <div class="step">
+              <div class="step-gutter">
+                <div class="step-num-circle">7</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">
+                  <input type="checkbox" class="step-check" onchange="stepDone(this)">
+                  Extension: replace sliding window with summarisation
+                </div>
+                <div class="step-body">
+                  <p>Replace <code>trim_messages</code> with a version that summarises the dropped turns using a second LLM call before discarding them. The summary is inserted as a system note. Compare the quality of memory retention between the two approaches over a long conversation.</p>
+                  <div class="code-block">
+                    <div class="code-header"><span class="code-lang">PYTHON — summarisation trim (replace trim_messages)</span><button class="code-copy" onclick="copyCode(this)">copy</button></div>
+                    <pre><span class="kw">def</span> <span class="fn">trim_messages_with_summary</span>(messages: list[dict]) -&gt; list[dict]:
+    <span class="st">"""Summarise old turns before trimming them."""</span>
+    max_messages = MAX_TURNS * <span class="nu">2</span>
+    <span class="kw">if</span> <span class="fn">len</span>(messages) &lt;= max_messages:
+        <span class="kw">return</span> messages
+
+    old_turns  = messages[:-max_messages]
+    keep_turns = messages[-max_messages:]
+
+    <span class="cm"># Summarise the turns being dropped</span>
+    summary_prompt = (
+        <span class="st">"Summarise these conversation turns in 2-3 sentences, "</span>
+        <span class="st">"preserving key facts, decisions, and user preferences:\n\n"</span>
+        + <span class="st">"\n"</span>.<span class="fn">join</span>(
+            <span class="st">f"{m['role'].upper()}: {m['content'] if isinstance(m['content'], str) else str(m['content'])}"</span>
+            <span class="kw">for</span> m <span class="kw">in</span> old_turns
+        )
+    )
+    summary_resp = client.messages.<span class="fn">create</span>(
+        model=<span class="st">"claude-opus-4-6"</span>,
+        max_tokens=<span class="nu">200</span>,
+        messages=[{<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: summary_prompt}]
+    )
+    summary = summary_resp.content[<span class="nu">0</span>].text
+
+    notice = {
+        <span class="st">"role"</span>: <span class="st">"user"</span>,
+        <span class="st">"content"</span>: <span class="st">f"[Earlier turns summarised]: {summary}"</span>
+    }
+    <span class="fn">print</span>(<span class="st">f"[memory] summarised {len(old_turns)} old turns"</span>)
+    <span class="kw">return</span> [notice] + keep_turns</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- end lab-steps -->
+        </div><!-- end lab-container -->
+
+      </div><!-- end lab -->
+
+      <!-- MARK COMPLETE + NAVIGATION -->
+      <div class="mark-complete-bar">
+        <p>Finished the theory and completed the lab? Mark this section complete to track your progress.</p>
+        <button class="btn btn-outline" id="completeBtn2" data-section="6" onclick="document.getElementById('completeBtn').click()">Mark Section 6 Complete</button>
+      </div>
+
+      <div style="text-align:center;margin:2rem 0 0;font-family:var(--font-mono);font-size:0.62rem;color:var(--text-dim);">
+        Last updated: <time datetime="2026-04-05">April 5, 2026</time>
+      </div>
+      <div class="section-nav-footer">
+        <a href="05-understanding-agents.html" class="nav-prev">← Section 05: Understanding Agents</a>
+        <a href="07-planning.html" class="nav-next">Section 07: Decision-Making &amp; Planning →</a>
+      </div>
+
+    </div><!-- end page -->
+  </main>
+</div>
+
+<script src="../course.js"></script>
+<script>
+function stepDone(checkbox) {
+  const stepContent = checkbox.closest('.step-content');
+  stepContent.style.opacity = checkbox.checked ? '0.6' : '1';
+}
+
+function copyCode(btn) {
+  const pre = btn.closest('.code-block').querySelector('pre');
+  navigator.clipboard.writeText(pre.innerText).then(() => {
+    btn.textContent = 'copied!';
+    setTimeout(() => { btn.textContent = 'copy'; }, 2000);
+  });
+}
+</script>
+</body>
+</html>

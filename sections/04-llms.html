@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>04 — Large Language Models · Agentic AI Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="../style.css">
+<noscript><style>
+/* No-JS: make sidebar visible and stack layout vertically on mobile */
+@media (max-width: 768px) {
+  .sidebar { transform: none; position: relative; width: 100%; height: auto; }
+  .layout  { flex-direction: column; }
+}
+</style></noscript>
+<link rel="manifest" href="../manifest.json">
+</head>
+<body data-section="4">
+<noscript>
+  <div style="background:#1a1200;border-bottom:2px solid #c87d00;color:#f0c060;padding:0.75rem 1.5rem;font-family:monospace;font-size:0.82rem;text-align:center;position:relative;z-index:999;">
+    &#9888; JavaScript is disabled. Progress tracking, quizzes, and interactive features require JavaScript.
+  </div>
+</noscript>
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <a href="../index.html" class="sidebar-logo" style="text-decoration:none;display:block;">
+      <div class="logo-eyebrow">// AGENTIC AI COURSE</div>
+      <div class="logo-name">Learn <span>Agentic AI</span><br>2026 Edition</div>
+    </a>
+    <div class="sidebar-progress">
+      <div class="progress-row">
+        <span class="progress-label">OVERALL PROGRESS</span>
+        <span class="progress-count" id="progressCount">0 / 16</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+    <div class="sidebar-nav">
+      <div class="nav-group-label">Foundation</div>
+      <a href="01-intro.html" class="nav-item" data-section="1"><span class="nav-num">01</span> Intro to Agentic AI <span class="nav-check">✓</span></a>
+      <a href="02-ml-fundamentals.html" class="nav-item" data-section="2"><span class="nav-num">02</span> AI &amp; ML Fundamentals <span class="nav-check">✓</span></a>
+      <a href="03-frameworks.html" class="nav-item" data-section="3"><span class="nav-num">03</span> Programming &amp; Frameworks <span class="nav-check">✓</span></a>
+      <a href="04-llms.html" class="nav-item active" data-section="4"><span class="nav-num">04</span> Large Language Models <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">Core Agents</div>
+      <a href="05-understanding-agents.html" class="nav-item" data-section="5"><span class="nav-num">05</span> Understanding Agents <span class="nav-check">✓</span></a>
+      <a href="06-memory.html" class="nav-item" data-section="6"><span class="nav-num">06</span> Memory &amp; Knowledge <span class="nav-check">✓</span></a>
+      <a href="07-planning.html" class="nav-item" data-section="7"><span class="nav-num">07</span> Decision-Making &amp; Planning <span class="nav-check">✓</span></a>
+      <a href="08-prompting.html" class="nav-item" data-section="8"><span class="nav-num">08</span> Prompt Engineering <span class="nav-check">✓</span></a>
+      <a href="09-rl.html" class="nav-item" data-section="9"><span class="nav-num">09</span> RL &amp; Self-Improvement <span class="nav-check">✓</span></a>
+      <a href="10-rag.html" class="nav-item" data-section="10"><span class="nav-num">10</span> RAG <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">Production</div>
+      <a href="11-deployment.html" class="nav-item" data-section="11"><span class="nav-num">11</span> Deploying Agents <span class="nav-check">✓</span></a>
+      <a href="12-real-world.html" class="nav-item" data-section="12"><span class="nav-num">12</span> Real-World Applications <span class="nav-check">✓</span></a>
+      <div class="nav-group-label">2026 New</div>
+      <a href="13-mcp.html" class="nav-item" data-section="13"><span class="nav-num">13</span> MCP &amp; Protocols <span class="nav-check">✓</span></a>
+      <a href="14-multi-agent.html" class="nav-item" data-section="14"><span class="nav-num">14</span> Multi-Agent Orchestration <span class="nav-check">✓</span></a>
+      <a href="15-security.html" class="nav-item" data-section="15"><span class="nav-num">15</span> Agent Security <span class="nav-check">✓</span></a>
+      <a href="16-long-horizon.html" class="nav-item" data-section="16"><span class="nav-num">16</span> Long-Horizon Agents <span class="nav-check">✓</span></a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="topbar-breadcrumb">
+        <a href="../index.html" style="color:var(--text-muted);text-decoration:none;">Course</a>
+        &nbsp;/&nbsp; <span>04 · Large Language Models</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn btn-outline" id="completeBtn" data-section="4">Mark Complete</button>
+      </div>
+    </div>
+
+    <div class="page">
+
+      <!-- HERO -->
+      <div class="section-hero">
+        <div class="hero-meta">
+          <span class="hero-num">SECTION 04</span>
+          <span class="hero-tag tag-core">CORE</span>
+          <span class="hero-tag tag-core">FOUNDATION</span>
+        </div>
+        <h1 class="section-title">Large Language<br><span>Models</span></h1>
+        <p class="section-intro">
+          An agent is only as capable as its reasoning engine. Before you can build agents that plan, decide, and act reliably, you need a precise mental model of what an LLM actually is — how it processes text, what it can and cannot remember, how it is trained to follow instructions, and what controls you have at inference time. This section gives you that foundation without the math you don't need in practice.
+        </p>
+        <div class="hero-actions">
+          <a href="#theory" class="btn btn-accent">📖 Start Theory</a>
+          <a href="#quiz" class="btn btn-outline">📝 Take the Quiz</a>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- THEORY                                      -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div id="theory">
+
+        <!-- ── BLOCK 01: The Transformer Architecture ── -->
+        <div class="block">
+          <div class="block-label">01 · THE TRANSFORMER ARCHITECTURE</div>
+          <h2>Attention Is All You Need — and Why It Matters for Agents</h2>
+          <p>
+            Every major LLM in use today — from all frontier providers — is built on the <strong>Transformer architecture</strong>, introduced by Vaswani et al. in 2017. The core innovation was replacing recurrence (processing tokens one at a time, left to right) with <strong>self-attention</strong>: a mechanism that lets every token in a sequence directly attend to every other token simultaneously.
+          </p>
+          <p>
+            For agents, the practical implication is immediate: the model does not "read" your prompt sequentially the way a human does. It computes relationships across the <em>entire</em> input in parallel. This is why long, dense context — hundreds of messages, large tool outputs, multi-document inputs — can be processed in a single forward pass, and why the <strong>context window</strong> is the primary constraint on what an agent can "see" at once.
+          </p>
+
+          <!-- Diagram: Transformer input-output flow -->
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin:1.2rem 0;font-family:var(--font-mono);font-size:0.72rem;color:var(--text-muted);line-height:2;">
+            <div style="color:var(--text-dim);margin-bottom:0.5rem;">// TRANSFORMER FORWARD PASS (simplified)</div>
+            <div style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;">
+              <span style="background:var(--bg);border:1px solid var(--border);padding:0.3rem 0.7rem;border-radius:4px;">Raw Text</span>
+              <span style="color:var(--accent);">→</span>
+              <span style="background:var(--bg);border:1px solid var(--border);padding:0.3rem 0.7rem;border-radius:4px;">Tokenizer</span>
+              <span style="color:var(--accent);">→</span>
+              <span style="background:var(--bg);border:1px solid var(--border);padding:0.3rem 0.7rem;border-radius:4px;">Token IDs</span>
+              <span style="color:var(--accent);">→</span>
+              <span style="background:var(--bg);border:1px solid var(--border);padding:0.3rem 0.7rem;border-radius:4px;">Embeddings</span>
+              <span style="color:var(--accent);">→</span>
+              <span style="background:var(--bg);border:1px solid var(--border);padding:0.3rem 0.7rem;border-radius:4px;color:var(--green);">Self-Attention Layers</span>
+              <span style="color:var(--accent);">→</span>
+              <span style="background:var(--bg);border:1px solid var(--border);padding:0.3rem 0.7rem;border-radius:4px;">Next Token Probability</span>
+              <span style="color:var(--accent);">→</span>
+              <span style="background:var(--bg);border:1px solid var(--border);padding:0.3rem 0.7rem;border-radius:4px;color:var(--accent);">Sampled Token</span>
+            </div>
+          </div>
+
+          <div class="callout callout-info">
+            <strong>Key insight:</strong> An LLM is fundamentally a <em>next-token predictor</em>. It takes a sequence of tokens as input and outputs a probability distribution over all tokens in its vocabulary. The model then samples from that distribution to produce the next token. The entire agent loop — reasoning, tool calls, final answers — is this process repeated thousands of times.
+          </div>
+
+          <div class="concept-grid" style="grid-template-columns:repeat(3,1fr);">
+            <div class="concept-card">
+              <div class="concept-icon">🔗</div>
+              <div class="concept-name">Self-Attention</div>
+              <div class="concept-desc">Each token learns to "pay attention" to the most relevant other tokens in the sequence. This is how the model relates "it" back to "the bank" ten sentences earlier.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">FOUNDATIONAL (2017–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">📐</div>
+              <div class="concept-name">Embedding Space</div>
+              <div class="concept-desc">Tokens are mapped to high-dimensional vectors where semantic relationships become geometric ones — "king" minus "man" plus "woman" ≈ "queen".</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">FOUNDATIONAL (2017–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">⚡</div>
+              <div class="concept-name">Parallel Processing</div>
+              <div class="concept-desc">Unlike RNNs, Transformers process all tokens simultaneously during training (not autoregressive), making large-scale training on GPU clusters feasible.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">FOUNDATIONAL (2017–2026)</div>
+            </div>
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://arxiv.org/abs/1706.03762" target="_blank" style="color:var(--accent);text-decoration:none;">Vaswani et al. — Attention Is All You Need (arXiv:1706.03762, 2017)</a> &nbsp;·&nbsp; <a href="https://huggingface.co/docs/transformers/index" target="_blank" style="color:var(--accent);text-decoration:none;">Hugging Face — Transformers Library Docs</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 02: Tokenization ── -->
+        <div class="block">
+          <div class="block-label">02 · TOKENIZATION</div>
+          <h2>How Text Becomes Numbers — and Why It Matters</h2>
+          <p>
+            LLMs do not process characters or words directly. They process <strong>tokens</strong> — subword units produced by a learned tokenizer. The most common tokenization algorithm used by frontier models is <strong>Byte Pair Encoding (BPE)</strong>, which iteratively merges the most frequent character pairs until it reaches a fixed vocabulary size (typically 32k–100k tokens).
+          </p>
+          <p>
+            A practical rule of thumb: <strong>1 token ≈ 4 characters of English text</strong>, or roughly ¾ of a word. A 1,000-word document is approximately 1,333 tokens. Code and non-English text tokenize less efficiently — a single Unicode character may map to multiple tokens, which has real cost implications when agents process large outputs from code interpreters or foreign-language documents.
+          </p>
+
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem 1.5rem;margin:1.2rem 0;font-family:var(--font-mono);font-size:0.72rem;">
+            <div style="color:var(--text-dim);margin-bottom:0.8rem;">// HOW "agentic AI" TOKENIZES (approximate, BPE)</div>
+            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.8rem;">
+              <span style="background:var(--bg);border:1px solid var(--green);color:var(--green);padding:0.25rem 0.6rem;border-radius:4px;">agent</span>
+              <span style="background:var(--bg);border:1px solid var(--accent);color:var(--accent);padding:0.25rem 0.6rem;border-radius:4px;">ic</span>
+              <span style="background:var(--bg);border:1px solid var(--green);color:var(--green);padding:0.25rem 0.6rem;border-radius:4px;">&nbsp;AI</span>
+            </div>
+            <div style="color:var(--text-dim);">→ 3 tokens &nbsp;|&nbsp; "agentic" splits because it is a less common compound, while "agent" and "AI" are high-frequency tokens and stay whole.</div>
+          </div>
+
+          <div class="callout callout-warning">
+            <strong>Agent implication:</strong> When your agent receives a large JSON payload from a tool, every byte counts against the context window. A 50KB API response that looks manageable in your text editor might consume a disproportionate number of tokens if it contains dense code, URLs, or non-ASCII content. Always inspect token counts, not byte sizes, when designing tool output schemas.
+          </div>
+
+          <div class="concept-grid" style="grid-template-columns:repeat(2,1fr);">
+            <div class="concept-card">
+              <div class="concept-icon">🔤</div>
+              <div class="concept-name">Byte Pair Encoding (BPE)</div>
+              <div class="concept-desc">Starts from individual characters and iteratively merges the most frequent adjacent pairs. Produces a vocabulary that handles any text — including unseen words — by decomposing them into known subwords.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">WIDELY USED (2019–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">🌐</div>
+              <div class="concept-name">Multilingual Tokenization</div>
+              <div class="concept-desc">Non-English text is tokenized less efficiently. A sentence in Chinese, Arabic, or code-dense Python may use 2–5× more tokens per semantic unit than English prose. Relevant for agent cost estimation.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--orange);">COST RISK</div>
+            </div>
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://huggingface.co/docs/tokenizers/index" target="_blank" style="color:var(--accent);text-decoration:none;">Hugging Face — Tokenizers Docs</a> &nbsp;·&nbsp; <a href="https://platform.openai.com/tokenizer" target="_blank" style="color:var(--accent);text-decoration:none;">OpenAI — Tokenizer (interactive demo)</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/1508.07909" target="_blank" style="color:var(--accent);text-decoration:none;">Sennrich et al. — BPE for NMT (arXiv:1508.07909, 2016)</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 03: Context Windows ── -->
+        <div class="block">
+          <div class="block-label">03 · CONTEXT WINDOWS</div>
+          <h2>The Agent's Working Memory</h2>
+          <p>
+            The <strong>context window</strong> is the maximum number of tokens a model can process in a single forward pass — both the input (prompt + tool results + history) and the output (generated tokens) combined. It is the hard boundary of what the LLM can "see" and reason over at any moment.
+          </p>
+          <p>
+            For agents, the context window is their working memory. Everything the agent knows during a given turn — the system prompt, the conversation history, tool results, injected documents, and the current reasoning trace — must fit within it. When the context fills up, information must be compressed, summarized, or evicted, which introduces loss and error.
+          </p>
+
+          <!-- Context window tiers -->
+          <div class="concept-grid" style="grid-template-columns:repeat(3,1fr);">
+            <div class="concept-card">
+              <div class="concept-icon">📄</div>
+              <div class="concept-name">Short Context</div>
+              <div class="concept-desc">Up to ~32K tokens. Suitable for single-document Q&amp;A, short conversations, and lightweight tool-calling loops. Most cost-efficient for simple agents.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">SEE PROVIDER DOCS FOR CURRENT LIMITS</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">📚</div>
+              <div class="concept-name">Mid Context</div>
+              <div class="concept-desc">32K–200K tokens. Fits multiple long documents, extended agent trajectories, or code repositories. Enables agents that reason across a full codebase or research paper set.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">WIDELY USED (2024–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">🏛️</div>
+              <div class="concept-name">Long Context</div>
+              <div class="concept-desc">200K+ tokens. Designed for agents processing entire books, large codebases, or lengthy audit trails in a single pass. Performance on content near the middle of very long contexts varies by model.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--orange);">EMERGING (2024–2026)</div>
+            </div>
+          </div>
+
+          <div class="callout callout-warning" style="margin-top:1rem;">
+            <strong>"Lost in the Middle" problem:</strong> Research (Liu et al., 2023) showed that models perform worse on information placed in the middle of very long contexts compared to the beginning or end. When designing agent prompts, put the most critical instructions at the start and key retrieved context near the end. Do not bury important information in the middle of a long tool output.
+          </div>
+
+          <div class="callout callout-info" style="margin-top:1rem;">
+            <strong>Prompt caching (2024–2026):</strong> Anthropic and other providers now offer prompt caching — a feature where a stable prefix of a long prompt is cached server-side and not recomputed on every call. For agents with a large, static system prompt (tool schemas, instructions, background documents), caching can reduce token costs by 80–90% on repeated calls. See your provider's current docs for availability and pricing.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Prompt Caching Docs</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2307.03172" target="_blank" style="color:var(--accent);text-decoration:none;">Liu et al. — Lost in the Middle (arXiv:2307.03172, 2023)</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 04: Training Pipeline ── -->
+        <div class="block">
+          <div class="block-label">04 · THE TRAINING PIPELINE</div>
+          <h2>From Raw Text to Instruction-Following Agent Brain</h2>
+          <p>
+            Modern LLMs go through a multi-stage training pipeline. Understanding these stages tells you <em>why</em> the model behaves the way it does — and what you can and cannot change at inference time.
+          </p>
+
+          <!-- Training stages visual -->
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin:1.2rem 0;font-family:var(--font-mono);font-size:0.7rem;">
+            <div style="color:var(--text-dim);margin-bottom:1rem;">// THREE-STAGE TRAINING PIPELINE</div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;">
+              <div style="border:1px solid var(--border);border-radius:6px;padding:0.8rem;">
+                <div style="color:var(--accent);margin-bottom:0.4rem;">STAGE 1</div>
+                <div style="color:var(--text);font-weight:600;margin-bottom:0.4rem;">Pretraining</div>
+                <div style="color:var(--text-muted);font-size:0.63rem;line-height:1.6;">Predict the next token on trillions of tokens of web text, books, and code. The model learns language, facts, and reasoning patterns.</div>
+              </div>
+              <div style="border:1px solid var(--border);border-radius:6px;padding:0.8rem;">
+                <div style="color:var(--green);margin-bottom:0.4rem;">STAGE 2</div>
+                <div style="color:var(--text);font-weight:600;margin-bottom:0.4rem;">Supervised Fine-Tuning (SFT)</div>
+                <div style="color:var(--text-muted);font-size:0.63rem;line-height:1.6;">Train on curated human-written demonstrations of helpful, honest responses. The model learns the instruction-following format.</div>
+              </div>
+              <div style="border:1px solid var(--border);border-radius:6px;padding:0.8rem;">
+                <div style="color:var(--orange);margin-bottom:0.4rem;">STAGE 3</div>
+                <div style="color:var(--text);font-weight:600;margin-bottom:0.4rem;">RLHF / RLAIF / Constitutional AI</div>
+                <div style="color:var(--text-muted);font-size:0.63rem;line-height:1.6;">Train a reward model from human (RLHF) or AI (RLAIF/CAI) preferences, then use RL to maximize reward. Aligns the model toward helpfulness, honesty, and safety.</div>
+              </div>
+            </div>
+          </div>
+
+          <p>
+            <strong>Constitutional AI (CAI)</strong>, introduced by Anthropic in 2022, extends RLHF by replacing the human preference labeling step with a set of written principles — a "constitution" — that the model uses to critique and revise its own outputs. This makes the alignment process more scalable and transparent. Anthropic applies CAI to train Claude models.
+          </p>
+
+          <div class="callout callout-info">
+            <strong>What training fixes vs. what prompting fixes:</strong> Training determines the model's values, world knowledge, and base capabilities — you cannot change these at runtime. Prompting (including system prompts) determines the model's <em>behavior in context</em>: its role, output format, what tools it should use, what constraints to apply. Agent builders work entirely in the prompting layer. Training is the model provider's domain.
+          </div>
+
+          <div class="concept-grid" style="grid-template-columns:repeat(2,1fr);">
+            <div class="concept-card">
+              <div class="concept-icon">🧠</div>
+              <div class="concept-name">RLHF</div>
+              <div class="concept-desc">Reinforcement Learning from Human Feedback. Humans compare model outputs and label which is better. A reward model is trained on those preferences, then PPO is used to tune the LLM toward higher reward.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">WIDELY USED (2022–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div class="concept-icon">📜</div>
+              <div class="concept-name">Constitutional AI (CAI)</div>
+              <div class="concept-desc">Anthropic's approach: a written set of principles guides the model to self-critique and self-revise. AI-generated feedback replaces some human labeling, improving scalability and consistency.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--green);">WIDELY USED (2023–2026)</div>
+            </div>
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://arxiv.org/abs/2212.08073" target="_blank" style="color:var(--accent);text-decoration:none;">Bai et al. — Constitutional AI (arXiv:2212.08073, Anthropic 2022)</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2203.02155" target="_blank" style="color:var(--accent);text-decoration:none;">Ouyang et al. — RLHF / InstructGPT (arXiv:2203.02155, 2022)</a> &nbsp;·&nbsp; <a href="https://docs.anthropic.com/en/docs/about-claude/models" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Model Overview</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 05: Inference Controls ── -->
+        <div class="block">
+          <div class="block-label">05 · INFERENCE CONTROLS</div>
+          <h2>What You Control at Runtime</h2>
+          <p>
+            When you call an LLM API, you have a set of parameters that control how the model generates its output. These are the levers available to agent builders. Understanding each one prevents common mistakes — like setting temperature to 0 for creative tasks or leaving top-p at default when you need deterministic tool calls.
+          </p>
+
+          <!-- Parameters breakdown -->
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin:1.2rem 0;">
+            <table style="width:100%;border-collapse:collapse;font-size:0.8rem;">
+              <thead>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <th style="text-align:left;padding:0.5rem 0.8rem;font-family:var(--font-mono);font-size:0.65rem;color:var(--text-dim);">PARAMETER</th>
+                  <th style="text-align:left;padding:0.5rem 0.8rem;font-family:var(--font-mono);font-size:0.65rem;color:var(--text-dim);">WHAT IT DOES</th>
+                  <th style="text-align:left;padding:0.5rem 0.8rem;font-family:var(--font-mono);font-size:0.65rem;color:var(--text-dim);">RECOMMENDED FOR AGENTS</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:0.6rem 0.8rem;font-family:var(--font-mono);color:var(--accent);">temperature</td>
+                  <td style="padding:0.6rem 0.8rem;color:var(--text-muted);">Controls randomness. 0 = always pick the most likely token. 1 = sample proportionally. Higher values increase creativity but reduce reliability.</td>
+                  <td style="padding:0.6rem 0.8rem;color:var(--green);">0–0.3 for tool-calling and structured output; 0.7–1 for creative generation tasks</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:0.6rem 0.8rem;font-family:var(--font-mono);color:var(--accent);">max_tokens</td>
+                  <td style="padding:0.6rem 0.8rem;color:var(--text-muted);">Hard cap on the number of tokens the model will generate in its response. Does not affect input length.</td>
+                  <td style="padding:0.6rem 0.8rem;color:var(--green);">Always set explicitly. Prevents runaway generation and controls cost.</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:0.6rem 0.8rem;font-family:var(--font-mono);color:var(--accent);">top_p</td>
+                  <td style="padding:0.6rem 0.8rem;color:var(--text-muted);">Nucleus sampling: restrict sampling to the smallest set of tokens whose cumulative probability ≥ p. Lower values = more conservative output.</td>
+                  <td style="padding:0.6rem 0.8rem;color:var(--text-muted);">Usually leave at default (0.95–1.0). Adjust only if tuning creative diversity.</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:0.6rem 0.8rem;font-family:var(--font-mono);color:var(--accent);">stop sequences</td>
+                  <td style="padding:0.6rem 0.8rem;color:var(--text-muted);">One or more strings that, when generated, cause the model to stop immediately. The stop string itself is not included in the output.</td>
+                  <td style="padding:0.6rem 0.8rem;color:var(--green);">Use to enforce boundaries between reasoning and output blocks in custom agent formats.</td>
+                </tr>
+                <tr>
+                  <td style="padding:0.6rem 0.8rem;font-family:var(--font-mono);color:var(--accent);">tool / function schemas</td>
+                  <td style="padding:0.6rem 0.8rem;color:var(--text-muted);">Structured JSON definitions that constrain the model to produce valid tool calls. The model cannot call tools not defined in the schema.</td>
+                  <td style="padding:0.6rem 0.8rem;color:var(--green);">Always use strict schemas. They prevent tool hallucination and enable reliable agent loops.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <strong>Structured outputs</strong> (also called "constrained generation" or "JSON mode") force the model to produce output that conforms to a schema at the token level — invalid tokens are masked out before sampling. This is how agent frameworks guarantee that tool call arguments are valid JSON even when temperature is non-zero. Anthropic's tool use API enforces this automatically when tools are defined.
+          </p>
+
+          <div class="callout callout-warning">
+            <strong>Temperature = 0 is not truly deterministic.</strong> Most providers sample from the GPU in a way that can produce slight variation even at temperature 0. For reproducible outputs in tests, use a fixed random seed if the API supports it, and validate outputs programmatically rather than assuming exact string matches.
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://docs.anthropic.com/en/api/messages" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Messages API Reference</a> &nbsp;·&nbsp; <a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Tool Use &amp; Structured Outputs</a>
+          </div>
+        </div>
+
+        <!-- ── BLOCK 06: LLM Limitations Relevant to Agents ── -->
+        <div class="block">
+          <div class="block-label">06 · WHAT LLMs CANNOT DO (AND WHY IT MATTERS FOR AGENTS)</div>
+          <h2>Hard Limits You Must Design Around</h2>
+          <p>
+            LLMs are powerful reasoning engines but have well-documented limitations. Agent builders who ignore these ship systems that fail in predictable, embarrassing ways. Design your agents assuming these limitations are permanent — because as of 2026, none have been fully solved.
+          </p>
+
+          <div class="concept-grid" style="grid-template-columns:repeat(2,1fr);">
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.6rem;">LIMIT 01</div>
+              <div class="concept-name">No Persistent State</div>
+              <div class="concept-desc">An LLM has no memory between API calls. Every call is stateless. The illusion of memory in agents is entirely created by appending prior messages to the context. This is your responsibility as the builder.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--orange);">STRUCTURAL LIMIT</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.6rem;">LIMIT 02</div>
+              <div class="concept-name">Knowledge Cutoff</div>
+              <div class="concept-desc">The model's factual knowledge is frozen at its training cutoff. It cannot know about events after that date unless you provide them in context via tools (web search, retrieval).</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--orange);">STRUCTURAL LIMIT</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.6rem;">LIMIT 03</div>
+              <div class="concept-name">Hallucination</div>
+              <div class="concept-desc">The model generates plausible-sounding but incorrect content — fabricated citations, invented function names, made-up statistics. In an agent loop, one hallucinated tool call can corrupt every downstream step.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--red);">ACTIVE RISK (2025–2026)</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.6rem;">LIMIT 04</div>
+              <div class="concept-name">Arithmetic &amp; Symbolic Reasoning</div>
+              <div class="concept-desc">LLMs are unreliable at multi-step arithmetic, precise counting, and formal symbolic reasoning. Mitigate by routing these tasks to a code execution tool rather than relying on the model's reasoning alone.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--orange);">DESIGN CONSTRAINT</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.6rem;">LIMIT 05</div>
+              <div class="concept-name">No Real-World Awareness</div>
+              <div class="concept-desc">The model cannot browse the internet, check the time, call APIs, or read files unless you explicitly provide those tools. It operates entirely within the context window you construct.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--orange);">STRUCTURAL LIMIT</div>
+            </div>
+            <div class="concept-card">
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--red);margin-bottom:0.6rem;">LIMIT 06</div>
+              <div class="concept-name">Context Window is Finite</div>
+              <div class="concept-desc">No matter how large the context window, it is bounded. Long-running agents accumulate history, tool outputs, and reasoning traces that eventually require compression or truncation — with information loss.</div>
+              <div style="margin-top:0.6rem;font-family:var(--font-mono);font-size:0.58rem;color:var(--orange);">DESIGN CONSTRAINT</div>
+            </div>
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:1rem;padding:0.5rem 0;border-top:1px solid var(--border);">
+            📎 Sources: <a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);text-decoration:none;">Anthropic — Tool Use Docs</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2307.03172" target="_blank" style="color:var(--accent);text-decoration:none;">Liu et al. — Lost in the Middle (arXiv:2307.03172, 2023)</a>
+          </div>
+        </div>
+
+        <!-- ── SOURCES TABLE ── -->
+        <div class="block">
+          <div class="block-label">SOURCES USED IN THIS SECTION</div>
+          <h2>Verified References</h2>
+          <p>Every claim in this section is grounded in one of these sources. No content is generated from model training data alone.</p>
+
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Source</th>
+                <th>Type</th>
+                <th>Covers</th>
+                <th>Recency</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://arxiv.org/abs/1706.03762" target="_blank" style="color:var(--accent);">Vaswani et al. — Attention Is All You Need</a></td>
+                <td>Academic paper</td>
+                <td>Transformer architecture, self-attention, positional encoding</td>
+                <td>2017 (foundational)</td>
+              </tr>
+              <tr>
+                <td><a href="https://arxiv.org/abs/1508.07909" target="_blank" style="color:var(--accent);">Sennrich et al. — BPE for NMT</a></td>
+                <td>Academic paper</td>
+                <td>Byte Pair Encoding tokenization algorithm</td>
+                <td>2016 (foundational)</td>
+              </tr>
+              <tr>
+                <td><a href="https://arxiv.org/abs/2203.02155" target="_blank" style="color:var(--accent);">Ouyang et al. — InstructGPT / RLHF</a></td>
+                <td>Academic paper</td>
+                <td>Supervised fine-tuning, RLHF pipeline, reward model training</td>
+                <td>2022</td>
+              </tr>
+              <tr>
+                <td><a href="https://arxiv.org/abs/2212.08073" target="_blank" style="color:var(--accent);">Bai et al. — Constitutional AI</a></td>
+                <td>Academic paper (Anthropic)</td>
+                <td>Constitutional AI, RLAIF, self-critique, harmlessness training</td>
+                <td>2022</td>
+              </tr>
+              <tr>
+                <td><a href="https://arxiv.org/abs/2307.03172" target="_blank" style="color:var(--accent);">Liu et al. — Lost in the Middle</a></td>
+                <td>Academic paper</td>
+                <td>Long-context performance, positional bias, context window design</td>
+                <td>2023</td>
+              </tr>
+              <tr>
+                <td><a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" style="color:var(--accent);">Anthropic — Tool Use &amp; Agents Docs</a></td>
+                <td>Official docs</td>
+                <td>Structured outputs, tool schemas, inference controls, hallucination risks</td>
+                <td>Maintained 2024–2026</td>
+              </tr>
+              <tr>
+                <td><a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching" target="_blank" style="color:var(--accent);">Anthropic — Prompt Caching Docs</a></td>
+                <td>Official docs</td>
+                <td>Prompt caching, cost reduction for long static prompts</td>
+                <td>Maintained 2024–2026</td>
+              </tr>
+              <tr>
+                <td><a href="https://huggingface.co/docs/tokenizers/index" target="_blank" style="color:var(--accent);">Hugging Face — Tokenizers Docs</a></td>
+                <td>Official docs</td>
+                <td>BPE, WordPiece, tokenizer implementation details</td>
+                <td>Maintained 2024–2026</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div><!-- end theory -->
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- QUIZ                                        -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div id="quiz" class="block">
+        <div class="block-label">KNOWLEDGE CHECK</div>
+        <h2>Section 04 Quiz</h2>
+        <p style="margin-bottom:1.5rem;">8 questions covering all theory blocks. Select one answer per question, then submit.</p>
+
+        <div class="lab-container">
+          <div class="lab-header">
+            <div class="lab-icon">📝</div>
+            <div class="lab-title-wrap">
+              <div class="lab-title">Section 04 — Large Language Models</div>
+              <div class="lab-subtitle">8 QUESTIONS · MULTIPLE CHOICE · UNLIMITED RETRIES</div>
+            </div>
+          </div>
+          <div style="padding:1.5rem 2rem;">
+
+            <!-- Q1 -->
+            <div class="quiz-q" id="q1">
+              <div class="quiz-num">Question 1 of 8</div>
+              <div class="quiz-text">What was the core architectural innovation introduced in the "Attention Is All You Need" paper (Vaswani et al., 2017)?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q1" value="a"> <span>Replacing gradient descent with evolutionary algorithms</span></label>
+                <label class="quiz-option"><input type="radio" name="q1" value="b"> <span>Replacing recurrent processing with self-attention, allowing all tokens to attend to each other in parallel</span></label>
+                <label class="quiz-option"><input type="radio" name="q1" value="c"> <span>Introducing the concept of word embeddings</span></label>
+                <label class="quiz-option"><input type="radio" name="q1" value="d"> <span>Replacing backpropagation with contrastive learning</span></label>
+              </div>
+              <div class="quiz-feedback" id="f1"></div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="quiz-q" id="q2">
+              <div class="quiz-num">Question 2 of 8</div>
+              <div class="quiz-text">Using a rough rule of thumb, how many tokens does a 1,000-word English document contain?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q2" value="a"> <span>Approximately 200 tokens</span></label>
+                <label class="quiz-option"><input type="radio" name="q2" value="b"> <span>Approximately 1,000 tokens (1 word = 1 token)</span></label>
+                <label class="quiz-option"><input type="radio" name="q2" value="c"> <span>Approximately 1,333 tokens (1 token ≈ ¾ of a word)</span></label>
+                <label class="quiz-option"><input type="radio" name="q2" value="d"> <span>Approximately 4,000 tokens (1 token = 1 character)</span></label>
+              </div>
+              <div class="quiz-feedback" id="f2"></div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="quiz-q" id="q3">
+              <div class="quiz-num">Question 3 of 8</div>
+              <div class="quiz-text">Your agent's system prompt is 80,000 tokens and rarely changes between calls. Which feature should you enable to reduce token costs significantly?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q3" value="a"> <span>Increase the temperature to compress the output</span></label>
+                <label class="quiz-option"><input type="radio" name="q3" value="b"> <span>Prompt caching — cache the stable prefix so it is not recomputed each call</span></label>
+                <label class="quiz-option"><input type="radio" name="q3" value="c"> <span>Switch to a smaller context window model</span></label>
+                <label class="quiz-option"><input type="radio" name="q3" value="d"> <span>Enable streaming to reduce latency</span></label>
+              </div>
+              <div class="quiz-feedback" id="f3"></div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="quiz-q" id="q4">
+              <div class="quiz-num">Question 4 of 8</div>
+              <div class="quiz-text">The "Lost in the Middle" paper (Liu et al., 2023) found that model performance degrades for information placed where in a long context?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q4" value="a"> <span>At the very beginning of the context</span></label>
+                <label class="quiz-option"><input type="radio" name="q4" value="b"> <span>At the very end of the context</span></label>
+                <label class="quiz-option"><input type="radio" name="q4" value="c"> <span>In the middle of the context, relative to beginning and end</span></label>
+                <label class="quiz-option"><input type="radio" name="q4" value="d"> <span>Performance is uniform regardless of position</span></label>
+              </div>
+              <div class="quiz-feedback" id="f4"></div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="quiz-q" id="q5">
+              <div class="quiz-num">Question 5 of 8</div>
+              <div class="quiz-text">Which training stage is responsible for teaching an LLM to follow instructions and produce helpful responses (as opposed to just predicting text)?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q5" value="a"> <span>Pretraining on web-scale text corpora</span></label>
+                <label class="quiz-option"><input type="radio" name="q5" value="b"> <span>Supervised Fine-Tuning (SFT) on curated instruction-response pairs</span></label>
+                <label class="quiz-option"><input type="radio" name="q5" value="c"> <span>Quantization during deployment</span></label>
+                <label class="quiz-option"><input type="radio" name="q5" value="d"> <span>Setting temperature = 0 at inference time</span></label>
+              </div>
+              <div class="quiz-feedback" id="f5"></div>
+            </div>
+
+            <!-- Q6 -->
+            <div class="quiz-q" id="q6">
+              <div class="quiz-num">Question 6 of 8</div>
+              <div class="quiz-text">Constitutional AI (CAI), introduced by Anthropic, differs from standard RLHF primarily because:</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q6" value="a"> <span>It uses a larger dataset of human preference labels than RLHF</span></label>
+                <label class="quiz-option"><input type="radio" name="q6" value="b"> <span>It replaces the human preference labeling step with AI-generated feedback guided by a written set of principles</span></label>
+                <label class="quiz-option"><input type="radio" name="q6" value="c"> <span>It skips the SFT stage entirely</span></label>
+                <label class="quiz-option"><input type="radio" name="q6" value="d"> <span>It trains on code rather than natural language</span></label>
+              </div>
+              <div class="quiz-feedback" id="f6"></div>
+            </div>
+
+            <!-- Q7 -->
+            <div class="quiz-q" id="q7">
+              <div class="quiz-num">Question 7 of 8</div>
+              <div class="quiz-text">You are building a tool-calling agent that needs to produce a valid JSON tool call every time, even with slight temperature. What mechanism prevents the model from generating malformed JSON?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q7" value="a"> <span>Setting temperature = 0 guarantees valid JSON</span></label>
+                <label class="quiz-option"><input type="radio" name="q7" value="b"> <span>Structured outputs / constrained generation — invalid tokens are masked before sampling, enforcing schema compliance at the token level</span></label>
+                <label class="quiz-option"><input type="radio" name="q7" value="c"> <span>Increasing max_tokens ensures the model finishes the JSON object</span></label>
+                <label class="quiz-option"><input type="radio" name="q7" value="d"> <span>Using a stop sequence at the end of the JSON</span></label>
+              </div>
+              <div class="quiz-feedback" id="f7"></div>
+            </div>
+
+            <!-- Q8 -->
+            <div class="quiz-q" id="q8">
+              <div class="quiz-num">Question 8 of 8</div>
+              <div class="quiz-text">An agent needs to compute the compound interest on a loan across 360 months. What is the right approach given LLM limitations?</div>
+              <div class="quiz-options">
+                <label class="quiz-option"><input type="radio" name="q8" value="a"> <span>Ask the LLM to reason through it step-by-step using chain-of-thought</span></label>
+                <label class="quiz-option"><input type="radio" name="q8" value="b"> <span>Use a larger model with a bigger context window for better arithmetic</span></label>
+                <label class="quiz-option"><input type="radio" name="q8" value="c"> <span>Route the calculation to a code execution tool (Python) and have the LLM interpret the result</span></label>
+                <label class="quiz-option"><input type="radio" name="q8" value="d"> <span>Set temperature = 0 to ensure deterministic arithmetic</span></label>
+              </div>
+              <div class="quiz-feedback" id="f8"></div>
+            </div>
+
+            <div style="margin-top:2rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
+              <button class="btn btn-accent" onclick="submitQuiz()">Submit Answers</button>
+              <button class="btn btn-outline" onclick="resetQuiz()" style="display:none;" id="retryBtn">Try Again</button>
+              <div id="quiz-score" style="font-family:var(--font-mono);font-size:0.85rem;color:var(--text-muted);"></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end quiz -->
+
+      <!-- MARK COMPLETE + NAVIGATION -->
+      <div class="mark-complete-bar">
+        <p>Finished the theory and passed the quiz? Mark this section complete to track your progress.</p>
+        <button class="btn btn-outline" id="completeBtn2" data-section="4" onclick="document.getElementById('completeBtn').click()">Mark Section 4 Complete</button>
+      </div>
+
+      <div style="text-align:center;margin:2rem 0 0;font-family:var(--font-mono);font-size:0.62rem;color:var(--text-dim);">
+        Last updated: <time datetime="2026-04-05">April 5, 2026</time>
+      </div>
+      <div class="section-nav-footer">
+        <a href="03-frameworks.html" class="nav-prev">← Section 03: Programming &amp; Frameworks</a>
+        <a href="05-understanding-agents.html" class="nav-next">Section 05: Understanding Agents →</a>
+      </div>
+
+    </div><!-- end page -->
+  </main>
+</div>
+
+<script src="../course.js"></script>
+<script>
+const QUIZ_ANSWERS = { q1:'b', q2:'c', q3:'b', q4:'c', q5:'b', q6:'b', q7:'b', q8:'c' };
+
+const QUIZ_EXPLANATIONS = {
+  q1: 'Correct. The Transformer replaced recurrent (sequential) processing with self-attention: a mechanism where every token attends to every other token simultaneously. This enabled massively parallel training and is the foundation of all modern LLMs.',
+  q2: 'Correct. The rule of thumb is 1 token ≈ 4 characters ≈ ¾ of a word. 1,000 words × (4/3) ≈ 1,333 tokens. Useful for estimating API costs and context window usage.',
+  q3: 'Correct. Prompt caching allows the provider to cache a stable prefix (like a large system prompt) server-side so it is not reprocessed on every call. Anthropic documents this as reducing cost by up to 90% for cached content.',
+  q4: 'Correct. Liu et al. (2023) found that models are better at recalling information placed at the beginning or end of the context window. Information buried in the middle is retrieved less reliably — the "Lost in the Middle" effect.',
+  q5: 'Correct. Pretraining teaches the model to predict text. Supervised Fine-Tuning (SFT) is the stage where curated instruction-response pairs teach the model to follow instructions and adopt a helpful assistant format.',
+  q6: 'Correct. Constitutional AI (Bai et al., 2022) uses a written set of principles — a "constitution" — to generate AI feedback on model outputs, replacing much of the expensive human preference labeling in standard RLHF.',
+  q7: 'Correct. Structured outputs (constrained generation) mask invalid tokens at the sampling step, forcing the model to produce output that conforms to the schema regardless of temperature. This is how the Anthropic tool use API prevents malformed tool calls.',
+  q8: 'Correct. LLMs are unreliable at multi-step arithmetic. The right design is to route computation to a code execution tool (like a Python interpreter), have the code compute the exact answer, and have the LLM interpret and present the result.'
+};
+
+const QUIZ_WRONG_HINTS = {
+  q1: 'The Transformer paper was about replacing a specific prior architectural pattern that processed tokens one at a time. What did self-attention enable that sequential processing could not?',
+  q2: 'Think about it in terms of characters: 1 token ≈ 4 characters. A 1,000-word document in English averages about 5 characters per word, so roughly 5,000 characters — how many tokens is that?',
+  q3: 'The system prompt is large and static. Which feature is specifically designed to avoid reprocessing stable content on every API call?',
+  q4: 'The paper is literally titled "Lost in the Middle." Think about where in a long document it is hardest for a human skimming to retain information — a similar positional bias exists in LLMs.',
+  q5: 'Pretraining gives the model language ability and world knowledge. But it does not teach the model to respond helpfully to instructions — that requires a separate stage on instruction-response data. Which stage is that?',
+  q6: 'Constitutional AI is Anthropic\'s approach to alignment. The key difference from standard RLHF is about where the feedback signal comes from. In RLHF it comes from humans — what does CAI replace that with?',
+  q7: 'Temperature = 0 reduces randomness but does not enforce schema validity at the token level. What mechanism actually prevents invalid tokens from being sampled in the first place?',
+  q8: 'LLMs are unreliable at precise arithmetic, especially over many iterations. Which type of tool is purpose-built for exact numerical computation and does not hallucinate?'
+};
+
+function submitQuiz() {
+  let score = 0;
+  let allAnswered = true;
+
+  for (let i = 1; i <= 8; i++) {
+    const key = 'q' + i;
+    const selected = document.querySelector(`input[name="${key}"]:checked`);
+    const feedback = document.getElementById('f' + i);
+    const qEl = document.getElementById(key);
+
+    if (!selected) { allAnswered = false; continue; }
+
+    const options = qEl.querySelectorAll('.quiz-option');
+    options.forEach(opt => {
+      opt.style.pointerEvents = 'none';
+      const inp = opt.querySelector('input');
+      if (inp.value === QUIZ_ANSWERS[key]) {
+        opt.style.color = 'var(--green)';
+        opt.style.borderColor = 'var(--green)';
+      }
+    });
+
+    if (selected.value === QUIZ_ANSWERS[key]) {
+      score++;
+      feedback.innerHTML = '<span style="color:var(--green);">✓ ' + QUIZ_EXPLANATIONS[key] + '</span>';
+    } else {
+      feedback.innerHTML = '<span style="color:var(--red);">✗ Not quite. ' + QUIZ_WRONG_HINTS[key] + '</span>';
+      selected.closest('.quiz-option').style.color = 'var(--red)';
+    }
+    feedback.style.display = 'block';
+  }
+
+  if (!allAnswered) {
+    document.getElementById('quiz-score').textContent = 'Please answer all questions before submitting.';
+    return;
+  }
+
+  const pct = Math.round((score / 8) * 100);
+  let msg = '';
+  if (score === 8) msg = '— Perfect score! You are ready for Section 5.';
+  else if (score >= 6) msg = '— Good. Review the ones you missed before moving on.';
+  else msg = '— Re-read the theory sections you struggled with, then retry.';
+
+  document.getElementById('quiz-score').innerHTML =
+    '<strong style="color:var(--accent);">' + score + '/8 (' + pct + '%)</strong> ' + msg;
+  document.getElementById('retryBtn').style.display = 'inline-flex';
+  document.querySelector('[onclick="submitQuiz()"]').style.display = 'none';
+}
+
+function resetQuiz() {
+  for (let i = 1; i <= 8; i++) {
+    const key = 'q' + i;
+    document.querySelectorAll(`input[name="${key}"]`).forEach(inp => { inp.checked = false; });
+    const feedback = document.getElementById('f' + i);
+    feedback.innerHTML = '';
+    feedback.style.display = 'none';
+    const qEl = document.getElementById(key);
+    qEl.querySelectorAll('.quiz-option').forEach(opt => {
+      opt.style.color = '';
+      opt.style.borderColor = '';
+      opt.style.pointerEvents = '';
+    });
+  }
+  document.getElementById('quiz-score').innerHTML = '';
+  document.getElementById('retryBtn').style.display = 'none';
+  document.querySelector('[onclick="submitQuiz()"]').style.display = 'inline-flex';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "Agentic AI Course 2026",
+  "short_name": "Agentic AI",
+  "description": "A complete self-paced course on Agentic AI: from ML fundamentals to multi-agent systems, RAG, MCP, and production deployment. 16 sections with hands-on labs and quizzes.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#060609",
+  "theme_color": "#060609",
+  "lang": "en",
+  "orientation": "any",
+  "categories": ["education"],
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://2bnr.github.io/agentic-ai-course/sitemap.xml
