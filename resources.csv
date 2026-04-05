@@ -11,3 +11,76 @@ section,section_title,type,title,author,url,description
 03,Programming & Frameworks,DOCS,Tool Use Documentation,Anthropic,https://docs.anthropic.com/en/docs/build-with-claude/tool-use,Complete guide to defining tools, handling tool_use responses, and sending tool_result messages back.
 03,Programming & Frameworks,DOCS,Anthropic Python SDK,Anthropic,https://github.com/anthropics/anthropic-sdk-python,Official Python SDK — client setup, async support, and code examples for all API features.
 03,Programming & Frameworks,DOCS,LangGraph Documentation,LangChain AI,https://langchain-ai.github.io/langgraph/,Graph-based agent framework — state persistence, human-in-the-loop interrupts, and resumable workflows.
+04,Large Language Models,PAPER,Attention Is All You Need,Vaswani et al.,https://arxiv.org/abs/1706.03762,Transformer architecture, self-attention, positional encoding.
+04,Large Language Models,PAPER,Neural Machine Translation of Rare Words with Subword Units,Sennrich et al.,https://arxiv.org/abs/1508.07909,Byte Pair Encoding tokenization algorithm.
+04,Large Language Models,PAPER,Training language models to follow instructions with human feedback,Ouyang et al.,https://arxiv.org/abs/2203.02155,Supervised fine-tuning, RLHF pipeline, reward model training.
+04,Large Language Models,PAPER,Constitutional AI: Harmlessness from AI Feedback,Bai et al.,https://arxiv.org/abs/2212.08073,Constitutional AI, RLAIF, self-critique, harmlessness training.
+04,Large Language Models,PAPER,Lost in the Middle: How Language Models Use Long Contexts,Liu et al.,https://arxiv.org/abs/2307.03172,Long-context performance, positional bias, context window design.
+04,Large Language Models,DOCS,Anthropic Tool Use & Agents Docs,Anthropic,https://docs.anthropic.com/en/docs/build-with-claude/tool-use,Structured outputs, tool schemas, inference controls, hallucination risks.
+04,Large Language Models,DOCS,Anthropic Prompt Caching Docs,Anthropic,https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching,Prompt caching, cost reduction for long static prompts.
+04,Large Language Models,DOCS,Hugging Face Tokenizers Docs,Hugging Face,https://huggingface.co/docs/tokenizers/index,BPE, WordPiece, tokenizer implementation details.
+05,Understanding Agents,PAPER,ReAct: Synergizing Reasoning and Acting in Language Models,Yao et al.,https://arxiv.org/abs/2210.03629,ReAct pattern, Thought/Action/Observation trace, ICLR 2023.
+05,Understanding Agents,PAPER,Reflexion: Language Agents with Verbal Reinforcement Learning,Shinn et al.,https://arxiv.org/abs/2303.11366,Reflection pattern, self-critique, verbal reinforcement.
+05,Understanding Agents,BLOG,LLM Powered Autonomous Agents,Lilian Weng,https://lilianweng.github.io/posts/2023-06-23-agent/,Architecture patterns, perception-action, agent taxonomy.
+05,Understanding Agents,DOCS,Anthropic Tool Use & Agent Docs,Anthropic,https://docs.anthropic.com/en/docs/build-with-claude/tool-use,Tool loop mechanics, stop_reason, agent design guidance.
+05,Understanding Agents,DOCS,LangGraph Documentation,LangGraph,https://langchain-ai.github.io/langgraph/,Graph-based agent architecture, state management.
+06,Memory & Knowledge,BLOG,LLM Powered Autonomous Agents,Lilian Weng,https://lilianweng.github.io/posts/2023-06-23-agent/,Four memory types taxonomy, in-context vs external memory.
+06,Memory & Knowledge,PAPER,Generative Agents: Interactive Simulacra of Human Behavior,Park et al.,https://arxiv.org/abs/2304.03442,Episodic memory, recency/importance/relevance scoring, memory streams.
+06,Memory & Knowledge,DOCS,Anthropic Prompt Caching,Anthropic,https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching,Caching static prefixes, cost reduction for long system prompts.
+06,Memory & Knowledge,DOCS,ChromaDB Official Docs,ChromaDB,https://docs.trychroma.com,Local vector store, collections, add/query API.
+06,Memory & Knowledge,DOCS,Anthropic Embeddings Guide,Anthropic,https://docs.anthropic.com/en/docs/build-with-claude/embeddings,Embedding models, similarity search, practical recommendations.
+06,Memory & Knowledge,DOCS,LangChain Vector Store Concepts,LangChain,https://python.langchain.com/docs/concepts/vectorstores/,Chunking strategies, ANN search, vector store integrations.
+07,Decision-Making & Planning,PAPER,Chain-of-Thought Prompting Elicits Reasoning in Large Language Models,Wei et al.,https://arxiv.org/abs/2201.11903,Chain-of-thought reasoning, step-by-step decomposition, emergent planning.
+07,Decision-Making & Planning,PAPER,Plan-and-Solve Prompting,Wang et al.,https://arxiv.org/abs/2305.04091,Plan-and-execute architecture, planner/executor split, reasoning benchmarks.
+07,Decision-Making & Planning,PAPER,Tree of Thoughts: Deliberate Problem Solving with Large Language Models,Yao et al.,https://arxiv.org/abs/2305.10601,ToT framework, branching search over reasoning paths, evaluation heuristics.
+07,Decision-Making & Planning,PAPER,Reflexion: Language Agents with Verbal Reinforcement Learning,Shinn et al.,https://arxiv.org/abs/2303.11366,Failure recovery, verbal reinforcement, replanning from failure.
+07,Decision-Making & Planning,DOCS,Anthropic Tool Use & Agentic Guidance,Anthropic,https://docs.anthropic.com/en/docs/build-with-claude/tool-use,Minimal footprint, irreversible actions, human-in-the-loop checkpoints.
+07,Decision-Making & Planning,BLOG,LLM Powered Autonomous Agents,Lilian Weng,https://lilianweng.github.io/posts/2023-06-23-agent/,Planning survey, task decomposition, decision-making under uncertainty.
+08,Prompt Engineering,DOCS,Anthropic Prompt Engineering Overview,Anthropic,https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview,System prompt structure, positive vs. negative instructions, output formatting.
+08,Prompt Engineering,DOCS,Anthropic System Prompts Guide,Anthropic,https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/system-prompts,Operator/user trust hierarchy, system prompt design guidance.
+08,Prompt Engineering,PAPER,Language Models are Few-Shot Learners,Brown et al.,https://arxiv.org/abs/2005.14165,Few-shot in-context learning, zero/one/few-shot comparison.
+08,Prompt Engineering,PAPER,Chain-of-Thought Prompting Elicits Reasoning in Large Language Models,Wei et al.,https://arxiv.org/abs/2201.11903,CoT few-shot examples, step-by-step reasoning.
+08,Prompt Engineering,PAPER,The Prompt Report: A Systematic Survey of Prompting Techniques,Schulhoff et al.,https://arxiv.org/abs/2406.06608,Comprehensive taxonomy of 58+ prompting techniques, prompt injection taxonomy.
+08,Prompt Engineering,BLOG,OWASP Top 10 for LLM Applications,OWASP,https://owasp.org/www-project-top-10-for-large-language-model-applications/,LLM01 Prompt Injection, LLM06 Sensitive Information Disclosure, defence strategies.
+09,RL & Self-Improvement,PAPER,Training language models to follow instructions with human feedback,Ouyang et al.,https://arxiv.org/abs/2203.02155,Full RLHF pipeline: SFT, reward model training, PPO fine-tuning.
+09,RL & Self-Improvement,PAPER,Constitutional AI: Harmlessness from AI Feedback,Bai et al.,https://arxiv.org/abs/2212.08073,Constitutional AI, RLAIF, AI-generated preference labels.
+09,RL & Self-Improvement,PAPER,Direct Preference Optimization,Rafailov et al.,https://arxiv.org/abs/2305.18290,Direct Preference Optimization — eliminates RL from alignment fine-tuning.
+09,RL & Self-Improvement,PAPER,Reflexion: Language Agents with Verbal Reinforcement Learning,Shinn et al.,https://arxiv.org/abs/2303.11366,Inference-time self-improvement via verbal reflection and episodic memory.
+09,RL & Self-Improvement,PAPER,Let's Verify Step by Step,Lightman et al.,https://arxiv.org/abs/2305.20050,Process Reward Models (PRMs) vs Outcome Reward Models.
+09,RL & Self-Improvement,DOCS,OpenAI Spinning Up — PPO,OpenAI,https://spinningup.openai.com/en/latest/algorithms/ppo.html,PPO algorithm, policy gradient methods, KL-divergence constraint.
+09,RL & Self-Improvement,DOCS,Hugging Face TRL — DPO Trainer,Hugging Face,https://huggingface.co/docs/trl/dpo_trainer,Practical DPO implementation, preference data format, training loop.
+10,RAG,PAPER,Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks,Lewis et al.,https://arxiv.org/abs/2005.11401,Original RAG formulation — retrieval, augmentation, generation pipeline.
+10,RAG,PAPER,Retrieval-Augmented Generation for Large Language Models: A Survey,Gao et al.,https://arxiv.org/abs/2312.10997,Naive, Advanced, and Modular RAG; chunking; evaluation framework.
+10,RAG,PAPER,Dense Passage Retrieval for Open-Domain Question Answering,Karpukhin et al.,https://arxiv.org/abs/2004.04906,Dense retrieval, bi-encoder architecture, ANN search.
+10,RAG,PAPER,Lost in the Middle: How Language Models Use Long Contexts,Liu et al.,https://arxiv.org/abs/2307.03172,Context position bias, chunk ordering in RAG context assembly.
+10,RAG,DOCS,ChromaDB Documentation,ChromaDB,https://docs.trychroma.com/,Vector store setup, collections, embedding functions, metadata filtering.
+10,RAG,DOCS,Anthropic Embeddings (Voyage AI),Anthropic,https://docs.anthropic.com/en/docs/build-with-claude/embeddings,Embedding model recommendations for use with Claude.
+11,Deploying Agents,DOCS,Anthropic Agentic & Tool Use Docs,Anthropic,https://docs.anthropic.com/en/docs/build-with-claude/tool-use,Agentic patterns, minimal footprint, iteration limits, token budgets.
+11,Deploying Agents,DOCS,Anthropic API Error Reference,Anthropic,https://docs.anthropic.com/en/api/errors,Error codes, retry guidance, rate limit headers.
+11,Deploying Agents,DOCS,Anthropic Rate Limits,Anthropic,https://docs.anthropic.com/en/api/rate-limits,Tokens-per-minute, requests-per-minute limits by tier.
+11,Deploying Agents,DOCS,Anthropic Models Overview,Anthropic,https://docs.anthropic.com/en/docs/about-claude/models,Model tiers, capability vs cost trade-offs, recommended use cases.
+11,Deploying Agents,DOCS,OpenTelemetry Documentation,OpenTelemetry,https://opentelemetry.io/docs/,Traces, spans, metrics, logs — vendor-neutral observability standard.
+12,Real-World Applications,BLOG,Building Effective Agents,Anthropic,https://www.anthropic.com/research/building-effective-agents,Architecture patterns, when to use agents, pipeline vs. orchestrator, human-in-the-loop.
+12,Real-World Applications,DOCS,Anthropic Agentic & Tool Use Docs,Anthropic,https://docs.anthropic.com/en/docs/build-with-claude/tool-use,Minimal footprint, agentic guidance, failure handling, scope constraints.
+12,Real-World Applications,PAPER,Retrieval-Augmented Generation for Large Language Models: A Survey,Gao et al.,https://arxiv.org/abs/2312.10997,Evaluation frameworks applicable to agentic retrieval tasks.
+13,MCP & Protocols,DOCS,MCP Official Docs — Introduction,Anthropic / MCP,https://modelcontextprotocol.io/introduction,MCP overview, M×N problem, host-client-server roles.
+13,MCP & Protocols,DOCS,MCP Docs — Architecture,Anthropic / MCP,https://modelcontextprotocol.io/docs/concepts/architecture,Host, client, server roles; transport layer (stdio, HTTP/SSE).
+13,MCP & Protocols,DOCS,MCP Docs — Tools,Anthropic / MCP,https://modelcontextprotocol.io/docs/concepts/tools,Tool primitive, JSON Schema, model-controlled invocation.
+13,MCP & Protocols,DOCS,MCP Docs — Resources,Anthropic / MCP,https://modelcontextprotocol.io/docs/concepts/resources,Resource primitive, URIs, MIME types, application-controlled injection.
+13,MCP & Protocols,DOCS,MCP Security & Trust Hierarchy,Anthropic / MCP,https://modelcontextprotocol.io/docs/concepts/architecture#security-and-trust-hierarchy,User consent requirements, minimal permissions, prompt injection risks.
+13,MCP & Protocols,BLOG,Anthropic MCP Announcement,Anthropic,https://www.anthropic.com/news/model-context-protocol,MCP rationale, initial release, ecosystem goals.
+13,MCP & Protocols,REPO,MCP Official Servers,Anthropic / MCP,https://github.com/modelcontextprotocol/servers,Filesystem, GitHub, Postgres, Brave Search, Slack reference servers.
+14,Multi-Agent Orchestration,BLOG,Building Effective Agents,Anthropic,https://www.anthropic.com/research/building-effective-agents,Why multi-agent, orchestration patterns, trust model, when not to use.
+14,Multi-Agent Orchestration,DOCS,Anthropic Agentic & Multi-Agent Docs,Anthropic,https://docs.anthropic.com/en/docs/build-with-claude/tool-use,Subagent trust levels, orchestrator guidance, minimal footprint.
+14,Multi-Agent Orchestration,PAPER,AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation,Wu et al.,https://arxiv.org/abs/2308.08155,Multi-agent conversation framework, agent roles, human-in-the-loop patterns.
+14,Multi-Agent Orchestration,DOCS,LangGraph Documentation,LangGraph,https://langchain-ai.github.io/langgraph/,Graph-based multi-agent orchestration, state management, parallel execution.
+15,Agent Security,BLOG,OWASP Top 10 for LLM Applications,OWASP,https://owasp.org/www-project-top-10-for-large-language-model-applications/,Full taxonomy: LLM01–LLM10, definitions, mitigations.
+15,Agent Security,PAPER,Not What You've Signed Up For: Compromising Real-World LLM-Integrated Applications,Greshake et al.,https://arxiv.org/abs/2302.12173,First systematic study of indirect prompt injection in LLM-integrated applications.
+15,Agent Security,DOCS,Anthropic Agentic & Security Guidance,Anthropic,https://docs.anthropic.com/en/docs/build-with-claude/tool-use,Minimal footprint, trust hierarchy, irreversible action guidance.
+16,Long-Horizon Agents,PAPER,SWE-bench: Can Language Models Resolve Real-World GitHub Issues?,Jimenez et al.,https://arxiv.org/abs/2310.06770,SWE-bench — code agent benchmark on real GitHub issues.
+16,Long-Horizon Agents,BLOG,Building Effective Agents,Anthropic,https://www.anthropic.com/research/building-effective-agents,Patterns for long-running and multi-step agents.
+16,Long-Horizon Agents,DOCS,Anthropic Agentic AI Docs,Anthropic,https://docs.anthropic.com/en/docs/agents,State management, tool use, approval patterns.
+16,Long-Horizon Agents,PAPER,Generative Agents: Interactive Simulacra of Human Behavior,Park et al.,https://arxiv.org/abs/2304.03442,Long-running three-tier memory architecture.
+16,Long-Horizon Agents,PAPER,Plan-and-Solve Prompting,Wang et al.,https://arxiv.org/abs/2305.04091,Explicit planning before execution.
+16,Long-Horizon Agents,PAPER,Reflexion: Language Agents with Verbal Reinforcement Learning,Shinn et al.,https://arxiv.org/abs/2303.11366,Verbal self-reflection and replanning.
+16,Long-Horizon Agents,DOCS,LangGraph Documentation,LangGraph,https://langchain-ai.github.io/langgraph/,Persistent state, checkpointing, resumable graphs.
